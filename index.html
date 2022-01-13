@@ -156,4 +156,31 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></he
 <p>PS:</p>
 <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ping ;ls   打开当前根目录</span><br><span class="line">ping ;ls\  列出根目录\下的所有目录</span><br><span class="line">ping ;cat\ 打开\下的文件</span><br></pre></td></tr></table></div></figure>
 
+<p>附：ping命令</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://blog.csdn.net/m0_50317371/article/details/110489711</span><br></pre></td></tr></table></div></figure>
+
+
+        <h1 id="六、-极客大挑战-2019-Secret-File-1"   >
+          <a href="#六、-极客大挑战-2019-Secret-File-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#六、-极客大挑战-2019-Secret-File-1" class="headerlink" title="六、[极客大挑战 2019]Secret File 1"></a>六、[极客大挑战 2019]Secret File 1</h1>
+      <p>打开就是</p>
+<p><img src="https://gitee.com/PiDanX/image-bed/raw/master//Img/202201131131588.png" alt="image-20220113113119423"></p>
+<p>熟练的查看源代码</p>
+<p><img src="https://gitee.com/PiDanX/image-bed/raw/master//Img/202201131132613.png" alt="image-20220113113232516"></p>
+<p>点开瞧一瞧</p>
+<p><img src="https://gitee.com/PiDanX/image-bed/raw/master//Img/202201131133462.png" alt="image-20220113113307318"></p>
+<p>再点击SECRET瞧一瞧</p>
+<p><img src="https://gitee.com/PiDanX/image-bed/raw/master//Img/202201131133191.png" alt="image-20220113113338048"></p>
+<p>果然，没那么简单~但这也是一种提示吧，让我们再回去即上一个界面看看</p>
+<p>抓个包试试</p>
+<p><img src="https://gitee.com/PiDanX/image-bed/raw/master//Img/202201131137182.png" alt="image-20220113113716086"></p>
+<p>这已经是很明显的提示了，访问一下这个secr3t.php</p>
+<p><img src="https://gitee.com/PiDanX/image-bed/raw/master//Img/202201131138159.png" alt="image-20220113113854096"></p>
+<p>更明显了这个</p>
+<p>和“三”同理，读取文件源码</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?file=php://filter/read=convert.base64-encode/resource=flag.php</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://gitee.com/PiDanX/image-bed/raw/master//Img/202201131141339.png" alt="image-20220113114113257"></p>
+<p>便出现了一串长长长长长长的字符，再利用CyberChef解码</p>
+<p><img src="https://gitee.com/PiDanX/image-bed/raw/master//Img/202201131142372.png" alt="image-20220113114238307"></p>
+<p>这不就来了？</p>
 </div></div></article></section><nav class="paginator"><div class="paginator-inner"><span class="page-number current">1</span></div></nav></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">1</div><div class="sidebar-ov-state-item__name">Archives</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2022</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>John Doe</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v6.0.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>
