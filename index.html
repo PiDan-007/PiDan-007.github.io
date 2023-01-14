@@ -28,7 +28,7 @@ var CONFIG = {
   sourcePath: {"js":"js","css":"css","images":"images"},
 };
 
-window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Hexo</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content content-home" id="content"><section class="postlist"><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2023/01/06/NSSCTF%20WEB/">NSSCTF WEB</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2023-01-06</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2023-01-13</span></span></div></header><div class="post-body"><div class="post-excerpt">
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Hexo</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content content-home" id="content"><section class="postlist"><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2023/01/06/NSSCTF%20WEB/">NSSCTF WEB</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2023-01-06</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2023-01-14</span></span></div></header><div class="post-body"><div class="post-excerpt">
         <h2 id="一、-SWPUCTF-2021-新生赛-jicao"   >
           <a href="#一、-SWPUCTF-2021-新生赛-jicao" class="heading-link"><i class="fas fa-link"></i></a><a href="#一、-SWPUCTF-2021-新生赛-jicao" class="headerlink" title="一、[SWPUCTF 2021 新生赛]jicao"></a>一、[SWPUCTF 2021 新生赛]jicao</h2>
       <p>打开后出现这样一堆代码</p>
@@ -132,6 +132,69 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></he
         <h6 id="附：MD5绕过"   >
           <a href="#附：MD5绕过" class="heading-link"><i class="fas fa-link"></i></a><a href="#附：MD5绕过" class="headerlink" title="附：MD5绕过"></a>附：MD5绕过</h6>
       <p><code>https://blog.csdn.net/LYJ20010728/article/details/116779357</code></p>
+
+        <h2 id="六、-SWPUCTF-2021-新生赛-include"   >
+          <a href="#六、-SWPUCTF-2021-新生赛-include" class="heading-link"><i class="fas fa-link"></i></a><a href="#六、-SWPUCTF-2021-新生赛-include" class="headerlink" title="六、[SWPUCTF 2021 新生赛]include"></a>六、[SWPUCTF 2021 新生赛]include</h2>
+      <p>打开环境后要求上传一个文件</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301141346762.png" alt="image-20230114134608687"></p>
+<p>那就随便上传一个文件</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301141346152.png" alt="image-20230114134633094"></p>
+<p>它说flag在flag.php中，那尝试一下传入flag.php</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301141348351.png" alt="image-20230114134837268"></p>
+<p>看来不行</p>
+<p>一般有include或是include_once可以想到用php的伪协议</p>
+<p><code>?file=php://filter/read=convert.base64-encode/resource=flag.php</code></p>
+<p>读取源代码并进行base64编码输出</p>
+<p>于是便得到一串base64编码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301141353992.png" alt="image-20230114135326851"></p>
+<p>用Cyberchef进行解码得到flag</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301141354123.png" alt="image-20230114135414070"></p>
+
+        <h6 id="附：常用php伪协议"   >
+          <a href="#附：常用php伪协议" class="heading-link"><i class="fas fa-link"></i></a><a href="#附：常用php伪协议" class="headerlink" title="附：常用php伪协议"></a>附：常用php伪协议</h6>
+      <p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/wjrblogs/p/12285202.html" >https://www.cnblogs.com/wjrblogs/p/12285202.html</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h2 id="七、-SWPUCTF-2021-新生赛-PseudoProtocols"   >
+          <a href="#七、-SWPUCTF-2021-新生赛-PseudoProtocols" class="heading-link"><i class="fas fa-link"></i></a><a href="#七、-SWPUCTF-2021-新生赛-PseudoProtocols" class="headerlink" title="七、[SWPUCTF 2021 新生赛]PseudoProtocols"></a>七、[SWPUCTF 2021 新生赛]PseudoProtocols</h2>
+      <p>打开后</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301141421711.png" alt="image-20230114142111659"></p>
+<p>它想让我们找hint.php文件，而且注意到此时URL上已经传入了参数wllm，可以使用伪协议读取这个hint.phph文件</p>
+<p>在后面输入</p>
+<p><code>php://filter/read=convert.base64-encode/resource=hint.php</code></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301141424733.png" alt="image-20230114142428678"></p>
+<p>解码后</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301141425949.png" alt="image-20230114142506902"></p>
+<p>提示我们去这个/test，于是重新输入/test2222222222222.php</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301141426075.png" alt="image-20230114142627016"></p>
+<p>阅读代码后发现是需要传入参数a，a要求传入文件，并且文件内容为：I want flag</p>
+<p>利用data://协议:</p>
+<p>先将I want flag变成base64编码格式，即SSB3YW50IGZsYWc=</p>
+<p>接着输入</p>
+<p><code>?a=data://text/plain;base64,SSB3YW50IGZsYWc=</code></p>
+<p>回车后得到flag</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301141433590.png" alt="image-20230114143315508"></p>
+<p>（PS：也可以直接输入<code>?a=data://text/plain,I want flag</code>，即不将I want flag变成base64编码格式）</p>
+
+        <h2 id="八、-NISACTF-2022-easyssrf"   >
+          <a href="#八、-NISACTF-2022-easyssrf" class="heading-link"><i class="fas fa-link"></i></a><a href="#八、-NISACTF-2022-easyssrf" class="headerlink" title="八、[NISACTF 2022]easyssrf"></a>八、[NISACTF 2022]easyssrf</h2>
+      <p>打开后</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301141524463.png" alt="image-20230114152400330"></p>
+<p>随便输个网址尝试一下</p>
+<p><code>http://www.bilibili.com</code></p>
+<p>结果返回</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301141525596.png" alt="image-20230114152501550"></p>
+<p>看来不对，再试试直接输入flag</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301141525920.png" alt="image-20230114152543873"></p>
+<p>那就看看提示文件，输入file:///fl4g（因为说了提示文件是/fl4g，所以有三个/）</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301141526545.png" alt="image-20230114152647479"></p>
+<p>访问这个<code>/ha1x1ux1u.php</code></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301141527156.png" alt="image-20230114152723108"></p>
+<p>阅读代码后可知，需要传入file，而且flag在/flag里</p>
+<p>尝试伪协议</p>
+<p><code>?file=php://filter/read=convert.base64-encode/resource=/flag</code></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301141531800.png" alt="image-20230114153124729"></p>
+<p>解码后获得flag</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301141531378.png" alt="image-20230114153154328"></p>
 </div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2022/01/06/PHP%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">PHP环境搭建</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2022-01-06</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2022-01-14</span></span></div></header><div class="post-body"><div class="post-excerpt">
         <h1 id="一、调试搭建"   >
           <a href="#一、调试搭建" class="heading-link"><i class="fas fa-link"></i></a><a href="#一、调试搭建" class="headerlink" title="一、调试搭建"></a>一、调试搭建</h1>
