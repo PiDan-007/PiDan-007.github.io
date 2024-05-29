@@ -1963,7 +1963,7 @@ exit;
 <p>首先检查 <code>redirect</code> 是否存在于 GET 请求中，并且确认它的值是数字</p>
 <p><code>intval</code> 函数用于确保 <code>redirect</code> 参数被当作整数处理</p>
 <p><code>switch</code> 语句根据 <code>redirect</code> 的整数值选择不同的目标 URL</p>
-</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2023/10/14/XSS%E6%94%BB%E5%87%BB/">XSS攻击</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2023-10-14</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2024-04-15</span></span></div></header><div class="post-body"><div class="post-excerpt">
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2023/10/14/XSS%E6%94%BB%E5%87%BB/">XSS攻击</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2023-10-14</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2024-05-29</span></span></div></header><div class="post-body"><div class="post-excerpt">
         <h1 id="XSS攻击"   >
           <a href="#XSS攻击" class="heading-link"><i class="fas fa-link"></i></a><a href="#XSS攻击" class="headerlink" title="XSS攻击"></a>XSS攻击</h1>
       
@@ -1988,10 +1988,16 @@ exit;
         <h2 id="测试方法"   >
           <a href="#测试方法" class="heading-link"><i class="fas fa-link"></i></a><a href="#测试方法" class="headerlink" title="测试方法"></a>测试方法</h2>
       <p>POC</p>
-<script>alert(/xss/)</script> //弹框，最常用
-<script>confirm('xss')</script> //弹出确认框
-<script>prompt('xss')</script> //弹出输入框
-<p>其他标签如：&lt; img src =x onerror =”alert(111)”/&gt;<br>特殊标签 ‘ onclick=’alert(111)’<br>                 javascript:alert(111)</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(/xss/)&lt;/script&gt; //弹框，最常用</span><br><span class="line">&lt;script&gt;confirm(&#x27;xss&#x27;)&lt;/script&gt; //弹出确认框</span><br><span class="line">&lt;script&gt;prompt(&#x27;xss&#x27;)&lt;/script&gt; //弹出输入框</span><br></pre></td></tr></table></div></figure>
+
+<p>其他标签如：</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt; img src =x onerror =&quot;alert(111)&quot;/&gt;</span><br></pre></td></tr></table></div></figure>
+
+<p>特殊标签 </p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x27; onclick=&#x27;alert(111)&#x27;</span><br><span class="line">javascript:alert(111)</span><br></pre></td></tr></table></div></figure>
+
+
+
 
         <h2 id="绕过"   >
           <a href="#绕过" class="heading-link"><i class="fas fa-link"></i></a><a href="#绕过" class="headerlink" title="绕过"></a>绕过</h2>
@@ -2035,7 +2041,7 @@ exit;
         <h5 id="过滤括号"   >
           <a href="#过滤括号" class="heading-link"><i class="fas fa-link"></i></a><a href="#过滤括号" class="headerlink" title="过滤括号"></a>过滤括号</h5>
       <p>使用throw 过滤</p>
-<script>onerror alert;throw 1</script>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;onerror alert;throw 1&lt;/script&gt;</span><br></pre></td></tr></table></div></figure>
 
 
         <h2 id="防御"   >
@@ -2065,16 +2071,19 @@ exit;
 
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309241453580.png" alt="image-20230924145323522"></p>
 <p>发现界面有变化</p>
-<p>尝试构造脚本 </p>
-<script>alert(/xss/)</script>
+<p>尝试构造脚本，将</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(/xss/)&lt;/script&gt;</span><br></pre></td></tr></table></div></figure>
 
-<p>将<script>alert(/xss/)</script>传入name变量</p>
+<p>传入name变量</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309241454337.png" alt="image-20230924145448291"></p>
 
         <h1 id="level-2"   >
           <a href="#level-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#level-2" class="headerlink" title="level-2"></a>level-2</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309241456802.png" alt="image-20230924145634756"></p>
-<p>将<script>alert(/xss/)</script>传入keyword变量</p>
+<p>将</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(/xss/)&lt;/script&gt;</span><br></pre></td></tr></table></div></figure>
+
+<p>传入keyword变量</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309241457807.png" alt="image-20230924145703759"></p>
 <p>界面有变化，但是没成功，查看网页源代码</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309241458877.png"></p>
@@ -2085,14 +2094,15 @@ exit;
           <a href="#用例子解释一下这个闭合" class="heading-link"><i class="fas fa-link"></i></a><a href="#用例子解释一下这个闭合" class="headerlink" title="用例子解释一下这个闭合"></a>用例子解释一下这个闭合</h6>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309241720254.png" alt="image-20230924172010225"></p>
 <p>所以构建payload</p>
-<p>“&gt;<script>alert(/xss/)</script></p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;&gt;&lt;script&gt;alert(/xss/)&lt;/script&gt;</span><br></pre></td></tr></table></div></figure>
+
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309241711195.png" alt="image-20230924171159157"></p>
 
         <h1 id="level-3"   >
           <a href="#level-3" class="heading-link"><i class="fas fa-link"></i></a><a href="#level-3" class="headerlink" title="level-3"></a>level-3</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309241725069.png" alt="image-20230924172506020"></p>
 <p>试着在框里输入</p>
-<script>alert(/xss/)</script>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(/xss/)&lt;/script&gt;</span><br></pre></td></tr></table></div></figure>
 
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309241725435.png" alt="image-20230924172553382"></p>
 <p>查看网页源代码</p>
@@ -2108,28 +2118,41 @@ exit;
         <h1 id="level-4"   >
           <a href="#level-4" class="heading-link"><i class="fas fa-link"></i></a><a href="#level-4" class="headerlink" title="level-4"></a>level-4</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310141554297.png" alt="image-20231014155402215"></p>
-<p>将<script>alert(/xss/)</script>传入keyword变量</p>
+<p>将</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(/xss/)&lt;/script&gt;</span><br></pre></td></tr></table></div></figure>
+
+<p>传入keyword变量</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310141554749.png" alt="image-20231014155432655"></p>
 <p>查看网页源代码</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310141555553.png" alt="image-20231014155525491"></p>
 <p>发现&lt;&gt;都被过滤掉了，也可以构造一个事件进行绕过，用双引号进行属性闭合</p>
-<p>传入“ onclick=”alert(1)，再点击输入框则成功通关</p>
+<p>传入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">“ onclick=”alert(1)</span><br></pre></td></tr></table></div></figure>
+
+<p>再点击输入框则成功通关</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310141652076.png" alt="image-20231014165220004"></p>
 
         <h1 id="level-5"   >
           <a href="#level-5" class="heading-link"><i class="fas fa-link"></i></a><a href="#level-5" class="headerlink" title="level-5"></a>level-5</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310141652923.png" alt="image-20231014165239818"></p>
-<p>老样子，传入<script>alert(/xss/)</script></p>
+<p>老样子，传入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(/xss/)&lt;/script&gt;</span><br></pre></td></tr></table></div></figure>
+
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310141657152.png" alt="image-20231014165700072"></p>
 <p>查看网页源代码</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310141657381.png" alt="image-20231014165740322"></p>
-<p>发现中间多了“_”，用点击事件试一下，传入“ onclick=”alert(1)</p>
+<p>发现中间多了“_”，用点击事件试一下，传入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">“ onclick=”alert(1)</span><br></pre></td></tr></table></div></figure>
+
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310141658993.png" alt="image-20231014165842861"></p>
 <p>o和n中间还是多了”_”，可能是对on进行了过滤</p>
-<p>尝试混合大小写字符，传入“ Onclick=”alert(1)</p>
+<p>尝试混合大小写字符，传入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">“ Onclick=”alert(1)</span><br></pre></td></tr></table></div></figure>
+
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310141702762.png" alt="image-20231014170230684"></p>
-<p>还是不行</p>
-<p>只能换一个标签来执行代码，仍然要闭合<input>标签，传入”&gt;<a href=javascript:alert(1)></p>
+<p>还是不行，只能换一个标签来执行代码，仍然要闭合<input>标签，传入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;&gt;&lt;a href=javascript:alert(1)&gt;</span><br></pre></td></tr></table></div></figure>
+
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310141730010.png" alt="image-20231014173027877"></p>
 <p>点击输入框右边的”&gt;，即可通关成功</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310141731029.png" alt="image-20231014173100915"></p>
@@ -2137,26 +2160,39 @@ exit;
         <h1 id="level-6"   >
           <a href="#level-6" class="heading-link"><i class="fas fa-link"></i></a><a href="#level-6" class="headerlink" title="level-6"></a>level-6</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310141731309.png" alt="image-20231014173158226"></p>
-<p>传入<script>alert(/xss/)</script></p>
+<p>传入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(/xss/)&lt;/script&gt;</span><br></pre></td></tr></table></div></figure>
+
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310141732436.png" alt="image-20231014173253381"></p>
-<p>还是过滤，尝试大小写混写过滤，同时双引号闭合，传入”&gt;<ScRipt>alert(/xss/)</script></p>
+<p>还是过滤，尝试大小写混写过滤，同时双引号闭合，传入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;&gt;&lt;ScRipt&gt;alert(/xss/)&lt;/script&gt;</span><br></pre></td></tr></table></div></figure>
+
 <p>成功通关</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310141734229.png" alt="image-20231014173453147"></p>
 
         <h1 id="level-7"   >
           <a href="#level-7" class="heading-link"><i class="fas fa-link"></i></a><a href="#level-7" class="headerlink" title="level-7"></a>level-7</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310141735345.png" alt="image-20231014173528269"></p>
-<p>传入<script>alert(/xss/)</script>后查看网页源代码</p>
+<p>传入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(/xss/)&lt;/script&gt;</span><br></pre></td></tr></table></div></figure>
+
+<p>后查看网页源代码</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310141736093.png" alt="image-20231014173603047"></p>
-<p>发现script直接被过滤掉了，再尝试“ onclick=”alert(1)</p>
+<p>发现script直接被过滤掉了，再尝试</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">“ onclick=”alert(1)</span><br></pre></td></tr></table></div></figure>
+
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310141737497.png" alt="image-20231014173731453"></p>
-<p>onclick也被过滤掉，接着尝试”&gt;<a href=javascript:alert(1)></p>
+<p>onclick也被过滤掉，接着尝试</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;&gt;&lt;a href=javascript:alert(1)&gt;</span><br></pre></td></tr></table></div></figure>
+
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310151007084.png" alt="image-20231015100745979"></p>
 <p>herf也被过滤了</p>
 <p>按上一关的方法尝试大小写绕过</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310151013481.png" alt="image-20231015101307443"></p>
 <p>还是不行，再试试双写绕过</p>
-<p>传入”&gt;<scriscriptpt>alert(/xss/)</scriscriptpt></p>
+<p>传入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;&gt;&lt;scriscriptpt&gt;alert(/xss/)&lt;/scriscriptpt&gt;</span><br></pre></td></tr></table></div></figure>
+
 <p>成功通关</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310151016608.png" alt="image-20231015101626568"></p>
 
@@ -2166,10 +2202,14 @@ exit;
 <p>注入<script>alert(/xss/)</script></p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310151019487.png" alt="image-20231015101941450"></p>
 <p>value中的&lt;&gt;被转义，并且输入的内容插入了a标签的href中，其中的script也被转义成scr_ipt，所以不能使用带&lt;&gt;的内容，而且不是被过滤成空字符，也就不能使用双写绕过</p>
-<p>尝试事件绕过，传入“ onclick=”alert(1)</p>
+<p>尝试事件绕过，传入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">“ onclick=”alert(1)</span><br></pre></td></tr></table></div></figure>
+
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310151031248.png" alt="image-20231015103128218"></p>
 <p>”也被转转义，href中的onclick也被转义成o_nclick</p>
-<p>我们在输入框输入的内容，会被带入到友情链接href属性中，试一下javascript伪协议，尝试传入javascript:alert(1)</p>
+<p>我们在输入框输入的内容，会被带入到友情链接href属性中，试一下javascript伪协议，尝试传入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javascript:alert(1)</span><br></pre></td></tr></table></div></figure>
+
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310151103100.png" alt="image-20231015110343069"></p>
 <p>javascript被转义成javascr_ipt，只能试试编码绕过了，进行HTML实体编码</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310151121906.png" alt="image-20231015112111841"></p>
@@ -2181,7 +2221,9 @@ exit;
         <h1 id="level-9"   >
           <a href="#level-9" class="heading-link"><i class="fas fa-link"></i></a><a href="#level-9" class="headerlink" title="level-9"></a>level-9</h1>
       <p><img src="../AppData/Roaming/Typora/typora-user-images/image-20231017154620127.png" alt="image-20231017154620127"></p>
-<p>正常注入<script>alert(/xss/)</script></p>
+<p>正常注入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(/xss/)&lt;/script&gt;</span><br></pre></td></tr></table></div></figure>
+
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310171603427.png" alt="image-20231017160307394"></p>
 <p>和上题一样的有转义，有链接，但这个显示链接不合法，查看后台源码看看怎么回事</p>
 <p>（一般像这种有靶场的，可以在google上搜索该网站，到github上获得开源的）</p>
@@ -2206,7 +2248,8 @@ exit;
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181501319.png" alt="image-20231018150128286"></p>
 <p>发现只有t_sort接受了传参，要使用t_sort就得变换本身的hidden类型，把它改成其他类型button，注意双引号闭合</p>
 <p>在URL上给keyword和t_sort传参</p>
-<p>?keyword=1&amp;t_sort=”%20onclick=”alert(1)</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?keyword=1&amp;t_sort=&quot;%20onclick=&quot;alert(1)</span><br></pre></td></tr></table></div></figure>
+
 <p>再按F12把t_sort本身的hidden类型改成button</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181509704.png" alt="image-20231018150942673"></p>
 <p>回车后画面中会出现一个按钮</p>
@@ -2220,15 +2263,16 @@ exit;
 <p>看起来和上一关差不多，直接查看网页源代码</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181521543.png" alt="image-20231018152114489"></p>
 <p> t_ref 已经有了值，而且是上一关通关的payload</p>
-<p>正常传入<script>alert(/xss/)</script></p>
+<p>正常传入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(/xss/)&lt;/script&gt;</span><br></pre></td></tr></table></div></figure>
+
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181513433.png" alt="image-20231018151353399"></p>
 <p>依然有&lt;&gt;的转义，但t_ref的值没了，类似的方法给另外四个参数也传参</p>
 <p><code>?keyword=1&amp;t_link=2&amp;t_history=3&amp;t_sort=4&amp;t_ref=5</code></p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181525332.png" alt="image-20231018152545257"></p>
 <p>还是t_sort接受传参，但是t_ref没了，再用上一关的方法试试</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181536992.png" alt="image-20231018153640925"></p>
-<p>双引号也被转义了</p>
-<p>抓包看看</p>
+<p>双引号也被转义了，抓包看看</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181543511.png" alt="image-20231018154339455"></p>
 <p> 可以看出ref 是 http 头中的 referer 属性，修改一下Referer的值为5</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181544146.png"></p>
@@ -2236,7 +2280,8 @@ exit;
 <p>从这里入手构造payload</p>
 <p>可以在burpsuit里修改Referer的值，也可以直接在网页按F12里修改t_ref，同时把该参数的类型更改为button类型</p>
 <p>传入</p>
-<p>“ onclick=”alert(1)</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot; onclick=&quot;alert(1)</span><br></pre></td></tr></table></div></figure>
+
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181555383.png" alt="image-20231018155532291"></p>
 <p>按一下按钮成功通关！</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181555057.png" alt="image-20231018155557988"></p>
@@ -2271,9 +2316,13 @@ exit;
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181706816.png" alt="image-20231018170645786"></p>
 <p>空格也没了</p>
 <p>用回车代替空格绕过试试（回车、换行不支持在on事件中使用）</p>
-<p>可以用：<img src =x onerror=alert(111)></p>
+<p>可以用：</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src =x onerror=alert(111)&gt;</span><br></pre></td></tr></table></div></figure>
+
 <p>要使用URL编码将回车符转换为%0d</p>
-<p>所以传入&lt;img%0dsrc=x%0donerror=alert(111)&gt;</p>
+<p>所以传入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img%0dsrc=x%0donerror=alert(111)&gt;</span><br></pre></td></tr></table></div></figure>
+
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181713997.png" alt="image-20231018171337868"></p>
 
         <h1 id="level-17"   >
