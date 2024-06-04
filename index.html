@@ -2185,7 +2185,7 @@ exit;
 <p>首先检查 <code>redirect</code> 是否存在于 GET 请求中，并且确认它的值是数字</p>
 <p><code>intval</code> 函数用于确保 <code>redirect</code> 参数被当作整数处理</p>
 <p><code>switch</code> 语句根据 <code>redirect</code> 的整数值选择不同的目标 URL</p>
-</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2023/10/14/XSS%E6%94%BB%E5%87%BB/">XSS攻击</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2023-10-14</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2024-05-29</span></span></div></header><div class="post-body"><div class="post-excerpt">
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2023/10/14/XSS%E6%94%BB%E5%87%BB/">XSS攻击</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2023-10-14</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2024-06-04</span></span></div></header><div class="post-body"><div class="post-excerpt">
         <h1 id="XSS攻击"   >
           <a href="#XSS攻击" class="heading-link"><i class="fas fa-link"></i></a><a href="#XSS攻击" class="headerlink" title="XSS攻击"></a>XSS攻击</h1>
       
@@ -2424,7 +2424,7 @@ exit;
         <h1 id="level-8"   >
           <a href="#level-8" class="heading-link"><i class="fas fa-link"></i></a><a href="#level-8" class="headerlink" title="level-8"></a>level-8</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310151016994.png" alt="image-20231015101640948"></p>
-<p>注入<script>alert(/xss/)</script></p>
+<p>注入<code>&lt;script&gt;alert(/xss/)&lt;/script&gt;</code></p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310151019487.png" alt="image-20231015101941450"></p>
 <p>value中的&lt;&gt;被转义，并且输入的内容插入了a标签的href中，其中的script也被转义成scr_ipt，所以不能使用带&lt;&gt;的内容，而且不是被过滤成空字符，也就不能使用双写绕过</p>
 <p>尝试事件绕过，传入</p>
@@ -2466,7 +2466,7 @@ exit;
         <h1 id="level-10"   >
           <a href="#level-10" class="heading-link"><i class="fas fa-link"></i></a><a href="#level-10" class="headerlink" title="level-10"></a>level-10</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181456893.png" alt="image-20231018145640803"></p>
-<p>正常注入<script>alert(/xss/)</script></p>
+<p>正常注入<code>&lt;script&gt;alert(/xss/)&lt;/script&gt;</code></p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181459235.png" alt="image-20231018145910204"></p>
 <p>发现&lt;&gt;被转义，除了keyword外还有三个参数，尝试给三个参数传参</p>
 <p><code>https://xssaq.com/yx/level10.php?keyword=1&amp;t_link=2&amp;t_history=3&amp;t_sort=4</code></p>
