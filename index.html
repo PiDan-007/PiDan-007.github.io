@@ -28,7 +28,68 @@ var CONFIG = {
   sourcePath: {"js":"js","css":"css","images":"images"},
 };
 
-window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">PiDan-007</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content content-home" id="content"><section class="postlist"><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2024/07/10/HFS%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/">Rejetto HFS 远程命令执行漏洞(CVE-2024-39943)</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2024-07-10</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2024-07-12</span></span></div></header><div class="post-body"><div class="post-excerpt">
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">PiDan-007</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content content-home" id="content"><section class="postlist"><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2024/07/15/nacos%E6%BC%8F%E6%B4%9E/">nacos漏洞</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2024-07-15</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2024-07-16</span></span></div></header><div class="post-body"><div class="post-excerpt">
+        <h1 id="nacos漏洞"   >
+          <a href="#nacos漏洞" class="heading-link"><i class="fas fa-link"></i></a><a href="#nacos漏洞" class="headerlink" title="nacos漏洞"></a>nacos漏洞</h1>
+      
+        <h4 id="环境搭建（非鉴权）"   >
+          <a href="#环境搭建（非鉴权）" class="heading-link"><i class="fas fa-link"></i></a><a href="#环境搭建（非鉴权）" class="headerlink" title="环境搭建（非鉴权）"></a>环境搭建（非鉴权）</h4>
+      <p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://github.com/alibaba/nacos/releases/tag/2.3.2" >https://github.com/alibaba/nacos/releases/tag/2.3.2</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> 下载2.3.2版本并解压</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd nacos/bin</span><br></pre></td></tr></table></div></figure>
+
+<p>运行以下命令以独立模式启动服务器</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./startup.cmd -m standalone</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407151651076.png" alt="image-20240715165149980"></p>
+<p>访问这个链接</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407151652637.png" alt="image-20240715165201535"></p>
+<p>环境搭建完成</p>
+
+        <h4 id="环境搭建（鉴权）"   >
+          <a href="#环境搭建（鉴权）" class="heading-link"><i class="fas fa-link"></i></a><a href="#环境搭建（鉴权）" class="headerlink" title="环境搭建（鉴权）"></a>环境搭建（鉴权）</h4>
+      <p>下载2.3.2版本并解压后，在\nacos\conf目录下修改<code>application.properties</code>文件</p>
+<p>开启鉴权</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">### The auth system to use, currently only &#x27;nacos&#x27; and &#x27;ldap&#x27; is supported:</span><br><span class="line">nacos.core.auth.system.type=nacos</span><br><span class="line"></span><br><span class="line">### If turn on auth system:</span><br><span class="line">nacos.core.auth.enabled=true</span><br></pre></td></tr></table></div></figure>
+
+<p>自定义密钥</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">### The default token (Base64 String):</span><br><span class="line">nacos.core.auth.plugin.nacos.token.secret.key=VGhpc0lzTXlDdXN0b21TZWNyZXRLZXkwMTIzNDU2Nzg=</span><br></pre></td></tr></table></div></figure>
+
+<p>自定义密钥注意事项：</p>
+<p>1.将密钥配置项设置为Base64编码的字符串，且原始密钥长度不得低于32字符</p>
+<p>2.官方文档中提供的密钥为公开密钥，在实际部署时请更换为其他密钥内容，防止密钥泄漏导致安全风险</p>
+<p>3.密钥需要保持节点间一致，长时间不一致可能导致403 invalid token错误</p>
+<p>开启服务身份识别功能</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">### Since 1.4.1, worked when nacos.core.auth.enabled=true and nacos.core.auth.enable.userAgentAuthWhite=false.</span><br><span class="line">### The two properties is the white list for auth and used by identity the request from other server.</span><br><span class="line">nacos.core.auth.server.identity.key=example</span><br><span class="line">nacos.core.auth.server.identity.value=example</span><br></pre></td></tr></table></div></figure>
+
+<p>再启动服务器</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./startup.cmd -m standalone</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407160924540.png" alt="image-20240716092434389"></p>
+<p>此时就需要登录了，默认账号密码：nacos/nacos</p>
+<p>开启鉴权参考：<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://nacos.io/docs/latest/guide/user/auth/" >https://nacos.io/docs/latest/guide/user/auth/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h4 id="漏洞复现"   >
+          <a href="#漏洞复现" class="heading-link"><i class="fas fa-link"></i></a><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h4>
+      <p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://github.com/ayoundzw/nacos-poc" >https://github.com/ayoundzw/nacos-poc</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>下载之后先安装依赖requests和flask</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install requests</span><br><span class="line">pip install flask</span><br></pre></td></tr></table></div></figure>
+
+<p>接着修改<code>config.py</code>里的IP和端口，注意这里的IP为本机IP，端口号和环境搭建的端口号不一致</p>
+<p>修改之后用管理员身份执行service.py</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python service.py</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407151740205.png" alt="image-20240715174021235"></p>
+<p>开启了一个flask服务器</p>
+<p>再执行exploit.py</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python exploit.py</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407151741835.png" alt="image-20240715174119797"></p>
+<p>输入URL和命令，这里默认命令是打开计算器</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407151742467.png" alt="image-20240715174221410"></p>
+<p>成功打开计算器，并且flask服务器也有回显</p>
+<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202407151742915.png" alt="image-20240715174253873"></p>
+<p>尝试了一下，开启鉴权后就不行了</p>
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2024/07/10/HFS%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/">Rejetto HFS 远程命令执行漏洞(CVE-2024-39943)</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2024-07-10</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2024-07-12</span></span></div></header><div class="post-body"><div class="post-excerpt">
         <h1 id="Rejetto-HFS-远程命令执行漏洞-CVE-2024-39943"   >
           <a href="#Rejetto-HFS-远程命令执行漏洞-CVE-2024-39943" class="heading-link"><i class="fas fa-link"></i></a><a href="#Rejetto-HFS-远程命令执行漏洞-CVE-2024-39943" class="headerlink" title="Rejetto HFS 远程命令执行漏洞(CVE-2024-39943)"></a>Rejetto HFS 远程命令执行漏洞(CVE-2024-39943)</h1>
       
@@ -188,7 +249,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></he
 <p>可以看到上传成功</p>
 <p>参考</p>
 <p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://cn-sec.com/archives/2758524.html" >https://cn-sec.com/archives/2758524.html</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
-</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2024/06/07/WEB%E6%BC%8F%E6%B4%9E/">[ Untitled ]</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2024-06-07</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2024-06-19</span></span></div></header><div class="post-body"><div class="post-excerpt">
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2024/06/07/WEB%E6%BC%8F%E6%B4%9E/">WEB漏洞</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2024-06-07</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2024-07-16</span></span></div></header><div class="post-body"><div class="post-excerpt">
         <h1 id="WEB漏洞"   >
           <a href="#WEB漏洞" class="heading-link"><i class="fas fa-link"></i></a><a href="#WEB漏洞" class="headerlink" title="WEB漏洞"></a>WEB漏洞</h1>
       
@@ -3208,385 +3269,4 @@ exit;
 <p><code>switch</code> 语句根据 <code>redirect</code> 的整数值选择不同的目标 URL</p>
 <p>参考：</p>
 <p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.sqlsec.com/2020/05/dvwa.html#Low-2" >https://www.sqlsec.com/2020/05/dvwa.html#Low-2</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
-</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2023/10/14/XSS%E6%94%BB%E5%87%BB/">XSS攻击</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2023-10-14</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2024-06-04</span></span></div></header><div class="post-body"><div class="post-excerpt">
-        <h1 id="XSS攻击"   >
-          <a href="#XSS攻击" class="heading-link"><i class="fas fa-link"></i></a><a href="#XSS攻击" class="headerlink" title="XSS攻击"></a>XSS攻击</h1>
-      
-        <h6 id="实践网站：https-xssaq-com-yx"   >
-          <a href="#实践网站：https-xssaq-com-yx" class="heading-link"><i class="fas fa-link"></i></a><a href="#实践网站：https-xssaq-com-yx" class="headerlink" title="实践网站：https://xssaq.com/yx/"></a>实践网站：<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://xssaq.com/yx/" >https://xssaq.com/yx/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></h6>
-      <p>跨站脚本攻击 XSS（Cross Site Scripting Scripting），指攻击者通过在web 页面中写入恶意脚本，进而在用户浏览页面时，控制用户浏览器进行操作的攻击方式。假设在一个服务器上，有一处功能使用了这段代码，他的功能是将用户输入的内容输出到页面上，这就是常见的表现。</p>
-
-        <h4 id="反射型XSS"   >
-          <a href="#反射型XSS" class="heading-link"><i class="fas fa-link"></i></a><a href="#反射型XSS" class="headerlink" title="反射型XSS"></a>反射型XSS</h4>
-      <p>攻击者通过电子邮件等方式将包含xss代码的恶意链接发送给目标用户。当目标用户访问该链接时，服务器接收该目标用户的请求并进行处理，然后服务器把带有xss代码的数据发送给目标用户的浏览器，浏览器解析这段带有xss代码的恶意脚本后，就会触发xss漏洞。</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309241444144.png" alt="image-20230924144421029"></p>
-
-        <h4 id="存储型XSS"   >
-          <a href="#存储型XSS" class="heading-link"><i class="fas fa-link"></i></a><a href="#存储型XSS" class="headerlink" title="存储型XSS"></a>存储型XSS</h4>
-      <p>攻击者在发帖的过程中，将恶意脚本连同正常信息一起注入帖子的内容中。随着帖子被服务器存储下来，恶意脚本也永久地被存放在服务器的后端存储器中 。 当其他用户浏览这个被注入了恶意脚本的帖子时，恶意脚本会在他们的浏览器中得到执行 。所以需要浏览器从服务器载入恶意的xss代码，才能真正触发xss。</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309241445548.png" alt="image-20230924144550500"></p>
-
-        <h4 id="DOM型XSS"   >
-          <a href="#DOM型XSS" class="heading-link"><i class="fas fa-link"></i></a><a href="#DOM型XSS" class="headerlink" title="DOM型XSS"></a>DOM型XSS</h4>
-      <p>用户请求一个经过专门设计的URL，它由攻击者提交，而且其中包含XSS代码。服务器的响应不会以任何形式包含攻击者的脚本。 当用户的浏览器处理这个响应时， DOM对象就会处理XSS代码，导致存在XSS漏洞 。</p>
-
-        <h2 id="测试方法"   >
-          <a href="#测试方法" class="heading-link"><i class="fas fa-link"></i></a><a href="#测试方法" class="headerlink" title="测试方法"></a>测试方法</h2>
-      <p>POC</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(/xss/)&lt;/script&gt; //弹框，最常用</span><br><span class="line">&lt;script&gt;confirm(&#x27;xss&#x27;)&lt;/script&gt; //弹出确认框</span><br><span class="line">&lt;script&gt;prompt(&#x27;xss&#x27;)&lt;/script&gt; //弹出输入框</span><br></pre></td></tr></table></div></figure>
-
-<p>其他标签如：</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt; img src =x onerror =&quot;alert(111)&quot;/&gt;</span><br></pre></td></tr></table></div></figure>
-
-<p>特殊标签 </p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x27; onclick=&#x27;alert(111)&#x27;</span><br><span class="line">javascript:alert(111)</span><br></pre></td></tr></table></div></figure>
-
-
-
-
-        <h2 id="绕过"   >
-          <a href="#绕过" class="heading-link"><i class="fas fa-link"></i></a><a href="#绕过" class="headerlink" title="绕过"></a>绕过</h2>
-      
-        <h4 id="①编码绕过"   >
-          <a href="#①编码绕过" class="heading-link"><i class="fas fa-link"></i></a><a href="#①编码绕过" class="headerlink" title="①编码绕过"></a>①编码绕过</h4>
-      
-        <h5 id="js编码"   >
-          <a href="#js编码" class="heading-link"><i class="fas fa-link"></i></a><a href="#js编码" class="headerlink" title="js编码"></a>js编码</h5>
-      
-        <h5 id="html实体编码"   >
-          <a href="#html实体编码" class="heading-link"><i class="fas fa-link"></i></a><a href="#html实体编码" class="headerlink" title="html实体编码"></a>html实体编码</h5>
-      
-        <h5 id="url编码"   >
-          <a href="#url编码" class="heading-link"><i class="fas fa-link"></i></a><a href="#url编码" class="headerlink" title="url编码"></a>url编码</h5>
-      
-        <h5 id="ascii编码"   >
-          <a href="#ascii编码" class="heading-link"><i class="fas fa-link"></i></a><a href="#ascii编码" class="headerlink" title="ascii编码"></a>ascii编码</h5>
-      
-        <h5 id="base64编码"   >
-          <a href="#base64编码" class="heading-link"><i class="fas fa-link"></i></a><a href="#base64编码" class="headerlink" title="base64编码"></a>base64编码</h5>
-      
-        <h5 id="Hex编码"   >
-          <a href="#Hex编码" class="heading-link"><i class="fas fa-link"></i></a><a href="#Hex编码" class="headerlink" title="Hex编码"></a>Hex编码</h5>
-      
-        <h4 id="②其他方式"   >
-          <a href="#②其他方式" class="heading-link"><i class="fas fa-link"></i></a><a href="#②其他方式" class="headerlink" title="②其他方式"></a>②其他方式</h4>
-      
-        <h5 id="过滤空格"   >
-          <a href="#过滤空格" class="heading-link"><i class="fas fa-link"></i></a><a href="#过滤空格" class="headerlink" title="过滤空格"></a>过滤空格</h5>
-      <p>斜杠代替空格</p>
-
-        <h5 id="过滤单引号、双引号"   >
-          <a href="#过滤单引号、双引号" class="heading-link"><i class="fas fa-link"></i></a><a href="#过滤单引号、双引号" class="headerlink" title="过滤单引号、双引号"></a>过滤单引号、双引号</h5>
-      <p>可以使用反单引号代替单引号和双引号</p>
-
-        <h5 id="过滤函数"   >
-          <a href="#过滤函数" class="heading-link"><i class="fas fa-link"></i></a><a href="#过滤函数" class="headerlink" title="过滤函数"></a>过滤函数</h5>
-      <p>可以使用到其他的方法进行javascript远程加载</p>
-
-        <h5 id="过滤括号"   >
-          <a href="#过滤括号" class="heading-link"><i class="fas fa-link"></i></a><a href="#过滤括号" class="headerlink" title="过滤括号"></a>过滤括号</h5>
-      <p>使用throw 过滤</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;onerror alert;throw 1&lt;/script&gt;</span><br></pre></td></tr></table></div></figure>
-
-
-        <h2 id="防御"   >
-          <a href="#防御" class="heading-link"><i class="fas fa-link"></i></a><a href="#防御" class="headerlink" title="防御"></a>防御</h2>
-      
-        <h4 id="过滤"   >
-          <a href="#过滤" class="heading-link"><i class="fas fa-link"></i></a><a href="#过滤" class="headerlink" title="过滤"></a>过滤</h4>
-      <p>过滤输入的字符，以及非法字符例如：&lt; 、&gt; 、* 、”、‘等对输入到页面上的数据进行相应的编码转换，包括html 实体编码，javascript 编码等</p>
-
-        <h4 id="httponly"   >
-          <a href="#httponly" class="heading-link"><i class="fas fa-link"></i></a><a href="#httponly" class="headerlink" title="httponly"></a>httponly</h4>
-      <p>对cookie 启用httponly</p>
-
-        <h4 id="CSP"   >
-          <a href="#CSP" class="heading-link"><i class="fas fa-link"></i></a><a href="#CSP" class="headerlink" title="CSP"></a>CSP</h4>
-      <p>启用csp 后，不符合的外部资源就会被禁止加载</p>
-
-        <h4 id="PHP实体化"   >
-          <a href="#PHP实体化" class="heading-link"><i class="fas fa-link"></i></a><a href="#PHP实体化" class="headerlink" title="PHP实体化"></a>PHP实体化</h4>
-      <p>html specialchars方法可以编码双引号的单引号</p>
-
-        <h1 id="level-1"   >
-          <a href="#level-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#level-1" class="headerlink" title="level-1"></a>level-1</h1>
-      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309241452155.png" alt="image-20230924145239094"></p>
-<p>URL有输入，我们更改一下name</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://xssaq.com/yx/level1.php?name=admin</span><br></pre></td></tr></table></div></figure>
-
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309241453580.png" alt="image-20230924145323522"></p>
-<p>发现界面有变化</p>
-<p>尝试构造脚本，将</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(/xss/)&lt;/script&gt;</span><br></pre></td></tr></table></div></figure>
-
-<p>传入name变量</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309241454337.png" alt="image-20230924145448291"></p>
-
-        <h1 id="level-2"   >
-          <a href="#level-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#level-2" class="headerlink" title="level-2"></a>level-2</h1>
-      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309241456802.png" alt="image-20230924145634756"></p>
-<p>将</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(/xss/)&lt;/script&gt;</span><br></pre></td></tr></table></div></figure>
-
-<p>传入keyword变量</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309241457807.png" alt="image-20230924145703759"></p>
-<p>界面有变化，但是没成功，查看网页源代码</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309241458877.png"></p>
-<p>可以看到&lt;&gt;更改了，但是插入到value参数中的代码并没有更改而是直接返回</p>
-<p>上网搜索后发现是“看到</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(/xss/)&lt;/script&gt;</span><br></pre></td></tr></table></div></figure>
-
-<p>被嵌套到value属性中，所以我们需要闭合input标签。”</p>
-
-        <h6 id="用例子解释一下这个闭合"   >
-          <a href="#用例子解释一下这个闭合" class="heading-link"><i class="fas fa-link"></i></a><a href="#用例子解释一下这个闭合" class="headerlink" title="用例子解释一下这个闭合"></a>用例子解释一下这个闭合</h6>
-      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309241720254.png" alt="image-20230924172010225"></p>
-<p>所以构建payload</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;&gt;&lt;script&gt;alert(/xss/)&lt;/script&gt;</span><br></pre></td></tr></table></div></figure>
-
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309241711195.png" alt="image-20230924171159157"></p>
-
-        <h1 id="level-3"   >
-          <a href="#level-3" class="heading-link"><i class="fas fa-link"></i></a><a href="#level-3" class="headerlink" title="level-3"></a>level-3</h1>
-      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309241725069.png" alt="image-20230924172506020"></p>
-<p>试着在框里输入</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(/xss/)&lt;/script&gt;</span><br></pre></td></tr></table></div></figure>
-
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309241725435.png" alt="image-20230924172553382"></p>
-<p>查看网页源代码</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202309241728449.png" alt="image-20230924172816412"></p>
-<p>发现value中原本输入的字符&lt;&gt;变化了，那就说明value属性过滤了</p>
-<p>构造一个事件，使得事件发生时，则执行JavaScript</p>
-<p>在框内输入</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27; onclick=&#x27;alert(1)&#x27;</span><br></pre></td></tr></table></div></figure>
-
-<p>成功通关！</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310141552287.png" alt="image-20231014155217175"></p>
-
-        <h1 id="level-4"   >
-          <a href="#level-4" class="heading-link"><i class="fas fa-link"></i></a><a href="#level-4" class="headerlink" title="level-4"></a>level-4</h1>
-      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310141554297.png" alt="image-20231014155402215"></p>
-<p>将</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(/xss/)&lt;/script&gt;</span><br></pre></td></tr></table></div></figure>
-
-<p>传入keyword变量</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310141554749.png" alt="image-20231014155432655"></p>
-<p>查看网页源代码</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310141555553.png" alt="image-20231014155525491"></p>
-<p>发现&lt;&gt;都被过滤掉了，也可以构造一个事件进行绕过，用双引号进行属性闭合</p>
-<p>传入</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">“ onclick=”alert(1)</span><br></pre></td></tr></table></div></figure>
-
-<p>再点击输入框则成功通关</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310141652076.png" alt="image-20231014165220004"></p>
-
-        <h1 id="level-5"   >
-          <a href="#level-5" class="heading-link"><i class="fas fa-link"></i></a><a href="#level-5" class="headerlink" title="level-5"></a>level-5</h1>
-      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310141652923.png" alt="image-20231014165239818"></p>
-<p>老样子，传入</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(/xss/)&lt;/script&gt;</span><br></pre></td></tr></table></div></figure>
-
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310141657152.png" alt="image-20231014165700072"></p>
-<p>查看网页源代码</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310141657381.png" alt="image-20231014165740322"></p>
-<p>发现中间多了“_”，用点击事件试一下，传入</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">“ onclick=”alert(1)</span><br></pre></td></tr></table></div></figure>
-
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310141658993.png" alt="image-20231014165842861"></p>
-<p>o和n中间还是多了”_”，可能是对on进行了过滤</p>
-<p>尝试混合大小写字符，传入</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">“ Onclick=”alert(1)</span><br></pre></td></tr></table></div></figure>
-
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310141702762.png" alt="image-20231014170230684"></p>
-<p>还是不行，只能换一个标签来执行代码，仍然要闭合<input>标签，传入</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;&gt;&lt;a href=javascript:alert(1)&gt;</span><br></pre></td></tr></table></div></figure>
-
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310141730010.png" alt="image-20231014173027877"></p>
-<p>点击输入框右边的”&gt;，即可通关成功</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310141731029.png" alt="image-20231014173100915"></p>
-
-        <h1 id="level-6"   >
-          <a href="#level-6" class="heading-link"><i class="fas fa-link"></i></a><a href="#level-6" class="headerlink" title="level-6"></a>level-6</h1>
-      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310141731309.png" alt="image-20231014173158226"></p>
-<p>传入</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(/xss/)&lt;/script&gt;</span><br></pre></td></tr></table></div></figure>
-
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310141732436.png" alt="image-20231014173253381"></p>
-<p>还是过滤，尝试大小写混写过滤，同时双引号闭合，传入</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;&gt;&lt;ScRipt&gt;alert(/xss/)&lt;/script&gt;</span><br></pre></td></tr></table></div></figure>
-
-<p>成功通关</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310141734229.png" alt="image-20231014173453147"></p>
-
-        <h1 id="level-7"   >
-          <a href="#level-7" class="heading-link"><i class="fas fa-link"></i></a><a href="#level-7" class="headerlink" title="level-7"></a>level-7</h1>
-      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310141735345.png" alt="image-20231014173528269"></p>
-<p>传入</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(/xss/)&lt;/script&gt;</span><br></pre></td></tr></table></div></figure>
-
-<p>后查看网页源代码</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310141736093.png" alt="image-20231014173603047"></p>
-<p>发现script直接被过滤掉了，再尝试</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">“ onclick=”alert(1)</span><br></pre></td></tr></table></div></figure>
-
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310141737497.png" alt="image-20231014173731453"></p>
-<p>onclick也被过滤掉，接着尝试</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;&gt;&lt;a href=javascript:alert(1)&gt;</span><br></pre></td></tr></table></div></figure>
-
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310151007084.png" alt="image-20231015100745979"></p>
-<p>herf也被过滤了</p>
-<p>按上一关的方法尝试大小写绕过</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310151013481.png" alt="image-20231015101307443"></p>
-<p>还是不行，再试试双写绕过</p>
-<p>传入</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;&gt;&lt;scriscriptpt&gt;alert(/xss/)&lt;/scriscriptpt&gt;</span><br></pre></td></tr></table></div></figure>
-
-<p>成功通关</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310151016608.png" alt="image-20231015101626568"></p>
-
-        <h1 id="level-8"   >
-          <a href="#level-8" class="heading-link"><i class="fas fa-link"></i></a><a href="#level-8" class="headerlink" title="level-8"></a>level-8</h1>
-      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310151016994.png" alt="image-20231015101640948"></p>
-<p>注入<code>&lt;script&gt;alert(/xss/)&lt;/script&gt;</code></p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310151019487.png" alt="image-20231015101941450"></p>
-<p>value中的&lt;&gt;被转义，并且输入的内容插入了a标签的href中，其中的script也被转义成scr_ipt，所以不能使用带&lt;&gt;的内容，而且不是被过滤成空字符，也就不能使用双写绕过</p>
-<p>尝试事件绕过，传入</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">“ onclick=”alert(1)</span><br></pre></td></tr></table></div></figure>
-
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310151031248.png" alt="image-20231015103128218"></p>
-<p>”也被转转义，href中的onclick也被转义成o_nclick</p>
-<p>我们在输入框输入的内容，会被带入到友情链接href属性中，试一下javascript伪协议，尝试传入</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javascript:alert(1)</span><br></pre></td></tr></table></div></figure>
-
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310151103100.png" alt="image-20231015110343069"></p>
-<p>javascript被转义成javascr_ipt，只能试试编码绕过了，进行HTML实体编码</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310151121906.png" alt="image-20231015112111841"></p>
-<p>在框内输入</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310171536689.png" alt="image-20231017153651540"></p>
-<p>再点击友情链接，成功通关！</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310171537796.png" alt="image-20231017153757748"></p>
-
-        <h1 id="level-9"   >
-          <a href="#level-9" class="heading-link"><i class="fas fa-link"></i></a><a href="#level-9" class="headerlink" title="level-9"></a>level-9</h1>
-      <p><img src="../AppData/Roaming/Typora/typora-user-images/image-20231017154620127.png" alt="image-20231017154620127"></p>
-<p>正常注入</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(/xss/)&lt;/script&gt;</span><br></pre></td></tr></table></div></figure>
-
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310171603427.png" alt="image-20231017160307394"></p>
-<p>和上题一样的有转义，有链接，但这个显示链接不合法，查看后台源码看看怎么回事</p>
-<p>（一般像这种有靶场的，可以在google上搜索该网站，到github上获得开源的）</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181439814.png" alt="image-20231018143942700"></p>
-
-        <h6 id="strpos-函数返回字符串在另一个字符串中第一次出现的位置。如果没有找到该字符串，则返回-false。"   >
-          <a href="#strpos-函数返回字符串在另一个字符串中第一次出现的位置。如果没有找到该字符串，则返回-false。" class="heading-link"><i class="fas fa-link"></i></a><a href="#strpos-函数返回字符串在另一个字符串中第一次出现的位置。如果没有找到该字符串，则返回-false。" class="headerlink" title="strpos() 函数返回字符串在另一个字符串中第一次出现的位置。如果没有找到该字符串，则返回 false。"></a>strpos() <em>函数</em>返回字符串在另一个字符串中第一次出现的位置。如果没有找到该字符串，则返回 false。</h6>
-      <p>就是说输入的字符串内必须要有http://字符，于是尝试注入</p>
-<p> (javascript伪协议还是用html实体编码)</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181450629.png" alt="image-20231018145039598"></p>
-<p>看得出来链接已经合法了但是但是http://在前面是无法执行JavaScript，给它放到最后面并且用//注释掉，在输入框内输入</p>
-<p>成功通关！</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181456295.png" alt="image-20231018145610261"></p>
-
-        <h1 id="level-10"   >
-          <a href="#level-10" class="heading-link"><i class="fas fa-link"></i></a><a href="#level-10" class="headerlink" title="level-10"></a>level-10</h1>
-      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181456893.png" alt="image-20231018145640803"></p>
-<p>正常注入<code>&lt;script&gt;alert(/xss/)&lt;/script&gt;</code></p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181459235.png" alt="image-20231018145910204"></p>
-<p>发现&lt;&gt;被转义，除了keyword外还有三个参数，尝试给三个参数传参</p>
-<p><code>https://xssaq.com/yx/level10.php?keyword=1&amp;t_link=2&amp;t_history=3&amp;t_sort=4</code></p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181501319.png" alt="image-20231018150128286"></p>
-<p>发现只有t_sort接受了传参，要使用t_sort就得变换本身的hidden类型，把它改成其他类型button，注意双引号闭合</p>
-<p>在URL上给keyword和t_sort传参</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?keyword=1&amp;t_sort=&quot;%20onclick=&quot;alert(1)</span><br></pre></td></tr></table></div></figure>
-
-<p>再按F12把t_sort本身的hidden类型改成button</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181509704.png" alt="image-20231018150942673"></p>
-<p>回车后画面中会出现一个按钮</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181510378.png" alt="image-20231018151029344"></p>
-<p>点击按钮，成功通关！</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181512502.png" alt="image-20231018151257400"></p>
-
-        <h1 id="level-11"   >
-          <a href="#level-11" class="heading-link"><i class="fas fa-link"></i></a><a href="#level-11" class="headerlink" title="level-11"></a>level-11</h1>
-      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181513216.png" alt="image-20231018151310174"></p>
-<p>看起来和上一关差不多，直接查看网页源代码</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181521543.png" alt="image-20231018152114489"></p>
-<p> t_ref 已经有了值，而且是上一关通关的payload</p>
-<p>正常传入</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(/xss/)&lt;/script&gt;</span><br></pre></td></tr></table></div></figure>
-
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181513433.png" alt="image-20231018151353399"></p>
-<p>依然有&lt;&gt;的转义，但t_ref的值没了，类似的方法给另外四个参数也传参</p>
-<p><code>?keyword=1&amp;t_link=2&amp;t_history=3&amp;t_sort=4&amp;t_ref=5</code></p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181525332.png" alt="image-20231018152545257"></p>
-<p>还是t_sort接受传参，但是t_ref没了，再用上一关的方法试试</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181536992.png" alt="image-20231018153640925"></p>
-<p>双引号也被转义了，抓包看看</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181543511.png" alt="image-20231018154339455"></p>
-<p> 可以看出ref 是 http 头中的 referer 属性，修改一下Referer的值为5</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181544146.png"></p>
-<p>成功传入</p>
-<p>从这里入手构造payload</p>
-<p>可以在burpsuit里修改Referer的值，也可以直接在网页按F12里修改t_ref，同时把该参数的类型更改为button类型</p>
-<p>传入</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot; onclick=&quot;alert(1)</span><br></pre></td></tr></table></div></figure>
-
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181555383.png" alt="image-20231018155532291"></p>
-<p>按一下按钮成功通关！</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181555057.png" alt="image-20231018155557988"></p>
-
-        <h1 id="level-12"   >
-          <a href="#level-12" class="heading-link"><i class="fas fa-link"></i></a><a href="#level-12" class="headerlink" title="level-12"></a>level-12</h1>
-      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181557557.png" alt="image-20231018155728451"></p>
-<p>直接查看网页源代码</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181557368.png" alt="image-20231018155743325"></p>
-<p>显然和上一关类似，只是t_ref换成了t_ua</p>
-<p>直接F12修改t_ua的值，并且改变成button类型</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181559365.png" alt="image-20231018155914274"></p>
-<p>点击按钮即可通关！</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181559187.png" alt="image-20231018155941032"></p>
-
-        <h1 id="level-13"   >
-          <a href="#level-13" class="heading-link"><i class="fas fa-link"></i></a><a href="#level-13" class="headerlink" title="level-13"></a>level-13</h1>
-      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181601034.png" alt="image-20231018160150945"></p>
-<p>查看网页源代码</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181602428.png" alt="image-20231018160205370"></p>
-<p>和前两关相同</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181604942.png" alt="image-20231018160421801"></p>
-
-        <h1 id="level-16"   >
-          <a href="#level-16" class="heading-link"><i class="fas fa-link"></i></a><a href="#level-16" class="headerlink" title="level-16"></a>level-16</h1>
-      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181616731.png" alt="image-20231018161635493"></p>
-<p>查看网页源代码</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181617771.png" alt="image-20231018161705723"></p>
-<p>和之前的不太一样，正常注入试试<img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181705516.png" alt="image-20231018170503472"></p>
-<p> script和/没了，试一下没有这两个的</p>
-<p>传入“ onclick=”alert(1)</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181706816.png" alt="image-20231018170645786"></p>
-<p>空格也没了</p>
-<p>用回车代替空格绕过试试（回车、换行不支持在on事件中使用）</p>
-<p>可以用：</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src =x onerror=alert(111)&gt;</span><br></pre></td></tr></table></div></figure>
-
-<p>要使用URL编码将回车符转换为%0d</p>
-<p>所以传入</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img%0dsrc=x%0donerror=alert(111)&gt;</span><br></pre></td></tr></table></div></figure>
-
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310181713997.png" alt="image-20231018171337868"></p>
-
-        <h1 id="level-17"   >
-          <a href="#level-17" class="heading-link"><i class="fas fa-link"></i></a><a href="#level-17" class="headerlink" title="level-17"></a>level-17</h1>
-      <p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310182107428.png" alt="image-20231018210758371"></p>
-<p>（要使用flash才能显示出图片，不过也影响不大）</p>
-<p>从url可以看出是要对arg01和arg02传参</p>
-<p>查看网页源代码</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310190912392.png" alt="image-20231019091245312"></p>
-<p>修改一下arg01和arg02的值</p>
-<p><code>?arg01=1&amp;arg02=2</code></p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310190913772.png" alt="image-20231019091330739"></p>
-<p>发现src的值发生了变化</p>
-<p>这两个变量是互相拼接起来的，所以在输入arg02时在b之后加一个空格，当浏览器解析到b的时候就停止判断，然后将onclick看作另外一个属性。从而执行javascript语句。</p>
-<p>执行</p>
-<p><code>?arg01=a&amp;arg02=b%20onmouseover=alert(1)</code></p>
-<p>(onclick不行，应该是因为加载不出图片无法点击，所以用不了这个事件)</p>
-<p><img src="https://pig-007.oss-cn-beijing.aliyuncs.com/img/202310190923882.png" alt="image-20231019092332845"></p>
-</div></div></article></section><nav class="paginator"><div class="paginator-inner"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-right"></i></a></div></nav></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">13</div><div class="sidebar-ov-state-item__name">Archives</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2024</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>PiDan-007</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v6.0.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>
+</div></div></article></section><nav class="paginator"><div class="paginator-inner"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-right"></i></a></div></nav></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">14</div><div class="sidebar-ov-state-item__name">Archives</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2024</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>PiDan-007</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v6.0.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>
